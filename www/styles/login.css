@@ -1,0 +1,26 @@
+.logo-budget{
+  width: 92%;
+  margin: auto;
+  padding: 23px;
+  margin-top: 40%;
+  margin-left: 4%;
+  margin-right: 50%;
+}
+
+.background-initial-page{
+  background-image: url("../assets/images/background.png"); 
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.user-information-box{
+  margin-left: 15%;
+  margin-right: 20%;
+  border-width: 5px;
+  border-style: inset;
+  border-color: rgba(204, 204, 204, 0) rgba(204, 204, 204, 0) #FF5907 rgba(204, 204, 204, 0);
+  background-color: rgba(204, 204, 204, 0);
+  color: #444;
+}

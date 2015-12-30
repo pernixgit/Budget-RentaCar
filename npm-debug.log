@@ -1,0 +1,134 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', '-g', 'karma-cli' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose cache add [ 'karma-cli', null ]
+5 verbose cache add name=undefined spec="karma-cli" args=["karma-cli",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'karma-cli',
+6 verbose parsed url   path: 'karma-cli',
+6 verbose parsed url   href: 'karma-cli' }
+7 silly lockFile aa100f68-karma-cli karma-cli
+8 verbose lock karma-cli /home/cristiandiaz/.npm/aa100f68-karma-cli.lock
+9 silly lockFile aa100f68-karma-cli karma-cli
+10 silly lockFile aa100f68-karma-cli karma-cli
+11 verbose addNamed [ 'karma-cli', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 8f6f2c72-karma-cli karma-cli@
+14 verbose lock karma-cli@ /home/cristiandiaz/.npm/8f6f2c72-karma-cli.lock
+15 silly addNameRange { name: 'karma-cli', range: '*', hasData: false }
+16 verbose url raw karma-cli
+17 verbose url resolving [ 'https://registry.npmjs.org/', './karma-cli' ]
+18 verbose url resolved https://registry.npmjs.org/karma-cli
+19 info trying registry request attempt 1 at 10:42:43
+20 verbose etag "2O6ON6LM0D1PGHF5IM48LVYWF"
+21 http GET https://registry.npmjs.org/karma-cli
+22 http 304 https://registry.npmjs.org/karma-cli
+23 silly registry.get cb [ 304,
+23 silly registry.get   { date: 'Tue, 29 Dec 2015 16:42:44 GMT',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     'cache-control': 'max-age=300',
+23 silly registry.get     etag: '"2O6ON6LM0D1PGHF5IM48LVYWF"',
+23 silly registry.get     age: '296',
+23 silly registry.get     connection: 'keep-alive',
+23 silly registry.get     'x-served-by': 'cache-jfk1031-JFK',
+23 silly registry.get     'x-cache': 'HIT',
+23 silly registry.get     'x-cache-hits': '2',
+23 silly registry.get     'x-timer': 'S1451407364.416785,VS0,VE0',
+23 silly registry.get     vary: 'Accept' } ]
+24 verbose etag karma-cli from cache
+25 silly addNameRange number 2 { name: 'karma-cli', range: '*', hasData: true }
+26 silly addNameRange versions [ 'karma-cli',
+26 silly addNameRange   [ '0.0.1', '0.0.2', '0.0.3', '0.0.4', '0.1.0', '0.1.1', '0.1.2' ] ]
+27 verbose addNamed [ 'karma-cli', '0.1.2' ]
+28 verbose addNamed [ '0.1.2', '0.1.2' ]
+29 silly lockFile 242f57b6-karma-cli-0-1-2 karma-cli@0.1.2
+30 verbose lock karma-cli@0.1.2 /home/cristiandiaz/.npm/242f57b6-karma-cli-0-1-2.lock
+31 silly lockFile 242f57b6-karma-cli-0-1-2 karma-cli@0.1.2
+32 silly lockFile 242f57b6-karma-cli-0-1-2 karma-cli@0.1.2
+33 silly lockFile 8f6f2c72-karma-cli karma-cli@
+34 silly lockFile 8f6f2c72-karma-cli karma-cli@
+35 silly resolved [ { name: 'karma-cli',
+35 silly resolved     description: 'The Karma command line interface.',
+35 silly resolved     homepage: 'http://karma-runner.github.io/',
+35 silly resolved     repository:
+35 silly resolved      { type: 'git',
+35 silly resolved        url: 'git://github.com/karma-runner/karma-cli.git' },
+35 silly resolved     bugs: { url: 'https://github.com/karma-runner/karma-cli/issues' },
+35 silly resolved     keywords:
+35 silly resolved      [ 'karma',
+35 silly resolved        'spectacular',
+35 silly resolved        'runner',
+35 silly resolved        'karma',
+35 silly resolved        'js',
+35 silly resolved        'javascript',
+35 silly resolved        'testing',
+35 silly resolved        'test',
+35 silly resolved        'remote',
+35 silly resolved        'execution' ],
+35 silly resolved     author: { name: 'Vojta Jína', email: 'vojta.jina@gmail.com' },
+35 silly resolved     contributors:
+35 silly resolved      [ [Object],
+35 silly resolved        [Object],
+35 silly resolved        [Object],
+35 silly resolved        [Object],
+35 silly resolved        [Object],
+35 silly resolved        [Object],
+35 silly resolved        [Object],
+35 silly resolved        [Object] ],
+35 silly resolved     dependencies: { resolve: '^1.1.6' },
+35 silly resolved     devDependencies:
+35 silly resolved      { 'eslint-config-standard': '^4.4.0',
+35 silly resolved        'eslint-plugin-standard': '^1.3.1',
+35 silly resolved        grunt: '^0.4.1',
+35 silly resolved        'grunt-bump': '^0.3.1',
+35 silly resolved        'grunt-conventional-changelog': '^1.2.2',
+35 silly resolved        'grunt-eslint': '^17.0.0',
+35 silly resolved        'grunt-npm': '0.0.2',
+35 silly resolved        'load-grunt-tasks': '^3.2.0' },
+35 silly resolved     preferGlobal: true,
+35 silly resolved     bin: { karma: './bin/karma' },
+35 silly resolved     engines: { node: '0.10 || 0.12 || 4 || 5' },
+35 silly resolved     version: '0.1.2',
+35 silly resolved     license: 'MIT',
+35 silly resolved     readme: '# karma-cli\n\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/karma-runner/karma-cli)\n [![npm version](https://img.shields.io/npm/v/karma-cli.svg?style=flat-square)](https://www.npmjs.com/package/karma-cli) [![npm downloads](https://img.shields.io/npm/dm/karma-cli.svg?style=flat-square)](https://www.npmjs.com/package/karma-cli)\n\n[![Build Status](https://img.shields.io/travis/karma-runner/karma-cli/master.svg?style=flat-square)](https://travis-ci.org/karma-runner/karma-cli) [![Dependency Status](https://img.shields.io/david/karma-runner/karma-cli.svg?style=flat-square)](https://david-dm.org/karma-runner/karma-cli) [![devDependency Status](https://img.shields.io/david/dev/karma-runner/karma-cli.svg?style=flat-square)](https://david-dm.org/karma-runner/karma-cli#info=devDependencies)\n\n> The [Karma] command line interface.\n\nInstall this module if you wanna be able to use `karma` in your command line.\n\n[Karma]: http://karma-runner.github.io\n',
+35 silly resolved     readmeFilename: 'README.md',
+35 silly resolved     _id: 'karma-cli@0.1.2',
+35 silly resolved     _from: 'karma-cli@' } ]
+36 info install karma-cli@0.1.2 into /usr/local/lib
+37 info installOne karma-cli@0.1.2
+38 info /usr/local/lib/node_modules/karma-cli unbuild
+39 info preuninstall karma-cli@0.1.2
+40 info uninstall karma-cli@0.1.2
+41 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild karma-cli@0.1.2
+42 verbose /usr/local/bin,[object Object] binRoot
+43 info /usr/local/lib/node_modules/karma-cli unbuild
+44 info preuninstall karma-cli@0.1.2
+45 info uninstall karma-cli@0.1.2
+46 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild karma-cli@0.1.2
+47 verbose /usr/local/bin,[object Object] binRoot
+48 error error rolling back Error: Refusing to delete: /usr/local/bin/karma not in /usr/local/lib/node_modules/karma-cli
+48 error error rolling back     at clobberFail (/usr/share/npm/lib/utils/gently-rm.js:41:12)
+48 error error rolling back     at next (/usr/share/npm/lib/utils/gently-rm.js:27:14)
+48 error error rolling back     at /usr/share/npm/lib/utils/gently-rm.js:36:12
+48 error error rolling back     at Object.oncomplete (fs.js:107:15)
+48 error error rolling back  karma-cli@0.1.2 { [Error: Refusing to delete: /usr/local/bin/karma not in /usr/local/lib/node_modules/karma-cli] code: 'EEXIST', path: '/usr/local/bin/karma' }
+49 error Refusing to delete: /usr/local/bin/karma not in /usr/local/lib/node_modules/karma-cli
+File exists: /usr/local/bin/karma
+Move it away, and try again.
+50 error System Linux 3.19.0-30-generic
+51 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "karma-cli"
+52 error cwd /home/cristiandiaz/Desktop/Budget-RentaCar
+53 error node -v v0.10.25
+54 error npm -v 1.3.10
+55 error path /usr/local/bin/karma
+56 error code EEXIST
+57 verbose exit [ 1, true ]

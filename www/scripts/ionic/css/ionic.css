@@ -3700,7 +3700,10 @@ address {
   line-height: 1.42857; }
 
 a {
-  color: #387ef5; }
+  color: #F9F9F9;
+  font-weight: bold;
+  font-size: 2em;
+  }
 
 a.subdued {
   padding-right: 10px;
@@ -5634,7 +5637,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
  */
 .item {
   border-color: #ddd;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
   color: #444;
   position: relative;
   z-index: 2;
@@ -7596,8 +7599,10 @@ textarea {
   padding: 7px 10px 7px 0px;
   max-width: 200px;
   width: 35%;
-  color: #444;
-  font-size: 16px; }
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  }
 
 .placeholder-icon {
   color: #aaa; }
@@ -7671,9 +7676,9 @@ input[type="color"] {
   padding-top: 2px;
   padding-left: 0;
   height: 34px;
-  color: #111;
+  color: #fff;
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 2em;
   line-height: 16px; }
 
 .platform-ios input[type="datetime-local"],
@@ -8519,7 +8524,7 @@ progress {
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 2em;
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
