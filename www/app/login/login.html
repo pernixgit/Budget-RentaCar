@@ -1,0 +1,21 @@
+<div class="background-initial-page">
+  <img src="../assets/images/budget_logo.png" class="logo-budget"></img>
+    <form autocomplete="off" ng-submit="login()">
+      <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
+      <label class="user-information-box item item-input">
+        <span class="input-label" for="email"> Correo </span>
+        <input type="email" name="email" ng-model="user.email" required />
+      </label>
+      <label class=" user-information-box item item-input">
+          <span class="input-label"> Contraseña </span>
+          <input type="password" name="password" ng-model="user.password" required/>
+      </label>
+      <br/>
+      <p align="center">
+        <button class="button-primary" type="submit" on-click="login()" ng-disabled="login.$invalid">Log In</button>
+      </p>
+      <p align="center">
+        <a class="link-button" ng-click="createAccount()" > Crear Cuenta </a>
+      </p>
+    </form>
+</div>
