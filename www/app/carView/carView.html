@@ -17,7 +17,7 @@
  <ion-list show-delete="shouldShowDelete">
   <ion-item ng-repeat="item in observacionHash" id="item.id" class="item-remove-animate">
     <p>{{item.part}} {{item.obs}}</p>
-    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id)"/>
+    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.myCircleID)"/>
   </ion-item>
 </ion-list>
 </div>

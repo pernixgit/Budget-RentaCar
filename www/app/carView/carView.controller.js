@@ -4,39 +4,40 @@
   angular
     .module('budgetrentacar.carView')
     .controller('CarViewController',['$scope','$ionicPopup',function($scope,$ionicPopup){
+    
+    var myCircle = 0,
+        vm = $scope,
+        img = "http://i.imgur.com/JrFZF8T.jpg",
+        myPath,
+        canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d'),
+        ID=0,
+        group,
+        myCirclename;
 
-    var vm = $scope;
-    var img = "http://i.imgur.com/JrFZF8T.jpg";
-    var myPath;
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
-    var id=0;
     vm.observacion = {
       part : "",
       obs : "",
     }
-    $scope.shouldShowDelete = true;
 
+    vm.shouldShowDelete = true;
     vm.observacionHash = {};
     init();
+
     function init(){
       paper.install(window);
       paper.setup('canvas'); // your canvas html id
+      myPath = new Path();
+      myPath.strokeColor = 'black';
     }
+
     var raster = new paper.Raster({
       source: img,
       position: paper.view.center,
     });
 
     vm.downEvent=function(event) {
-      myPath = new Path();
-      myPath.strokeColor = 'black';
-      var myCircle = new Path.Circle({
-        center: getPoint(event),
-        radius: 20
-      });
-      myCircle.strokeColor = '#ff0000';
-      myCircle.strokeWidth = 10;
+      drawCircle();
     }
 
     vm.upEvent = function(event) {
@@ -60,20 +61,37 @@
       });
       confirmPopup.then(function(res) {
         if(res) {
-          console.log(vm.observacion);
           fillMap();
           } else {
+            deleteCircle(myCircle.id)
           }
         });
       };
 
-    vm.onItemDelete = function(id) {
+    vm.onItemDelete = function(id, circleID) {
       delete vm.observacionHash[id];
+      deleteCircle(circleID);
     };
 
+    function drawCircle(){
+      myCircle = new Path.Circle({
+        center: getPoint(event),
+        radius: 20,
+      });
+      myCircle.strokeColor = '#ff0000';
+      myCircle.strokeWidth = 10;
+    }
+    function deleteCircle(circleID){
+      while(myCircle.id != circleID){
+        myCircle = myCircle.previousSibling
+      }
+      myCircle.remove();
+      paper.view.update();
+      myCircle = new Path.Circle({});
+    }
+
     function fillMap(){
-      vm.observacionHash[id+=1]={id:id, part:vm.observacion.part, obs:vm.observacion.obs};
-      console.log(vm.observacionHash[id].id);
+      vm.observacionHash[ID+=1]={id:ID, part:vm.observacion.part, obs:vm.observacion.obs, myCircleID: myCircle.id};
       vm.observacion.part = ""; 
       vm.observacion.obs = "";
     }    
