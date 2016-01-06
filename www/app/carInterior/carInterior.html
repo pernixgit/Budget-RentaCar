@@ -1,0 +1,29 @@
+
+<div class = "checkboxes" data-ng-app="budgetrentacar" data-ng-init="opciones=['Alfombra','Cenicero','Gps', 'AET', 'Documentos Legales', 'Silla para bebe', 'Booster']">
+
+<div class="bar bar-header bar-positive">
+  <h1 class="title">Partes Interior</h1>
+</div>
+
+
+  <ion-view view-title="Car Interior" class="carInterior-page">
+  <ion-content>
+
+  <ion-list>
+    <ion-checkbox ng-repeat="opcion in opciones">{{opcion}}</ion-checkbox>
+  </ion-list>
+
+ 
+
+  <div class="boton">
+        <div class="col text-center">
+             <button ui-sref="trunk" class="button button-positive">Continuar</button>
+        </div>
+   </div
+
+
+  </ion-content>
+  </ion-view>
+
+  
+</div>

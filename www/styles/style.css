@@ -1,1 +1,26 @@
-/* Empty. Add your own CSS if you like */
+/* CAR INTERIORCSS */
+.carInterior-page{
+
+}
+
+.carInterior-page .button {
+	margin-top: 40px;
+}
+
+
+/*TRUNK CSS*/
+.trunk-page .button {
+	margin-top: 40px;
+}
+
+/*CAR EXTERIOR CSS*/
+.carExterior-page .ion-list{
+
+}
+
+.carExterior-page .button{
+margin-top: 0px;
+
+}
+
+

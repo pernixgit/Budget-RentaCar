@@ -7,7 +7,10 @@
       'ionic',
       'ui.router',
       'budgetrentacar.home',
-      'budgetrentacar.form'
+      'budgetrentacar.form',
+      'budgetrentacar.carExterior',
+      'budgetrentacar.carInterior',
+      'budgetrentacar.trunk'
     ]);
 
 })();
