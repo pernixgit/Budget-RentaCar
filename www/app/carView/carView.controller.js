@@ -15,7 +15,6 @@
         dbObservationHash ={},
         FBREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car"),
         CANVASREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car"),
-        onload = new Firebase("https://boiling-torch-654.firebaseio.com/car/canvas"),
         paperLibInstance;  
         vm.observacion = {
           part : "",
@@ -24,14 +23,13 @@
 
     canvas.style.background = "url('http://i.imgur.com/JrFZF8T.jpg')  no-repeat center";
     canvas.style.backgroundSize = "100% 100%" 
-
     vm.shouldShowDelete = true;
     vm.observacionHash = {};
     init();
 
     function init(){
       paperLibInstance = paper.install(window);
-      paperLibInstance = paper.setup('canvas'); // your canvas html id
+      paperLibInstance = paper.setup('canvas'); 
       paperLibInstance = new Path();
       paperLibInstance.strokeColor = 'black';
     }
@@ -61,7 +59,7 @@
     }
 
     function getPoint(event) {
-      try { // on android
+      try { 
         return new Point(event.gesture.center.pageX, event.gesture.center.pageY) 
       }
       catch (exception) { 
