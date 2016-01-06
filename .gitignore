@@ -7,5 +7,5 @@ plugins/
 www/lib/
 coverage/
 resources/
-
+.DS_Store
 www/app/envSettings.js

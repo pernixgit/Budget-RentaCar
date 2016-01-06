@@ -5,11 +5,13 @@
 
   angular.module('budgetrentacar', [
       'ionic',
+      'firebase',
       'ui.router',
       'budgetrentacar.home',
       'budgetrentacar.form',
       'budgetrentacar.carView',
-      'budgetrentacar.content'
+      'budgetrentacar.content',
+
     ]);
 
 })();

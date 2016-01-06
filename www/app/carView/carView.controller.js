@@ -14,34 +14,63 @@
         ID=0,
         group,
         myCirclename;
-
-    vm.observacion = {
-      part : "",
-      obs : "",
-    }
-
+        vm.observacion = {
+          part : "",
+          obs : "",
+        }   
+    canvas.style.background = "url('http://i.imgur.com/JrFZF8T.jpg')  no-repeat center";
+    canvas.style.backgroundSize ="100% 100%" 
     vm.shouldShowDelete = true;
     vm.observacionHash = {};
-    init();
+    var observacionHashTemp ={};
+    var ref = new Firebase("https://boiling-torch-654.firebaseio.com/car");
+    var refCanvas = new Firebase("https://boiling-torch-654.firebaseio.com/car");
+    var onload = new Firebase("https://boiling-torch-654.firebaseio.com/car/canvas");
+    var temp;
+    var cont=0;
+          var index=0;
 
+    init();
     function init(){
-      paper.install(window);
-      paper.setup('canvas'); // your canvas html id
-      myPath = new Path();
-      myPath.strokeColor = 'black';
+      temp=paper.install(window);
+      temp=paper.setup('canvas'); // your canvas html id
+      temp.activate();
+      temp = new Path();
+      temp.strokeColor = 'black';
+      console.log(project.activeLayer);
+
     }
 
-    var raster = new paper.Raster({
-      source: img,
-      position: paper.view.center,
-    });
-
+    vm.putDB=function(){
+      var impCanvas=project.activeLayer.exportJSON();
+      var observacionHashTemp=vm.observacionHash;
+      var carCanvas = ref.child("Canvas");
+      carCanvas.set({
+        Canvas: impCanvas
+        })
+      if (cont > 0){
+        index+=1;
+        console.log(cont)
+        var obsSet = ref.child("observaciones/observacion"+observacionHashTemp[index].id);
+        obsSet.set({
+            Parte: observacionHashTemp[index].part,
+            observacion: observacionHashTemp[index].obs
+        })
+        cont-=1;
+        vm.putDB();
+      }
+      
+      
+    }
+    
     vm.downEvent=function(event) {
       drawCircle();
+      console.log(vm.observacionHash)
     }
 
     vm.upEvent = function(event) {
       vm.showDialog();
+      console.log(cont);
     }
 
     function getPoint(event) {
@@ -74,13 +103,16 @@
     };
 
     function drawCircle(){
+      cont+=1;
       myCircle = new Path.Circle({
         center: getPoint(event),
         radius: 20,
       });
       myCircle.strokeColor = '#ff0000';
       myCircle.strokeWidth = 10;
+      console.log(myCircle.position)
     }
+
     function deleteCircle(circleID){
       while(myCircle.id != circleID){
         myCircle = myCircle.previousSibling
