@@ -3,20 +3,20 @@
 
   angular
     .module('budgetrentacar.carView')
-    .controller('CarViewController',['$scope','$ionicPopup',function($scope,$ionicPopup){
+    .controller('CarViewController',['$scope','$ionicPopup',function( $scope, $ionicPopup){
     
-    var myCircle = 0,
+    var circle,
         vm = $scope,
         canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d'),
         ID=0,
-        cont=0,
+        observationCount=0,
         index=0,
         dbObservationHash ={},
         FBREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car"),
         CANVASREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car"),
         onload = new Firebase("https://boiling-torch-654.firebaseio.com/car/canvas"),
-        paperInst;  
+        paperLibInstance;  
         vm.observacion = {
           part : "",
           obs : "",
@@ -30,10 +30,10 @@
     init();
 
     function init(){
-      paperInst = paper.install(window);
-      paperInst = paper.setup('canvas'); // your canvas html id
-      paperInst = new Path();
-      paperInst.strokeColor = 'black';
+      paperLibInstance = paper.install(window);
+      paperLibInstance = paper.setup('canvas'); // your canvas html id
+      paperLibInstance = new Path();
+      paperLibInstance.strokeColor = 'black';
     }
 
     vm.pushtoDB=function(){
@@ -43,9 +43,9 @@
       carCanvas.set({
         Canvas: impCanvas
         })
-      if (cont > 0){
+      if (observationCount > 0){
         index+=1;
-        cont-=1;
+        observationCount-=1;
         var obsSet = FBREFERENCE.child("observaciones/observacion"+dbObservationHash[index].id);
         obsSet.set({
             Parte: dbObservationHash[index].part,
@@ -62,9 +62,9 @@
 
     function getPoint(event) {
       try { // on android
-        return new Point(event.gesture.center.pageX, event.gesture.center.pageY) // 44 = header bar pixel height
+        return new Point(event.gesture.center.pageX, event.gesture.center.pageY) 
       }
-      catch (e) { // on ionic serve, brower
+      catch (exception) { 
         return new Point(event.x, event.y);
       }
     }
@@ -79,7 +79,7 @@
         if(res) {
           fillMap();
           } else {
-            deleteCircle(myCircle.id)
+            deleteCircle(circle.id)
           }
         });
       };
@@ -90,26 +90,26 @@
     };
 
     function drawCircle(){
-      cont+=1;
-      myCircle = new Path.Circle({
+      observationCount+=1;
+      circle = new Path.Circle({
         center: getPoint(event),
         radius: 20,
       });
-      myCircle.strokeColor = '#ff0000';
-      myCircle.strokeWidth = 10;
+      circle.strokeColor = '#ff0000';
+      circle.strokeWidth = 10;
     }
 
     function deleteCircle(circleID){
-      while(myCircle.id != circleID){
-        myCircle = myCircle.previousSibling
+      while(circle.id != circleID){
+        circle = circle.previousSibling
       }
-      myCircle.remove();
+      circle.remove();
       paper.view.update();
-      myCircle = new Path.Circle({});
+      circle = new Path.Circle({});
     }
 
     function fillMap(){
-      vm.observacionHash[ID+=1]={id:ID, part:vm.observacion.part, obs:vm.observacion.obs, myCircleID: myCircle.id};
+      vm.observacionHash[ID+=1]={id:ID, part:vm.observacion.part, obs:vm.observacion.obs, circleID: circle.id};
       vm.observacion.part= ""; 
       vm.observacion.obs = "";
     }    
