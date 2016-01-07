@@ -3,19 +3,12 @@
  
   angular
     .module('budgetrentacar.home')
-    .controller('HomeController', HomeController);
- 
-  HomeController.$inject = [];
- 
-  /* @ngInject */
-    function HomeController() {
-    var vm = this;
- 
-    activate();
- 
-    ////////////////
- 
-    function activate() {
-    }
-  }
+    .controller('HomeController', ['$scope', '$state', function($scope, $state){
+      var scopeCtrl = $scope;
+
+      scopeCtrl.openScanner = function(){
+        $state.go("scanner");
+      }
+    }])
+  
 })(); 

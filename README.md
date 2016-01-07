@@ -9,6 +9,16 @@ $ npm install
 $ bower install
 ```
 
+Add Android platform:
+
+```bash
+$ ionic platform add android
+```
+
+Add ionic ngCordova library
+```bash
+cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
+```
 
 Everything is set up to serve from this www folder using
 ```bash
