@@ -21,8 +21,6 @@
           obs : "",
         }  
 
-    canvas.style.background = "url('http://i.imgur.com/JrFZF8T.jpg')  no-repeat center";
-    canvas.style.backgroundSize = "100% 100%" 
     vm.shouldShowDelete = true;
     vm.observacionHash = {};
     init();
