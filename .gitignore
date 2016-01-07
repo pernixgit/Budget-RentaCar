@@ -9,4 +9,7 @@ coverage/
 resources/
 .DS_Store
 bower_components/
+npm-debug.log
+
 www/app/envSettings.js
+
