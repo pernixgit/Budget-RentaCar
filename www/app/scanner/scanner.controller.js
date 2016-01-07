@@ -3,19 +3,28 @@
 
   angular
   .module('budgetrentacar.scanner')
-  .controller('ScannerController', ['$scope','$cordovaBarcodeScanner', function($scope, $cordovaBarcodeScanner) {
-    var ctrScope = $scope;
-
-    ctrScope.scanBarcode = function() {
-      console.log("en scan barcode");
-      $cordovaBarcodeScanner.scan().then(function(imageData) {
-        alert(imageData.text);
-        console.log("Barcode Format -> " + imageData.format);
-        console.log("Cancelled -> " + imageData.cancelled);
+  .controller('ScannerController', ['$scope', '$state','$cordovaBarcodeScanner', function($scope, $state, $cordovaBarcodeScanner) {
+      var scopeCtrl = $scope;
+      $cordovaBarcodeScanner.scan().then(function(code_data) {
+        alert(code_data.text);
+        ScannerService.setCode(code_data);
+        $state.go("form")
       }, function(error) {
-        console.log("An error happened -> " + error);
+        alert("Error, no se pudo leer el código");
       });
+  }])
+  .service('ScannerService', function(ScannerService){
+    var data = {
+      code: ""
     };
 
-  }]);
+    return{
+       getCode: function () {
+            return data.code;
+        },
+        setCode: function (code) {
+            data.code = code;
+        }
+    };
+  });
 })();
