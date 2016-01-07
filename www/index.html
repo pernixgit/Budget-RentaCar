@@ -7,16 +7,9 @@
 
     <link href="scripts/ionic/css/ionic.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/login.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-  </head>
-  <body ng-app="budgetrentacar">
-
-    <ion-nav-view></ion-nav-view>
-
-    <!-- ionic/angularjs js -->
+     <!-- ionic/angularjs js -->
     <script src="scripts/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -28,6 +21,10 @@
     <script src="app/app.config.js"></script>
     <script src="app/app.run.js"></script>
 
+    <!-- login module -->
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.controller.js"></script>
+
     <!-- home module -->
     <script src="app/home/home.module.js"></script>
     <script src="app/home/home.controller.js"></script>
@@ -36,6 +33,11 @@
     <script src="app/form/form.module.js"></script>
     <script src="app/form/form.controller.js"></script>
     <script src="app/form/form.routes.js"></script>
+
+  </head>
+  <body ng-app="budgetrentacar">
+
+    <ion-nav-view></ion-nav-view>
 
   </body>
 </html>
