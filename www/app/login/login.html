@@ -1,0 +1,21 @@
+<div class="background-initial-page">
+  <img src="../assets/images/budget_logo.png" class="budget-logo"></img>
+    <form>
+      <div class="control-group">
+      <label class="user-information-box item item-input">
+        <span class="input-label" for="username"> Usuario </span>
+        <input type="text" name="username" ng-model="username" required />
+      </label>
+      <label class=" user-information-box item item-input">
+          <span class="input-label"> Contraseña </span>
+          <input type="password" name="password" ng-model="password" required/>
+      </label>
+      <br/>
+      <p align="center">
+        <button class="button-primary" type="submit" ng-click="authenticate(username, password)"> Iniciar </button>
+      </p>
+      <p align="center">
+        <a class="link-button" ng-click="register()" > Registrar </a>
+      </p>
+    </form>
+</div>
