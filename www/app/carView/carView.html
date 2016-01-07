@@ -1,40 +1,24 @@
 <div class="carView">
-  <div class="bar bar-header bar-light">
-  <h1 class="title">Revision</h1>
-  <button class="button">
-  <p>Load</P>
-</button>
-</div>
-<div>
-  <canvas id="canvas" 
-    ng-mousedown="downEvent($event)"
-    on-touch="downEvent($event)"
-    ng-mousemove="dragEvent($event)"
-    on-drag="dragEvent($event)"
-    ng-mouseup="upEvent($event)"
-    on-release="upEvent($event)"
-    resize="true"
-    class="canvas">
-  </canvas>
-</div>
+  <ion-nav-bar>
+ <ion-nav-title>
+   <img class"center" src='../assets/images/budget_logo.png' height='44'>
+ </ion-nav-title>
+</ion-nav-bar>
 
-<div>
- <ion-list show-delete="shouldShowDelete">
-  <ion-item ng-repeat="item in observacionHash" id="item.id" class="item-remove-animate">
-    <p>{{item.part}} {{item.obs}}</p>
-    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.circleID)"/>
-  </ion-item>
-</ion-list>
+<canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" class="canvas"> </canvas>
+<div class="row center">
+	<div class='col'><button class="button buttonObs" ng-click="showDialog()">Agregar Observacion</button></div>
 </div>
-
-<div class="row">
-	<div class='col col-90'><button class="button buttonObs" ng-click="showDialog()">Agregar Observacion</button></div>
-	<div class='col'><button class="button button-clear button-large buttonObs"><i class="icon ion-ios-help"></i></button></div>
-</div>
-<div>
-  <div class="row ">
-  	<div class='col col-center'><button class="button button-balanced buttonObs" ng-click="pushtoDB()" >Aceptar</button></div>
-  </div>
+ <ion-scroll zooming="false" direction="y" class="pad">
+   <ion-list show-delete="shouldShowDelete">
+    <ion-item ng-repeat="item in observacionHash" id="item.id" class="item-remove-animate">
+      <p>{{item.part}} {{item.obs}}</p>
+      <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.circleID)"/>
+    </ion-item>
+  </ion-list>
+</ion-scroll>
+<div class="center">
+    <img class="arrow" src="../assets/images/arrow.png">
 </div>
 </div>
 

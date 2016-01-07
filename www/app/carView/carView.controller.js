@@ -67,8 +67,8 @@
 
     vm.showDialog=function(){
       var confirmPopup = $ionicPopup.confirm({
-        title: 'Observacion',
         templateUrl: 'app/content/content.html',
+        cssClass: 'popup',
         scope: vm 
       });
       confirmPopup.then(function(res) {
@@ -91,7 +91,7 @@
         center: getPoint(event),
         radius: 20,
       });
-      circle.strokeColor = '#ff0000';
+      circle.strokeColor = '#F1592A';
       circle.strokeWidth = 10;
     }
 
