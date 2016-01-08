@@ -7,12 +7,13 @@
       var scopeCtrl = $scope;
       $cordovaBarcodeScanner.scan().then(function(code_data) {
         alert(code_data.text);
-        ScannerService.setCode(code_data);
-        $state.go("form")
+        //ScannerService.setCode(code_data);
+        $state.go("carInfo")
       }, function(error) {
         alert("Error, no se pudo leer el código");
       });
   }])
+  /**
   .service('ScannerService', function(ScannerService){
     var data = {
       code: ""
@@ -26,5 +27,5 @@
             data.code = code;
         }
     };
-  });
+  });**/
 })();

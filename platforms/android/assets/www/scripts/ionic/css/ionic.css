@@ -7671,9 +7671,9 @@ input[type="color"] {
   padding-top: 2px;
   padding-left: 0;
   height: 34px;
-  color: #111;
+  color: white;
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 2em;
   line-height: 16px; }
 
 .platform-ios input[type="datetime-local"],

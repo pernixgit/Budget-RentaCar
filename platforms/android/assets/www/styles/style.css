@@ -1,1 +1,23 @@
 /* Empty. Add your own CSS if you like */
+
+.button-primary{
+  background-color: #FF5907;
+  height: 0%;
+  width: 30%;
+  left: 35%;
+  margin-top: 5%;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-style: none;
+  color: #fff;
+}
+
+.button.button-positive {
+	background-color: #FF5907;
+}
+
+.button.button-positive:active, .button.button-positive:focus {
+  border-color: #FF5907;
+  background-color: #fff;
+  color: rgb(245,123,32);
+}

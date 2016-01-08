@@ -3,19 +3,7 @@
 
   angular
     .module('budgetrentacar.form')
-    .controller('FormController', FormController);
-
-  FormController.$inject = [];
-
-  /* @ngInject */
-  function FormController() {
-    var vm = this;
-
-    activate();
-
-    ////////////////
-
-    function activate() {
-    }
-  }
+    .controller('FormController', ['$scope','$state', function($scope,$state, ScannerService){
+        var ctrScope = $scope
+    }]);
 })();
