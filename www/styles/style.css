@@ -21,3 +21,18 @@
   background-color: #fff;
   color: rgb(245,123,32);
 }
+
+ion-nav-bar{
+  height: 200px;
+}
+
+.bar-header {
+   height: 5em; 
+}
+
+.arrow{
+  height: 15%;
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 8%;
+}
