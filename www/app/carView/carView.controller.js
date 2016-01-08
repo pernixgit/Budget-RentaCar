@@ -69,16 +69,26 @@
       var confirmPopup = $ionicPopup.confirm({
         templateUrl: 'app/content/content.html',
         cssClass: 'popup',
-        scope: vm 
-      });
-      confirmPopup.then(function(res) {
-        if(res) {
-          fillMap();
-          } else {
-            deleteCircle(circle.id)
-          }
-        });
-      };
+        scope: vm ,
+        buttons:[{ 
+                  text: '<i class="icon ion-close-round"></i>' ,
+                  type: 'buttonpopCanc',
+                  onTap: function(e) {
+                    if (e) {
+                      deleteCircle(circle.id)
+                    }
+                  }
+                }, 
+                {
+                  text: '<i class="icon ion-checkmark-round"></i>',
+                  type: 'buttonpopOK',
+                  onTap: function(e) {
+                    if (e) {
+                      fillMap();
+                    } 
+                  }
+                }] 
+     });}
 
     vm.onItemDelete = function(id, circleID) {
       delete vm.observacionHash[id];

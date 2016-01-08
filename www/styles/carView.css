@@ -12,7 +12,7 @@
 	width: 60%;
 	height: 55pt;
 	border-radius: 12px;
-	font-size: 20pt;
+	font-size: 115%;
 	font: bold;
 }
 .pad{
@@ -36,7 +36,48 @@
     height: 27px;
 }
 .popup.popup-container .popup {
-  background-color: rgba(233, 160, 66, 0.5); //semi-transparent red
-  border: 1px solid red;
-  opacity: 0.6;
+	width: 80%;
+	height: 60%;
+	background-color: rgba(233, 160, 66, 0.5); 
+	border: 1px solid red;
+	opacity: 0.6;
+}
+
+.offset{
+	margin-top: 10%;
+	
+}
+.round{
+		margin-left: 15%;
+		text-align: center;
+		border-radius: 12px;
+		width: 70%;
+		
+}
+.buttonpopOK{
+	background-color: #1d2e57;
+	text-align: center;
+	border-radius: 12px;
+	margin-left: 1%;
+	margin-right: 21% !important;
+
+}
+.buttonpopCanc{
+	background-color: #F1592A;
+	text-align: center;
+	border-radius: 12px;
+	margin-right: 1% !important;
+	margin-left: 21%;
+
+
+}
+.popup-buttons .button{
+	height: 60pt;
+	border-radius: 12px;
+	font: bold;
+	color: white;
+	width: 70%;
+
+
+
 }

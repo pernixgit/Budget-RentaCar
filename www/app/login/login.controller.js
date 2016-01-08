@@ -25,7 +25,7 @@
 
       ctrlScope.authSuccess = function() {
         ctrlScope.user = { };
-        $state.go('scanner');
+        $state.go('carView');
       }
 
       ctrlScope.authError = function() {
