@@ -39,3 +39,17 @@ a{
   color: white;
   font-size: 1em;
 }
+
+.control-group{
+  min-height: 80%;
+  min-width: 100%;
+  width: 100%;
+}
+
+@media only screen 
+and (min-height : 800px) {
+  .login_wrapper{
+      height: 80%;
+      width: 100%;
+  }
+}
