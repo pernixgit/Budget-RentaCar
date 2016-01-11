@@ -1,52 +1,37 @@
-
-<div data-ng-app="budgetrentacar" data-ng-init="opciones=['Candado Repuesto','Tapón Gasolina','Escobillas', 'Antena', 'Canasta']">
-
-<div class="bar bar-header bar-positive">
-  <h1 class="title">Partes Exterior</h1>
-</div>
-
-
-  <ion-view view-title="Car Exterior" class="carExterior-page">
+<ion-view view-title="Car Exterior" class="carExterior-page">
   <ion-content>
-
-  <ion-list>
-    <ion-checkbox ng-repeat="opcion in opciones">{{opcion}}</ion-checkbox>
-  </ion-list>
-
-  <div class="list">
-
-  	<label class="item item-input item-select">
-  	<div class="input-label">
-      Emblemas
+    <div class = "fondoblanco">
+      <img class = "imagen" src="images/budgetLogo.png" > 
     </div>
-    <select>
-      <option selected>0</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-    </select>
-  	</label>
-  </div>
+    <p>Partes del Exterior</p>
 
+    <div class = "cajascheck">
+      <input type="checkbox" id="candado"> <label class="light" for="candado">Candado de Repuesto</label><br>
+      <input type="checkbox" id="tapon"> <label class="light" for="tapon"> Tapón Gasolina</label><br>
+      <input type="checkbox" id="escobilla"> <label class="light" for="escobilla"> Escobillas</label><br>
+      <input type="checkbox" id="antena"> <label class="light" for="antena"> Antenas</label><br>
+      <input type="checkbox" id="canasta"> <label class="light" for="canasta">Canastas</label><br>
+    </div>
 
-  
-  <label  class="item item-input">
-    <span class="input-label">Placas</span>
-    <input type="text">
-  </label>
-  
+    <div class = "texto">
+      <select  style="border:2px solid #ffffff">
+        <option selected>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select> Emblemas
+      <input type="text" id="placas" style="border:2px solid #ffffff" >
+      <label id="etiqueta" for="placas">Placas   </label>
+    </div>
 
  
-
-  <div class="boton">
-        <div class="col text-center">
-             <button ui-sref="carInterior" class="button button-positive">Continuar</button>
-        </div>
-   </div>
+    <div class="boton">
+      <div class="col text-center">
+          <button ui-sref="carInterior" type="submit"><img src="images/arrow.png"></button>
+      </div>
+    </div>
 
 
   </ion-content>
-  </ion-view>
+</ion-view>
 
-  </div>
-</div>

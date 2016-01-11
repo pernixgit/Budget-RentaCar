@@ -1,29 +1,37 @@
-
-<div class = "checkboxes" data-ng-app="budgetrentacar" data-ng-init="opciones=['Alfombra','Cenicero','Gps', 'AET', 'Documentos Legales', 'Silla para bebe', 'Booster']">
-
-<div class="bar bar-header bar-positive">
-  <h1 class="title">Partes Interior</h1>
-</div>
-
-
-  <ion-view view-title="Car Interior" class="carInterior-page">
+<ion-view view-title="Car Interior" class="carInterior-page">
   <ion-content>
 
-  <ion-list>
-    <ion-checkbox ng-repeat="opcion in opciones">{{opcion}}</ion-checkbox>
-  </ion-list>
+  <div class = "fondoblanco">
+    <img class = "imagen" src="images/budgetLogo.png" > 
+  </div>
+  <p>Partes del Interior</p>
+
+  <div class = "cajascheck">
+    <input type="checkbox" id="alfombra"><label class="light" for="alfombra"> Alfombras</label><br>
+    <input type="checkbox" id="cenicero" ><label class="light" for="cenicero"> Cenicero</label><br>
+    <input type="checkbox" id="gps" ><label class="light" for="gps"> Gps</label><br>
+    <input type="checkbox" id="aet" ><label class="light" for="aet"> AET</label><br>
+    <input type="checkbox" id="documentos" ><label class="light" for="documentos"> Documentos Legales</label><br>
+    <input type="checkbox" id="sofa" ><label class="light" for="sofa"> Sofa para bebe</label><br>
+    <input type="checkbox" id="booster" ><label class="light" for="booster"> Booster</label>
+  </div>
+
 
  
 
+
+
+
   <div class="boton">
     <div class="col text-center">
-         <button ui-sref="trunk" class="button button-positive">Continuar</button>
+         <button ui-sref="trunk" type="submit"><img src="images/arrow.png"></button>
     </div>
-  </div
+  </div>
 
-
-  </ion-content>
-  </ion-view>
 
   
-</div>
+
+  </ion-content>
+</ion-view>
+
+  

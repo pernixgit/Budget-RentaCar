@@ -1,11 +1,92 @@
 
-.carInterior-page .button {
-	margin-top: 40px;
+
+  .carExterior-page .cajascheck input{
+  	margin-bottom: 20px;
+  }
+
+  .carExterior-page .texto{
+
+  	text-align: center;
+  }
+
+
+  .carExterior-page .texto #placas{
+  		border-radius: 25px;
+ 		display: inline-block;
+ 		width: 80px;
+  }
+
+
+.carExterior-page button {
+	padding-top: 110px;
+	    border:0;
+	    margin: auto;
 }
 
 
-/*TRUNK CSS*/
-.trunk-page .button {
-	margin-top: 40px;
+
+ *{
+	background-color: #E18E2E;
+	font-size: 105%
+
 }
+
+.fondoblanco{
+	background-color: white;
+}
+
+img{
+	display: block;
+    max-width:230px;
+    max-height:95px;
+    width: auto;
+    height: auto;
+
+
+}
+
+.imagen{
+    max-width:230px;
+    max-height:95px;
+    margin-left:  auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+  }
+
+  p{
+ 	margin:60px 0px;
+ 	text-align: center;
+ 	padding-top: 10px;
+ 	color: rgb(24,20,87);
+ 	font-weight: bold;
+
+ }
+
+  .cajascheck{
+     margin: 0 auto;
+    display: table;
+  }
+
+.cajascheck input{
+  	margin-bottom: 20px;
+  }
+
+
+ .carInterior-page button {
+	margin-top: 70px;
+	border:0;
+ }
+
+ .trunk-page button{
+  margin-top: 140px;
+  border:0;
+
+ }
+
+
+
+
+
 

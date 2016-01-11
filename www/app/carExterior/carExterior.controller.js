@@ -5,6 +5,9 @@
     .module('budgetrentacar.carExterior')
     .controller('CarExteriorController', CarExteriorController);
 
+
+   
+
   CarExteriorController.$inject = [];
 
   /* @ngInject */
@@ -17,5 +20,8 @@
 
     function activate() {
     }
+
+    
+    
   }
 })();
