@@ -7,11 +7,16 @@
   .carExterior-page .texto{
 
   	text-align: center;
+
+      
   }
 
+  .carExterior-page select{
+    border-radius: 20px;  
+  }
 
   .carExterior-page .texto #placas{
-  		border-radius: 25px;
+  	border-radius: 25px;
  		display: inline-block;
  		width: 80px;
   }
