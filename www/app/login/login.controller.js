@@ -6,11 +6,12 @@
     .controller('LoginController', ['$scope', '$state', '$ionicPopup', function($scope, $state, $ionicPopup){
       var ctrlScope = $scope;
       ctrlScope.user = { };
+      //screen.lockOrientation('portrait');
 
       ctrlScope.register = function(){
         $ionicPopup.alert({
           tittle: ' Budget Rent a Car ',
-          template: ' No disponible en este Prototipo '
+          template: ' No disponible en este prototipo '
         }).then(function(res){
         });
       }

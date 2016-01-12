@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.form', [
+    .module('budgetrentacar.carInfo', [
     ]);
 })();

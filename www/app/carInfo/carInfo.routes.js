@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.form')
+    .module('budgetrentacar.carInfo')
     .config(config);
 
   config.$inject = ['$stateProvider'];
@@ -10,10 +10,10 @@
   /* @ngInject */
   function config($stateProvider) {
     $stateProvider
-      .state('form', {
-        url: '/form',
-        templateUrl: 'app/form/form.html',
-        controller: 'FormController',
+      .state('carInfo', {
+        url: '/carinfo',
+        templateUrl: 'app/carInfo/carInfo.html',
+        controller: 'carInfoController',
         controllerAs: 'ctrl'
       });
   }

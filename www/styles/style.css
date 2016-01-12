@@ -7,7 +7,7 @@
   left: 35%;
   margin-top: 5%;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 1.5em;
   border-style: none;
   color: #fff;
 }
@@ -20,4 +20,25 @@
   border-color: #FF5907;
   background-color: #fff;
   color: rgb(245,123,32);
+}
+
+ion-nav-bar{
+  height: 200px;
+}
+
+.bar-header {
+   height: 5em; 
+}
+
+.arrow{
+  height: 15%;
+  width: 20%;
+  margin-top: 15%;
+  display: block;
+  margin: 0 auto;
+}
+
+.budget-logo-bar{    
+  top: 25%;
+  position: relative;
 }
