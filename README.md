@@ -25,7 +25,6 @@ Install phatomjs
 npm install -g phantomjs
 ```
 
-
 Everything is set up to serve from this www folder using
 ```bash
 $ ionic serve

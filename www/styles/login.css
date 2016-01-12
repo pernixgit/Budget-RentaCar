@@ -13,6 +13,8 @@
   width: 100%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  overflow:scroll;
+  overflow-x: hidden; 
 }
 
 .user-information-box{
@@ -47,9 +49,8 @@ a{
 }
 
 @media only screen 
-and (min-height : 800px) {
-  .login_wrapper{
-      height: 80%;
-      width: 100%;
+and (min-width :650px) {
+  .budget-logo{
+    margin-top: 5%;
   }
 }

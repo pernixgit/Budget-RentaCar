@@ -4,23 +4,26 @@
    <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
  </ion-nav-title>
 </ion-nav-bar>
-</div>
-<div class="car-info-body">
 
-  <table class="car-info-tb">
-    <tr class="car-info-tr">
-      <td class="car-info-tdata"> <b>Id:</b> <br> {{carInformation.id}}</td>
-      <td class="car-info-tdata"> <b>Marca:</b> <br> {{carInformation.brand}}</td>    
-    </tr>
-    <tr class="car-info-tr">
-      <td class="car-info-tdata"> <b>Modelo:</b> <br> {{carInformation.model}}</td>
-      <td class="car-info-tdata"> <b>Color:</b> <br> {{carInformation.color}}</td>    
-    </tr>
-    <tr class="car-info-tr">
-      <td class="car-info-tdata"> <b>MVA:</b> <br> {{carInformation.MVA}}</td>
-      <td class="car-info-tdata"> <b>PSC:</b> <br> {{carInformation.PSC}}</td>    
-    </tr>
-  </table>
-<div class="arrow-wrapper">
-  <img src="assets/images/arrow.png" class="arrow">
+<div class="car-info-body">
+  <div class="content-wrapper">
+    <div class="row car-info-tr">
+      <div class="col car-info-tdata"> <b>Id:</b> <br> {{ctrl.carInformation.id}}</div>
+      <div class="col-10"></div>
+      <div class="col car-info-tdata"> <b>Marca:</b> <br> {{ctrl.carInformation.brand}}</div>    
+    </div>
+    <div class="row car-info-tr">
+      <div class="col car-info-tdata"> <b>Modelo:</b> <br> {{ctrl.carInformation.model}}</div>
+      <div class="col-10"></div>
+      <div class="col car-info-tdata"> <b>Color:</b> <br> {{ctrl.carInformation.color}}</div>    
+    </div>
+    <div class="row car-info-tr">
+      <div class="col car-info-tdata"> <b>MVA:</b> <br> {{ctrl.carInformation.MVA}}</div>
+      <div class="col-10"></div>
+      <div class="col car-info-tdata"> <b>PSC:</b> <br> {{ctrl.carInformation.PSC}}</div>    
+    </div>
+  </div>
+  <div class="arrow-wrapper">
+    <img src="assets/images/arrow.png" class="arrow">
+  </div>
 </div>
