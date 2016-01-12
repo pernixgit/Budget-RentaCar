@@ -7,8 +7,8 @@
       function( $scope, $firebaseObject, ScannerService){
 
     var vm = $scope;
-    var FBREFERENCE = new Firebase("https://budget-cr.firebaseio.com/vehicles/12345/");
+    
+    var FBREFERENCE = new Firebase("https://budget-cr.firebaseio.com/vehicles/"+ String(ScannerService.getCode()) + "/");
     vm.carInformation = $firebaseObject(FBREFERENCE);
-    alert(ScannerService.getCode());
   }]);
 })();

@@ -7,7 +7,6 @@
     function($scope, $state, $cordovaBarcodeScanner, ScannerService) {
       var scopeCtrl = $scope;
       $cordovaBarcodeScanner.scan().then(function(code_data) {
-        alert(code_data.text);
         ScannerService.setCode(code_data.text);
         $state.go("carInfo")
       }, function(error) {
