@@ -10,7 +10,7 @@
       ctrlScope.register = function(){
         $ionicPopup.alert({
           tittle: ' Budget Rent a Car ',
-          template: ' No disponible en este Prototipo '
+          template: ' No disponible en este prototipo '
         }).then(function(res){
         });
       }

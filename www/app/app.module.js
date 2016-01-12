@@ -11,6 +11,9 @@
       'budgetrentacar.form',
       'budgetrentacar.carView',
       'budgetrentacar.content',
+      'firebase',
+      'budgetrentacar.carInfo',
+      'budgetrentacar.login',
       'budgetrentacar.scanner', 
       'ngCordova'
     ]);

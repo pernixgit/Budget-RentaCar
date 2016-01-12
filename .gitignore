@@ -7,12 +7,8 @@ plugins/
 www/lib/
 coverage/
 resources/
-<<<<<<< HEAD
 .DS_Store
-=======
 bower_components/
 npm-debug.log
-
->>>>>>> a9cb548ae1647b92bbfd3ff79151b65550313541
 www/app/envSettings.js
 

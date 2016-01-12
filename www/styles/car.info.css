@@ -1,0 +1,39 @@
+.car-info-body{
+  background-color: #E9A042;
+  height: 100%;
+  overflow:auto
+}
+
+.car-info-tb{
+  border-spacing: 2em;
+  margin-top: 33%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: inherit;
+}
+
+.car-info-tr{
+  text-align: center;
+}
+
+.car-info-tdata{
+  vertical-align: middle;
+  background-color: white;
+  width: 7em;
+  height: 5em;
+  border-radius: 1em;
+  font-size: 1.2em;
+}
+
+@media only screen 
+and (min-height : 800px) {
+
+  .car-info-tdata{
+    width: 10em;
+    height: 8em;
+  }
+
+  .car-info-tb{
+    margin-top: 20%;
+  }
+}

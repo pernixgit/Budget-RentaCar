@@ -23,15 +23,33 @@
   border-color: rgba(204, 204, 204, 0) rgba(204, 204, 204, 0) #FF5907 rgba(204, 204, 204, 0);
   background-color: rgba(204, 204, 204, 0);
   color: #444;
+  font-size: 1em;
 }
 
+input[type="text"], input[type="password"]{
+  font-size: 1em;
+}
 .input-label{
   color: white;
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
 }
 
 a{
   color: white;
-  font-size: 2em;
+  font-size: 1em;
+}
+
+.control-group{
+  min-height: 80%;
+  min-width: 100%;
+  width: 100%;
+}
+
+@media only screen 
+and (min-height : 800px) {
+  .login_wrapper{
+      height: 80%;
+      width: 100%;
+  }
 }
