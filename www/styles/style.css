@@ -18,7 +18,7 @@
   }
 
 .carExterior-page button {
-	padding-top: 110px;
+	    padding-top: 110px;
 	    border:0;
 	    margin: auto;
 }
@@ -85,3 +85,47 @@ img{
 
 
 
+/* Ellos */
+
+.button-primary{
+  background-color: #FF5907;
+  height: 0%;
+  width: 30%;
+  left: 35%;
+  margin-top: 5%;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-style: none;
+  color: #fff;
+}
+
+.button.button-positive {
+	background-color: #FF5907;
+}
+
+.button.button-positive:active, .button.button-positive:focus {
+  border-color: #FF5907;
+  background-color: #fff;
+  color: rgb(245,123,32);
+}
+
+ion-nav-bar{
+  height: 200px;
+}
+
+.bar-header {
+   height: 5em; 
+}
+
+.arrow{
+  height: 15%;
+  width: 20%;
+  margin-top: 15%;
+  display: block;
+  margin: 0 auto;
+}
+
+.budget-logo-bar{    
+  top: 25%;
+  position: relative;
+}

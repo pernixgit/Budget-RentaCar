@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.budgetrentacar551085" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Budget-RentaCar</name>
-  <description>
-      Budget-Rent a Car App
+  <description>&#xD;
+      Budget-Rent a Car App&#xD;
     </description>
-  <author email="info@pernix-solutions.com" href="http://pernix-solutions.com/">
-      Pernix-Solutions
+  <author email="info@pernix-solutions.com" href="http://pernix-solutions.com/">&#xD;
+      Pernix-Solutions&#xD;
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -17,8 +17,10 @@
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
   <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+    <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
+  <plugin name="phonegap-plugin-barcodescanner" spec="https://github.com/wildabeast/BarcodeScanner.git"/>
+  <plugin name="cordova-plugin-screen-orientation" spec="~1.4.0"/>
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>

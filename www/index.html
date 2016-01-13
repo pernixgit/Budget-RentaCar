@@ -11,16 +11,18 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-  </head>
-  <body ng-app="budgetrentacar">
-
-    <ion-nav-view></ion-nav-view>
-
     <!-- ionic/angularjs js -->
     <script src="scripts/ionic/js/ionic.bundle.js"></script>
+    <script src="scripts/ionic/js/ng-cordova.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 
     <!-- your app's js -->
     <script src="app/app.module.js"></script>
@@ -28,14 +30,21 @@
     <script src="app/app.config.js"></script>
     <script src="app/app.run.js"></script>
 
-    <!-- home module -->
-    <script src="app/home/home.module.js"></script>
-    <script src="app/home/home.controller.js"></script>
+    <!-- login module -->
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.controller.js"></script>
 
-      <!-- form module -->
-    <script src="app/form/form.module.js"></script>
-    <script src="app/form/form.controller.js"></script>
-    <script src="app/form/form.routes.js"></script>
+     <!-- carInfo module -->
+    <script src="app/carInfo/carInfo.module.js"></script>
+    <script src="app/carInfo/carInfo.controller.js"></script>
+    <script src="app/carInfo/carInfo.routes.js"></script>
+    <script src="app/carInfo/carInfo.services.js"></script>
+
+    <!-- scanner module -->
+    <script src="app/scanner/scanner.module.js"></script>
+    <script src="app/scanner/scanner.controller.js"></script>
+    <script src="app/scanner/scanner.routes.js"></script>
+    <script src="app/scanner/scanner.services.js"></script>
 
      <!-- carExterior module -->
     <script src="app/carExterior/carExterior.module.js"></script>
@@ -51,6 +60,10 @@
     <script src="app/trunk/trunk.module.js"></script>
     <script src="app/trunk/trunk.controller.js"></script>
     <script src="app/trunk/trunk.routes.js"></script>
+
+  </head>
+  <body ng-app="budgetrentacar">
+    <ion-nav-view></ion-nav-view>
 
   </body>
 </html>

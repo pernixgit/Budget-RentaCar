@@ -1,16 +1,17 @@
 (function() {
   'use strict';
 
-  // Budget Rent a Car App
-
-  angular.module('budgetrentacar', [
+  angular
+    .module('budgetrentacar', [
       'ionic',
       'ui.router',
-      'budgetrentacar.home',
-      'budgetrentacar.form',
       'budgetrentacar.carExterior',
       'budgetrentacar.carInterior',
-      'budgetrentacar.trunk'
+      'budgetrentacar.trunk',
+      'firebase',
+      'budgetrentacar.carInfo',
+      'budgetrentacar.login',
+      'budgetrentacar.scanner', 
+      'ngCordova', 
     ]);
-
 })();
