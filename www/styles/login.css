@@ -51,6 +51,21 @@ a{
 @media only screen 
 and (min-width :650px) {
   .budget-logo{
-    margin-top: 5%;
+    margin-top: 50%;
+  }
+
+  .user-information-box{
+    font-size: 2em;
+  }
+
+  a{
+    font-size: 2em;
+  }
+}
+
+@media only screen 
+and (min-width :850px) {
+  .budget-logo{
+    margin-top: 10%;
   }
 }

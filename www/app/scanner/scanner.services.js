@@ -3,15 +3,19 @@
 
   angular
     .module('budgetrentacar.scanner')
-    .service('ScannerService', function(){
+    .service('ScannerService', ScannerService);
+
+    ScannerService.$inject = [];
+
+    function ScannerService(){
       this.code = "";
-      this.setCode = function(data)
+        this.setCode = function(data)
       {
         this.code = data;
       };
-      this.getCode = function() {
+        this.getCode = function() {
           return this.code;
-      };
-    return this;
-  });
+        };
+      return this;
+    };
 })();
