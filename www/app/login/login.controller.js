@@ -3,7 +3,11 @@
 
   angular
     .module('budgetrentacar.login')
-    .controller('LoginController', ['$scope', '$state', '$ionicPopup', function($scope, $state, $ionicPopup){
+    .controller('LoginController', LoginController);
+
+    LoginController.$inject = ['$scope', '$state', '$ionicPopup'];
+
+    function LoginController($scope, $state, $ionicPopup) {
       var ctrlScope = $scope;
       ctrlScope.user = { };
       //screen.lockOrientation('portrait');
@@ -35,5 +39,5 @@
           template: ' Autenticación Invalida'
         });
       }
-    }]);
+    };
 })();
