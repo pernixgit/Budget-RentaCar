@@ -1,5 +1,3 @@
-/* Empty. Add your own CSS if you like */
-
 .button-primary{
   background-color: #FF5907;
   height: 0%;
@@ -41,6 +39,7 @@ ion-nav-bar{
 .budget-logo-bar{    
   top: 25%;
   position: relative;
+
 }
 
 @media only screen 
