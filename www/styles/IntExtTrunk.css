@@ -1,0 +1,60 @@
+  .checkboxes-wrapper input{
+    margin-bottom: 20px;
+  }
+
+  .text-answers{
+    text-align: center;    
+  }
+
+  select{
+    border-radius: 20px;  
+  }
+
+ .text-answers #text-box{
+    border-radius: 25px;
+    display: inline-block;
+    width: 80px;
+  }
+
+  .body-wrapper{
+    background-color: rgb(231,160,65);
+    padding-bottom: 160px;
+    padding-top:20px;
+    overflow: scroll;
+  }
+
+ p{
+  margin:55px 0px;
+  text-align: center;
+  color: rgb(24,20,87);
+  font-weight: bold;
+  padding-top: 30px;
+ }
+
+  .checkboxes-wrapper{
+    margin: 0 auto;
+    display: table;
+    color: white;
+  }
+
+.checkboxes-wrapper input{
+    margin-bottom: 20px;
+    background-color: black;
+    color:white;
+  }
+
+.arrow-wrapper{
+    max-width:230px;
+    max-height:95px;
+    margin-left:  auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 10px;
+
+}
+.budget-logo-bar{  
+  background-color: white;
+}
+
+
+
