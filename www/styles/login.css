@@ -54,3 +54,10 @@ and (min-width :650px) {
     margin-top: 5%;
   }
 }
+
+@media only screen 
+and (min-width :650px) {
+  .user-information-box{
+    font-size: 2em;
+  }
+}
