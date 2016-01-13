@@ -1,26 +1,19 @@
   <ion-view view-title="Trunk" class="trunk-page">
   <ion-content>
-
   <div class = "fondoblanco">
     <img class = "imagen" src="images/budgetLogo.png" > 
   </div>
   <p>Partes de la cajuela</p>
-
-
   <div class="cajascheck">
    <span ng-repeat="opcion in opciones">
       <input type="checkbox" ng-model="selection.ids[opcion.id]" name="group" id="{{opcion.id}}"> <label class="checkbox" for="{{opcion.id}}"> {{opcion.name}}</label><br>
     </span>
   </div>
-    <pre ng-bind="selection.ids | json"></pre>   
-
   <div class="boton">
     <div class="col text-center">
          <button ui-sref="home" type="submit"><img src="images/arrow.png"></button>
     </div>
   </div>
-
-
   </ion-content>
   </ion-view>
 

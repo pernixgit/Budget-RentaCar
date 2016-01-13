@@ -6,13 +6,10 @@
     <p>Partes del Exterior</p>
 
     <div class = "cajascheck">
-      <input type="checkbox" id="candado"> <label class="light" for="candado">Candado de Repuesto</label><br>
-      <input type="checkbox" id="tapon"> <label class="light" for="tapon"> Tapón Gasolina</label><br>
-      <input type="checkbox" id="escobilla"> <label class="light" for="escobilla"> Escobillas</label><br>
-      <input type="checkbox" id="antena"> <label class="light" for="antena"> Antenas</label><br>
-      <input type="checkbox" id="canasta"> <label class="light" for="canasta">Canastas</label><br>
-    </div>
-
+     <span ng-repeat="accesorio in accesorios">
+    <input type="checkbox" ng-model="seleccionados.ids[accesorio.id]" name="group" id="{{accesorio.id}}"> <label class="checkbox" for="{{accesorio.id}}"> {{accesorio.name}}</label><br>
+    </span>
+  </div>
     <div class = "texto">
       <select  style="border:2px solid #ffffff">
         <option selected>0</option>
