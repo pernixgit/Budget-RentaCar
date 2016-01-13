@@ -2,7 +2,7 @@
     margin-bottom: 20px;
   }
 
-  .text-answers{
+  .texto{
     text-align: center;    
   }
 
@@ -10,17 +10,20 @@
     border-radius: 20px;  
   }
 
- .text-answers #text-box{
+ .texto #placas{
     border-radius: 25px;
     display: inline-block;
     width: 80px;
   }
 
+   
+
   .body-wrapper{
     background-color: rgb(231,160,65);
     padding-bottom: 160px;
     padding-top:20px;
-    overflow: scroll;
+
+
   }
 
  p{
@@ -29,6 +32,7 @@
   color: rgb(24,20,87);
   font-weight: bold;
   padding-top: 30px;
+
  }
 
   .checkboxes-wrapper{
@@ -43,6 +47,7 @@
     color:white;
   }
 
+
 .arrow-wrapper{
     max-width:230px;
     max-height:95px;
@@ -55,6 +60,3 @@
 .budget-logo-bar{  
   background-color: white;
 }
-
-
-
