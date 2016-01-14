@@ -46,8 +46,6 @@
     }
     
     vm.downEvent=function(event) {
-        console.log(vm.user);
-
       drawCircle(event);
       vm.showDialog();
     }
