@@ -41,6 +41,8 @@ ion-nav-bar{
 .budget-logo-bar{    
   top: 25%;
   position: relative;
+  margin-left: 40%;
+  margin-top: 8%;
 }
 
 @media only screen 

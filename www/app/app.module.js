@@ -4,10 +4,12 @@
   angular
     .module('budgetrentacar', [
       'ionic',
-      'ui.router',
       'firebase',
-      'budgetrentacar.carInfo',
+      'ui.router',
       'budgetrentacar.login',
+      'budgetrentacar.carView',
+      'budgetrentacar.content',
+      'budgetrentacar.carInfo',
       'budgetrentacar.scanner', 
       'ngCordova', 
     ]);
