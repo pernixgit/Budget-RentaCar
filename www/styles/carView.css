@@ -27,9 +27,11 @@
 	height:40pt; 
 	position: center
 }
-.test{
+
+.marginTops{
 	margin-bottom: 10%
 }
+
 .canvas{
 	background: url('../assets/images/canvasCar.png')  no-repeat center;
 	background-size: 100%, 100%;	
@@ -66,15 +68,11 @@ canvas[resize] {
 	opacity: 0.6;
 }
 
-.offset{
-	margin-top: 10%;	
-}
-
 .round{
-		margin-left: 15%;
-		text-align: center;
-		border-radius: 12px;
-		width: 70%;		
+	margin-left: 15%;
+	text-align: center;
+	border-radius: 12px;
+	width: 70%;		
 }
 
 .buttonpopOK{

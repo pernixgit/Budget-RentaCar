@@ -13,8 +13,7 @@
       .state('carView', {
         url: '/carview',
         templateUrl: 'app/carView/carView.html',
-        controller: 'CarViewController',
-        controllerAs: 'ctrl'
+        controller: 'CarViewController as vm',
       });
   }
 })();

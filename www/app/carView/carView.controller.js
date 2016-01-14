@@ -5,7 +5,7 @@
     .module('budgetrentacar.carView')
     .controller('CarViewController',['$scope','$ionicPopup',function( $scope, $ionicPopup){
     
-    var vm = this;
+    var vm = $scope;
     var circle;
     var canvas = document.getElementById('canvas');
     var canvasCont = document.getElementById('canvasCont');
@@ -46,6 +46,8 @@
     }
     
     vm.downEvent=function(event) {
+        console.log(vm.user);
+
       drawCircle(event);
       vm.showDialog();
     }
