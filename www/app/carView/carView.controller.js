@@ -5,7 +5,7 @@
     .module('budgetrentacar.carView')
     .controller('CarViewController',['$scope','$ionicPopup',function( $scope, $ionicPopup){
     
-    var vm = $scope;
+    var vm = $scope; //change $scope for this when ionic fix the issue
     var circle;
     var canvas = document.getElementById('canvas');
     var canvasCont = document.getElementById('canvasCont');
