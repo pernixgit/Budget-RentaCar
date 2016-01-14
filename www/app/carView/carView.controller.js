@@ -8,7 +8,6 @@
     var circle;
     var canvas = document.getElementById('canvas');
     var canvasCont = document.getElementById('canvasCont');
-
     var context = canvas.getContext('2d');
     var dbObservationHash ={};
     var FBREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car");
