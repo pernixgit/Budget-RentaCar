@@ -7,25 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
-        },
         "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
+        },
+        "cordova-plugin-screen-orientation": {
             "PACKAGE_NAME": "com.ionicframework.budgetrentacar551085"
         }
     },

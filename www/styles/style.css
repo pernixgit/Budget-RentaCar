@@ -33,6 +33,14 @@ ion-nav-bar{
 .arrow{
   height: 15%;
   width: 20%;
+  margin-top: 15%;
+  display: block;
+  margin: 0 auto;
+}
+
+.budget-logo-bar{    
+  top: 25%;
+  position: relative;
   margin-left: 40%;
   margin-top: 8%;
 }

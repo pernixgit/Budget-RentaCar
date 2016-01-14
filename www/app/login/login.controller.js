@@ -6,6 +6,7 @@
     .controller('LoginController', ['$scope', '$state', '$ionicPopup', function($scope, $state, $ionicPopup){
       var ctrlScope = $scope;
       ctrlScope.user = { };
+      //screen.lockOrientation('portrait');
 
       ctrlScope.register = function(){
         $ionicPopup.alert({

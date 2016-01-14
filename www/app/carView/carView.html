@@ -1,28 +1,25 @@
-<div class="carView">
-  <ion-nav-bar align-title="center">
-<ion-nav-title>
-  <img src='assets/images/budget_logo.png' height='44'>
-</ion-nav-title>
+<ion-nav-bar align-title="center" class="test">
+ <ion-nav-title>
+   <img src='assets/images/budget_logo.png' height='35' class="budget-logo"></img>
+ </ion-nav-title>
 </ion-nav-bar>
-
-<canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" class="canvas"> </canvas>
-<div class="row center">
-	<div class='col'><button class="button buttonObs" ng-click="showDialog()">Agregar Observacion</button></div>
+<div class="row blank"></div>
+<div class="carView">
+  <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" class="canvas"></canvas>
+  <div class="row center">
+  	<div class='col'>
+      <button class="button buttonObs" ng-click="showDialog()">Agregar Observacion</button>
+    </div>
+  </div>
+  <ion-scroll zooming="false" direction="y" class="pad">
+     <ion-list show-delete="shouldShowDelete">
+      <ion-item ng-repeat="item in observacionHash" id="item.id" class="item-remove-animate">
+        <p>{{item.part}} {{item.obs}}</p>
+        <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.circleID)"/>
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
+  <div class="arrow-wrapper">
+    <img ng-click="size(observacionHash)" src="assets/images/arrow.png" class="arrow">
+  </div>
 </div>
- <ion-scroll zooming="false" direction="y" class="pad">
-   <ion-list show-delete="shouldShowDelete">
-    <ion-item ng-repeat="item in observacionHash" id="item.id" class="item-remove-animate">
-      <p>{{item.part}} {{item.obs}}</p>
-      <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.circleID)"/>
-    </ion-item>
-  </ion-list>
-</ion-scroll>
-<div class="center">
-    <img class="arrow" src="../assets/images/arrow.png">
-</div>
-</div>
-
-
-
-
-

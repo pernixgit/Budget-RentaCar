@@ -1,11 +1,17 @@
 .center{
 	text-align: center;
 }
+
 .carView {
     background-color: #E9A042;
+	height: 100%;
+	overflow:auto;
 }
-.buttonObs {
+.blank{
+	margin-top: 2em;
+}
 
+.buttonObs {
 	background-color: #F1592A; 
 	color: white;
 	position: center;
@@ -15,26 +21,43 @@
 	font-size: 115%;
 	font: bold;
 }
+
 .pad{
 	width:100%; 
 	height:40pt; 
 	position: center
 }
+.test{
+	margin-bottom: 10%
+}
 .canvas{
 	background: url('../assets/images/canvasCar.png')  no-repeat center;
 	background-size: 100%, 100%;	
 	width:100%; 
-	height:70%; 
-	padding-top: 0%
+	height:70%;	
 }
+.canvas.style{
+	background: url('../assets/images/canvasCar.png')  no-repeat center;
+	background-size: 100%, 100%;	
+	width:100%; 
+	height:70%;	
+}
+
+canvas[resize] {
+    width: 100%;
+    height: 70%;
+}
+
 .arrow{
 	width: 15%;
 	height: 10%;
 }
+
 .logo {
     margin-top: 8px;
     height: 27px;
 }
+
 .popup.popup-container .popup {
 	width: 80%;
 	height: 60%;
@@ -44,40 +67,36 @@
 }
 
 .offset{
-	margin-top: 10%;
-	
+	margin-top: 10%;	
 }
+
 .round{
 		margin-left: 15%;
 		text-align: center;
 		border-radius: 12px;
-		width: 70%;
-		
+		width: 70%;		
 }
+
 .buttonpopOK{
 	background-color: #1d2e57;
 	text-align: center;
 	border-radius: 12px;
 	margin-left: 1%;
 	margin-right: 21% !important;
-
 }
+
 .buttonpopCanc{
 	background-color: #F1592A;
 	text-align: center;
 	border-radius: 12px;
 	margin-right: 1% !important;
 	margin-left: 21%;
-
-
 }
+
 .popup-buttons .button{
 	height: 60pt;
 	border-radius: 12px;
 	font: bold;
 	color: white;
 	width: 70%;
-
-
-
 }

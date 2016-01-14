@@ -5,64 +5,50 @@
     .module('budgetrentacar.carView')
     .controller('CarViewController',['$scope','$ionicPopup',function( $scope, $ionicPopup){
     
-    var circle,
-        vm = $scope,
-        canvas = document.getElementById('canvas'),
-        context = canvas.getContext('2d'),
-        ID=0,
-        observationCount=0,
-        index=0,
-        dbObservationHash ={},
-        FBREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car"),
-        CANVASREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car"),
-        paperLibInstance;  
-        vm.observacion = {
-          part : "",
-          obs : "",
-        }  
+    var circle;
+    var canvas = document.getElementById('canvas');
+    var canvasCont = document.getElementById('canvasCont');
 
+    var context = canvas.getContext('2d');
+    var dbObservationHash ={};
+    var FBREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car");
+    var ID=0;
+    var index=0;
+    var vm = $scope;
+    var observationCount=0;
+    var paperLibInstance;  
+    vm.observacion = {
+      part : "",
+      obs : "",
+    };
     vm.shouldShowDelete = true;
     vm.observacionHash = {};
     init();
-
-    function init(){
-      paperLibInstance = paper.install(window);
-      paperLibInstance = paper.setup('canvas'); 
-      paperLibInstance = new Path();
-      paperLibInstance.strokeColor = 'black';
-    }
-
-    vm.pushtoDB=function(){
-      var impCanvas=project.activeLayer.exportJSON(),
-          dbObservationHash=vm.observacionHash,
-          carCanvas = FBREFERENCE.child("Canvas");
-      carCanvas.set({
-        Canvas: impCanvas
-        })
-      if (observationCount > 0){
+    
+    vm.pushtoDB=function(size){
+      var dbObservationHash=vm.observacionHash;
+      if (size > 0){
         index+=1;
-        observationCount-=1;
-        var obsSet = FBREFERENCE.child("observaciones/observacion"+dbObservationHash[index].id);
+        var obsSet = FBREFERENCE.child("observaciones/observacion"+index);
         obsSet.set({
-            Parte: dbObservationHash[index].part,
-            observacion: dbObservationHash[index].obs
+          Parte: dbObservationHash[index].part,
+          observacion: dbObservationHash[index].obs
         })
-        vm.pushtoDB();
+        vm.pushtoDB(size-1);
+      } 
+      else {
+        var impCanvas=project.activeLayer.exportJSON();  
+        var carCanvas = FBREFERENCE.child("Canvas");
+        carCanvas.set({
+          Canvas: impCanvas
+        });
+        console.log("done")
       }
     }
     
     vm.downEvent=function(event) {
-      drawCircle();
+      drawCircle(event);
       vm.showDialog();
-    }
-
-    function getPoint(event) {
-      try { 
-        return new Point(event.gesture.center.pageX, event.gesture.center.pageY) 
-      }
-      catch (exception) { 
-        return new Point(event.x, event.y);
-      }
     }
 
     vm.showDialog=function(){
@@ -71,35 +57,51 @@
         cssClass: 'popup',
         scope: vm ,
         buttons:[{ 
-                  text: '<i class="icon ion-close-round"></i>' ,
-                  type: 'buttonpopCanc',
-                  onTap: function(e) {
-                    if (e) {
-                      deleteCircle(circle.id)
-                    }
-                  }
-                }, 
-                {
-                  text: '<i class="icon ion-checkmark-round"></i>',
-                  type: 'buttonpopOK',
-                  onTap: function(e) {
-                    if (e) {
-                      fillMap();
-                    } 
-                  }
-                }] 
+          text: '<i class="icon ion-close-round"></i>' ,
+          type: 'buttonpopCanc',
+          onTap: function(e) {
+            if (e) {
+              deleteCircle(circle.id)
+            }
+          }
+        }, 
+        {
+          text: '<i class="icon ion-checkmark-round"></i>',
+          type: 'buttonpopOK',
+          onTap: function(e) {
+            if (e) {
+              fillMap();
+            } 
+          }
+        }] 
      });}
 
     vm.onItemDelete = function(id, circleID) {
-      delete vm.observacionHash[id];
       deleteCircle(circleID);
+      delete vm.observacionHash[id];
     };
 
-    function drawCircle(){
-      observationCount+=1;
+    vm.size = function(obj) {
+      var size = 0, key;
+      for (key in obj) {
+          if (obj.hasOwnProperty(key)) size++;
+      }
+      vm.pushtoDB(size);
+  };
+
+    function init(){
+      paperLibInstance = paper.install(window);
+      paperLibInstance = paper.setup('canvas'); 
+      paperLibInstance = new Path();
+      paperLibInstance.strokeColor = 'black';
+      }
+
+    function drawCircle(event){
+      event.point = getPoint(event);
       circle = new Path.Circle({
-        center: getPoint(event),
+        center: event.point, 
         radius: 20,
+        position: event.point
       });
       circle.strokeColor = '#F1592A';
       circle.strokeWidth = 10;
@@ -112,6 +114,10 @@
       circle.remove();
       paper.view.update();
       circle = new Path.Circle({});
+    }
+
+    function getPoint(event) {
+        return new Point(event.x, event.y-30);      
     }
 
     function fillMap(){
