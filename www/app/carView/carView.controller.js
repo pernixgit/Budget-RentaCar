@@ -5,6 +5,7 @@
     .module('budgetrentacar.carView')
     .controller('CarViewController',['$scope','$ionicPopup',function( $scope, $ionicPopup){
     
+    var vm = this;
     var circle;
     var canvas = document.getElementById('canvas');
     var canvasCont = document.getElementById('canvasCont');
@@ -13,7 +14,6 @@
     var FBREFERENCE = new Firebase("https://boiling-torch-654.firebaseio.com/car");
     var ID=0;
     var index=0;
-    var vm = $scope;
     var observationCount=0;
     var paperLibInstance;  
     vm.observacion = {
