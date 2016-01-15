@@ -14,7 +14,7 @@
         url: '/carInterior',
         templateUrl: 'app/carInterior/carInterior.html',
         controller: 'CarInteriorController',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrlInt'
       });
   }
 })();

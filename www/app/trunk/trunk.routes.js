@@ -14,7 +14,7 @@
         url: '/trunk',
         templateUrl: 'app/trunk/trunk.html',
         controller: 'TrunkController',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrlTr'
       });
   }
 })();
