@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+.title{
+  padding-bottom: 10px;
+}
+
 .body-wrapper{
   background-color: rgb(231,160,65);
   padding-bottom: 160px;
