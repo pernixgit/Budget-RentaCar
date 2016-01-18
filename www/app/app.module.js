@@ -4,6 +4,10 @@
   angular
     .module('budgetrentacar', [
       'ionic',
+      'ui.router',
+      'budgetrentacar.carExterior',
+      'budgetrentacar.carInterior',
+      'budgetrentacar.trunk',
       'firebase',
       'ui.router',
       'budgetrentacar.login',
