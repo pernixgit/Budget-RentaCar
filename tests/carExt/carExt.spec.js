@@ -5,3 +5,4 @@ describe('Budget Rent a Car', function() {
     expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/carInterior");
   });
 });
+

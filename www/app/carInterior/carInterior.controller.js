@@ -12,3 +12,4 @@
       vm.accesories = [ { "name": "Alfombras", "id": "1" }, {"name": "Cenicero" , "id": "2"} , {"name": "GPS", "id": "3" }, {"name": "AET" , "id": "4"} , {"name": "Documentos Legales" , "id": "5"} ,{"name": "Sofá para bebé" , "id": "6"} ,{"name": "Booster" , "id": "7"} ];
     }
 })();
+
