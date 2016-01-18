@@ -7,6 +7,8 @@
 
     <link href="scripts/ionic/css/ionic.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/carView.css" rel="stylesheet">
+    <link href="styles/car.info.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -33,6 +35,22 @@
     <!-- login module -->
     <script src="app/login/login.module.js"></script>
     <script src="app/login/login.controller.js"></script>
+
+    <!-- carView module -->
+    <script src="app/carView/carView.module.js"></script>
+    <script src="app/carView/carView.controller.js"></script>
+    <script src="app/carView/carView.routes.js"></script> 
+    
+    <!--content module -->
+    <script src="app/content/content.module.js"></script>
+    <script src="app/content/content.controller.js"></script>
+    <script src="app/content/content.routes.js"></script> 
+
+     <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 
      <!-- carInfo module -->
     <script src="app/carInfo/carInfo.module.js"></script>
@@ -61,6 +79,9 @@
     <script src="app/trunk/trunk.controller.js"></script>
     <script src="app/trunk/trunk.routes.js"></script>
 
+    <!--Paper Lib -->
+    <script src="app/paper-lib/dist/paper-full.js"></script>
+    
   </head>
   <body ng-app="budgetrentacar">
     <ion-nav-view></ion-nav-view>

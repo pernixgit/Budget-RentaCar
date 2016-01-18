@@ -9,8 +9,11 @@
       'budgetrentacar.carInterior',
       'budgetrentacar.trunk',
       'firebase',
-      'budgetrentacar.carInfo',
+      'ui.router',
       'budgetrentacar.login',
+      'budgetrentacar.carView',
+      'budgetrentacar.content',
+      'budgetrentacar.carInfo',
       'budgetrentacar.scanner', 
       'ngCordova', 
     ]);
