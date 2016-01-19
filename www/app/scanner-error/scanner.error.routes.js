@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.carInfo')
+    .module('budgetrentacar.scanner.error')
     .config(config);
 
   config.$inject = ['$stateProvider'];
@@ -10,10 +10,10 @@
   /* @ngInject */
   function config($stateProvider) {
     $stateProvider
-      .state('carInfo', {
-        url: '/carinfo',
-        templateUrl: 'app/carInfo/carInfo.html',
-        controller: 'CarInfoController',
+      .state('scanner-error', {
+        url: '/scanner-error',
+        templateUrl: 'app/scanner-error/scanner.error.html', 
+        controller: 'ScannerErrorController',
         controllerAs: 'vm',
         cache: false
       });

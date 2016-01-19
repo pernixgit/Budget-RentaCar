@@ -8,14 +8,17 @@
     ScannerService.$inject = [];
 
     function ScannerService(){
+      
       this.code = "";
-        this.setCode = function(data)
-      {
-        this.code = data;
+      
+      this.setCode = function(data){
+        this.code = parseInt(data).toString();
       };
-        this.getCode = function() {
+
+      this.getCode = function() {
           return this.code;
-        };
+      };
+
       return this;
     };
 })();

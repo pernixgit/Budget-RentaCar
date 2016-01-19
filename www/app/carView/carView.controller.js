@@ -3,7 +3,7 @@
 
   angular
     .module('budgetrentacar.carView')
-    .controller('CarViewController',['$scope','$ionicPopup',function( $scope, $ionicPopup){
+    .controller('CarViewController', ['$scope','$ionicPopup',function( $scope, $ionicPopup){
     
     var vm = $scope; //change $scope for this when ionic fix the issue
     var circle;
@@ -41,18 +41,15 @@
         carCanvas.set({
           Canvas: impCanvas
         });
-        console.log("done")
       }
     }
     
     vm.downEvent=function(event) {
-        console.log(vm.user);
-
       drawCircle(event);
-      vm.showDialog();
+      vm.showDialog(true);
     }
 
-    vm.showDialog=function(){
+    vm.showDialog=function(fromCanvas){
       var confirmPopup = $ionicPopup.confirm({
         templateUrl: 'app/content/content.html',
         cssClass: 'popup',
@@ -61,7 +58,7 @@
           text: '<i class="icon ion-close-round"></i>' ,
           type: 'buttonpopCanc',
           onTap: function(e) {
-            if (e) {
+            if (e && fromCanvas) {
               deleteCircle(circle.id)
             }
           }

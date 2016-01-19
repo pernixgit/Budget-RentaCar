@@ -5,10 +5,10 @@
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$scope', '$state', '$ionicPopup'];
+    LoginController.$inject = ['$state', '$ionicPopup'];
 
-    function LoginController($scope, $state, $ionicPopup) {
-      var ctrlScope = $scope;
+    function LoginController($state, $ionicPopup) {
+      var ctrlScope = this;
       ctrlScope.user = { };
       //screen.lockOrientation('portrait');
 
@@ -30,7 +30,7 @@
 
       ctrlScope.authSuccess = function() {
         ctrlScope.user = { };
-        $state.go('carView');
+        $state.go('scanner');
       }
 
       ctrlScope.authError = function() {

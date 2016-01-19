@@ -5,15 +5,19 @@
   .module('budgetrentacar.scanner')
   .controller('ScannerController', ScannerController);
 
-  ScannerController.$inject = ['$scope', '$state','$cordovaBarcodeScanner', 'ScannerService'];
+  ScannerController.$inject = ['$state','$cordovaBarcodeScanner', 'ScannerService'];
 
-    function ScannerController($scope, $state, $cordovaBarcodeScanner, ScannerService) {
-      var scopeCtrl = $scope;
-      $cordovaBarcodeScanner.scan().then(function(code_data) {
-        ScannerService.setCode(code_data.text);
-        $state.go("carInfo")
-      }, function(error) {
-        alert("Error, no se pudo leer el código");
-      });
+    function ScannerController($state, $cordovaBarcodeScanner, ScannerService) {
+      console.log("en ScannerController");
+      $cordovaBarcodeScanner
+      .scan()
+        .then(
+          function(code_data) {
+            ScannerService.setCode(code_data.text);
+            $state.go("carInfo");
+        }, 
+          function(error) {
+            alert("Error, no se pudo leer el código");
+        });
     };
 })();

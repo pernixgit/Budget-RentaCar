@@ -3,11 +3,18 @@
 
   angular
     .module('budgetrentacar.carInfo')
-    .service('CarInfoFirebaseService', function(){
-      this.firebaseRef = null;
-      this.setupFirebaseRef = function(code){
-        return this.firebaseRef = new Firebase("https://budget-cr.firebaseio.com/vehicles/" + code);
+    .factory('carInfoService', carInfoService);
+
+    carInfoService.$inject = ['$firebaseObject'];
+
+    function carInfoService($firebaseObject){
+      return {
+        getVehicle : getVehicle
+      };
+      
+      function getVehicle(code){
+          var firebaseRef = new Firebase("https://budget-cr.firebaseio.com/vehicles/" + code);
+          return $firebaseObject(firebaseRef);
       }
-    return this;
-  });
+    };
 })();

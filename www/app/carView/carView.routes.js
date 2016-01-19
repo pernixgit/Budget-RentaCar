@@ -14,6 +14,7 @@
         url: '/carview',
         templateUrl: 'app/carView/carView.html',
         controller: 'CarViewController as vm',
+        cache: false
       });
   }
 })();

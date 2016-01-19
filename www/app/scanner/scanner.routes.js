@@ -14,7 +14,8 @@
         url: '/scanner',
         templateUrl: 'app/scanner/scanner.html',
         controller: 'ScannerController',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrl',
+        cache: false
       });
   }
 })();

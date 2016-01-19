@@ -3,12 +3,28 @@
 }
 
 .carView {
-    background-color: #E9A042;
+  background-color: #E9A042;
 	height: 100%;
 	overflow:auto;
+	margin-top: 12%;
 }
+
+.popup-head {
+  padding: 0px;
+  border-bottom: none;
+ }
+
+.popup-body {
+    padding: 0px;
+    height: 50%;
+ }
+
 .blank{
 	margin-top: 2em;
+}
+
+.popup-buttons{
+	margin-top: 0%;
 }
 
 .buttonObs {
@@ -51,8 +67,8 @@ canvas[resize] {
 }
 
 .arrow{
-	width: 15%;
-	height: 10%;
+  width: 17%;
+  height: 70%;
 }
 
 .logo {
