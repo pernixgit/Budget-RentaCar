@@ -10,6 +10,10 @@
   /* @ngInject */
   function Revision() {
     var _model = {
+      data: {
+        observations: null,
+        revisions :null
+      }
 
     };
     return _model;
