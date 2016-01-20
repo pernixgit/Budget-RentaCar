@@ -4,9 +4,11 @@
    <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
  </ion-nav-title>
 </ion-nav-bar>
-<div class="carView">
-  <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" class="canvas"></canvas>
-  <div class="row center">
+<div class="body-car-view">
+  <div class="canvas-wrapper">
+    <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" class="canvas"></canvas>
+  </div>
+  <div class="row wrapper-add-observation">
   	<div class='col'>
       <button class="button buttonObs" ng-click="showDialog(false)">Agregar Observacion</button>
     </div>
@@ -19,7 +21,7 @@
       </ion-item>
     </ion-list>
   </ion-scroll>
-  <div class="arrow-wrapper">
-    <img ng-click="size(observacionHash)" src="assets/images/arrow.png" class="arrow">
+  <div class="carview-arrow-wrapper">
+    <img ng-click="goToExteriorParts()" src="assets/images/arrow.png" class="arrow carview-arrow">
   </div>
 </div>

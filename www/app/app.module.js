@@ -7,7 +7,7 @@
       'ui.router',
       'budgetrentacar.carExterior',
       'budgetrentacar.carInterior',
-      'budgetrentacar.trunk',
+      'budgetrentacar.carTrunk',
       'firebase',
       'ui.router',
       'budgetrentacar.login',

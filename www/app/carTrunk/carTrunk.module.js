@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.trunk', [
+    .module('budgetrentacar.carTrunk', [
     ]);
 })(); 
 

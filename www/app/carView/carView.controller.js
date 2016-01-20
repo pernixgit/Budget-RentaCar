@@ -3,7 +3,7 @@
 
   angular
     .module('budgetrentacar.carView')
-    .controller('CarViewController', ['$scope','$ionicPopup',function( $scope, $ionicPopup){
+    .controller('CarViewController', ['$scope','$ionicPopup', '$state', function( $scope, $ionicPopup, $state){
     
     var vm = $scope; //change $scope for this when ionic fix the issue
     var circle;
@@ -24,6 +24,10 @@
     vm.observacionHash = {};
     init();
     
+    vm.goToExteriorParts = function(){
+      $state.go("carExterior");
+    }
+
     vm.pushtoDB=function(size){
       var dbObservationHash=vm.observacionHash;
       if (size > 0){

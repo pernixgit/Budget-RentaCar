@@ -1,28 +1,43 @@
-<link href="styles/IntExtTrunk.css" rel="stylesheet">
 <ion-nav-bar align-title="center" class ="bar-light">
   <ion-nav-title has-header="true">
     <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
   </ion-nav-title>
 </ion-nav-bar>
 <div class ="body-wrapper">
-  <p>Partes del exterior</p>
+  <h2 class="exterior-title">Partes del exterior</h2>
   <div class = "checkboxes-wrapper">
-    <span ng-repeat="accesory in ctrlExt.accesories">
-      <input type="checkbox" ng-model="ctrlExt.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox" for="{{accesory.id}}">{{accesory.name}}</label><br>
-    </span>
+    <label ng-repeat="accesory in vm.accesories">
+      <input type="checkbox" ng-model="vm.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> 
+      <label class="checkbox" for="{{accesory.id}}">
+        {{accesory.name}}
+      </label><br>
+    </label>
   </div>
-  <div class = "text-input">
-    <select>
-      <option selected>0</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-    </select> <font color="white">Emblemas</font>
-    <input type="text" id="plate" >
-    <label id="plate-label" for="plate">Placas</label>
-  </div>
-  <div class="arrow-wrapper">
-    <img src="assets/images/arrow.png" class="arrow" ui-sref="carInterior">
+
+  <form class="emblems">
+    <div class="emblems-wrapper">
+      <select class="select-emblems">
+        <option selected>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select> 
+      <span>Emblemas</span>
+    </div>
+
+    <div class="plate-wrapper">
+      <label>
+        <select class="select-emblems">
+          <option selected>0</option>
+          <option>1</option>
+          <option>2</option>
+        </select>
+      </label>
+      <span>Placas</span>
+    </div>
+  </form>
+
+  <div class="arrow-wrapper-exterior">
+    <img src="assets/images/arrow.png" class="arrow arrow-exterior-style" ui-sref="carInterior">
   </div>
 </div>
-

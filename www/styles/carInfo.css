@@ -43,18 +43,18 @@ and (min-width: 650px) {
     margin-top: 8% !important;
   }
 
-  .arrow{
+  /*.arrow{
     margin-top: -8%;
     height: 15%;
     width: 10%;
     margin-right: auto;
     margin-left: auto;
-  }
+  }*/
 
-  .arrow-wrapper{
+  /*.arrow-wrapper{
     width: 100%;
     margin-top: 0%;
-  }
+  }*/
 }
 
 .content-wrapper{

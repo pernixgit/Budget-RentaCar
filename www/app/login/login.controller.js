@@ -8,36 +8,39 @@
     LoginController.$inject = ['$state', '$ionicPopup'];
 
     function LoginController($state, $ionicPopup) {
-      var ctrlScope = this;
-      ctrlScope.user = { };
-      //screen.lockOrientation('portrait');
-
-      ctrlScope.register = function(){
-        $ionicPopup.alert({
-          tittle: ' Budget Rent a Car ',
-          template: ' No disponible en este prototipo '
-        }).then(function(res){
-        });
-      }
-
-      ctrlScope.authenticate = function(username, password){
-        if(username === "admin" && password === "admin"){
-          ctrlScope.authSuccess();
-        }else{
-          ctrlScope.authError();
+        var vm = this;
+        vm.user = { };
+        //screen.lockOrientation('portrait');
+        vm.register = register;
+        vm.authenticate = authenticate;
+        
+        function register(){
+          $ionicPopup.alert({
+            tittle: ' Budget Rent a Car ',
+            template: ' No disponible en este prototipo '
+            })
+              .then(function(res){
+              });
         }
-      } 
 
-      ctrlScope.authSuccess = function() {
-        ctrlScope.user = { };
-        $state.go('scanner');
-      }
+        function authenticate(username, password){
+          if(username === "admin" && password === "admin"){
+            authSuccess();
+          }else{
+            authError();
+          }
+        } 
 
-      ctrlScope.authError = function() {
-        $ionicPopup.alert({
-          title: ' Error de Autenticación',
-          template: ' Autenticación Invalida'
-        });
-      }
-    };
+        function authSuccess() {
+          vm.user = { };
+          $state.go('scanner');
+        }
+
+        function authError() {
+          $ionicPopup.alert({
+            title: ' Error de Autenticación',
+            template: ' Autenticación Invalida'
+          });
+        }
+    }
 })();

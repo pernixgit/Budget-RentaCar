@@ -20,10 +20,6 @@
   color: rgb(245,123,32);
 }
 
-ion-nav-bar{
-  height: 200px;
-}
-
 .bar-header {
    height: 5em; 
 }
@@ -38,13 +34,27 @@ ion-nav-bar{
 
 .arrow-wrapper{
   width: 100%;
-  height: 18%;
-  margin-top: 5%;
+  height: 100%;
 }
 
 .budget-logo-bar{    
   position: relative;
-  margin-top: 4%;
+  margin-top: 1em;
+}
+
+.body-wrapper {
+  margin-top: 3em;
+  background-color: rgb(231,160,65);
+  padding-bottom: 160px;
+  padding-top: 20px;
+  overflow: auto;
+  height: 100%;
+}
+
+.checkboxes-wrapper {
+  margin: 0 auto;
+  display: table;
+  color: white;
 }
 
 @media only screen 

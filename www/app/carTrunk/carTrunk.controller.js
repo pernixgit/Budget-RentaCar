@@ -2,9 +2,9 @@
   'use strict'; 
 
    angular
-  	.module('budgetrentacar.trunk')
-  	.controller('TrunkController', TrunkController);
-    function TrunkController(){
+  	.module('budgetrentacar.carTrunk')
+  	.controller('carTrunkController', carTrunkController);
+    function carTrunkController(){
        var vm = this;
        vm.taken = {
          ids: {"2": true}

@@ -5,7 +5,7 @@
       <div class="control-group login_wrapper">
         <label class="user-information-box item item-input">
           <span class="input-label" for="username"> Usuario </span>
-          <input type="text" name="username" ng-model="username" required />
+          <input type="text" name="username" ng-model="username" required/>
         </label>
         <label class=" user-information-box item item-input">
             <span class="input-label"> Contraseña </span>
@@ -13,10 +13,10 @@
         </label>
         <br/>
         <p align="center">
-          <button class="button-primary" type="submit" ng-click="authenticate(username, password)"> Iniciar </button>
+          <button class="button-primary" type="submit" ng-click="vm.authenticate(username, password)"> Iniciar </button>
         </p>
         <p align="center">
-          <a class="link-button" ng-click="register()" > Registrar </a>
+          <a class="link-button" ng-click="vm.register()"> Registrar </a>
         </p>
     </div>
     </form>
