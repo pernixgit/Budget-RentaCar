@@ -10,19 +10,24 @@
   /* @ngInject */
   function Revision($firebaseObject) {
     var _model = {
-      data: {
-        observations: null,
-        revisions :null
-      },
-      pushData: pushData
+      revisionNumber: null,
+      observationNumber: null,
+      observations: {},
+      revision: {},
+      pushRevision: pushRevision,
+      pushObservations: pushObservations
 
     };
     return _model;
 
+    function pushObservations(data) {
+      var ref = new Firebase('https://budget-test.firebaseio.com/observations/' + _model.observationNumber);
+      ref.set(_model.observations);
+    };
 
-    function pushData(data) {
-      var ref = new Firebase('https://budget-test.firebaseio.com');
-      ref.set(_model.data);
+    function pushRevision(data) {
+      var ref = new Firebase('https://budget-test.firebaseio.com/revisions' + _model.revisionNumber);
+      ref.set(_model.revision);
     };
 
   }
