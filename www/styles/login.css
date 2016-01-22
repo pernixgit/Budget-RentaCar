@@ -69,3 +69,14 @@ and (min-width :850px) {
     margin-top: 10%;
   }
 }
+
+
+@media only screen 
+and (max-height :1440px) {
+  .budget-logo{
+    margin-top: 25%;
+  }
+}
+
+
+

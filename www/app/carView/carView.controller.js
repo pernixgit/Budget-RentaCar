@@ -48,12 +48,12 @@
       }
     }
     
-    vm.downEvent=function(event) {
+    vm.downEvent = function(event) {
       drawCircle(event);
       vm.showDialog(true);
     }
 
-    vm.showDialog=function(fromCanvas){
+    vm.showDialog = function(fromCanvas){
       var confirmPopup = $ionicPopup.confirm({
         templateUrl: 'app/content/content.html',
         cssClass: 'popup',
@@ -96,7 +96,7 @@
       paperLibInstance = paper.setup('canvas'); 
       paperLibInstance = new Path();
       paperLibInstance.strokeColor = 'black';
-      }
+    }
 
     function drawCircle(event){
       event.point = getPoint(event);
