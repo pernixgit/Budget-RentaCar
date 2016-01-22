@@ -8,7 +8,8 @@
         .state('login', {
           url: '/',
           templateUrl: 'app/login/login.html',
-          controller: 'LoginController'
+          controller: 'LoginController',
+          controllerAs: 'LoginController'
         })
       $urlRouterProvider.otherwise('/');
     });

@@ -5,10 +5,10 @@
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$scope', '$state', '$ionicPopup','loginFirebaseService'];
+    LoginController.$inject = [ '$state', '$ionicPopup','loginFirebaseService'];
 
-    function LoginController($scope, $state, $ionicPopup, loginFirebaseService) {
-      var vm = $scope;
+    function LoginController( $state, $ionicPopup, loginFirebaseService) {
+      var vm = this;
       vm.user = { };
 
       vm.register = function(){
