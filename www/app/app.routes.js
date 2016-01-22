@@ -14,3 +14,4 @@
       $urlRouterProvider.otherwise('/');
     });
 })();
+
