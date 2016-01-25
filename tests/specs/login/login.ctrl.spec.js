@@ -1,0 +1,24 @@
+describe('Login Controller', function() { 
+  var ctrl, scope, ionicPopupMock, stateMock;
+
+  beforeEach(module('ui.router'));
+  beforeEach(module('budgetrentacar.login'));
+  beforeEach(inject(function($controller, $rootScope, $q){
+    deferredLogin = $q.defer();
+
+    scope = $rootScope.$new();
+    stateMock = jasmine.createSpyObj('$state spy', ['go']);
+    ionicPopupMock = jasmine.createSpyObj('$ionicPopup spy', ['alert']);
+
+     ctrl = $controller('LoginController', {
+      $scope: scope,
+      $ionicPopup: ionicPopupMock,
+      $state: stateMock,
+    });
+     
+  }));
+
+  it('should create controller', function() {
+      expect(ctrl).not.toBeUndefined();
+  }); 
+});
