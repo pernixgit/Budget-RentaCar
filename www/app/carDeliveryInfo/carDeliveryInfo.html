@@ -1,0 +1,27 @@
+<ion-nav-bar align-title="center">
+ <ion-nav-title>
+   <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
+ </ion-nav-title>
+</ion-nav-bar>
+
+<div class="background-car">
+  <form class="container-principal" ng-controller="carDeliveryInfoController">
+    <select class=" select-places item-energized" ng-options="option.name for option in data.availableOptions track by option.id" ng-model="data.selectedOption">
+    </select> 
+    <label class="container-mileage item item-input item-floating-label ">
+      <span class="input-label"> Kilometraje </span>
+      <input type="text" class="input-text" placeholder="Kilometraje">
+    </label>
+    <label class="container-gasoline-bar item item-divider">
+      Gasolina
+      <div class="background-gasoline-range-bar item range">
+        <input type="range" min="0" max="100">
+      </div>
+    </label> <br/>
+    <p align="center">
+      <button class="button-revision-car button-primary" ui-sref="carView"> Pasar a Revisión del Vehículo </button>
+    </p>
+  </form>
+  </div>
+  </div>
+</div>

@@ -13,6 +13,7 @@
       'budgetrentacar.login',
       'budgetrentacar.carView',
       'budgetrentacar.content',
+      'budgetrentacar.carDeliveryInfo',
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner', 
       'budgetrentacar.scanner.error',

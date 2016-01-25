@@ -10,6 +10,17 @@
   color: #fff;
 }
 
+.background-car{
+  background-color: #E9A042;
+  height: 100%;
+  overflow:auto
+}
+
+.arrow-wrapper{
+  width: 100%;
+  margin-top: 8%;
+}
+
 .button.button-positive {
 	background-color: #FF5907;
 }
