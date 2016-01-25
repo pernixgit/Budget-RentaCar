@@ -3,9 +3,8 @@ describe('Login Controller', function() {
 
   beforeEach(module('ui.router'));
   beforeEach(module('budgetrentacar.login'));
-  beforeEach(inject(function($controller, $rootScope, $q){
-    deferredLogin = $q.defer();
-
+  beforeEach(inject(function($controller, $rootScope){
+    
     scope = $rootScope.$new();
     stateMock = jasmine.createSpyObj('$state spy', ['go']);
     ionicPopupMock = jasmine.createSpyObj('$ionicPopup spy', ['alert']);
