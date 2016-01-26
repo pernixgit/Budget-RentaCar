@@ -1,0 +1,58 @@
+p{
+	text-align: center;
+	padding-top: 2.5em;
+	font-size: 3em;
+	padding-bottom: 1em;
+}
+
+.body-wrapper{
+
+}
+
+.checkboxes-wrapper{
+	padding-top: 3em;
+	width: 30em;
+	padding-bottom: 9em;
+
+}
+
+#left-column{
+	float: left;
+
+}
+
+#right-column{
+	float:right;
+}
+
+.arrow-wrapper{
+	clear: both;
+}
+
+@media only screen
+and (max-width :450px){
+	p{
+		font-size: 2em;
+	}
+
+	.checkboxes-wrapper{
+		padding: 0;
+	}
+
+	#left-column{
+		margin: 0 auto;
+		display: table;
+		width: 50%;
+		float: none;
+	}
+
+	#right-column{
+		margin: 0 auto;
+		display: table;
+		width: 50%;
+		float: none;
+
+	}
+
+}
+

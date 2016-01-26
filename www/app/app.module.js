@@ -15,6 +15,8 @@
       'budgetrentacar.content',
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner', 
-      'ngCordova', 
+      'ngCordova',
+      'budgetrentacar.carParts'
+
     ]);
 })();

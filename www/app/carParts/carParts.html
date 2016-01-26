@@ -1,0 +1,28 @@
+<link href="styles/carParts.css" rel="stylesheet">
+<ion-nav-bar align-title="center" class ="bar-light">
+  <ion-nav-title has-header="true">
+    <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
+  </ion-nav-title>
+</ion-nav-bar>
+<div class ="body-wrapper">
+  <p>Partes del carro</p>
+  
+    <div class = "checkboxes-wrapper">
+      <section id="left-column">
+      <span ng-repeat="accesory in ctrlP.accesories">
+        <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox" for="{{accesory.id}}">{{accesory.name}}</label><br>
+      </span>
+      </section>
+  
+  <section id="right-column">
+      <span ng-repeat="accesory in ctrlP.accesories">
+        <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox" for="{{accesory.id}}">{{accesory.name}}</label><br>
+      </span>
+  </section>
+  </div>
+
+
+  <div class="arrow-wrapper">
+    <img src="assets/images/arrow.png" class="arrow" ui-sref="carInterior">
+  </div>
+</div>
