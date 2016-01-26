@@ -1,4 +1,12 @@
 {
   "name": "budget-rentacar",
-  "app_id": "19c34067"
+  "app_id": "19c34067",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

@@ -15,16 +15,6 @@ Add Android platform:
 $ ionic platform add android
 ```
 
-Add ionic ngCordova library
-```bash
-cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
-```
-
-Install phatomjs
-```bash
-npm install -g phantomjs
-```
-
 Everything is set up to serve from this www folder using
 ```bash
 $ ionic serve
