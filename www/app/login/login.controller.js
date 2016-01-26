@@ -4,43 +4,46 @@
   angular
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
+    LoginController.$inject = [ '$state', '$ionicPopup','loginFirebaseService'];
 
-    LoginController.$inject = ['$state', '$ionicPopup'];
+    function LoginController( $state, $ionicPopup, loginFirebaseService) {
+      var vm = this;
+      vm.user = { };
 
-    function LoginController($state, $ionicPopup) {
-        var vm = this;
+      vm.register = function(){
+        $ionicPopup.alert({
+          tittle: ' Budget Rent a Car ',
+          template: ' No disponible en este prototipo '
+        }).then(function(res){
+        });
+      }
+
+      vm.authSuccess = function() {
         vm.user = { };
-        //screen.lockOrientation('portrait');
-        vm.register = register;
-        vm.authenticate = authenticate;
-        
-        function register(){
-          $ionicPopup.alert({
-            tittle: ' Budget Rent a Car ',
-            template: ' No disponible en este prototipo '
-            })
-              .then(function(res){
-              });
-        }
+        $state.go('scanner');
+      }
 
-        function authenticate(username, password){
-          if(username === "admin" && password === "admin"){
-            authSuccess();
-          }else{
-            authError();
+      vm.authError = function() {
+        $ionicPopup.alert({
+          title: ' Error de Autenticación',
+          template: ' Autenticación Invalida'
+        });
+      }
+
+      vm.authenticate = function(username, password){
+        var firebaseReference = loginFirebaseService.setupFirebaseRef(username);
+        firebaseReference.on("value", function(snapshot) {
+          try{
+            if(username === snapshot.val().username && password === snapshot.val().password){
+              vm.authSuccess();
+            }else{
+              vm.authError();
+            }
+          }catch(err){
+            vm.authError();
           }
-        } 
-
-        function authSuccess() {
-          vm.user = { };
-          $state.go('scanner');
-        }
-
-        function authError() {
-          $ionicPopup.alert({
-            title: ' Error de Autenticación',
-            template: ' Autenticación Invalida'
-          });
-        }
-    }
+        })
+      } 
+    };
 })();
+

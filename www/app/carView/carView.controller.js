@@ -48,7 +48,8 @@
       }
     }
     
-    vm.downEvent = function(event) {
+
+    vm.downEvent=function(event) {
       drawCircle(event);
       vm.showDialog(true);
     }

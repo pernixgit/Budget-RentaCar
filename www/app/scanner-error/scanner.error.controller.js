@@ -13,7 +13,6 @@
       vm.redirectToScanner = redirectToScanner;
 
       function redirectToScanner(){ 
-        console.log("En redirectToScanner");     
         $state.go('scanner');
       };
     }

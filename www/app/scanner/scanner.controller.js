@@ -8,7 +8,6 @@
   ScannerController.$inject = ['$state','$cordovaBarcodeScanner', 'ScannerService'];
 
     function ScannerController($state, $cordovaBarcodeScanner, ScannerService) {
-      console.log("en ScannerController");
       $cordovaBarcodeScanner
       .scan()
         .then(

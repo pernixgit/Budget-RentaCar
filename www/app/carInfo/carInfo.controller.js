@@ -11,28 +11,28 @@
         var vm = this;
 
         vm.carInformation = {};
-        vm.isLoaded = true;
+        vm.isLoaded = false;
 
         vm.goToCarView = goToCarView;
         activate();
 
         function activate() {
-          /**setTimeout(function() {
+          setTimeout(function() {
             if(!vm.isLoaded) {
               $state.go('scanner-error');
             }
-          }, 5000);**/
+          }, 5000);
 
           carInfoService.getVehicle(ScannerService.getCode())
             .$loaded()
               .then(function(data) {
                 vm.carInformation = data;
-                /**if(isValid()){
+                if(isValid()){
                   vm.isLoaded = true;
                   vm.carInformation = data;
                 }else{
                   $state.go('scanner-error');
-                }**/
+                }
               })
               .catch(function(error) {
                 console.error("Error:", error);
