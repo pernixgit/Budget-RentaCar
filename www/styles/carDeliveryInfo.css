@@ -23,46 +23,14 @@ option:not(:checked) {
 .container-mileage {
   top: 5em;
   margin: 0 auto;
-  border-width: 5px;
   border-radius: 15px;
   display: table;
-  font-size: 1em;
-  border-color: hsla(0,100%,2%,0);
+  font-size: 0.5em;
+  border: 5px hsla(0, 100%, 2%, 0);
   background-color: white;
 }
 
-.container-gasoline-bar {
-  top: 5em;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2em;
-  color: white;
-  border-color: rgba(204, 204, 204, 0);
-  background-color: rgba(204, 204, 204, 0);
-}
-
-.background-gasoline-range-bar {
-  border-color: white;
-  border-width: 10px;
-  border-radius: 15px;
-  border-style: inherit;
-  background-color: rgba(204, 204, 204, 0);
-  background: rgba(204, 204, 204, 0);
-}
-
-.range input {
-  border-width: 3em;
-  height: 2em;
-  overflow: hidden;
-  background-size: 100% 1.5em;
-  background-color: rgba(204, 204, 204, 0);
-  background: rgba(204, 204, 204, 0);
-}
-
 .button-revision-car {
-  margin-top: 6em;
   width: 20em;
   border-radius: 3em;
   size: 5em;
@@ -77,6 +45,32 @@ option:not(:checked) {
 .input-text {
   text-align: center;
   color: #1B1B1B !important;
+}
+
+.gas-status-container{
+  width: 100%;
+  margin-top: 5em;
+  text-align: center;
+  color: white;
+}
+
+.gas-label{
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.select-gas {
+  border-radius: 0.5em;  
+  color: white;
+  width: 8em;
+  margin: 0 auto;
+  display: table;
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  border-color: white;
+  border: 0.2em solid #ffffff;
+  background-color: rgb(231,160,65);
 }
 
 @media only screen 

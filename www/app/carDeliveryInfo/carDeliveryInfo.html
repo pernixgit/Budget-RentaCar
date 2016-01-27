@@ -12,12 +12,21 @@
       <span class="input-label"> Kilometraje </span>
       <input type="text" class="input-text" placeholder="Kilometraje">
     </label>
-    <label class="container-gasoline-bar item item-divider">
-      Gasolina
-      <div class="background-gasoline-range-bar item range">
-        <input type="range" min="0" max="100">
-      </div>
-    </label> <br/>
+    <div class="gas-status-container">
+    <label class="gas-label"> Gasolina </label>
+    </div>
+    <select class="select-gas">
+        <option selected>Vacio</option>
+        <option>1/8</option>
+        <option>1/4</option>
+        <option>3/8</option>
+        <option>1/2</option>
+        <option>5/8</option>
+        <option>3/4</option>
+        <option>7/8</option>
+        <option>Lleno</option>
+    </select>
+    <br/>
     <p align="center">
       <button class="button-revision-car button-primary" ui-sref="carView"> Pasar a Revisión del Vehículo </button>
     </p>

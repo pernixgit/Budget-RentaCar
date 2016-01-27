@@ -121,7 +121,9 @@ canvas[resize] {
 @media only screen 
 and (max-device-width: 800px) {
   canvas[resize] {
-    height: 68em;
+    margin-top: 5em;
+    height: 14em;
+}
   }
 }
 

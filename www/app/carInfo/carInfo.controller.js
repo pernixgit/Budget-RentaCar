@@ -45,5 +45,6 @@
       function goToCarView() {
         $state.go('carView');
       }
+
     }
 })();
