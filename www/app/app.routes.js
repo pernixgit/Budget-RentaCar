@@ -9,9 +9,9 @@
           url: '/',
           templateUrl: 'app/login/login.html',
           controller: 'LoginController',
-          controllerAs: 'LoginController'
+          controllerAs: 'vm',
+          cache: false
         })
       $urlRouterProvider.otherwise('/');
     });
 })();
-

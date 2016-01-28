@@ -1,9 +1,9 @@
-describe('Budget Rent a Car', function() {
+describe('Login', function() {
   var username = element(by.model('LoginController.username'));
   var password = element(by.model('LoginController.password'));
   beforeEach(function() {
   	  browser.get('');	
-  	  browser.sleep(2000); 
+  	  browser.sleep(500); 
   });
 
   it('should go to carview page with ocorella credentials', function() {
@@ -11,7 +11,7 @@ describe('Budget Rent a Car', function() {
     password.sendKeys('ocorella');
     expect(element(by.css('.button-primary')).isPresent()).toBe(true);
     element(by.css(".button-primary")).click();
-    browser.sleep(3000); 
+    browser.sleep(500); 
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8100/#/carview');
   });
 
@@ -20,7 +20,7 @@ describe('Budget Rent a Car', function() {
     password.sendKeys('abcdefasdasd');
     expect(element(by.css('.button-primary')).isPresent()).toBe(true);
     element(by.css(".button-primary")).click();
-    browser.sleep(3000); 
+    browser.sleep(500); 
     expect(element(by.css('.popup')).isPresent()).toBe(true);
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8100/#/');
   });
@@ -30,7 +30,7 @@ describe('Budget Rent a Car', function() {
     password.sendKeys('abcdefasdasd');
     expect(element(by.css('.link-button')).isPresent()).toBe(true);
     element(by.css(".link-button")).click();
-    browser.sleep(3000); 
+    browser.sleep(500); 
     expect(element(by.css('.popup')).isPresent()).toBe(true);
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8100/#/');
   });

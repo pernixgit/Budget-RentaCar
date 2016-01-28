@@ -7,7 +7,7 @@
       'ui.router',
       'budgetrentacar.carExterior',
       'budgetrentacar.carInterior',
-      'budgetrentacar.trunk',
+      'budgetrentacar.carTrunk',
       'firebase',
       'ui.router',
       'budgetrentacar.login',
@@ -15,6 +15,7 @@
       'budgetrentacar.content',
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner', 
+      'budgetrentacar.scanner.error',
       'ngCordova', 
     ]);
 })();

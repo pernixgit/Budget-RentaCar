@@ -1,24 +1,23 @@
 <link href="styles/login.css" rel="stylesheet">
 <div class="background-initial-page">
-  <img src="assets/images/budget_logo.png" class="budget-logo"></img>
+  <img src="assets/images/budget_logo.png" class="budget-logo"/>
     <form>
       <div class="control-group login_wrapper">
         <label class="user-information-box item item-input">
           <span class="input-label" for="username"> Usuario </span>
-          <input type="text" name="username" ng-model="LoginController.username" required />
+          <input type="text" name="username" ng-model="vm.username" required />
         </label>
         <label class=" user-information-box item item-input">
             <span class="input-label"> Contraseña </span>
-            <input type="password" name="password" ng-model="LoginController.password" required/>
+            <input type="password" name="password" ng-model="vm.password" required/>
         </label>
         <br/>
         <p align="center">
-          <button class="button-primary" type="submit" ng-click="LoginController.authenticate(LoginController.username, LoginController.password)"> Iniciar </button>
+          <button class="button-primary" type="submit" ng-click="vm.authenticate(vm.username, vm.password)"> Iniciar </button>
         </p>
         <p align="center">
-          <a class="link-button" ng-click="LoginController.register()" > Registrar </a>
+          <a class="link-button" ng-click="vm.register()" > Registrar </a>
         </p>
     </div>
     </form>
 </div>
-
