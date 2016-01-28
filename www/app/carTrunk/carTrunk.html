@@ -8,10 +8,10 @@
     <div class="checkboxes-wrapper">
       <label ng-repeat="accesory in vm.accesories">
         <input type="checkbox" ng-model="vm.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> 
-        <label class="checkbox" for="{{accesory.id}}">        {{accesory.name}}
+        <label class="checkbox" for="{{accesory.id}}">
+          {{accesory.name}}
         </label><br>
       </label>
     </div>
   <button class="button-primary button-finish-revision"> Terminar revisión </button>
 </div>
-

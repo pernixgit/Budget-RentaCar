@@ -15,4 +15,3 @@
       $urlRouterProvider.otherwise('/');
     });
 })();
-

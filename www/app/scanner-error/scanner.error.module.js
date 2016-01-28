@@ -2,6 +2,5 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.scanner.error', [
-    ]);
+    .module('budgetrentacar.scanner.error', []);
 })();

@@ -5,4 +5,3 @@ describe('carInterior', function() {
     expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/trunk");
   });
 });
-

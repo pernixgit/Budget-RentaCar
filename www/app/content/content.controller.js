@@ -7,7 +7,6 @@
 
     function ContentController(){
 	   var vm = this;
-    }
-    
+    } 
 })(); 
 	

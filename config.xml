@@ -2,7 +2,7 @@
 <widget id="com.ionicframework.budgetrentacar551085" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Budget-RentaCar</name>
     <description>
-      Budget-Rent a Car App
+        Budget-Rent a Car App
     </description>
     <author email="info@pernix-solutions.com" href="http://pernix-solutions.com/">
       Pernix-Solutions

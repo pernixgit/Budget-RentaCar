@@ -1,54 +1,52 @@
-## How to use this project
+#Budget Rent A Car - Ionic App
 
-Clone Project
+### Installation
+NPM and Bower need to be installed.
 
-Then run npm and bower to get all needed dependencies:
-
-```bash
+Run bower and npm to get all dependencies needed.
+```sh
 $ npm install
 $ bower install
 ``` 
 
-Add Android platform:
+###Runing on Android device
+In order to run the application on an Android device:
 
-```bash
+Add Android platform:
+```sh
 $ ionic platform add android
 ```
 
-Add ionic ngCordova library
-```bash
-cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
+Connect the device to the computer, allow USB debugging and then execute:
+```sh
+$ ionic run android
 ```
 
-Install Karma CLI
-```bash
+###Setting up tests
+In order to run Karma and protractor tests, please do the following:
+
+Install Karma CLI globally
+```sh
 npm install -g karma-cli
 ```
 
-Install phatomjs
-```bash
-npm install -g phantomjs
-```
-
-Install protractor
-```bash
-npm install -g protractor --save
+Install protractor globally
+```sh
+npm install -g protractor
 ```
 
 Use the web manager to install the chrome-driver and selenium server.
-```bash
+```sh
 webdriver-manager update
 ```
 
-In case views are not showing on device (emulator, smartphone) install:
-```bash
- add plugin cordova-plugin-whitelist --save
- ```
-
-Everything is set up to serve from this www folder using
-```bash
-$ ionic serve
+To run protractor tests, execute:
+```sh
+ionic serve
+webdriver-manager start  
+protractor protractor.conf.js
 ```
+
 ## Styleguide
 
 Refer to AngularJS John Papa Styleguide: https://github.com/johnpapa/angular-styleguide

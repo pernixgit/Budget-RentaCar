@@ -76,8 +76,10 @@
             type: 'buttonpopOK',
             onTap: function(e) {
               if (e) {
-                if(vm.observation.part.trim() || vm.observation.obs.trim()){
-                  fillMap();
+                if(vm.observation.part.trim() && vm.observation.obs.trim()){
+                  if(vm.observation.part.trim() || vm.observation.obs.trim()){
+                    fillMap();
+                  }
                 }else{
                   alert("Por favor complete los espacios");
                   deleteCircle(circle.id);
