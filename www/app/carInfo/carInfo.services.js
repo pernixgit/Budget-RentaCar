@@ -5,15 +5,15 @@
     .module('budgetrentacar.carInfo')
     .factory('carInfoService', carInfoService);
 
-    carInfoService.$inject = ['$firebaseObject'];
+    carInfoService.$inject = ['$firebaseObject', 'firebase_url'];
 
-    function carInfoService($firebaseObject){
+    function carInfoService($firebaseObject, firebase_url){
       return {
         getVehicle : getVehicle
       };
       
       function getVehicle(code){
-          var firebaseRef = new Firebase("https://budget-cr.firebaseio.com/vehicles/" + code);
+          var firebaseRef = new Firebase(firebase_url + "/vehicles/" + code);
           return $firebaseObject(firebaseRef);
       }
     };

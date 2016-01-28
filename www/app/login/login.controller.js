@@ -4,9 +4,9 @@
   angular
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
-    LoginController.$inject = [ '$state', '$ionicPopup','loginFirebaseService'];
+    LoginController.$inject = [ '$state', '$ionicPopup','LoginFirebaseService'];
 
-    function LoginController( $state, $ionicPopup, loginFirebaseService) {
+    function LoginController( $state, $ionicPopup, LoginFirebaseService) {
       var vm = this;
       vm.user = { };
 
@@ -31,7 +31,7 @@
       }
 
       vm.authenticate = function(username, password){
-        var firebaseReference = loginFirebaseService.setupFirebaseRef(username);
+        var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
         firebaseReference.on("value", function(snapshot) {
           try{
             if(username === snapshot.val().username && password === snapshot.val().password){
