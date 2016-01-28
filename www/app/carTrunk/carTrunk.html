@@ -4,17 +4,14 @@
   </ion-nav-title>
 </ion-nav-bar>
 <div class ="body-wrapper">
-  <h2 class="exterior-title">Partes del interior</h2>
-    <div class = "checkboxes-wrapper">
+  <h2 class="trunk-tittle">Partes de la cajuela</h2>
+    <div class="checkboxes-wrapper">
       <label ng-repeat="accesory in vm.accesories">
-        <input type="checkbox" ng-model="vm.taken.ids[accesory.id]" name="group" id="{{accesory.id}}">
+        <input type="checkbox" ng-model="vm.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> 
         <label class="checkbox" for="{{accesory.id}}">
           {{accesory.name}}
         </label><br>
       </label>
     </div>
-
-  <div class="arrow-wrapper-interior">
-    <img src="assets/images/arrow.png" class="arrow arrow-interior-style" ui-sref="carTrunk">
-  </div>
+  <button class="button-primary button-finish-revision"> Terminar revisión </button>
 </div>

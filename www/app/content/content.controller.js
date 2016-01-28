@@ -3,8 +3,10 @@
  
   angular
     .module('budgetrentacar.content')
-    .controller('contentController',['$scope',function($scope){
-	 var vm = $scope;
-  }]);
+    .controller('ContentController', ContentController);
+
+    function ContentController(){
+	   var vm = this;
+    } 
 })(); 
 	

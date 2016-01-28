@@ -2,6 +2,5 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.login', [
-    ]);
+    .module('budgetrentacar.login', []);
 })();

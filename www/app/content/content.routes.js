@@ -14,7 +14,8 @@
         url: '/conent',
         templateUrl: 'app/content/content.html',
         controller: 'contentController',
-        controllerAs: 'ctrl'
+        controllerAs: 'vm',
+        cache: false
       });
   }
 })();
