@@ -1,0 +1,22 @@
+.body-wrapper{
+}
+
+.trunk-tittle {
+  text-align: center;
+  color: rgb(24,20,87);
+  font-weight: bold;
+  padding-top: 30px;
+}
+
+.arrow-wrapper-trunk {
+  margin-top: 5%;
+}
+
+.arrow-trunk-style {
+  width: 6em;
+  height: 6em;
+}
+
+.button-finish-revision{
+  margin: 0 auto;
+}
