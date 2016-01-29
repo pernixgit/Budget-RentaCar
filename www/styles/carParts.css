@@ -1,8 +1,9 @@
-p{
+.page-title{
 	text-align: center;
 	padding-top: 2.5em;
 	font-size: 3em;
 	padding-bottom: 1em;
+	color: white;
 }
 
 .body-wrapper{
@@ -25,8 +26,34 @@ p{
 	float:right;
 }
 
-.arrow-wrapper{
+
+.checkbox-label{
+	top: -0.6em;
+	left: 1em;
+	position: relative;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:30px;
+    height:30px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #FF5907;
+}
+input[type='checkbox']:checked {
+    background: #FF5907;
+}
+
+.button-container{
 	clear: both;
+	text-align: center;
+}
+
+.button{
+	width: 15em;
+	margin-top: 2em;
+	color: #FF5907;
 }
 
 @media only screen
