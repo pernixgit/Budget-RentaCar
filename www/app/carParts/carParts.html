@@ -6,22 +6,18 @@
 </ion-nav-bar>
 <div class ="body-wrapper">
   <p class="page-title">Partes del carro</p>
-  
-    <div class = "checkboxes-wrapper">
-      <section id="left-column">
+  <div class = "checkboxes-wrapper">
+    <section id="left-column">
       <span ng-repeat="accesory in ctrlP.accesories1">
         <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
       </span>
-      </section>
-  
+    </section>
   <section id="right-column">
-      <span ng-repeat="accesory in ctrlP.accesories2">
-        <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
-      </span>
+    <span ng-repeat="accesory in ctrlP.accesories2">
+      <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
+    </span>
   </section>
   </div>
-
-
   <div class="button-container">
     <button class="button" ui-sref="extraParts">Siguiente</button>
   </div>

@@ -6,22 +6,18 @@
 </ion-nav-bar>
 <div class ="body-wrapper">
   <p class="page-title">Extras</p>
-  
-    <div class = "checkboxes-wrapper">
-      <section id="left-column">
+  <div class = "checkboxes-wrapper">
+    <section id="left-column">
       <span ng-repeat="accesory in ctrlEx.accesories1">
         <input type="checkbox" ng-model="ctrlEx.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
       </span>
-      </section>
-  
-  <section id="right-column">
+    </section>
+    <section id="right-column">
       <span ng-repeat="accesory in ctrlEx.accesories2">
         <input type="checkbox" ng-model="ctrlEx.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
       </span>
-  </section>
+    </section>
   </div>
-
-
   <div class="button-container">
     <button class="button">Siguiente</button>
   </div>

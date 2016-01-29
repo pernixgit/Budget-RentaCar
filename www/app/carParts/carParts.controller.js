@@ -16,7 +16,6 @@
         {"name": "Herramientas" , "id": "4"},
         {"name": "Kit de emergencia" , "id": "5"} 
       ];
-      
       vm.accesories2 = [
         { "name": "Llanta de repuesto", "id": "6" },
         {"name": "Placas" , "id": "7"},
@@ -24,7 +23,6 @@
         {"name": "Rejillas" , "id": "9"},
         {"name": "Alfombras" , "id": "10"}
        ];
-    }
-      
+    }   
 })();
 
