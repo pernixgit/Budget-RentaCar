@@ -1,14 +1,29 @@
-.center{
+.wrapper-add-observation{
 	text-align: center;
 }
 
-.carView {
-    background-color: #E9A042;
+.body-car-view {
+  background-color: #E9A042;
 	height: 100%;
-	overflow:auto;
+	overflow-y:auto;
 }
+
+.popup-head {
+  padding: 0px;
+  border-bottom: none;
+ }
+
+.popup-body {
+    padding: 0px;
+    height: 50%;
+ }
+
 .blank{
 	margin-top: 2em;
+}
+
+.popup-buttons{
+	margin-top: 0%;
 }
 
 .buttonObs {
@@ -24,8 +39,8 @@
 
 .pad{
 	width:100%; 
-	height:40pt; 
-	position: center
+  height: 10em;
+  position: center;
 }
 
 .marginTops{
@@ -38,6 +53,7 @@
 	width:100%; 
 	height:70%;	
 }
+
 .canvas.style{
 	background: url('../assets/images/canvasCar.png')  no-repeat center;
 	background-size: 100%, 100%;	
@@ -45,14 +61,12 @@
 	height:70%;	
 }
 
-canvas[resize] {
-    width: 100%;
-    height: 70%;
+canvas-wrapper{
+  margin-top: 20em;
 }
-
-.arrow{
-	width: 15%;
-	height: 10%;
+canvas[resize] {
+  width: 100%;
+  height: 25em;
 }
 
 .logo {
@@ -97,4 +111,23 @@ canvas[resize] {
 	font: bold;
 	color: white;
 	width: 70%;
+}
+
+.arrow-carView-style {
+  width: 8em;
+  height: 8em;
+}
+
+@media only screen 
+and (max-device-width: 800px) {
+  canvas[resize] {
+    height: 68em;
+  }
+}
+
+@media only screen 
+and (min-device-height: 1500px) {
+  canvas-wrapper{
+    margin-top: 5em;
+  }
 }

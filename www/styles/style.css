@@ -39,7 +39,7 @@
 
 .budget-logo-bar{    
   position: relative;
-  margin-top: 0.4em;
+  margin-top: 1em;
 }
 
 .body-wrapper {
@@ -63,4 +63,3 @@ and (min-width :650px) {
     font-size: 2.5em;
   }
 }
-

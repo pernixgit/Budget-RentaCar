@@ -13,8 +13,9 @@
       .state('carInfo', {
         url: '/carinfo',
         templateUrl: 'app/carInfo/carInfo.html',
-        controller: 'carInfoController',
-        controllerAs: 'ctrl'
+        controller: 'CarInfoController',
+        controllerAs: 'vm',
+        cache: false
       });
   }
 })();

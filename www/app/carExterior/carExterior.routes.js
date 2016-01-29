@@ -14,8 +14,7 @@
         url: '/carExterior',
         templateUrl: 'app/carExterior/carExterior.html',
         controller: 'CarExteriorController',
-        controllerAs: 'ctrlExt'
+        controllerAs: 'vm'
       });
   }
 })();
-
