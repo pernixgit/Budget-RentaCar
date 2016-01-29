@@ -12,7 +12,7 @@
 
 .checkboxes-wrapper{
 	padding-top: 3em;
-	width: 30em;
+	width: 15em;
 	padding-bottom: 9em;
 
 }
@@ -31,7 +31,8 @@
 	top: -0.6em;
 	left: 1em;
 	position: relative;
-	font-size: 1.2em;
+	font-size: 1.4em;
+
 }
 
 input[type='checkbox'] {
@@ -45,6 +46,8 @@ input[type='checkbox'] {
 input[type='checkbox']:checked {
     background: #FF5907;
 }
+
+
 
 .button-container{
 	clear: both;
