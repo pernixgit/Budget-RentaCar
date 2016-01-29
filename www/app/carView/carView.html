@@ -1,7 +1,7 @@
 <ion-nav-bar align-title="center" class="marginTop">
 <ion-nav-bar align-title="center">
  <ion-nav-title>
-   <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
+   <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"/>
  </ion-nav-title>
 </ion-nav-bar>
 <div class="body-car-view">
@@ -10,10 +10,10 @@
   </div>
   <div class="row wrapper-add-observation">
   	<div class='col'>
-      <button class="button buttonObs" ng-click="showDialog(false)">Agregar Observación</button>
+      <button class="button buttonObs" ng-click="showDialog(false)">Agregar Observación Interna</button>
     </div>
   </div>
-  <ion-scroll zooming="false" direction="y" class="pad">
+  <ion-scroll zooming="false" direction="y" class="pad observation-wrapper">
      <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="item in observationHash" id="item.id" class="item-remove-animate">
         <p>{{item.part}} {{item.obs}}</p>
@@ -21,7 +21,7 @@
       </ion-item>
     </ion-list>
   </ion-scroll>
-  <div class="arrow-wrapper-carView">
-    <img ng-click="goToExteriorParts()" src="assets/images/arrow.png" class="arrow carview-arrow arrow-carView-style">
-  </div>
+    <div class="btn-continue-wrraper">
+        <button class="button button-positive btn-continue" ng-click="goToExteriorParts()"> Continuar </button>
+    </div>
 </div>
