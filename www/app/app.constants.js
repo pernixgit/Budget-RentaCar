@@ -1,5 +1,5 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
   angular
     .module('budgetrentacar')
     .constant('firebase_url', 'https://budget-cr.firebaseio.com')
