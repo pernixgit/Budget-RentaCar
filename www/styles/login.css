@@ -1,4 +1,4 @@
-.budget-logo{
+.budget-logo {
   width: 92%;
   margin: auto;
   padding: 23px;
@@ -7,16 +7,16 @@
   margin-right: 50%;
 }
 
-.background-initial-page{
-  background-image: url("../assets/images/background.png"); 
+.background-initial-page {
+  background-image: url("../assets/images/background.png");
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 104%;;
   overflow-x: hidden; 
 }
 
-.user-information-box{
+.user-information-box {
   margin-left: 15%;
   margin-right: 20%;
   border-width: 5px;
@@ -27,37 +27,38 @@
   font-size: 1.5em;
 }
 
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"] {
   font-size: 1em;
 }
-.input-label{
+
+.input-label {
   color: white;
   font-size: 1em;
   font-weight: bold;
 }
 
-a{
+a {
   color: white;
   font-size: 1em;
 }
 
-.control-group{
+.control-group {
   min-height: 80%;
   min-width: 100%;
   width: 100%;
 }
 
-@media only screen 
-and (min-width :650px) {
-  .budget-logo{
+@media only screen
+and (min-width: 650px) {
+  .budget-logo {
     margin-top: 50%;
   }
 
-  .user-information-box{
+  .user-information-box {
     font-size: 2em;
   }
 
-  a{
+  a {
     font-size: 2em;
   }
 }
@@ -76,3 +77,4 @@ and (min-height :1440px) {
     margin-top: 3%;
   }
 }
+

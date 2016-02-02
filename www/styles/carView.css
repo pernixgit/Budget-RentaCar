@@ -1,16 +1,20 @@
-.wrapper-add-observation{
-	text-align: center;
+.wrapper-add-observation {
+  text-align: center;
 }
 
 .body-car-view {
   background-color: #E9A042;
-	height: 100%;
-	overflow-y:auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .popup-head {
   border-bottom: none;
- }
+}
+
+.list {
+  height: 100%;
+}
 
 .popup-body {
   height: 68%;
@@ -20,21 +24,8 @@
   width: 32%;
   display: block;
   float: right;
-  height: 75%;
-  margin-top: 6em;
-}
-
-.buttonObs {
-  width: 41%;
-  height: 9%;
-  border-radius: 12px;
-  font-size: 1.2em;
-  font-weight: bold;
-  float: right;
-  margin-top: 40em;
-  color: white;
-  margin-right: -3%;
-  background-color: #1C2D5D;
+  height: 77%;
+  margin-top: 2em;
 }
 
 .item {
@@ -44,12 +35,13 @@
 
 .pad{
   width: 90%;
-  height: 100%;
   overflow-y: auto;
   position: fixed;
   margin-left: 2%;
   position: relative;
   background: rgba(255,255,255, 0.3);
+  height: 100%;
+  overflow-y: auto;
 }
 
 .btn-continue{
@@ -64,7 +56,7 @@
 }
 
 .canvas{
-	background: url('../assets/images/canvasCar2.png')  no-repeat center;
+	background: url('../assets/images/canvasCar4x2.png')  no-repeat center;
   background-size: 100%;
 }
 
@@ -75,14 +67,49 @@
 }
 
 .canvas-wrapper{
-  height: 70%;
-  width: 65%;
+  height: 63%;
+  width: 68%;
   position: absolute;
 }
 
 .image-container{
   width: 100%;
   height: 100%;
+}
+
+.buttonObs {
+  background-color: #1C2D5D;
+  font-weight: bold;
+  color: white;
+  width: 40%;
+  height: 10%;
+  border-radius: 12px;
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-left: 9em;
+}
+
+.btn-continue-wrraper {
+  width: 100%;
+  margin-top: 2%;
+}
+
+.btn-continue {
+  background-color: #F1592A !important;
+  font-size: 1.5em;
+  margin: 0 auto;
+  display: block;
+  width: 30%;
+  height: 5%;
+  border-radius: 12px;
+}
+
+.observation-wrapper {
+  height: 33%;
+}
+
+.marginTops {
+  margin-bottom: 10%
 }
 
 canvas[resize] {
@@ -100,38 +127,38 @@ canvas[resize] {
   height: 60%;
   background-color: rgba(233, 160, 66, 0.5);
   opacity: 0.6;
-  overflow: hidden;
 }
 
-.round{
-	margin-left: 15%;
-	text-align: center;
-	border-radius: 12px;
-	width: 70%;		
+.round {
+  margin-left: 15%;
+  text-align: center;
+  border-radius: 12px;
+  height: 40%;
+  width: 70%;
 }
 
-.buttonpopOK{
-	background-color: #1d2e57;
-	text-align: center;
-	border-radius: 12px;
-	margin-left: 1%;
-	margin-right: 21% !important;
+.buttonpopOK {
+  background-color: #1d2e57;
+  text-align: center;
+  border-radius: 12px;
+  margin-left: 1%;
+  margin-right: 21% !important;
 }
 
-.buttonpopCanc{
-	background-color: #F1592A;
-	text-align: center;
-	border-radius: 12px;
-	margin-right: 1% !important;
-	margin-left: 21%;
+.buttonpopCanc {
+  background-color: #F1592A;
+  text-align: center;
+  border-radius: 12px;
+  margin-right: 1% !important;
+  margin-left: 21%;
 }
 
-.popup-buttons .button{
-	height: 60pt;
-	border-radius: 12px;
-	font: bold;
-	color: white;
-	width: 70%;
+.popup-buttons .button {
+  height: 60pt;
+  border-radius: 12px;
+  font: bold;
+  color: white;
+  width: 70%;
 }
 
 @media only screen and (min-width: 850px){
@@ -140,9 +167,9 @@ canvas[resize] {
   }
 }
 
-@media only screen 
+@media only screen
 and (min-device-height: 1500px) {
-  canvas-wrapper{
+  .canvas-wrapper {
     margin-top: 5em;
   }
 }

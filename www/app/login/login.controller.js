@@ -9,7 +9,7 @@
     function LoginController( $state, $ionicPopup, LoginFirebaseService) {
       var vm = this;
       vm.user = { };
-      
+
       vm.authSuccess = function() {
         vm.user = { };
         $state.go('scanner');
@@ -28,7 +28,9 @@
           try{
             if(username === snapshot.val().username && password === snapshot.val().password){
               vm.authSuccess();
+              LoginFirebaseService.username = username;
             }else{
+              
               vm.authError();
             }
           }catch(err){

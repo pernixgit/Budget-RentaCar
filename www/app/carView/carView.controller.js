@@ -13,12 +13,9 @@
       var circle;
       var canvas = document.getElementById('canvas');
       var canvasCont = document.getElementById('canvasCont');
-      var context = canvas.getContext('2d');
-      var dbObservationHash ={};
       var ID=0;
       var index=0;
-      var observationCount=0;
-      var paperLibInstance; 
+      var paperLibInstance;
       vm.observation = {
         part : "",
         obs : "",
@@ -109,8 +106,8 @@
     };
 
       function initPaperLibrary(){
-        paperLibInstance = paper.install(window);
-        paperLibInstance = paper.setup('canvas'); 
+        paper.install(window);
+        paper.setup('canvas');
         paperLibInstance = new Path();
         paperLibInstance.strokeColor = 'black';
       }
