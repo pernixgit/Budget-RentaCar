@@ -23,10 +23,15 @@
         part : "",
         obs : "",
       };
-      vm.shouldShowDelete = true;
       vm.observationHash = {};
-      initPaperLibrary();
       vm.goToExteriorParts = goToExteriorParts;
+      activate();
+
+      function activate(){
+        //screen.lockOrientation('landscape');
+        initPaperLibrary();
+        vm.shouldShowDelete = true;
+      }
 
       function goToExteriorParts(){
         $state.go("carExterior");
