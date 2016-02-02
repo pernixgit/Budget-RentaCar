@@ -18,13 +18,22 @@
       var previousId;
       vm.currentObservation = {
       };
-      vm.circleArray = [];
-      vm.shouldShowDelete = true;
-      initPaperLibrary();
       vm.goToExteriorParts = goToExteriorParts;
       vm.CarViewService = CarViewService;
+      vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
+
+      activate();
+
+
+      function activate(){
+        //screen.lockOrientation('portrait');
+        initPaperLibrary();
+        vm.shouldShowDelete = true;
+      }
+
 
       function goToExteriorParts(){
+        CarViewService.pushObservations;
         $state.go("carExterior");
       }
 
@@ -34,7 +43,6 @@
         }
         CarViewService.observationsArray.push(vm.currentObservation);
         vm.currentObservation = {};
-        console.log(CarViewService.observationsArray);
         circle = null;
       }
 
@@ -88,7 +96,8 @@
       }
 
       vm.onItemDelete = function(observation) {
-        if (observation.carID){
+
+        if (observation.circleID){
         deleteCircle(observation.circleID);
       }
         var observationIndex = CarViewService.observationsArray.indexOf(observation)
@@ -116,7 +125,7 @@
       
 
       function getPoint(event) {
-          return new Point(event.x, event.y-30);      
+        return new Point(event.x-10, event.y-70);      
       }
 
       

@@ -15,7 +15,7 @@
         pushNewRevision: pushNewRevision,
         carInfo: null,
         currentCarId: ScannerService.getCode(),
-        currentRevisionId: '-K94CMrKis1y-MlXXKIs',
+        currentRevisionId: null,
         newRevision: {}
       }
       return service

@@ -9,16 +9,13 @@
 
     function CarViewService(CarInfoFirebaseService){
       
-      this.firebaseRef = null;
       this.observationsArray = [];
       this.pushObservations = pushObservations;
       this.pushObservationsIdToCurrentRevision = pushObservationsIdToCurrentRevision;
+      
       var rootRef = new Firebase('https://budget-test.firebaseio.com');
 
       return this;
-    
-      
-
 
       function pushObservations(){
           var reference = rootRef.child('observations');
@@ -33,7 +30,4 @@
           });
         }
       }
-
-
-    
 })();
