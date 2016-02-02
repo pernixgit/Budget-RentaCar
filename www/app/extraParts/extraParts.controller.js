@@ -4,18 +4,19 @@
   angular
     .module('budgetrentacar.extraParts')
     .controller('ExtraPartsController', ExtraPartsController);
-    function ExtraPartsController(){
+
+    ExtraPartsController.$inject = ['ExtraPartsService'];
+
+    function ExtraPartsController(ExtraPartsService){
       var vm = this;
-      vm.taken = {
-        ids: {"2": true}
-      };
+      vm.ExtraPartsService = ExtraPartsService;
       vm.accesories1 = [
-        { "name": "GPS", "id": "1" },
-        {"name": "CSS" , "id": "2"}
+        { "name": "GPS", "key": "GPS" },
+        {"name": "CSS" , "key": "CSS"}
       ];  
       vm.accesories2 = [
-        { "name": "AET", "id": "3" },
-        {"name": "WFI" , "id": "4"}
+        { "name": "AET", "key": "AET" },
+        {"name": "WFI" , "key": "WFI"}
        ];
     }   
 })();

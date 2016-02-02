@@ -57,7 +57,13 @@ input[type='checkbox']:checked {
 .button{
 	width: 15em;
 	margin-top: 2em;
-	color: #FF5907;
+	background-color: #FF5907;
+	color: white;
+}
+
+.button:hover{
+	background-color: rgb(245,123,32);
+	color: white;
 }
 
 @media only screen

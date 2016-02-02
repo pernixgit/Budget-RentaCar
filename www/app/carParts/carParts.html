@@ -9,16 +9,16 @@
   <div class = "checkboxes-wrapper">
     <section id="left-column">
       <span ng-repeat="accesory in ctrlP.accesories1">
-        <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
+        <input type="checkbox" ng-model="ctrlP.CarPartsService.items[accesory.key]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
       </span>
     </section>
   <section id="right-column">
     <span ng-repeat="accesory in ctrlP.accesories2">
-      <input type="checkbox" ng-model="ctrlP.taken.ids[accesory.id]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
+      <input type="checkbox" ng-model="ctrlP.CarPartsService.items[accesory.key]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
     </span>
   </section>
   </div>
   <div class="button-container">
-    <button class="button" ui-sref="extraParts">Siguiente</button>
+    <button class="button" ui-sref="extraParts" ng-click="ctrlP.CarPartsService.pushNewItems()" >Siguiente</button>
   </div>
 </div>
