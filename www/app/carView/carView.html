@@ -15,13 +15,13 @@
   </div>
   <ion-scroll zooming="false" direction="y" class="pad observation-wrapper">
      <ion-list show-delete="shouldShowDelete">
-      <ion-item ng-repeat="item in observationHash" id="item.id" class="item-remove-animate">
-        <p>{{item.part}} {{item.obs}}</p>
-        <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.circleID)"/>
+      <ion-item ng-repeat="item in CarViewService.observationsArray" id="item.id" class="item-remove-animate">
+        <p>{{item.part}} {{item.description}}</p>
+        <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"/>
       </ion-item>
     </ion-list>
   </ion-scroll>
   <div class="btn-continue-wrraper">
-    <button class="button button-positive btn-continue" ng-click="goToExteriorParts()"> Continuar </button>
+    <button class="button button-positive btn-continue" ng-click="CarViewService.pushObservations()" ng-click> Continuar </button>
   </div>
 </div>
