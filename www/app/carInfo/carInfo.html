@@ -22,7 +22,7 @@
       <div class="col car-info-tdata"> <b>Número de placa:</b> <br> {{vm.carInformation.plate_number}}</div>
     </div>
   </div>
-  <img src="assets/images/arrow.png" ng-click="vm.goToCarView()" class="arrow arrow-carinfo-style">
+    <button class="button-primary btn-continue" type="submit" ng-click="vm.goToCarView()"> Continuar </button>
 </div>
 <div class="car-info-spinner background-car" ng-if="!vm.isLoaded">
   <ion-spinner icon="ripple"></ion-spinner>

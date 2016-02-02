@@ -28,7 +28,7 @@
       activate();
 
       function activate(){
-        //screen.lockOrientation('landscape');
+        screen.lockOrientation('portrait');
         initPaperLibrary();
         vm.shouldShowDelete = true;
       }
@@ -136,7 +136,7 @@
       }
 
       function getPoint(event) {
-          return new Point(event.x, event.y-30);      
+        return new Point(event.x-10, event.y-70);      
       }
 
       function fillMap(){
