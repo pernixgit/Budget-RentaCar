@@ -24,7 +24,7 @@
             if(!vm.isLoaded) {
               $state.go('scanner-error');
             }
-          }, 5000);
+          }, 7000);
         }
 
       }]);

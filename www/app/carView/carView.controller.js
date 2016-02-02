@@ -20,10 +20,15 @@
         part : "",
         obs : "",
       };
-      vm.shouldShowDelete = true;
       vm.observationHash = {};
-      initPaperLibrary();
       vm.goToExteriorParts = goToExteriorParts;
+      activate();
+
+      function activate(){
+        screen.lockOrientation('portrait');
+        initPaperLibrary();
+        vm.shouldShowDelete = true;
+      }
 
       function goToExteriorParts(){
         $state.go("carExterior");
@@ -128,7 +133,7 @@
       }
 
       function getPoint(event) {
-          return new Point(event.x, event.y-30);      
+        return new Point(event.x-10, event.y-70);      
       }
 
       function fillMap(){
