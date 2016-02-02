@@ -9,6 +9,7 @@
 
     function LoginFirebaseService(firebase_url){
       this.firebaseRef = null;
+      this.username = null;
       this.setupFirebaseRef = function(userName){
         return this.firebaseRef = new Firebase(firebase_url + "/users/" + userName);
       }

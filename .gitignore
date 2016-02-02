@@ -9,6 +9,8 @@ www/lib/
 coverage/
 resources/
 .DS_Store
+.bowerrc
 bower_components/
 npm-debug.log
 www/app/envSettings.js
+plugins/android.json

@@ -1,25 +1,25 @@
 .exterior-title {
   text-align: center;
-  color: rgb(24,20,87);
+  color: rgb(24, 20, 87);
   font-weight: bold;
   padding-top: 30px;
 }
 
-.checkboxes-wrapper input{
+.checkboxes-wrapper input {
   margin-bottom: 20px;
   background-color: black;
-  color:white;
+  color: white;
 }
 
 .emblems {
   margin-top: 3em;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;  
-  color: white;  
+  text-align: center;
+  color: white;
   font-weight: bold;
   width: 20%;
-  display:table;
+  display: table;
 }
 
 .emblems-wrapper {
@@ -31,11 +31,11 @@
 }
 
 .select-emblems {
-  border-radius: 0.5em;  
+  border-radius: 0.5em;
   color: white;
   width: 2.5em;
   border: 2px solid #ffffff;
-  background-color: rgb(231,160,65);
+  background-color: rgb(231, 160, 65);
 }
 
 .input-plate {

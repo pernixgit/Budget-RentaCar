@@ -1,9 +1,9 @@
-.body-wrapper{
+.body-wrapper {
 }
 
 .trunk-tittle {
   text-align: center;
-  color: rgb(24,20,87);
+  color: rgb(24, 20, 87);
   font-weight: bold;
   padding-top: 30px;
 }
@@ -17,6 +17,6 @@
   height: 6em;
 }
 
-.button-finish-revision{
+.button-finish-revision {
   margin: 0 auto;
 }
