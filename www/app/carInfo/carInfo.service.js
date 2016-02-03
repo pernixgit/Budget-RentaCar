@@ -10,7 +10,7 @@
     function FirebaseService($firebaseObject, LoginFirebaseService, ScannerService){
 
       var service = {
-        rootRef : new Firebase('https://budgetest.firebaseio.com/'),
+        rootRef : new Firebase('https://budget-cr.firebaseio.com/'),
         getCarInfo: getCarInfo,
         fillNewRevisionData: fillNewRevisionData,
         pushNewRevision: pushNewRevision,

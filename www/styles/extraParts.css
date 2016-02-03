@@ -4,10 +4,7 @@
   font-size: 3em;
   padding-bottom: 1em;
   color: white;
-}
-
-.body-wrapper{
-
+  font-weight: bold;
 }
 
 .checkboxes-wrapper{
@@ -31,6 +28,10 @@
   font-size: 1.4em;
 }
 
+.carextra-item{
+  margin-top: 2em;
+}
+
 input[type='checkbox'] {
     -webkit-appearance:none;
     width:30px;
@@ -47,13 +48,18 @@ input[type='checkbox']:checked {
 .button-container{
   clear: both;
   text-align: center;
+  margin-top: 11em;
 }
 
-.button{
-  width: 15em;
+.btn-finish-revision{
+  width: 80%;
+  height: 3em;
+  font-size: 1.5em;
+  font-weight: bold;
   margin-top: 2em;
   background-color: #FF5907;
   color: white;
+  border-radius: 0.5em;
 }
 
 .button:hover{

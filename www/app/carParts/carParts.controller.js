@@ -20,7 +20,6 @@
         'back-up-tire' : false,
         'plates' : false,
         'rack' : false,
-        'air-conditioner-grids' : false,
         'carpet' : false
       };
       
@@ -33,10 +32,9 @@
       ];
       
       vm.accesories2 = [
-        { "name": "Llanta de repuesto", "key": "back-up-tire" },
+        {"name": "Llanta de repuesto", "key": "back-up-tire" },
         {"name": "Placas" , "key": "plates"},
         {"name": "Rack", "key": "rack" },
-        {"name": "Rejillas" , "key": "air-conditioner-grids"},
         {"name": "Alfombras" , "key": "carpet"}
        ];
 

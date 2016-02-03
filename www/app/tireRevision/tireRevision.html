@@ -1,0 +1,31 @@
+<ion-nav-bar align-title="center">
+ <ion-nav-title>
+   <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
+ </ion-nav-title>
+</ion-nav-bar>
+
+<div class="background-car">
+    <div class="tireBrands">
+      <h1 class="tire-revision-title"> Revisión de llantas </h1>
+      <div class="row rightFrontTire-row">
+        <select class="select-gas col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.rightFrontTireSelectedOption">
+        </select>
+        <div class="col-10"></div>
+        <select class="select-gas col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.leftFrontTireSelectedOption">
+        </select>
+      </div>
+      <div  ng-class="{'imgTire4x4': vm.currentCarTraction == '4x4','imgTire4x2': vm.currentCarTraction == '4x2'}">
+      </div>
+      <div class="row">
+        <select class="select-gas col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.leftBackTireSelectedOption">
+        </select>
+        <div class="col-10"></div>
+        <select class="select-gas col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.rightBackTireSelectedOption">
+        </select>
+      </div>
+    </div>
+    <button class="button-revision-tire button-primary" ng-click="vm.goToCarView()"> Pasar a Revisión del Vehículo </button>
+  </form>
+  </div>
+  </div>
+</div>

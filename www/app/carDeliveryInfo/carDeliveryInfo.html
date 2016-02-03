@@ -1,0 +1,28 @@
+<ion-nav-bar align-title="center">
+ <ion-nav-title>
+   <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
+ </ion-nav-title>
+</ion-nav-bar>
+
+<div class="background-car">
+  <h1 class="title-carDeliveryInfo"> Entrega de vehículo </h1>
+  <form class="container-principal" ng-controller="CarDeliveryInfoController">
+    <select class="select-places item-energized" ng-options="option.name for option in vm.availableOptions track by option.id" ng-model="vm.items.deliverySelectedOption">
+    </select> 
+    <label class="container-mileage item item-input item-floating-label ">
+      <span class="input-label"> Kilometraje </span>
+      <input type="number" class="input-text" ng-model="vm.items.km" placeholder="Kilometraje" required>
+    </label>
+    <div class="gas-status-container">
+    <label class="gas-label"> Gasolina </label>
+    </div>
+    <select class="select-gas" ng-options="option.name for option in vm.gasAvailableOptions track by option.id" ng-model="vm.items.gasSelectedOption">
+    </select>
+    <br/>
+    <p class="continue-button-container" align="center">
+      <button class="button-revision-car button-primary" ng-click="vm.goToTireRevision()"> Pasar a Revisión del Llantas </button>
+    </p>
+  </form>
+  </div>
+  </div>
+</div>
