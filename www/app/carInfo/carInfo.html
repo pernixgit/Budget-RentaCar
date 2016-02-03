@@ -22,8 +22,8 @@
       <div class="col car-info-tdata"> <b>PSC:</b> <br> {{vm.CarInfoFirebaseService.carInfo.PSC}}</div>    
     </div>
   </div>
-    <button class="button-primary btn-continue" type="submit" ng-click="vm.goToCarView()"> Continuar </button>
+    <button class="button-primary btn-continue" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
 </div>
-<div class="car-info-spinner background-car" ng-if="!vm.isLoaded">
+<div class="car-info-spinner" ng-if="!vm.isLoaded">
   <ion-spinner icon="ripple"></ion-spinner>
 </div>

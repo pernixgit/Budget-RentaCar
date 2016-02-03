@@ -12,6 +12,7 @@
       this.observationsArray = [];
       this.pushObservations = pushObservations;
       this.pushObservationsIdToCurrentRevision = pushObservationsIdToCurrentRevision;
+      this.resetObservations = resetObservations;
       
       var rootRef = new Firebase('https://budgetest.firebaseio.com/');
 
@@ -21,6 +22,10 @@
         var reference = rootRef.child('observations');
         var pushRef = reference.push(angular.copy(this.observationsArray));
         pushObservationsIdToCurrentRevision(pushRef.key());
+      }
+
+      function resetObservations(){
+        this.observationsArray = [];
       }
 
         function pushObservationsIdToCurrentRevision(id){

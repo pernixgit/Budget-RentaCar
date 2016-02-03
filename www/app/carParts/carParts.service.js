@@ -15,7 +15,7 @@
 
     function pushNewItems(items){
       var reference = rootRef.child('revisions').child(CarInfoFirebaseService.currentRevisionId).child("car-parts");
-      reference.set(items);
+      reference.update(items);
     }   
 
   }

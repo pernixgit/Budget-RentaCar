@@ -32,6 +32,7 @@
 
       function goToExteriorParts(){
         CarViewService.pushObservations();
+        CarViewService.resetObservations();
         $state.go("carParts");
       }
 
