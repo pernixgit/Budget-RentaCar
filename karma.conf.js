@@ -5,12 +5,16 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     files: [
+       
+      './www/lib/angular/angular.min.js',
+      './www/lib/angular-mocks/angular-mocks.js',
+      './www/lib/angular-animate/angular-animate.min.js',
+      './www/lib/angular-sanitize/angular-sanitize.min.js',
       './www/lib/ionic/js/ionic.bundle.js', 
-      './bower_components/angular-ui-router/release/angular-ui-router.min.js',  
-      './bower_components/angular-mocks/angular-mocks.js', 
-
-      './bower_components/angular-animate/angular-animate.min.js',
-      './bower_components/angular-sanitize/angular-sanitize.min.js',  
+      './www/lib/angular-ui-router/release/angular-ui-router.min.js',
+      'https://cdn.firebase.com/js/client/2.2.4/firebase.js',
+      'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
+      
 
       './www/app/app.module.js',      
       './www/app/app.config.js',

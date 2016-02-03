@@ -7,23 +7,23 @@
 <div class="car-info-body" ng-if="vm.isLoaded">
   <div class="content-wrapper">
     <div class="row car-info-tr">
-      <div class="col car-info-tdata left-textbox"> <b>MVA:</b> <br> {{vm.carInformation.MVA}}</div>
-      <div class="col car-info-tdata right-textbox"> <b>Marca:</b> <br> {{vm.carInformation.brand}}</div>    
+      <div class="col car-info-tdata"> <b>Id:</b> <br> {{vm.CarInfoFirebaseService.carInfo.$id}}</div>
+      <div class="col-10"></div>
+      <div class="col car-info-tdata"> <b>Numero de llave:</b> <br> 00000</div>    
     </div>
     <div class="row car-info-tr">
-      <div class="col car-info-tdata left-textbox"> <b>Modelo:</b> <br> {{vm.carInformation.model}}</div>
-      <div class="col car-info-tdata right-textbox"> <b>Color:</b> <br> {{vm.carInformation.color}}</div>    
+      <div class="col car-info-tdata"> <b>Modelo:</b> <br> {{vm.CarInfoFirebaseService.carInfo.model}}</div>
+      <div class="col-10"></div>
+      <div class="col car-info-tdata"> <b>Color:</b> <br> {{vm.CarInfoFirebaseService.carInfo.color}}</div>    
     </div>
     <div class="row car-info-tr">
-      <div class="col car-info-tdata left-textbox"> <b>Año:</b> <br> {{vm.carInformation.year}}</div>
-      <div class="col car-info-tdata right-textbox"> <b>PSC:</b> <br> {{vm.carInformation.PSC}}</div>    
-    </div>
-    <div class="row car-info-tr">
-      <div class="col car-info-tdata"> <b>Número de placa:</b> <br> {{vm.carInformation.plate_number}}</div>
+      <div class="col car-info-tdata"> <b>MVA:</b> <br> {{vm.CarInfoFirebaseService.carInfo.MVA}}</div>
+      <div class="col-10"></div>
+      <div class="col car-info-tdata"> <b>PSC:</b> <br> {{vm.CarInfoFirebaseService.carInfo.PSC}}</div>    
     </div>
   </div>
-  <img src="assets/images/arrow.png" ng-click="vm.goToCarView()" class="arrow arrow-carinfo-style">
+    <button class="button-primary btn-continue" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
 </div>
-<div class="car-info-spinner background-car" ng-if="!vm.isLoaded">
+<div class="car-info-spinner" ng-if="!vm.isLoaded">
   <ion-spinner icon="ripple"></ion-spinner>
 </div>

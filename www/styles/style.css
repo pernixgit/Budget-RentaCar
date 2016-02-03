@@ -1,9 +1,8 @@
-.button-primary{
+.button-primary {
   background-color: #FF5907;
-  height: 0%;
   width: 30%;
   left: 35%;
-  margin-top: 5%;
+  margin-top: 5% !important;
   font-weight: bold;
   font-size: 1.5em;
   border-style: none;
@@ -22,20 +21,20 @@
 }
 
 .button.button-positive {
-	background-color: #FF5907;
+  background-color: #FF5907;
 }
 
 .button.button-positive:active, .button.button-positive:focus {
   border-color: #FF5907;
   background-color: #fff;
-  color: rgb(245,123,32);
+  color: rgb(245, 123, 32);
 }
 
 .bar-header {
-   height: 5em; 
+  height: 5em !Important;
 }
 
-.arrow{
+.arrow {
   height: 15%;
   width: 20%;
   margin-top: 15%;
@@ -43,19 +42,19 @@
   margin: 0 auto;
 }
 
-.arrow-wrapper{
+.arrow-wrapper {
   width: 100%;
   height: 100%;
 }
 
-.budget-logo-bar{    
+.budget-logo-bar {
   position: relative;
   margin-top: 1em;
 }
 
 .body-wrapper {
   margin-top: 3em;
-  background-color: rgb(231,160,65);
+  background-color: rgb(231, 160, 65);
   padding-bottom: 160px;
   padding-top: 20px;
   overflow: auto;
@@ -68,9 +67,9 @@
   color: white;
 }
 
-@media only screen 
-and (min-width :650px) {
-  .button-primary{
-    font-size: 2.5em;
+@media only screen
+and (min-width: 650px) {
+  .button-primary {
+      font-size: 2.5em;
   }
 }

@@ -2,49 +2,34 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.carInfo')
-    .controller('CarInfoController', CarInfoController);
-      
-    CarInfoController.$inject = ['ScannerService', 'carInfoService', '$state'];
-      
-    function CarInfoController(ScannerService, carInfoService, $state){
-      var vm = this;
-      vm.carInformation = {};
-      vm.isLoaded = false;
+  .module('budgetrentacar.carInfo')
+  .controller('CarInfoController', CarInfoController);
 
-      vm.goToCarView = goToCarView;
+  CarInfoController.$inject = ['$scope', '$firebaseObject', 'CarInfoFirebaseService', '$state'];
+
+  function CarInfoController( scope, $firebaseObject, CarInfoFirebaseService, $state){
+    var vm = this;
+    vm.goToCarView = goToCarView;
+    vm.CarInfoFirebaseService = CarInfoFirebaseService;
+
+    CarInfoFirebaseService.getCarInfo().then(function(){
+      CarInfoFirebaseService.carInfo.model ? vm.isLoaded = true : vm.isLoaded = false;
       activate();
-
-      function activate() {
-        setTimeout(function() {
-          if(!vm.isLoaded) {
-            $state.go('scanner-error');
-          }
-        }, 5000);
-
-        carInfoService.getVehicle(ScannerService.getCode())
-          .$loaded()
-            .then(function(data) {
-              vm.carInformation = data;
-              if(isValid()){
-                vm.isLoaded = true;
-                vm.carInformation = data;
-              }else{
-                $state.go('scanner-error');
-              }
-            })
-            .catch(function(error) {
-              console.error("Error:", error);
-            });
-        }
-
-      function isValid() {
-        return vm.carInformation.MVA;
-      }
-
-      function goToCarView() {
-        $state.go('carView');
-      }
-
+      CarInfoFirebaseService.fillNewRevisionData();
+    });
+    
+    function goToCarView() {
+      CarInfoFirebaseService.pushNewRevision();
+      $state.go('carDeliveryInfo');
     }
+
+    function activate() {
+      setTimeout(function() {
+        if(!vm.isLoaded) {
+          $state.go('scanner-error');
+        }
+      }, 7000);
+    }
+  }
 })();
+

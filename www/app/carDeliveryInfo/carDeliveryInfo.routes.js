@@ -12,8 +12,8 @@
       .state('carDeliveryInfo', {
         url: '/carDeliveryInfo',
         templateUrl: 'app/carDeliveryInfo/carDeliveryInfo.html',
-        controller: 'carDeliveryInfoController',
-        controllerAs: 'ctrl'
+        controller: 'CarDeliveryInfoController',
+        controllerAs: 'vm'
       });
   }
 })();

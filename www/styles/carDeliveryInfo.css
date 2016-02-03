@@ -21,19 +21,25 @@ option:not(:checked) {
 }
 
 .container-mileage {
-  top: 5em;
-  margin: 0 auto;
+  width: 30% !important;
+  margin: 0 auto !important;
+  top: 5em !important;
   border-radius: 15px;
   display: table;
-  font-size: 0.5em;
+  font-size: 0.5em !important;
   border: 5px hsla(0, 100%, 2%, 0);
-  background-color: white;
+  background-color: white !important;
+}
+
+.continue-button-container{
+  margin-top: 8em;
 }
 
 .button-revision-car {
   width: 20em;
-  border-radius: 3em;
+  border-radius: 1em;
   size: 5em;
+  height: 4em;
 }
 
 .input-label {
@@ -74,9 +80,12 @@ option:not(:checked) {
 }
 
 @media only screen 
-and (min-width :650px) {
-  .container-principal {
-    margin-top: 40%;
+and (min-width :850px) {
+  .continue-button-container {
+    margin-top: auto;
+  }
+  .button-revision-car{
+    font-size: 1.5em;
   }
 }
 
