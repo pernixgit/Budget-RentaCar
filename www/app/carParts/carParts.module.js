@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.carExterior', []);
+    .module('budgetrentacar.carParts', []);
 })(); 

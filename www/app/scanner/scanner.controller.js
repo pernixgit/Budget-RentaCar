@@ -13,6 +13,7 @@
         .then(
           function(code_data) {
             ScannerService.setCode(code_data.text);
+            console.log("Codigo en GetCode() " + ScannerService.getCode());
             $state.go("carInfo");
         }, 
           function(error) {
