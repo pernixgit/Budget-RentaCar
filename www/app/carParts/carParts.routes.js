@@ -14,8 +14,8 @@
         url: '/carParts',
         templateUrl: 'app/carParts/carParts.html',
         controller: 'CarPartsController',
-        controllerAs: 'ctrlP'
+        controllerAs: 'vm',
+        cache: false
       });
   }
 })();
-

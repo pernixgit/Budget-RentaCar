@@ -5,48 +5,53 @@
     .module('budgetrentacar.carView')
     .controller('CarViewController', CarViewController);
 
-    CarViewController.$inject = ['$scope','$ionicPopup', '$state', 'CarViewService'];
+    CarViewController.$inject = ['$scope','$ionicPopup', '$state', 'CarViewService', 'CarInfoFirebaseService'];
 
-    function CarViewController($scope, $ionicPopup, $state, CarViewService){
+    function CarViewController($scope, $ionicPopup, $state, CarViewService, CarInfoFirebaseService){
     
       var vm = $scope; //change $scope for this when ionic fix the issue
       var circle;
       var canvas = document.getElementById('canvas');
       var canvasCont = document.getElementById('canvasCont');
-      var ID=0;
-      var index=0;
       var paperLibInstance;
-      vm.observation = {
-        part : "",
-        obs : "",
+      setTimeout(function() {}, 10);
+      var previousId;
+      vm.currentObservation = {
       };
-      vm.shouldShowDelete = true;
-      vm.observationHash = {};
-      initPaperLibrary();
       vm.goToExteriorParts = goToExteriorParts;
+      vm.CarViewService = CarViewService;
+      vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
 
-      function goToExteriorParts(){
-        $state.go("carExterior");
+      activate();
+
+      function activate(){
+        screen.lockOrientation('portrait');
+        initPaperLibrary();
+        vm.shouldShowDelete = true;
       }
 
-      function pushtoDB(size){
-        var dbObservationHash = vm.observationHash;
-        if (size > 0){
-          index += 1;
-          var obsSet = CarViewService.createObservation(index);
-          obsSet.set({
-            part: dbObservationHash[index].part,
-            observation: dbObservationHash[index].obs
-          })
-          vm.pushtoDB(size-1);
-        } 
-        else {
-          var impCanvas = project.activeLayer.exportJSON();  
-          var carCanvas = firebaseReference.child("Canvas");
-          carCanvas.set({
-            Canvas: impCanvas
-          });
+      function goToExteriorParts(){
+        CarViewService.pushObservations();
+        $state.go("carParts");
+      }
+
+      function appendObservation(currentObservation){
+        if (circle) { 
+          currentObservation.circleID = circle.id;
         }
+        CarViewService.observationsArray.push(vm.currentObservation);
+        vm.currentObservation = {};
+        circle = null;
+      }
+
+      function deleteCircle(circleID){
+        circle = new Path.Circle({});
+        while(circle.id != circleID){
+          circle = circle.previousSibling
+        }
+        circle.remove();
+        paper.view.update();
+        circle = new Path.Circle({});
       }
 
       vm.downEvent = function(event) {
@@ -73,9 +78,9 @@
             type: 'buttonpopOK',
             onTap: function(e) {
               if (e) {
-                if(vm.observation.part.trim() && vm.observation.obs.trim()){
-                  if(vm.observation.part.trim() || vm.observation.obs.trim()){
-                    fillMap();
+                if(vm.currentObservation.part.trim() && vm.currentObservation.description.trim()){
+                  if(vm.currentObservation.part.trim() || vm.currentObservation.description.trim()){
+                    appendObservation(vm.currentObservation);
                   }
                 }else{
                   alert("Por favor complete los espacios");
@@ -87,18 +92,14 @@
        });
       }
 
-      vm.onItemDelete = function(id, circleID) {
-        deleteCircle(circleID);
-        delete vm.observationHash[id];
-      };
+      vm.onItemDelete = function(observation) {
 
-      function pushObservationsToDb(obj) {
-        var size = 0, key;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) size++;
-        }
-        vm.pushtoDB(size);
-    };
+        if (observation.circleID){
+        deleteCircle(observation.circleID);
+      }
+        var observationIndex = CarViewService.observationsArray.indexOf(observation)
+        CarViewService.observationsArray.splice(observationIndex, 1);
+      };
 
       function initPaperLibrary(){
         paper.install(window);
@@ -118,24 +119,8 @@
         circle.strokeWidth = 10;
       }
 
-      function deleteCircle(circleID){
-        while(circle.id != circleID){
-          circle = circle.previousSibling
-        }
-        circle.remove();
-        paper.view.update();
-        circle = new Path.Circle({});
-      }
-
       function getPoint(event) {
-          return new Point(event.x, event.y-30);      
-      }
-
-      function fillMap(){
-        vm.observationHash[ID+=1] = {id:ID, part:vm.observation.part, obs:vm.observation.obs, 
-                                    circleID: circle.id};
-        vm.observation.part= " "; 
-        vm.observation.obs = " ";
-      }    
+        return new Point(event.x-10, event.y-70);      
+      }   
   }
 })();

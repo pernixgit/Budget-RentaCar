@@ -5,11 +5,12 @@
     .module('budgetrentacar.carInfo')
     .service('CarInfoFirebaseService', FirebaseService);
 
-    FirebaseService.$inject = ['$firebaseObject', '$q', 'LoginFirebaseService', 'ScannerService'];
-    function FirebaseService($firebaseObject, $q, LoginFirebaseService, ScannerService){
+    FirebaseService.$inject = ['$firebaseObject', 'LoginFirebaseService', 'ScannerService'];
+
+    function FirebaseService($firebaseObject, LoginFirebaseService, ScannerService){
 
       var service = {
-        rootRef : new Firebase('https://budget-test.firebaseio.com'),
+        rootRef : new Firebase('https://budgetest.firebaseio.com/'),
         getCarInfo: getCarInfo,
         fillNewRevisionData: fillNewRevisionData,
         pushNewRevision: pushNewRevision,
@@ -22,13 +23,9 @@
 
 
       function getCarInfo(){
-        var q = $q.defer();
-        var reference = service.rootRef.child('vehicles').child(service.currentCarId);
+        var reference = service.rootRef.child('vehicles').child(ScannerService.getCode());
         service.carInfo = $firebaseObject(reference);
-        service.carInfo.$loaded().then(function() {
-          q.resolve();
-        })
-        return q.promise
+        return service.carInfo.$loaded();
       }
 
       function fillNewRevisionData(){

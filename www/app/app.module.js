@@ -5,9 +5,6 @@
     .module('budgetrentacar', [
       'ionic',
       'ui.router',
-      'budgetrentacar.carExterior',
-      'budgetrentacar.carInterior',
-      'budgetrentacar.carTrunk',
       'firebase',
       'ui.router',
       'budgetrentacar.login',

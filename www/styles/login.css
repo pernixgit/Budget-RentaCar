@@ -12,9 +12,8 @@
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  overflow: scroll;
-  overflow-x: hidden;
+  background-size: 100% 104%;;
+  overflow-x: hidden; 
 }
 
 .user-information-box {
@@ -25,11 +24,12 @@
   border-color: rgba(204, 204, 204, 0) rgba(204, 204, 204, 0) #FF5907 rgba(204, 204, 204, 0);
   background-color: rgba(204, 204, 204, 0);
   color: #444;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 input[type="text"], input[type="password"] {
   font-size: 1em;
+  color: white;
 }
 
 .input-label {
@@ -64,10 +64,18 @@ and (min-width: 650px) {
   }
 }
 
-@media only screen
-and (min-width: 850px) {
-  .budget-logo {
-    margin-top: 10%;
+@media only screen 
+and (min-width :850px) {
+  .budget-logo{
+    margin-top: 3%;
+  }
+}
+
+
+@media only screen 
+and (min-height :1440px) {
+  .budget-logo{
+    margin-top: 3%;
   }
 }
 

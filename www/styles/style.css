@@ -2,7 +2,7 @@
   background-color: #FF5907;
   width: 30%;
   left: 35%;
-  margin-top: 5%;
+  margin-top: 5% !important;
   font-weight: bold;
   font-size: 1.5em;
   border-style: none;
@@ -20,7 +20,7 @@
 }
 
 .bar-header {
-  height: 5em;
+  height: 5em !Important;
 }
 
 .arrow {

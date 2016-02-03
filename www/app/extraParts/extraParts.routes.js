@@ -14,7 +14,8 @@
         url: '/extraParts',
         templateUrl: 'app/extraParts/extraParts.html',
         controller: 'ExtraPartsController',
-        controllerAs: 'ctrlEx'
+        controllerAs: 'vm',
+        cache: false
       });
   }
 })();

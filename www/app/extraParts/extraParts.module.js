@@ -2,7 +2,5 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.extraParts', [
-    ]);
-})(); 
-
+    .module('budgetrentacar.extraParts', []);
+  })(); 

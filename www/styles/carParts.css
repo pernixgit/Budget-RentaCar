@@ -1,30 +1,30 @@
 .page-title{
-	text-align: center;
-	padding-top: 2.5em;
-	font-size: 3em;
-	padding-bottom: 1em;
-	color: white;
+  text-align: center;
+  padding-top: 2.5em;
+  font-size: 3em;
+  padding-bottom: 1em;
+  color: white;
 }
 
 .checkboxes-wrapper{
-	padding-top: 3em;
-	width: 30em;
-	padding-bottom: 5em;
+  padding-top: 3em;
+  width: 30em;
+  padding-bottom: 5em;
 }
 
 #left-column{
-	float: left;
+  float: left;
 }
 
 #right-column{
-	float:right;
+  float:right;
 }
 
 .checkbox-label{
-	top: -0.6em;
-	left: 1em;
-	position: relative;
-	font-size: 1.2em;
+  top: -0.6em;
+  left: 1em;
+  position: relative;
+  font-size: 1.2em;
 }
 
 input[type='checkbox'] {
@@ -41,50 +41,48 @@ input[type='checkbox']:checked {
 }
 
 .button-container{
-	clear: both;
-	text-align: center;
+  clear: both;
+  text-align: center;
 }
 
 .button{
-	width: 15em;
-	background-color: #FF5907;
-	color: white;;
+  width: 15em;
+  background-color: #FF5907;
+  color: white;;
 }
 
 .button:hover{
-	background-color: rgb(245,123,32);
-	color: white;
+  background-color: rgb(245,123,32);
+  color: white;
 }
 
 @media only screen
 and (max-width :450px){
-	.page-title{
-		font-size: 2em;
-	}
+  .page-title{
+    font-size: 2em;
+  }
 
-	.checkboxes-wrapper{
-		padding: 0;
-	}
+  .checkboxes-wrapper{
+    padding: 0;
+  }
 
-	.checkbox-label{
-		font-size: 1em;
-	}
+  .checkbox-label{
+    font-size: 1em;
+  }
 
 
-	#left-column{
-		margin: 0 auto;
-		display: table;
-		width: 50%;
-		float: none;
-	}
+  #left-column{
+    margin: 0 auto;
+    display: table;
+    width: 50%;
+    float: none;
+  }
 
-	#right-column{
-		margin: 0 auto;
-		display: table;
-		width: 50%;
-		float: none;
-
-	}
+  #right-column{
+    margin: 0 auto;
+    display: table;
+    width: 50%;
+    float: none;
+  }
 
 }
-

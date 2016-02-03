@@ -9,7 +9,6 @@
 }
 
 .popup-head {
-  padding: 0px;
   border-bottom: none;
 }
 
@@ -18,39 +17,86 @@
 }
 
 .popup-body {
-  padding: 0px;
-  height: 70%;
+  height: 68%;
+ }
+
+.observations-wrapper{
+  width: 32%;
+  display: block;
+  float: right;
+  height: 77%;
+  margin-top: 2em;
+}
+
+.item {
+  border-width: 0px;
+  margin: 0px;
+}
+
+.pad{
+  width: 90%;
+  overflow-y: auto;
+  position: fixed;
+  margin-left: 2%;
+  position: relative;
+  background: rgba(255,255,255, 0.3);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.btn-continue{
+  width: 20%;
+  height: 2em;
+  margin: 0 auto;
+  display: block;
+  margin-top: 5%;
+  border-radius: 0.5em;
+  background-color: #F1592A;
+  font-size: 1.5em;
+}
+
+.canvas4x2{
+	background: url('../assets/images/canvasCar4x2.png')  no-repeat center;
+  background-size: 100%;
+}
+
+.canvas4x4{
+  background: url('../assets/images/canvasCar4x4.png')  no-repeat center;
+  background-size: 100%;
+}
+
+.carview-wrapper{
+  margin-top: 5em;
+  height: 80%;
+  width: 100%;
+}
+
+.canvas-wrapper{
+  height: 63%;
+  width: 68%;
+  position: absolute;
+}
+
+.image-container{
+  width: 100%;
+  height: 100%;
 }
 
 .buttonObs {
-  background-color: #F1592A;
-  color: white;
-  position: center;
-  width: 40%;
-  height: 35%;
-  border-radius: 12px;
-  font-size: 1.5em;
+  background-color: #1C2D5D !important;
+  font-weight: bold;
+  color: white !important;
+  width: 32%;
+  height: 11%;
+  border-radius: 12px !important;
+  font-size: 1.5em !important;
+  margin-top: 30em !important;
+  margin-left: 10em !important;
 }
 
 .btn-continue-wrraper {
   width: 100%;
   margin-top: 2%;
-}
-
-.btn-continue {
-  background-color: #F1592A !important;
-  font-size: 1.5em;
-  margin: 0 auto;
-  display: block;
-  width: 30%;
-  height: 5%;
-  border-radius: 12px;
-}
-
-.pad {
-  width: 100%;
-  height: 10em;
-  position: center;
 }
 
 .observation-wrapper {
@@ -61,23 +107,9 @@
   margin-bottom: 10%
 }
 
-.canvas {
-  background: url('../assets/images/canvasCar.png') no-repeat center;
-  background-size: 100%, 100%;
-  width: 100%;
-  height: 70%;
-}
-
-.canvas.style {
-  background: url('../assets/images/canvasCar.png') no-repeat center;
-  background-size: 100%, 100%;
-  width: 100%;
-  height: 70%;
-}
-
 canvas[resize] {
   width: 100%;
-  height: 25em;
+  height: 100%;
 }
 
 .logo {
@@ -89,7 +121,6 @@ canvas[resize] {
   width: 80%;
   height: 60%;
   background-color: rgba(233, 160, 66, 0.5);
-  border: 1px solid red;
   opacity: 0.6;
 }
 
@@ -98,11 +129,11 @@ canvas[resize] {
   text-align: center;
   border-radius: 12px;
   height: 40%;
-  width: 70%;
+  width: 95%;
 }
 
 .buttonpopOK {
-  background-color: #1d2e57;
+  background-color: #1d2e57 !important;
   text-align: center;
   border-radius: 12px;
   margin-left: 1%;
@@ -110,7 +141,7 @@ canvas[resize] {
 }
 
 .buttonpopCanc {
-  background-color: #F1592A;
+  background-color: #F1592A !important;
   text-align: center;
   border-radius: 12px;
   margin-right: 1% !important;
@@ -119,27 +150,22 @@ canvas[resize] {
 
 .popup-buttons .button {
   height: 60pt;
-  border-radius: 12px;
+  border-radius: 12px !important;
   font: bold;
   color: white;
   width: 70%;
+  margin-left: 16%;
 }
 
-.arrow-carView-style {
-  width: 8em;
-  height: 8em;
-}
-
-@media only screen
-and (max-device-width: 800px) {
-  canvas[resize] {
-    height: 68em;
+@media only screen and (min-width: 850px){
+  .pad{
+    margin-top: 25%;
   }
 }
 
 @media only screen
 and (min-device-height: 1500px) {
-  canvas-wrapper {
+  .canvas-wrapper {
     margin-top: 5em;
   }
 }
