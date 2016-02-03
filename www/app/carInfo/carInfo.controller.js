@@ -3,8 +3,8 @@
 
   angular
     .module('budgetrentacar.carInfo')
-    .controller('CarInfoController', ['$scope', '$firebaseObject', 'ScannerService', 'CarInfoFirebaseService', '$state',
-      function( $scope, $firebaseObject, ScannerService, CarInfoFirebaseService, $state){
+    .controller('CarInfoController', ['$scope', '$firebaseObject', 'CarInfoFirebaseService', '$state',
+      function( $scope, $firebaseObject, CarInfoFirebaseService, $state){
         var vm = this;
         vm.goToCarView = goToCarView;
         vm.CarInfoFirebaseService = CarInfoFirebaseService;

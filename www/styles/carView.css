@@ -55,8 +55,13 @@
   font-size: 1.5em;
 }
 
-.canvas{
+.canvas4x2{
 	background: url('../assets/images/canvasCar4x2.png')  no-repeat center;
+  background-size: 100%;
+}
+
+.canvas4x4{
+  background: url('../assets/images/canvasCar4x4.png')  no-repeat center;
   background-size: 100%;
 }
 

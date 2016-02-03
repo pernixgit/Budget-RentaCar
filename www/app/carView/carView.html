@@ -8,20 +8,22 @@
   <div class="carview-wrapper">
     <div class="canvas-wrapper">
       <div class="image-container">
-        <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" class="canvas"></canvas>
+        <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" ng-class="{'canvas4x4': currentCarTraction == '4x4','canvas4x2': currentCarTraction == '4x2'}"></canvas>
       </div>
     </div>
     <div class="observations-wrapper">
       <ion-scroll zooming="false" direction="y" class="pad">
        <ion-list show-delete="shouldShowDelete">
-          <ion-item ng-repeat="item in observationHash" id="item.id" class="item-remove-animate">
-            <p>{{item.part}} {{item.obs}}</p>
-            <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item.id, item.circleID)"/>
+          <ion-item ng-repeat="item in CarViewService.observationsArray" id="item.id" class="item-remove-animate">
+            <p>{{item.part}} {{item.description}}</p>
+            <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"/>
           </ion-item>
         </ion-list>
       </ion-scroll>
     </div>
     <button class="button buttonObs" ng-click="showDialog(false)">Agregar Observación Interna</button>
   </div>
+  <div class="btn-continue-wrraper">
   <button class="button-primary btn-continue" type="submit" ng-click="goToExteriorParts()"> Continuar </button>
+  </div>
 </div>
