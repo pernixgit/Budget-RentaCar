@@ -20,8 +20,16 @@
 
       function pushObservations(){
         var reference = rootRef.child('observations');
-        var pushRef = reference.push(angular.copy(this.observationsArray));
+        var pushingObservations = angular.copy(this.observationsArray);
+        removeCircleIdProperty(pushingObservations);
+        var pushRef = reference.push(pushingObservations);
         pushObservationsIdToCurrentRevision(pushRef.key());
+      }
+
+      function removeCircleIdProperty(observations){
+        angular.forEach(observations, function(element){
+          delete element.circleID;
+        });
       }
 
       function resetObservations(){
