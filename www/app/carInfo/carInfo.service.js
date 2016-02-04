@@ -47,6 +47,15 @@
         }
       }
 
+      function updateCarCurrentRevisionType(){
+        var reference = service.rootRef.child('vehicles').child(service.currentCarId);
+        if (service.carInfo.currentRevisionType == 'check-in') {
+          reference.update({currentRevisionType : 'check-out'});
+        }else{
+          reference.update({currentRevisionType : 'check-in'});
+        }
+      }
+
       function setNewRevisionTimestamp(){
         service.newRevision.timestamp = Date.now();
       }
@@ -58,7 +67,8 @@
       function pushNewRevision(){
         var reference = service.rootRef.child('revisions');
         var pushRef = reference.push(service.newRevision);
-        saveCreatedRevisionId(pushRef.key());           
+        saveCreatedRevisionId(pushRef.key());
+        updateCarCurrentRevisionType();        
       }
 
       function saveCreatedRevisionId(id){
