@@ -5,12 +5,13 @@
 </ion-nav-bar>
 
 <div class="background-car">
+  <h1 class="title-carDeliveryInfo"> Entrega de vehículo </h1>
   <form class="container-principal" ng-controller="CarDeliveryInfoController">
     <select class="select-places item-energized" ng-options="option.name for option in vm.availableOptions track by option.id" ng-model="vm.items.deliverySelectedOption">
     </select> 
     <label class="container-mileage item item-input item-floating-label ">
       <span class="input-label"> Kilometraje </span>
-      <input type="number" class="input-text" ng-model="vm.items.km" placeholder="Kilometraje">
+      <input type="number" class="input-text" ng-model="vm.items.km" placeholder="Kilometraje" required>
     </label>
     <div class="gas-status-container">
     <label class="gas-label"> Gasolina </label>
@@ -19,7 +20,7 @@
     </select>
     <br/>
     <p class="continue-button-container" align="center">
-      <button class="button-revision-car button-primary" ng-click="vm.goToCarView()"> Pasar a Revisión del Vehículo </button>
+      <button class="button-revision-car button-primary" ng-click="vm.goToTireRevision()"> Pasar a Revisión del Llantas </button>
     </p>
   </form>
   </div>

@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.carDeliveryInfo')
-    .service('CarDeliveryInfoFirebaseService', CarDeliveryInfoFirebaseService);
+    .module('budgetrentacar.tireRevision')
+    .service('TireRevisionFirebaseService', TireRevisionFirebaseService);
 
-    CarDeliveryInfoFirebaseService.$inject = ['$firebaseObject','CarInfoFirebaseService'];
+    TireRevisionFirebaseService.$inject = ['$firebaseObject','CarInfoFirebaseService'];
     
-    function CarDeliveryInfoFirebaseService($firebaseObject, CarInfoFirebaseService){
+    function TireRevisionFirebaseService($firebaseObject, CarInfoFirebaseService){
       this.pushNewItems = pushNewItems;
       var rootRef  = new Firebase('https://budget-cr.firebaseio.com/');
       return this;

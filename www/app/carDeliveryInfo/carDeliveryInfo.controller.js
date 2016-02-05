@@ -5,17 +5,18 @@
     .module('budgetrentacar.carDeliveryInfo')
     .controller('CarDeliveryInfoController', CarDeliveryInfoController);
 
-  CarDeliveryInfoController.$inject = ['$state', 'CarDeliveryInfoFirebaseService'];
+  CarDeliveryInfoController.$inject = ['$state', 'CarDeliveryInfoFirebaseService', 'CarInfoFirebaseService'];
 
-    function CarDeliveryInfoController($state, CarDeliveryInfoFirebaseService) {
+    function CarDeliveryInfoController($state, CarDeliveryInfoFirebaseService, CarInfoFirebaseService) {
       var vm = this;
       vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
-      vm.goToCarView = goToCarView;
+      vm.goToTireRevision = goToTireRevision;
+      vm.currentCarTraction = '4x2';
       vm.items = {
         deliverySelectedOption : {id: '0', name: 'Seleccione el Lugar de Entrega'},
-        gasSelectedOption : {id:'0', name: 'Vacio'}
+        gasSelectedOption : {id:'0', name: 'Vacio'},
       };
-
+      
       vm.availableOptions = [
           {id: '0', name: 'Seleccione el Lugar de Entrega'},
           {id: '1', name: 'Aeropuerto Internacional Juan Santamaría'},
@@ -32,7 +33,7 @@
           {id: '12', name: 'Andaz'},
           {id: '13', name: 'Dreams'},
           {id: '14', name: 'Purdy Autos'},
-          {id: '15', name: '3R'}
+          {id: '15', name: '3R'}, 
       ];
 
       vm.gasAvailableOptions = [
@@ -46,10 +47,17 @@
         {id: '7', name : 'Lleno'}
       ];
 
-      function goToCarView(){
-        console.log(vm.items);
+      function resetFields(){
+        vm.items = {
+        deliverySelectedOption : {id: '0', name: 'Seleccione el Lugar de Entrega'},
+        gasSelectedOption : {id:'0', name: 'Vacio'},
+        };
+      }
+
+      function goToTireRevision(){
         CarDeliveryInfoFirebaseService.pushNewItems({ delivery_place: vm.items.deliverySelectedOption.name, gas: vm.items.gasSelectedOption.name});
-        $state.go('carView');
+        resetFields();
+        $state.go('tireRevision');
       }
   }
 })();

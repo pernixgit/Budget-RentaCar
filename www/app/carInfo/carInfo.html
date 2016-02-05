@@ -6,10 +6,11 @@
 
 <div class="car-info-body" ng-if="vm.isLoaded">
   <div class="content-wrapper">
+    <h1 class="carinfo-title"> Información del vehículo </h1>
     <div class="row car-info-tr">
       <div class="col car-info-tdata"> <b>Id:</b> <br> {{vm.CarInfoFirebaseService.carInfo.$id}}</div>
       <div class="col-10"></div>
-      <div class="col car-info-tdata"> <b>Numero de llave:</b> <br> 00000</div>    
+      <div class="col car-info-tdata"> <b>Numero de llave:</b> <br>{{vm.CarInfoFirebaseService.carInfo.key}}</div>    
     </div>
     <div class="row car-info-tr">
       <div class="col car-info-tdata"> <b>Modelo:</b> <br> {{vm.CarInfoFirebaseService.carInfo.model}}</div>
@@ -22,7 +23,7 @@
       <div class="col car-info-tdata"> <b>PSC:</b> <br> {{vm.CarInfoFirebaseService.carInfo.PSC}}</div>    
     </div>
   </div>
-    <button class="button-primary btn-continue" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
+    <button class="button-primary btn-continue-carInfo" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
 </div>
 <div class="car-info-spinner" ng-if="!vm.isLoaded">
   <ion-spinner icon="ripple"></ion-spinner>

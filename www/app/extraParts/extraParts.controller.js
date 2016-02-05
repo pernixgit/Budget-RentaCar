@@ -28,8 +28,18 @@
         {"name": "WFI" , "key": "WFI"}
        ];
     
+      function resetItems(){
+        vm.items = {
+                'CSS' : false,
+                'AET' : false,
+                'GPS' : false,
+                'WFI' : false
+        };
+      }
+
       function finishRevision(){
         ExtraPartsService.pushNewItems(vm.items);
+        resetItems();
         $state.go('login');
       }
     }   

@@ -14,7 +14,7 @@
       this.pushObservationsIdToCurrentRevision = pushObservationsIdToCurrentRevision;
       this.resetObservations = resetObservations;
       
-      var rootRef = new Firebase('https://budgetest.firebaseio.com/');
+      var rootRef = new Firebase('https://budget-cr.firebaseio.com/');
 
       return this;
 
@@ -36,11 +36,11 @@
         this.observationsArray = [];
       }
 
-        function pushObservationsIdToCurrentRevision(id){
-          var reference = rootRef.child('revisions').child(CarInfoFirebaseService.currentRevisionId);
-          reference.update({
-            observations: id
-          });
-        }
+      function pushObservationsIdToCurrentRevision(id){
+        var reference = rootRef.child('revisions').child(CarInfoFirebaseService.currentRevisionId);
+        reference.update({
+          observations: id
+        });
       }
+    }
 })();
