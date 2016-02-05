@@ -5,9 +5,9 @@
   .module('budgetrentacar.carInfo')
   .controller('CarInfoController', CarInfoController);
 
-  CarInfoController.$inject = ['$scope', '$firebaseObject', 'CarInfoFirebaseService', '$state'];
+  CarInfoController.$inject = ['CarInfoFirebaseService', '$state'];
 
-  function CarInfoController( scope, $firebaseObject, CarInfoFirebaseService, $state){
+  function CarInfoController(CarInfoFirebaseService, $state){
     var vm = this;
     vm.goToCarView = goToCarView;
     vm.CarInfoFirebaseService = CarInfoFirebaseService;

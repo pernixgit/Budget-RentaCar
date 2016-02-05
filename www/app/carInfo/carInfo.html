@@ -1,29 +1,65 @@
-<ion-nav-bar align-title="center">
- <ion-nav-title>
-   <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
- </ion-nav-title>
-</ion-nav-bar>
-
-<div class="car-info-body" ng-if="vm.isLoaded">
-  <div class="content-wrapper">
-    <div class="row car-info-tr">
-      <div class="col car-info-tdata"> <b>Id:</b> <br> {{vm.CarInfoFirebaseService.carInfo.$id}}</div>
-      <div class="col-10"></div>
-      <div class="col car-info-tdata"> <b>Numero de llave:</b> <br> 00000</div>    
-    </div>
-    <div class="row car-info-tr">
-      <div class="col car-info-tdata"> <b>Modelo:</b> <br> {{vm.CarInfoFirebaseService.carInfo.model}}</div>
-      <div class="col-10"></div>
-      <div class="col car-info-tdata"> <b>Color:</b> <br> {{vm.CarInfoFirebaseService.carInfo.color}}</div>    
-    </div>
-    <div class="row car-info-tr">
-      <div class="col car-info-tdata"> <b>MVA:</b> <br> {{vm.CarInfoFirebaseService.carInfo.MVA}}</div>
-      <div class="col-10"></div>
-      <div class="col car-info-tdata"> <b>PSC:</b> <br> {{vm.CarInfoFirebaseService.carInfo.PSC}}</div>    
-    </div>
+<div ng-if="vm.isLoaded">
+  <div class="bar header-bar bar-assertive">
+    <h1 class="title">Información del vehiculo</h1>
   </div>
-    <button class="button-primary btn-continue" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
+  <ion-content>
+    <div class="list  list-inset content has-header padding">
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-ios-grid-view"></i>
+        Id
+        <span class="item-note">
+           {{vm.CarInfoFirebaseService.carInfo.$id}}
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-key"></i>
+        Numero de llave
+        <span class="item-note">
+           {{vm.CarInfoFirebaseService.carInfo.key}}
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-model-s"></i>
+        Modelo
+        <span class="item-note">
+          {{vm.CarInfoFirebaseService.carInfo.model}}
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-paintbucket"></i>
+        Color
+        <span class="item-note">
+          {{vm.CarInfoFirebaseService.carInfo.color}}
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-information-circled"></i>
+        MVA
+        <span class="item-note">
+          {{vm.CarInfoFirebaseService.carInfo.MVA}}
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-home"></i>
+        PSC
+        <span class="item-note">
+          {{vm.CarInfoFirebaseService.carInfo.PSC}}
+        </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-android-car"></i>
+        Placa
+        <span class="item-note">
+          {{vm.CarInfoFirebaseService.carInfo.plate}}
+        </span>
+      </a>
+    <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
+    </div>
+  </ion-content>
 </div>
-<div class="car-info-spinner" ng-if="!vm.isLoaded">
-  <ion-spinner icon="ripple"></ion-spinner>
+
+<div ng-if="!vm.isLoaded">
+  <ion-content>
+    <ion-spinner class="car-info-spinner" icon="ripple"></ion-spinner>
+  </ion-content>
 </div>

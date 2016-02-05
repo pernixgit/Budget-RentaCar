@@ -1,79 +1,15 @@
-.car-info-body {
-  background-color: #E9A042;
+.car-info-wrapper{
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.car-info-tr {
-  text-align: center;
-  padding: 2em !important;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.car-info-tdata {
-  vertical-align: middle;
-  background-color: white;
-  width: 7em;
-  height: 5em;
-  border-radius: 1em;
-  font-size: 1.2em;
-  padding-top: 1em;
-}
-
-.right-textbox {
-  float: right;
-}
-
-.left-textbox {
-  float: left;
-  margin-right: 5em;
-}
-
-@media only screen
-and (min-width: 650px) {
-
-  .car-info-tdata {
-    width: 4em;
-    height: 5em;
-  }
-
-  .content-wrapper {
-    margin-top: 5em !important;
-  }
-}
-
-.content-wrapper {
-  margin-top: 30%;
-}
-
-.platform-android .bar .title {
-  height: 100%;
+  position: absolute;
   width: 100%;
 }
 
-.car-info-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
+.spinner svg{
+  width: 100% !important;
+  height: 100% !important;
 }
 
-.spinner svg {
-  width: 20em !important;
-  height: 20em !important;
-  stroke: #E9A042;
-  fill: #E9A042;
-  display: table;
-  margin: 0 auto;
-}
-
-.arrow-wrapper-carinfo {
-  margin-top: 5%;
-}
-
-.arrow-carinfo-style {
-  width: 6em;
-  height: 6em;
+.car-info-spinner{
+  stroke: #ED5505 !important;
+  fill: #ED5505 !important;
 }

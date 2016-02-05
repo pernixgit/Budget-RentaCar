@@ -8,7 +8,7 @@
   CarPartsService.$inject = ['$firebaseObject','CarInfoFirebaseService'];
 
   function CarPartsService($firebaseObject, CarInfoFirebaseService){
-    var rootRef  = new Firebase('https://budgetest.firebaseio.com/');
+    var rootRef  = new Firebase('https://budget-cr.firebaseio.com/');
     this.pushNewItems = pushNewItems;
 
     return this;

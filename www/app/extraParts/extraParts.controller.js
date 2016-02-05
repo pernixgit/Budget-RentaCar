@@ -18,18 +18,25 @@
               'WFI' : false
       };
 
-      vm.accesories1 = [
+      vm.accesories = [
         {"name": "GPS", "key": "GPS" },
-        {"name": "CSS" , "key": "CSS"}
-      ];  
-      
-      vm.accesories2 = [
+        {"name": "CSS" , "key": "CSS"},
         {"name": "AET", "key": "AET" },
         {"name": "WFI" , "key": "WFI"}
        ];
     
+      function resetItems(){
+        vm.items = {
+                'CSS' : false,
+                'AET' : false,
+                'GPS' : false,
+                'WFI' : false
+        };
+      }
+
       function finishRevision(){
         ExtraPartsService.pushNewItems(vm.items);
+        resetItems();
         $state.go('login');
       }
     }   

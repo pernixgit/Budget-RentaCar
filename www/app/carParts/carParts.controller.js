@@ -12,36 +12,46 @@
       vm.CarPartsService = CarPartsService;
       vm.goToExtras = goToExtras;
       vm.items = {
-        'antenna' : false,
-        'legal-documents' : false,
-        'emblems' : false,
-        'tools' : false,
-        'emergency-kit' : false,
-        'back-up-tire' : false,
-        'plates' : false,
+        'antenna' : true,
+        'legal-documents' : true,
+        'emblems' : true,
+        'tools' : true,
+        'emergency-kit' : true,
+        'back-up-tire' : true,
+        'plates' : true,
         'rack' : false,
-        'air-conditioner-grids' : false,
-        'carpet' : false
+        'carpet' : true
       };
       
-      vm.accesories1 = [
+      vm.accesories = [
         {"name": "Antena", "key": "antenna" },
         {"name": "Documentos Legales" , "key": "legal-documents"},
         {"name": "Emblemas", "key": "emblems" },
         {"name": "Herramientas" , "key": "tools"},
-        {"name": "Kit de emergencia" , "key": "emergency-kit"} 
-      ];
-      
-      vm.accesories2 = [
+        {"name": "Kit de emergencia" , "key": "emergency-kit"}, 
         {"name": "Llanta de repuesto", "key": "back-up-tire" },
         {"name": "Placas" , "key": "plates"},
         {"name": "Rack", "key": "rack" },
-        {"name": "Rejillas" , "key": "air-conditioner-grids"},
         {"name": "Alfombras" , "key": "carpet"}
        ];
 
+       function resetItems(){
+        vm.items = {
+          'antenna' : true,
+          'legal-documents' : true,
+          'emblems' : true,
+          'tools' : true,
+          'emergency-kit' : true,
+          'back-up-tire' : true,
+          'plates' : true,
+          'rack' : false,
+          'carpet' : true
+        };
+       }
+
        function goToExtras(){
           CarPartsService.pushNewItems(vm.items);
+          resetItems();
           $state.go('extraParts');
        }
     }   

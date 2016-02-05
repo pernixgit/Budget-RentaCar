@@ -1,25 +1,13 @@
-<link href="styles/carParts.css" rel="stylesheet">
-<ion-nav-bar align-title="center" class ="bar-light">
-  <ion-nav-title has-header="true">
-    <img src='assets/images/budget_logo.png' height='35' class="budget-logo-bar"></img>
-  </ion-nav-title>
-</ion-nav-bar>
-<div class ="body-wrapper">
-  <p class="page-title">Partes del carro</p>
-  <div class = "checkboxes-wrapper">
-    <section id="left-column">
-      <span ng-repeat="accesory in vm.accesories1">
-        <input type="checkbox" ng-model="vm.items[accesory.key]" name="group" id="{{accesory.id}}"> 
-        <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
-      </span>
-    </section>
-  <section id="right-column">
-    <span ng-repeat="accesory in vm.accesories2">
-      <input type="checkbox" ng-model="vm.items[accesory.key]" name="group" id="{{accesory.id}}"> <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label><br>
-    </span>
-  </section>
-  </div>
-  <div class="button-container">
-    <button class="button" ng-click="vm.goToExtras()">Siguiente</button>
-  </div>
+<div class="bar header-bar bar-assertive">
+  <h1 class="title">Partes del auto</h1>
 </div>
+<ion-content class="has-header">
+  <div class="list-inset">
+    <div class="checkbox-item has-header" ng-repeat="accesory in vm.accesories">
+      <ion-checkbox ng-model="vm.items[accesory.key]"  name="group" id="{{accesory.id}}">        
+        <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label>
+      </ion-checkbox>
+    </div>
+    <button class="budget-orange-button button button-block button-assertive" ng-click="vm.goToExtras()">Siguiente</button>
+  </div>
+</ion-content>

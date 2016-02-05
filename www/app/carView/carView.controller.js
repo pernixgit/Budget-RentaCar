@@ -20,12 +20,12 @@
       };
       vm.goToExteriorParts = goToExteriorParts;
       vm.CarViewService = CarViewService;
-      vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
+      vm.currentCarTraction = '4x2';
 
       activate();
 
       function activate(){
-        screen.lockOrientation('portrait');
+        //screen.lockOrientation('portrait');
         initPaperLibrary();
         vm.shouldShowDelete = true;
       }
@@ -121,7 +121,7 @@
       }
 
       function getPoint(event) {
-        return new Point(event.x-10, event.y-70);      
+        return new Point(event.x, event.y);      
       }   
   }
 })();

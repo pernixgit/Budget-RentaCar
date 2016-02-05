@@ -8,33 +8,31 @@
 
     function LoginController( $state, $ionicPopup, LoginFirebaseService) {
       var vm = this;
-      vm.user = { };
+      vm.authenticate = authenticate;
 
-      vm.authSuccess = function() {
-        vm.user = { };
+      function authSuccess() {
         $state.go('scanner');
       }
 
-      vm.authError = function() {
+      function authError() {
         $ionicPopup.alert({
           title: ' Error de Autenticación',
           template: ' Autenticación Invalida'
         });
       }
 
-      vm.authenticate = function(username, password){
+      function authenticate(username, password){
         var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
         firebaseReference.on("value", function(snapshot) {
           try{
             if(username === snapshot.val().username && password === snapshot.val().password){
-              vm.authSuccess();
+              authSuccess();
               LoginFirebaseService.username = username;
             }else{
-              
-              vm.authError();
+              authError();
             }
           }catch(err){
-            vm.authError();
+            authError();
           }
         })
       } 

@@ -11,7 +11,7 @@
   function config($stateProvider) {
     $stateProvider
       .state('carView', {
-        url: '/carview',
+        url: '/carView',
         templateUrl: 'app/carView/carView.html',
         controller: 'CarViewController',
         controllerAs: 'vm',

@@ -7,13 +7,11 @@
 
     <link href="scripts/ionic/css/ionic.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/login.css" rel="stylesheet">
     <link href="styles/carView.css" rel="stylesheet">
-    <link href="styles/carExterior.css" rel="stylesheet">
-    <link href="styles/carInterior.css" rel="stylesheet">
-    <link href="styles/carTrunk.css" rel="stylesheet">
     <link href="styles/carInfo.css" rel="stylesheet">
-    <link href="styles/carDeliveryInfo.css" rel="stylesheet">
-    
+    <link href="styles/tireRevision.css" rel="stylesheet">
+
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
     <!-- ionic/angularjs js -->
@@ -28,7 +26,6 @@
 
     <!-- AngularFire -->
     <script src="lib/angularfire/dist/angularfire.min.js"></script>
-
     <!-- your app's js -->
     <script src="app/app.module.js"></script>
     <script src="app/app.routes.js"></script>
@@ -83,6 +80,12 @@
     <script src="app/carDeliveryInfo/carDeliveryInfo.routes.js"></script>
     <script src="app/carDeliveryInfo/carDeliveryInfo.service.js"></script>
 
+    <!-- tireRevision module -->
+    <script src="app/tireRevision/tireRevision.module.js"></script>
+    <script src="app/tireRevision/tireRevision.controller.js"></script>
+    <script src="app/tireRevision/tireRevision.routes.js"></script>
+    <script src="app/tireRevision/tireRevision.service.js"></script>
+
     <!-- extraParts module -->
     <script src="app/extraParts/extraParts.module.js"></script>
     <script src="app/extraParts/extraParts.controller.js"></script>
@@ -98,7 +101,6 @@
     <script src="app/scanner-error/scanner.error.controller.js"></script>
 </head>
 <body ng-app="budgetrentacar">
-<ion-nav-view></ion-nav-view>
-
+    <ion-nav-view></ion-nav-view>
 </body>
 </html>

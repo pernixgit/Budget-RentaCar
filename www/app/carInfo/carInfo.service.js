@@ -5,12 +5,11 @@
     .module('budgetrentacar.carInfo')
     .service('CarInfoFirebaseService', FirebaseService);
 
-    FirebaseService.$inject = ['$firebaseObject', 'LoginFirebaseService', 'ScannerService'];
+    FirebaseService.$inject = ['firebase_url', '$firebaseObject', 'LoginFirebaseService', 'ScannerService'];
 
-    function FirebaseService($firebaseObject, LoginFirebaseService, ScannerService){
-
+    function FirebaseService(firebase_url, $firebaseObject, LoginFirebaseService, ScannerService){
       var service = {
-        rootRef : new Firebase('https://budgetest.firebaseio.com/'),
+        rootRef : new Firebase(firebase_url),
         getCarInfo: getCarInfo,
         fillNewRevisionData: fillNewRevisionData,
         pushNewRevision: pushNewRevision,
@@ -18,8 +17,8 @@
         currentCarId: ScannerService.getCode(),
         currentRevisionId: null,
         newRevision: {}
-      }
-      return service
+      };
+      return service;
 
 
       function getCarInfo(){

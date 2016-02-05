@@ -9,7 +9,7 @@
     
     function ExtraPartsService($firebaseObject,CarInfoFirebaseService){
       this.pushNewItems = pushNewItems;
-      var rootRef  = new Firebase('https://budgetest.firebaseio.com/');
+      var rootRef  = new Firebase('https://budget-cr.firebaseio.com/');
       
       return this;
 

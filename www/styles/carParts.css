@@ -1,23 +1,34 @@
 .page-title{
   text-align: center;
-  padding-top: 2.5em;
+  padding-top: 2em;
   font-size: 3em;
   padding-bottom: 1em;
   color: white;
+  font-weight: bold;
 }
 
 .checkboxes-wrapper{
   padding-top: 3em;
-  width: 30em;
+  width: 80%;
+  height: 60%;
   padding-bottom: 5em;
 }
 
 #left-column{
   float: left;
+  height: 100%;
+  width: 50%;
 }
 
 #right-column{
-  float:right;
+  float: right;
+  height: 100%;
+  width: 42%;
+}
+
+.checkbox-item{
+  font-size: 1.2em;
+  margin-top: 2em;
 }
 
 .checkbox-label{
@@ -45,10 +56,14 @@ input[type='checkbox']:checked {
   text-align: center;
 }
 
-.button{
-  width: 15em;
+.btn-carParts{
+  width: 80%;
   background-color: #FF5907;
-  color: white;;
+  color: white;
+  font-weight: bold;
+  height: 3em;
+  font-size: 1.5em;
+  border-radius: 0.5em;
 }
 
 .button:hover{

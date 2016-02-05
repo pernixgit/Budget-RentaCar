@@ -1,9 +1,10 @@
 .container-principal {
-  margin-top: 50%;
+  margin-top: 15%;
+  height: 75%;
 }
 
 .select-places {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
   position: relative;
   display: table;
@@ -20,6 +21,13 @@ option:not(:checked) {
   background-color: #E9A042; 
 }
 
+.title-carDeliveryInfo{
+  margin: 15% auto !important;
+  display: table;
+  font-weight: bold;
+  color: white;
+}
+
 .container-mileage {
   width: 30% !important;
   margin: 0 auto !important;
@@ -31,15 +39,11 @@ option:not(:checked) {
   background-color: white !important;
 }
 
-.continue-button-container{
-  margin-top: 8em;
-}
-
 .button-revision-car {
-  width: 20em;
-  border-radius: 1em;
+  width: 80%;
+  border-radius: 0.5em;
   size: 5em;
-  height: 4em;
+  height: 3em;
 }
 
 .input-label {
@@ -68,7 +72,7 @@ option:not(:checked) {
 .select-gas {
   border-radius: 0.5em;  
   color: white;
-  width: 8em;
+  width: 80%;
   margin: 0 auto;
   display: table;
   font-size: 2em;
@@ -79,19 +83,33 @@ option:not(:checked) {
   background-color: rgb(231,160,65);
 }
 
+.continue-button-container{
+  margin-top: 27%;
+}
+
 @media only screen 
 and (min-width :850px) {
+
+  .container-principal {
+    margin-top: -8%;
+  }
+  
   .continue-button-container {
     margin-top: auto;
   }
   .button-revision-car{
     font-size: 1.5em;
   }
-}
 
-@media only screen 
-and (min-width :850px) {
-  .container-principal {
-    margin-top: 10%;
+  .continue-button-container{
+    margin-top: 15%;
+  }
+
+  .title-carDeliveryInfo{
+    margin-top: 4em !important;
+  }
+
+  .continue-button-container{
+    margin-top: 0%;
   }
 }
