@@ -121,7 +121,7 @@
       }
 
       function getPoint(event) {
-        return new Point(event.x, event.y);      
+        return new Point(event.x, event.y-5);      
       }   
   }
 })();

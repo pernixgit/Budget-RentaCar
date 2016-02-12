@@ -4,9 +4,9 @@
   angular
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
-    LoginController.$inject = [ '$state', '$ionicPopup','LoginFirebaseService'];
+    LoginController.$inject = ['$state', '$ionicPopup','LoginFirebaseService'];
 
-    function LoginController( $state, $ionicPopup, LoginFirebaseService) {
+    function LoginController($state, $ionicPopup, LoginFirebaseService) {
       var vm = this;
       vm.authenticate = authenticate;
 
