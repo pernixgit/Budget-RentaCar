@@ -5,42 +5,45 @@
     .module('budgetrentacar.carView')
     .service('CarViewService', CarViewService);
 
-    CarViewService.$inject = ['CarInfoFirebaseService'];
+  CarViewService.$inject = ['CarInfoFirebaseService', 'FIREBASE_URL'];
 
-    function CarViewService(CarInfoFirebaseService){
-      
-      this.observationsArray = [];
-      this.pushObservations = pushObservations;
-      this.pushObservationsIdToCurrentRevision = pushObservationsIdToCurrentRevision;
-      this.resetObservations = resetObservations;
-      
-      var rootRef = new Firebase('https://budget-cr.firebaseio.com/');
+  function CarViewService(CarInfoFirebaseService, FIREBASE_URL) {
 
-      return this;
+    this.observationsArray = [];
+    this.pushObservations = pushObservations;
+    this.pushObservationIdToCurrentRevision =
+      pushObservationIdToCurrentRevision;
+    this.resetObservations = resetObservations;
 
-      function pushObservations(){
-        var reference = rootRef.child('observations');
-        var pushingObservations = angular.copy(this.observationsArray);
-        removeCircleIdProperty(pushingObservations);
-        var pushRef = reference.push(pushingObservations);
-        pushObservationsIdToCurrentRevision(pushRef.key());
-      }
+    var rootRef = new Firebase(FIREBASE_URL);
 
-      function removeCircleIdProperty(observations){
-        angular.forEach(observations, function(element){
-          delete element.circleID;
-        });
-      }
+    return this;
 
-      function resetObservations(){
-        this.observationsArray = [];
-      }
-
-      function pushObservationsIdToCurrentRevision(id){
-        var reference = rootRef.child('revisions').child(CarInfoFirebaseService.currentRevisionId);
-        reference.update({
-          observations: id
-        });
-      }
+    function pushObservations() {
+      var reference = rootRef.child('observations');
+      var pushingObservations = angular.copy(this.observationsArray);
+      removeCircleIdProperty(pushingObservations);
+      var pushRef = reference.push(pushingObservations);
+      pushObservationIdToCurrentRevision(pushRef.key());
     }
+
+    function removeCircleIdProperty(observations) {
+      angular.forEach(observations, function(element) {
+        delete element.circleID;
+      });
+    }
+
+    function resetObservations() {
+      this.observationsArray = [];
+    }
+
+    function pushObservationIdToCurrentRevision(id) {
+      var reference = rootRef
+        .child('revisions')
+        .child(CarInfoFirebaseService.currentRevisionId);
+      reference.update({
+        observations: id
+      });
+    }
+  }
 })();

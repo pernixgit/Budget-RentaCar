@@ -12,7 +12,7 @@
     $stateProvider
       .state('scanner-error', {
         url: '/scanner-error',
-        templateUrl: 'app/scanner-error/scanner.error.html', 
+        templateUrl: 'app/scanner-error/scanner.error.html',
         controller: 'ScannerErrorController',
         controllerAs: 'vm',
         cache: false

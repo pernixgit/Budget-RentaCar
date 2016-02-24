@@ -12,12 +12,9 @@ module.exports = function(config) {
       './www/lib/angularfire/dist/angularfire.min.js',
       './www/lib/angular-animate/angular-animate.min.js',
       './www/lib/angular-sanitize/angular-sanitize.min.js',
-      
       './www/app/**/*.module.js',
       './www/app/**/*.js',
       './www/app/*.js',
-
-
       './tests/specs/**/*.spec.js',
     ],
 

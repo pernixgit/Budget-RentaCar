@@ -5,19 +5,23 @@
   .module('budgetrentacar.tireRevision')
   .controller('TireRevisionController', TireRevisionController);
 
-  TireRevisionController.$inject = ['$state', 'CarDeliveryInfoFirebaseService', 'CarInfoFirebaseService'];
+  TireRevisionController.$inject = ['$state',
+                                    'CarDeliveryInfoFirebaseService',
+                                    'CarInfoFirebaseService'];
 
-  function TireRevisionController($state, CarDeliveryInfoFirebaseService, CarInfoFirebaseService) {
+  function TireRevisionController($state,
+                                  CarDeliveryInfoFirebaseService,
+                                  CarInfoFirebaseService) {
     var vm = this;
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToCarView = goToCarView;
-    vm.currentCarTraction = '4x2';
+    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
 
     vm.items = {
-      rightFrontTireSelectedOption: {id:'1', name: 'Bridgestone'},
-      leftFrontTireSelectedOption: {id:'1', name: 'Bridgestone'},
-      leftBackTireSelectedOption: {id:'1', name: 'Bridgestone'},
-      rightBackTireSelectedOption: {id:'1', name: 'Bridgestone'}
+      rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
+      leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
+      leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
+      rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'}
     };
 
     vm.tireBrands = [
@@ -34,20 +38,22 @@
     {id: '10', name: 'Otros'}
     ];
 
-    function resetFields(){
+    function resetFields() {
       vm.items = {
-        rightFrontTireSelectedOption: {id:'1', name: 'Bridgestone'},
-        leftFrontTireSelectedOption: {id:'1', name: 'Bridgestone'},
-        leftBackTireSelectedOption: {id:'1', name: 'Bridgestone'},
-        rightBackTireSelectedOption: {id:'1', name: 'Bridgestone'}
+        rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
+        leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
+        leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
+        rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'}
       };
     }
 
-    function goToCarView(){
-      CarDeliveryInfoFirebaseService.pushNewItems({right_front_tire: vm.items.rightFrontTireSelectedOption.name, 
-        left_front_tire: vm.items.leftFrontTireSelectedOption.name, 
-        right_back_tire: vm.items.rightBackTireSelectedOption.name, 
-        left_back_tire: vm.items.leftBackTireSelectedOption.name});
+    function goToCarView() {
+      CarDeliveryInfoFirebaseService
+        .pushNewItems(
+          {rightFrontTire: vm.items.rightFrontTireSelectedOption.name,
+            leftFrontTire: vm.items.leftFrontTireSelectedOption.name,
+            rightBackTire: vm.items.rightBackTireSelectedOption.name,
+            leftBackTire: vm.items.leftBackTireSelectedOption.name});
       resetFields();
       $state.go('carView');
     }

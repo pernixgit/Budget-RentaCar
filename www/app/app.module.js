@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -15,7 +15,7 @@
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner',
       'budgetrentacar.scanner.error',
-      'ngCordova', 
+      'ngCordova',
       'budgetrentacar.carParts',
       'budgetrentacar.extraParts'
     ]);

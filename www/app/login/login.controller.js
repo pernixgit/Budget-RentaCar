@@ -1,40 +1,42 @@
 (function() {
-	'use strict'
+  'use strict';
 
   angular
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
-    LoginController.$inject = ['$state', '$ionicPopup','LoginFirebaseService'];
 
-    function LoginController($state, $ionicPopup, LoginFirebaseService) {
-      var vm = this;
-      vm.authenticate = authenticate;
+  LoginController.$inject = ['$state', '$ionicPopup','LoginFirebaseService'];
 
-      function authSuccess() {
-        $state.go('scanner');
-      }
+  function LoginController($state, $ionicPopup, LoginFirebaseService) {
+    var vm = this;
+    vm.authenticate = authenticate;
 
-      function authError() {
-        $ionicPopup.alert({
-          title: ' Error de Autenticación',
-          template: ' Autenticación Invalida'
-        });
-      }
+    function authSuccess() {
+      $state.go('scanner');
+    }
 
-      function authenticate(username, password){
-        var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
-        firebaseReference.on("value", function(snapshot) {
-          try{
-            if(username === snapshot.val().username && password === snapshot.val().password){
-              authSuccess();
-              LoginFirebaseService.username = username;
-            }else{
-              authError();
-            }
-          }catch(err){
+    function authError() {
+      $ionicPopup.alert({
+        title: ' Error de Autenticación',
+        template: ' Autenticación Invalida'
+      });
+    }
+
+    function authenticate(username, password) {
+      var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
+      firebaseReference.on('value', function(snapshot) {
+        try {
+          if (username === snapshot.val().username &&
+            password === snapshot.val().password) {
+            authSuccess();
+            LoginFirebaseService.username = username;
+          }else {
             authError();
           }
-        })
-      } 
-    };
+        }catch (err) {
+          authError();
+        }
+      });
+    }
+  };
 })();
