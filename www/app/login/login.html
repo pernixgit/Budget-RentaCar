@@ -1,20 +1,24 @@
-<link href="styles/login.css" rel="stylesheet">
-<div class="background-initial-page">
-  <img src="assets/images/budget_logo.png" class="budget-logo"/>
+<div class="bar header-bar bar-assertive">
+    <h1 class="title"></h1>
+</div>
+<ion-content>
+  <div class="content has-header padding login-content">
+    <img src="assets/images/budget_logo.png" class="budget-logo"/>
     <form>
-      <div class="control-group login_wrapper">
-        <label class="user-information-box item item-input">
-          <span class="input-label" for="username"> Usuario </span>
-          <input type="text" name="username" ng-model="vm.username" required />
+      <div class="list list-inset login-wrapper">
+        <label class="item item-input">
+          <i class="icon ion-person placeholder-icon"></i>
+          <input type="text" placeholder="Usuario" ng-model="vm.username" required />
         </label>
-        <label class=" user-information-box item item-input">
-            <span class="input-label"> Contraseña </span>
-            <input type="password" name="password" ng-model="vm.password" required/>
+        <label class="item item-input">
+          <i class="icon ion-key placeholder-icon"></i>
+          <input type="password" placeholder="Contraseña" ng-model="vm.password" required/>
         </label>
         <br/>
         <p align="center">
-          <button class="button-primary btn-login" type="submit" ng-click="vm.authenticate(vm.username, vm.password)"> Iniciar </button>
+          <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="vm.authenticate(vm.username, vm.password)"> Login </button>
         </p>
-    </div>
+      </div>
     </form>
-</div>
+  </div>
+</ion-content>

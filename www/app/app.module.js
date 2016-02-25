@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -15,9 +15,8 @@
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner',
       'budgetrentacar.scanner.error',
-      'ngCordova', 
+      'ngCordova',
       'budgetrentacar.carParts',
-      'budgetrentacar.feedback',
-      'budgetrentacar.extraParts'
+      'budgetrentacar.feedback'
     ]);
 })();

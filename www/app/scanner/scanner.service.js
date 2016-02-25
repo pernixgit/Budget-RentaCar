@@ -5,20 +5,19 @@
     .module('budgetrentacar.scanner')
     .service('ScannerService', ScannerService);
 
-    ScannerService.$inject = [];
+  ScannerService.$inject = [];
 
-    function ScannerService(){
-      
-      this.code = "";
-      
-      this.setCode = function(data){
-        this.code = parseInt(data).toString();
-      };
+  function ScannerService() {
 
-      this.getCode = function() {
-          return this.code;
-      };
-
-      return this;
+    this.code = '';
+    this.setCode = function(data) {
+      this.code = parseInt(data).toString();
     };
+
+    this.getCode = function() {
+      return this.code;
+    };
+
+    return this;
+  }
 })();

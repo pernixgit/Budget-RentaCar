@@ -4,11 +4,11 @@
 
   angular
     .module('budgetrentacar.feedback')
-    .controller('Feedback', Feedback);
+    .controller('Feedback', FeedbackController);
 
-  Feedback.$inject = ['FeedbackService'];
+  FeedbackController.$inject = ['FeedbackService', '$state'];
 
-  function Feedback(FeedbackService){
+  function FeedbackController(FeedbackService, $state){
     var vm = this;
     vm.endRevision = endRevision;
 
@@ -23,6 +23,7 @@
 
     function endRevision(feedback){
       FeedbackService.pushFeedback(feedback);
+      $state.go('login');
     }
 
   } 
