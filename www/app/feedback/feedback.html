@@ -1,0 +1,50 @@
+<div class="bar header-bar bar-assertive">
+    <h1 class="title"> Feedback </h1>
+</div>
+<ion-content>
+    <div class="list list-inset has-header">
+        <div class="item item-divider">
+            Overall value for money?
+        </div>
+        <ion-radio ng-model="vm.feedback.valueMoney" ng-value="'yes'">Yes</ion-radio>
+        <ion-radio ng-model="vm.feedback.valueMoney" ng-value="'no'">No</ion-radio>
+        <label class="item item-input">
+            <textarea ng-model="vm.feedback.improve" placeholder="What can we improve?"></textarea>
+        </label>
+    </div>
+    <div class="list list-inset has-header">
+        <div class="item item-divider">
+            How likely are you to recommend us to a friend colleague?
+        </div>
+        <div class="item range range-assertive">
+            <i class="icon ion-sad-outline budget-orange-color"></i>
+            <input type="range" name="recommendation" min="1" max="10" ng-model="vm.feedback.recommendation">
+            <i class="icon ion-happy-outline budget-orange-color"></i>
+            <div class="range-bar-value">{{vm.feedback.recommendation}}</div>
+        </div>
+    </div>
+    <div class="list list-inset has-header">
+        <div class="item item-divider">
+            In general how would you rate our costumer service?
+        </div>
+        <div class="item range range-assertive">
+            <i class="icon ion-sad-outline budget-orange-color"></i>
+            <input class="orange-color" type="range" name="recommendation" min="1" max="10" ng-model="vm.feedback.rate">
+            <i class="icon ion-happy-outline budget-orange-color"></i>
+            <div class="range-bar-value">{{vm.feedback.rate}}</div>
+        </div>
+    </div>
+    <div class="list list-inset has-header">
+        <div class="item item-divider">
+            Would you use our service again?
+        </div>
+        <ion-radio ng-model="vm.feedback.again" ng-value="'yes'">Yes</ion-radio>
+        <ion-radio ng-model="vm.feedback.again" ng-value="'no'">No</ion-radio>
+        <label class="item item-input">
+            <textarea ng-model="vm.feedback.againReason" placeholder="Why?"></textarea>
+        </label>
+        <button class="button button-full budget-orange-button" ng-click="vm.endRevision(vm.feedback)">
+            Submit Feedback
+        </button>
+    </div>
+</ion-content>

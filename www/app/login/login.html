@@ -1,0 +1,24 @@
+<div class="bar header-bar bar-assertive">
+    <h1 class="title"></h1>
+</div>
+<ion-content>
+  <div class="content has-header padding login-content">
+    <img src="assets/images/budget_logo.png" class="budget-logo"/>
+    <form>
+      <div class="list list-inset login-wrapper">
+        <label class="item item-input">
+          <i class="icon ion-person placeholder-icon"></i>
+          <input type="text" placeholder="Usuario" ng-model="vm.username" required />
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-key placeholder-icon"></i>
+          <input type="password" placeholder="Contraseña" ng-model="vm.password" required/>
+        </label>
+        <br/>
+        <p align="center">
+          <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="vm.authenticate(vm.username, vm.password)"> Login </button>
+        </p>
+      </div>
+    </form>
+  </div>
+</ion-content>
