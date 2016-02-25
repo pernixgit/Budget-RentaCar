@@ -1,9 +1,9 @@
-(function () {
+(function() {
   'use strict';
 
   angular
     .module('budgetrentacar')
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
         .state('login', {
           url: '/',
@@ -11,7 +11,7 @@
           controller: 'LoginController',
           controllerAs: 'vm',
           cache: false
-        })
+        });
       $urlRouterProvider.otherwise('/');
     });
 })();

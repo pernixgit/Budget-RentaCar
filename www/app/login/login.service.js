@@ -5,14 +5,15 @@
     .module('budgetrentacar.login')
     .service('LoginFirebaseService', LoginFirebaseService);
 
-    LoginFirebaseService.$inject = ['firebase_url'];
+  LoginFirebaseService.$inject = ['FIREBASE_URL'];
 
-    function LoginFirebaseService(firebase_url){
-      this.firebaseRef = null;
-      this.username = null;
-      this.setupFirebaseRef = function(userName){
-        return this.firebaseRef = new Firebase(firebase_url + "/users/" + userName);
-      }
+  function LoginFirebaseService(FIREBASE_URL) {
+    this.firebaseRef = null;
+    this.username = null;
+    this.setupFirebaseRef = function(userName) {
+      return this.firebaseRef =
+        new Firebase(FIREBASE_URL + '/users/' + userName);
+    };
     return this;
-    }
+  }
 })();
