@@ -7,13 +7,12 @@
 
   ScannerErrorController.$inject = ['$state'];
 
-    function ScannerErrorController($state) {
-      var vm = this;
-      
-      vm.redirectToScanner = redirectToScanner;
+  function ScannerErrorController($state) {
+    var vm = this;
+    vm.redirectToScanner = redirectToScanner;
 
-      function redirectToScanner(){ 
-        $state.go('scanner');
-      };
-    }
+    function redirectToScanner() {
+      $state.go('scanner');
+    };
+  }
 })();

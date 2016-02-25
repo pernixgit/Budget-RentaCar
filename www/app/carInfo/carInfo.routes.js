@@ -11,7 +11,7 @@
   function config($stateProvider) {
     $stateProvider
       .state('carInfo', {
-        url: '/carinfo',
+        url: '/carInfo',
         templateUrl: 'app/carInfo/carInfo.html',
         controller: 'CarInfoController',
         controllerAs: 'vm',

@@ -6,9 +6,9 @@
     .module('budgetrentacar.feedback')
     .controller('Feedback', Feedback);
 
-  Feedback.$inject = ['FeedbackService'];
+  Feedback.$inject = ['FeedbackService', '$state'];
 
-  function Feedback(FeedbackService){
+  function Feedback(FeedbackService, $state){
     var vm = this;
     vm.endRevision = endRevision;
 
@@ -23,6 +23,7 @@
 
     function endRevision(feedback){
       FeedbackService.pushFeedback(feedback);
+      $state.go('login');
     }
 
   } 

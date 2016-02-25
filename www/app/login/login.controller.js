@@ -1,42 +1,42 @@
 (function() {
-	'use strict'
+  'use strict';
 
   angular
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
-    LoginController.$inject = [ '$state', '$ionicPopup','LoginFirebaseService'];
 
-    function LoginController( $state, $ionicPopup, LoginFirebaseService) {
-      var vm = this;
-      vm.user = { };
+  LoginController.$inject = ['$state', '$ionicPopup','LoginFirebaseService'];
 
-      vm.authSuccess = function() {
-        vm.user = { };
-        $state.go('scanner');
-      }
+  function LoginController($state, $ionicPopup, LoginFirebaseService) {
+    var vm = this;
+    vm.authenticate = authenticate;
 
-      vm.authError = function() {
-        $ionicPopup.alert({
-          title: ' Error de Autenticación',
-          template: ' Autenticación Invalida'
-        });
-      }
+    function authSuccess() {
+      $state.go('scanner');
+    }
 
-      vm.authenticate = function(username, password){
-        var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
-        firebaseReference.on("value", function(snapshot) {
-          try{
-            if(username === snapshot.val().username && password === snapshot.val().password){
-              vm.authSuccess();
-              LoginFirebaseService.username = username;
-            }else{
-              
-              vm.authError();
-            }
-          }catch(err){
-            vm.authError();
+    function authError() {
+      $ionicPopup.alert({
+        title: ' Error de Autenticación',
+        template: ' Autenticación Invalida'
+      });
+    }
+
+    function authenticate(username, password) {
+      var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
+      firebaseReference.on('value', function(snapshot) {
+        try {
+          if (username === snapshot.val().username &&
+            password === snapshot.val().password) {
+            authSuccess();
+            LoginFirebaseService.username = username;
+          }else {
+            authError();
           }
-        })
-      } 
-    };
+        }catch (err) {
+          authError();
+        }
+      });
+    }
+  };
 })();

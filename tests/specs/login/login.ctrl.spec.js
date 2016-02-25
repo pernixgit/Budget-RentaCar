@@ -8,11 +8,13 @@ describe('Login Controller', function() {
     scope = $rootScope.$new();
     stateMock = jasmine.createSpyObj('$state spy', ['go']);
     ionicPopupMock = jasmine.createSpyObj('$ionicPopup spy', ['alert']);
+    loginFirebaseServiceMock = jasmine.createSpyObj('LoginFirebaseService spy', ['setupFirebaseRef']);
 
      ctrl = $controller('LoginController', {
       $scope: scope,
       $ionicPopup: ionicPopupMock,
       $state: stateMock,
+      LoginFirebaseService: loginFirebaseServiceMock
     });
      
   }));
