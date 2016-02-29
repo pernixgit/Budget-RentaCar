@@ -13,3 +13,7 @@
   stroke: #ED5505 !important;
   fill: #ED5505 !important;
 }
+
+#subheader{
+	font-weight: bold;
+}
