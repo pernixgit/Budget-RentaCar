@@ -12,7 +12,7 @@
     var rootRef  = new Firebase('https://budget-cr.firebaseio.com/');
 
     function pushFeedback(feedback){
-      var reference = rootRef.child('revisions').child(CarInfoFirebaseService.currentRevisionId).child('feedback');
+      var reference = rootRef.child('feedback').child(CarInfoFirebaseService.currentRevisionId);
       reference.update(feedback);
     }   
   }
