@@ -199,11 +199,11 @@
 
     function appendDamage() {
       var canvasItem = createCanvasItemObject(
-                          shape.id,
-                          vm.currentDamage.part.name,
-                          vm.currentDamage.damageType.name,
-                          shape.exportJSON({asString: true})
-                        );
+        shape.id,
+        vm.currentDamage.part.name,
+        vm.currentDamage.damageType.name,
+        shape.exportJSON({asString: true})
+      );
       CarViewService.addDamageToCanvasComponents(canvasItem);
       resetCurrentObservation();
       shape = null;

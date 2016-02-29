@@ -15,9 +15,11 @@
       'budgetrentacar.tireRevision',
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner',
+      'budgetrentacar.services',
       'budgetrentacar.scanner.error',
       'ngCordova',
       'budgetrentacar.carParts',
-      'budgetrentacar.feedback'
+      'budgetrentacar.feedback',
+      'pascalprecht.translate'
     ]);
 })();

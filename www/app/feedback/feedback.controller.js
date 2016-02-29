@@ -6,12 +6,14 @@
     .module('budgetrentacar.feedback')
     .controller('Feedback', FeedbackController);
 
-  FeedbackController.$inject = ['FeedbackService', '$state'];
+  FeedbackController.$inject = ['FeedbackService', '$state', '$translate'];
 
-  function FeedbackController(FeedbackService, $state) {
+  function FeedbackController(FeedbackService, $state, $translate) {
     var vm = this;
     vm.endRevision = endRevision;
-
+    vm.active = 'ES';
+    vm.setActive = setActive;
+    vm.isActive = isActive;
     vm.feedback = {
       valueMoney: null,
       improve: null,
@@ -26,6 +28,13 @@
       $state.go('login');
     }
 
+    function setActive(type) {
+      vm.active = type;
+      $translate.use(type);
+    }
+
+    function isActive(type) {
+      return type === vm.active;
+    }
   }
 })();
-
