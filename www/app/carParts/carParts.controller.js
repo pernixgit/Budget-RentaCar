@@ -5,12 +5,13 @@
     .module('budgetrentacar.carParts')
     .controller('CarPartsController', CarPartsController);
 
-  CarPartsController.$inject = ['CarPartsService', '$state'];
+  CarPartsController.$inject = ['CarPartsService', 'CarInfoFirebaseService', '$state'];
 
-  function CarPartsController(CarPartsService, $state) {
+  function CarPartsController(CarPartsService, CarInfoFirebaseService, $state) {
     var vm = this;
     vm.CarPartsService = CarPartsService;
-    vm.goToExtras = goToExtras;
+    vm.CarInfoFirebaseService = CarInfoFirebaseService;
+    vm.goToEndOrFeedback = goToEndOrFeedback;
     vm.items = {
       'antenna': true,
       'legal-documents': true,
@@ -49,10 +50,15 @@
       };
     }
 
-    function goToExtras() {
+    function goToEndOrFeedback() {
       CarPartsService.pushNewItems(vm.items);
       resetItems();
-      $state.go('extraParts');
+      if(vm.CarInfoFirebaseService.carInfo.currentRevisionType == "check-in"){
+        $state.go('feedback');
+      }
+      else{  
+        $state.go('login');
+      }
     }
   }
 })();
