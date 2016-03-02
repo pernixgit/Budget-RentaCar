@@ -21,7 +21,8 @@
       rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
       leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
       leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'}
+      rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
+      extraTireSelectedOption: {id: '1', name: 'Bridgestone'}
     };
 
     vm.tireBrands = [
@@ -43,7 +44,9 @@
         rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
         leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
         leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'}
+        rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
+        extraTireSelectedOption: {id: '1', name: 'Bridgestone'}
+
       };
     }
 
@@ -53,7 +56,8 @@
           {rightFrontTire: vm.items.rightFrontTireSelectedOption.name,
             leftFrontTire: vm.items.leftFrontTireSelectedOption.name,
             rightBackTire: vm.items.rightBackTireSelectedOption.name,
-            leftBackTire: vm.items.leftBackTireSelectedOption.name});
+            leftBackTire: vm.items.leftBackTireSelectedOption.name,
+            extraTire: vm.items.extraTireSelectedOption.name});
       resetFields();
       $state.go('carView');
     }

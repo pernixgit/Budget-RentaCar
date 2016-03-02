@@ -41,6 +41,32 @@
   display: table;
 }
 
+#marginBottom{
+  margin-bottom: 1%;
+}
+
+#marginRight{
+  margin-right: 2%;
+}
+
+#marginLeft{
+  margin-left: 2%;
+}
+
+#marginTop{
+  margin-top: 1%;
+}
+
+#extraSelect{
+  width:58%;
+}
+
+.spareTireText{
+  text-align: center;
+  font-weight: bolder;
+  color: #1C2D5D;
+}
+
 @media only screen 
 and (max-height:420px) {
   .imgTire4x4{
