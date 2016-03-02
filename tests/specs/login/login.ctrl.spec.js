@@ -3,18 +3,29 @@ describe('Login Controller', function() {
 
   beforeEach(module('ui.router'));
   beforeEach(module('budgetrentacar.login'));
+
+  beforeEach(module(function ($provide) {
+        $provide.constant('FIREBASE_URL', 'https://budget-cr.firebaseio.com');
+    }));
+  
+  beforeEach(function() {
+      module(function($provide) {
+        $provide.service('LoginFirebaseService', function() {
+          return {'username': 'admin'};
+        });
+      });
+    });
+
   beforeEach(inject(function($controller, $rootScope){
     
     scope = $rootScope.$new();
     stateMock = jasmine.createSpyObj('$state spy', ['go']);
     ionicPopupMock = jasmine.createSpyObj('$ionicPopup spy', ['alert']);
-    loginFirebaseServiceMock = jasmine.createSpyObj('LoginFirebaseService spy', ['setupFirebaseRef']);
 
      ctrl = $controller('LoginController', {
       $scope: scope,
       $ionicPopup: ionicPopupMock,
       $state: stateMock,
-      LoginFirebaseService: loginFirebaseServiceMock
     });
      
   }));
