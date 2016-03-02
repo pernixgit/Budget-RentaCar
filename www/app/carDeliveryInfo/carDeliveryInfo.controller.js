@@ -55,8 +55,8 @@
 
     function goToTireRevision() {
       var deliveryInfo = createDeliveryInfoObject(vm.km,
-                                                  vm.deliveryInfo.deliveryPlaceSelected.name,
-                                                  vm.deliveryInfo.gasLevelSelected.name);
+                                                  vm.deliveryPlaceSelected.name,
+                                                  vm.gasLevelSelected.name);
       RevisionService.setCarDeliveryInfo(deliveryInfo);
       resetFields();
       $state.go('tireRevision');

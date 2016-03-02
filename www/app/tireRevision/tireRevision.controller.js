@@ -5,55 +5,64 @@
   .module('budgetrentacar.tireRevision')
   .controller('TireRevisionController', TireRevisionController);
 
-  TireRevisionController.$inject = ['$state',
+  TireRevisionController.$inject = ['SELECTED_TIRES',
+                                    'TIRE_BRANDS',
+                                    '$state',
+                                    'CarDeliveryInfoFirebaseService',
                                     'CarInfoFirebaseService',
+                                    'LastRevisionService',
                                     'RevisionService'];
 
-  function TireRevisionController($state,
+  function TireRevisionController(SELECTED_TIRES,
+                                  TIRE_BRANDS,
+                                  $state,
+                                  CarDeliveryInfoFirebaseService,
                                   CarInfoFirebaseService,
+                                  LastRevisionService,
                                   RevisionService) {
     var vm = this;
+    vm.LastRevisionService = LastRevisionService;
+    vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToCarView = goToCarView;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
+    vm.tireBrands = TIRE_BRANDS;
+    vm.selectedTires = SELECTED_TIRES;
 
-    vm.deliveryOptions = {
-      rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'}
-    };
+    function activate() {
 
-    vm.tireBrands = [
-      {id: '0', name: 'Dunlop'},
-      {id: '1', name: 'Bridgestone'},
-      {id: '2', name: 'Yokohama'},
-      {id: '3', name: 'Firestone'},
-      {id: '4', name: 'Pirelli'},
-      {id: '5', name: 'Kumho'},
-      {id: '6', name: 'Hankook'},
-      {id: '7', name: 'Goodyear'},
-      {id: '8', name: 'Michelin'},
-      {id: '9', name: 'Toyo'},
-      {id: '10', name: 'Otros'}
-    ];
+      var revision = vm.LastRevisionService.revision;
+      if(revision) {
+        vm.selectedTires.rightFrontTireSelectedOption = compareTires(revision.tires.right_front);
+        vm.selectedTires.leftFrontTireSelectedOption = compareTires(revision.tires.left_front);
+        vm.selectedTires.leftBackTireSelectedOption = compareTires(revision.tires.left_rear);
+        vm.selectedTires.rightBackTireSelectedOption = compareTires(revision.tires.right_rear);
+        vm.selectedTires.extraTireSelectedOption = compareTires(revision.tires.spare);
+      }else{
+        vm.selectedTires.rightFrontTireSelectedOption = SELECTED_TIRES[0].rightFrontTireSelectedOption;
+        vm.selectedTires.leftFrontTireSelectedOption = SELECTED_TIRES[1].leftFrontTireSelectedOption;
+        vm.selectedTires.leftBackTireSelectedOption = SELECTED_TIRES[2].leftBackTireSelectedOption;
+        vm.selectedTires.rightBackTireSelectedOption = SELECTED_TIRES[3].rightBackTireSelectedOption;
+        vm.selectedTires.extraTireSelectedOption = SELECTED_TIRES[4].extraTireSelectedOption;
+      }
+    }
+    activate();
 
-    function resetFields() {
-      vm.deliveryOptions = {
-        rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'}
-      };
+    function compareTires(tireName) {
+      for(var position = 0; position < vm.tireBrands.length; position++) {
+        if (tireName === vm.tireBrands[position].name){
+          return vm.tireBrands[position];
+        }
+      }
     }
 
     function goToCarView() {
       RevisionService.setCarTires({
-        right_front: vm.deliveryOptions.rightFrontTireSelectedOption.name,
-        left_front: vm.deliveryOptions.leftFrontTireSelectedOption.name,
-        right_rear: vm.deliveryOptions.rightBackTireSelectedOption.name,
-        left_rear: vm.deliveryOptions.leftBackTireSelectedOption.name
+        right_front: vm.selectedTires.rightFrontTireSelectedOption,
+        left_front: vm.selectedTires.leftFrontTireSelectedOption,
+        right_rear: vm.selectedTires.rightBackTireSelectedOption,
+        left_rear: vm.selectedTires.leftBackTireSelectedOption,
+        spare: vm.selectedTires.extraTireSelectedOption
       });
-      resetFields();
       $state.go('carView');
     }
   }
