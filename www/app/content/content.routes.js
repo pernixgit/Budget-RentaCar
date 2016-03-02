@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.carView')
+    .module('budgetrentacar.content')
     .config(config);
 
   config.$inject = ['$stateProvider'];
@@ -11,9 +11,9 @@
   function config($stateProvider) {
     $stateProvider
       .state('content', {
-        url: '/conent',
+        url: '/content',
         templateUrl: 'app/content/content.html',
-        controller: 'contentController',
+        controller: 'ContentController',
         controllerAs: 'vm',
         cache: false
       });

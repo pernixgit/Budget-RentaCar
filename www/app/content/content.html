@@ -1,14 +1,12 @@
 <div class="list offset">
-	<div class="card round">
-	  <label class="item item-input item-stacked-label center">
-	    <span class="label center">Parte del auto</span><br>
-	    <input type="" ng-model="currentObservation.part" placeholder="" required>
-	  </label>
-	</div>
-	<div class="card round">
-	  <label class="item item-input item-stacked-label center">
-	    <span class="label">Observación</span><br>
-	    <input type="" ng-model="currentObservation.description" placeholder="" required>
-	  </label>	  
-	</div>
+  <div class="card round">
+    <label> Parte </label>
+    <select class="item-energized damage-select" ng-options="option.name for option in parts track by option.id" ng-model="currentObservation.part">
+    </select>
+  </div>
+  <div class="card round">
+    <label> Daño </label>
+    <select class="item-energized damage-select" ng-options="option.name for option in damageOptions track by option.id" ng-model="currentObservation.damageType">
+    </select>
+  </div>
 </div>

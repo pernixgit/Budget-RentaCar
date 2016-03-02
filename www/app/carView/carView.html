@@ -1,17 +1,17 @@
 <div class="bar header-bar bar-assertive">
   <h1 class="title">Revisión de llantas</h1>
 </div>
-<ion-content class="has-header list-inset">
+<ion-content class="has-header list-inset"  ng-controller="CanvasController">
   <div class="canvas-wrapper">
     <div class="image-container">
       <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" ng-class="{'canvas4x4': currentCarTraction == '4x4','canvas4x2': currentCarTraction == '4x2'}"></canvas>
     </div>
   </div>
   <div class="observations-wrapper">
-    <ion-scroll zooming="false" direction="y" class="pad">
-      <ion-list show-delete="shouldShowDelete">
+    <ion-scroll zooming="false" direction="y">
+      <ion-list show-delete=true>
         <ion-item ng-repeat="item in CarViewService.observationsArray" id="item.id" class="item-remove-animate">
-          <p>{{item.part}} {{item.description}}</p>
+          <p>{{item.part.name}} - {{item.damageType.name}}</p>
           <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"/>
         </ion-item>
       </ion-list>
