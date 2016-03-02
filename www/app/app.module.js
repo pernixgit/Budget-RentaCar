@@ -16,7 +16,6 @@
       'budgetrentacar.scanner',
       'budgetrentacar.scanner.error',
       'ngCordova',
-      'budgetrentacar.carParts',
-      'budgetrentacar.extraParts'
+      'budgetrentacar.carParts'
     ]);
 })();
