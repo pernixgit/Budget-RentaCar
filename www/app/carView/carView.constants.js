@@ -2,15 +2,15 @@
   'use strict';
   angular
     .module('budgetrentacar.carView')
-    .constant('damageOptions', [
+    .constant('DAMAGE_OPTIONS', [
       {'id': '0', 'name': 'Golpe'},
       {'id': '1', 'name': 'Rayon'},
       {'id': '2', 'name': 'Camanance'},
       {'id': '3', 'name': 'Raspon'}
       ])
-    .constant('damageTypeSelected', {'id': '0', 'name': 'Golpe'})
-    .constant('selectedPart', {'id': '0', 'name': 'Bumper Delantero'})
-    .constant('parts', [
+    .constant('DAMAGE_TYPE_SELECTED', {'id': '0', 'name': 'Golpe'})
+    .constant('SELECTED_PART', {'id': '0', 'name': 'Bumper Delantero'})
+    .constant('PARTS', [
       {'id': '0', 'name': 'Bumper Delantero'},
       {'id': '1', 'name': 'Bumper Trasero'},
       {'id': '2', 'name': 'Puerta Derecha Delantera'},

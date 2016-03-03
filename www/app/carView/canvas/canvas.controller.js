@@ -8,26 +8,29 @@
   CanvasController.$inject = ['$scope',
                               'CarViewService',
                               '$ionicPopup',
-                              'damageOptions',
-                              'damageTypeSelected',
-                              'parts',
-                              'selectedPart'];
+                              'DAMAGE_OPTIONS',
+                              'DAMAGE_TYPE_SELECTED',
+                              'PARTS',
+                              'SELECTED_PART',
+                              'LastRevisionService'];
 
   function CanvasController($scope,
                             CarViewService,
                             $ionicPopup,
-                            damageOptions,
-                            damageTypeSelected,
-                            parts,
-                            selectedPart) {
+                            DAMAGE_OPTIONS,
+                            DAMAGE_TYPE_SELECTED,
+                            PARTS,
+                            SELECTED_PART,
+                            LastRevisionService) {
 
     var vm = $scope;
     var shape;
-    vm.currentObservation = {};
-    vm.currentObservation.damageType = damageTypeSelected;
-    vm.currentObservation.part = selectedPart;
-    vm.damageOptions = damageOptions;
-    vm.parts = parts;
+    vm.currentDamage = {};
+    vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
+    vm.currentDamage.part = SELECTED_PART;
+    vm.damageOptions = DAMAGE_OPTIONS;
+    vm.parts = PARTS;
+    vm.LastRevisionService = LastRevisionService;
 
     activate();
 
@@ -42,10 +45,10 @@
     }
 
     function deleteShape(shapeId) {
-      var items = project._activeLayer.children;
-      for(var i = 0; i < items.length; i++){
-        if(items[i]._id == shapeId){
-          items[i].remove();
+      var canvasElements = project._activeLayer.children;
+      for (var position = 0; position < canvasElements.length; position++) {
+        if (canvasElements[position]._id == shapeId) {
+          canvasElements[position].remove();
         }
       }
       paper.view.update();
@@ -56,7 +59,7 @@
     };
 
     vm.showDialog = function(fromCanvas, event) {
-      var confirmPopup = $ionicPopup.confirm({
+      $ionicPopup.confirm({
         templateUrl: 'app/content/content.html',
         cssClass: 'popup',
         scope: vm ,
@@ -74,7 +77,7 @@
             onTap: function(e) {
               if (e) {
                 drawShape(event);
-                appendObservation(vm.currentObservation);
+                appendDamage();
               }
             }
           }]
@@ -82,17 +85,15 @@
     };
 
     vm.onItemDelete = function(observation) {
-      if (observation.shapeId) {
-        deleteShape(observation.shapeId);
-      }
-      var observationIndex;
-      observationIndex = CarViewService.observationsArray.indexOf(observation);
-      CarViewService.observationsArray.splice(observationIndex, 1);
+      var observationIndex = CarViewService
+        .canvasComponents
+        .indexOf(observation);
+      deleteShape(observation.shapeId);
       CarViewService.canvasComponents.splice(observationIndex, 1);
     };
 
     function drawShape(event) {
-      switch (vm.currentObservation.damageType.name) {
+      switch (vm.currentDamage.damageType.name) {
         case 'Golpe':
           drawDamage(event);
           break;
@@ -164,7 +165,6 @@
         strokeColor: '#ED5505',
         strokeWidth: 10
       });
-
     }
 
     function getPoint(event) {
@@ -175,62 +175,53 @@
 
     function importCanvasJson() {
       var layer = new Layer();
-      CarViewService.getDamages()
-        .then(function(snapshot) {
-        var damages = snapshot.val();
-        for (var position = 0; position < damages.length; position ++){
-          project._activeLayer.importJSON(damages[position].json);
-          addDamageToList(damages[position].part, damages[position].damageType, project._activeLayer.children[position]._id);
-          CarViewService
-            .canvasComponents.push(
-              createCanvasItemObject(
+      LastRevisionService.fetchData()
+        .then(function() {
+          var damages = LastRevisionService.currentCarLastDamages;
+
+          if (damages) {
+            for (var position = 0; position < damages.length; position++) {
+              project._activeLayer.importJSON(damages[position].json);
+
+              var canvasItem = createCanvasItemObject(
+                project._activeLayer.children[position].id,
                 damages[position].part,
                 damages[position].damageType,
-                damages[position].json)
-            );
-        }
-        paper.view.update();
-      });
+                damages[position].json);
+
+              CarViewService.addDamageToCanvasComponents(canvasItem);
+            }
+            paper.view.update();
+            vm.$apply();
+          }
+        });
     }
 
-    function addDamageToList(part, damageType, shapeId) {
-      var observation = {
-        part: {
-          name: part,
-        },
-        damageType: {
-          name: damageType,
-        },
-        shapeId: shapeId
-      };
-      CarViewService.observationsArray.push(observation);
-    }
-
-    function appendObservation(currentObservation) {
-      if (shape) {
-        currentObservation.shapeId = shape.id;
-      }
-      CarViewService.observationsArray.push(vm.currentObservation);
-      var canvasItem = createCanvasItemObject(vm.currentObservation.part.name,
-        vm.currentObservation.damageType.name,
-        shape.exportJSON({asString: true}))
-      CarViewService.canvasComponents.push(canvasItem);
+    function appendDamage() {
+      var canvasItem = createCanvasItemObject(
+                          shape.id,
+                          vm.currentDamage.part.name,
+                          vm.currentDamage.damageType.name,
+                          shape.exportJSON({asString: true})
+                        );
+      CarViewService.addDamageToCanvasComponents(canvasItem);
       resetCurrentObservation();
       shape = null;
     }
 
-    function createCanvasItemObject(part, damageType, json) {
+    function createCanvasItemObject(shapeId, part, damageType, json) {
       return {
+        shapeId: shapeId,
         part: part,
         damageType: damageType,
         json: json
-      }
+      };
     }
 
     function resetCurrentObservation() {
-      vm.currentObservation = {};
-      vm.currentObservation.damageType = damageTypeSelected;
-      vm.currentObservation.part = selectedPart;
+      vm.currentDamage = {};
+      vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
+      vm.currentDamage.part = SELECTED_PART;
     }
   }
 })();

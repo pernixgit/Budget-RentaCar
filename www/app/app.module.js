@@ -8,6 +8,7 @@
       'firebase',
       'ui.router',
       'budgetrentacar.login',
+      'budgetrentacar.services',
       'budgetrentacar.carView',
       'budgetrentacar.content',
       'budgetrentacar.carDeliveryInfo',
@@ -17,6 +18,6 @@
       'budgetrentacar.scanner.error',
       'ngCordova',
       'budgetrentacar.carParts',
-      'budgetrentacar.extraParts'
+      'budgetrentacar.feedback'
     ]);
 })();

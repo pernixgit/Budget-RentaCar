@@ -17,7 +17,7 @@
     var vm = $scope;
     vm.goToExteriorParts = goToExteriorParts;
     vm.CarViewService = CarViewService;
-    vm.currentCarTraction = '4x2';
+    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
 
     activate();
 
@@ -27,7 +27,7 @@
 
     function goToExteriorParts() {
       CarViewService.pushCarViewData();
-      //$state.go('carParts');
+      $state.go('carParts');
     }
 
   }

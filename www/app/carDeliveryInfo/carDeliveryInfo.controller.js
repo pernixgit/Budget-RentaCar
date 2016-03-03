@@ -16,7 +16,7 @@
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToTireRevision = goToTireRevision;
     vm.currentCarTraction = '4x2';
-    vm.items = {
+    vm.accesory = {
       deliverySelectedOption: {id: '1', name: 'Cacique'},
       gasSelectedOption: {id: '0', name: 'Vacio'},
     };
@@ -50,7 +50,7 @@
     ];
 
     function resetFields() {
-      vm.items = {deliverySelectedOption:
+      vm.accesory = {deliverySelectedOption:
       {id: '0', name: 'Seleccione el Lugar de Entrega'},
         gasSelectedOption: {id: '0', name: 'Vacio'},
         };
@@ -58,8 +58,8 @@
 
     function goToTireRevision() {
       CarDeliveryInfoFirebaseService.pushNewItems({
-        deliveryPlace: vm.items.deliverySelectedOption.name,
-        gas: vm.items.gasSelectedOption.name});
+        deliveryPlace: vm.accesory.deliverySelectedOption.name,
+        gas: vm.accesory.gasSelectedOption.name});
       resetFields();
       $state.go('tireRevision');
     }
