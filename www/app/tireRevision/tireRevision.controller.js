@@ -5,11 +5,11 @@
   .module('budgetrentacar.tireRevision')
   .controller('TireRevisionController', TireRevisionController);
 
-  TireRevisionController.$inject = ['$state',
+  TireRevisionController.$inject = ['ITEMS','TIREBRANDS','$state',
                                     'CarDeliveryInfoFirebaseService',
                                     'CarInfoFirebaseService'];
 
-  function TireRevisionController($state,
+  function TireRevisionController(ITEMS, TIREBRANDS, $state,
                                   CarDeliveryInfoFirebaseService,
                                   CarInfoFirebaseService) {
     var vm = this;
@@ -17,27 +17,9 @@
     vm.goToCarView = goToCarView;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
 
-    vm.items = {
-      rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-      extraTireSelectedOption: {id: '1', name: 'Bridgestone'}
-    };
+    vm.items = ITEMS;
 
-    vm.tireBrands = [
-    {id: '0', name: 'Dunlop'},
-    {id: '1', name: 'Bridgestone'},
-    {id: '2', name: 'Yokohama'},
-    {id: '3', name: 'Firestone'},
-    {id: '4', name: 'Pirelli'},
-    {id: '5', name: 'Kumho'},
-    {id: '6', name: 'Hankook'},
-    {id: '7', name: 'Goodyear'},
-    {id: '8', name: 'Michelin'},
-    {id: '9', name: 'Toyo'},
-    {id: '10', name: 'Otros'}
-    ];
+    vm.tireBrands = TIREBRANDS;
 
     function resetFields() {
       vm.items = {
