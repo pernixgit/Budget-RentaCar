@@ -8,6 +8,9 @@
     beforeEach(module('firebase'));
     beforeEach(module('budgetrentacar.carInfo'));
     beforeEach(module('budgetrentacar.carParts'));
+    beforeEach(module(function ($provide) {
+        $provide.constant('FIREBASE_URL', 'https://budget-cr.firebaseio.com');
+    }));
 
     beforeEach(function() {
       module(function($provide) {

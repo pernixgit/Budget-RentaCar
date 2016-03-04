@@ -3,6 +3,11 @@ describe('Login Controller', function() {
 
   beforeEach(module('ui.router'));
   beforeEach(module('budgetrentacar.login'));
+
+  beforeEach(module(function ($provide) {
+        $provide.constant('FIREBASE_URL', 'https://budget-cr.firebaseio.com');
+    }));
+  
   beforeEach(function() {
       module(function($provide) {
         $provide.service('LoginFirebaseService', function() {
