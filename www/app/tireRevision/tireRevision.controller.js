@@ -7,29 +7,44 @@
 
   TireRevisionController.$inject = ['ITEMS','TIREBRANDS','$state',
                                     'CarDeliveryInfoFirebaseService',
-                                    'CarInfoFirebaseService'];
+                                    'CarInfoFirebaseService', 'LastRevisionService'];
 
   function TireRevisionController(ITEMS, TIREBRANDS, $state,
                                   CarDeliveryInfoFirebaseService,
-                                  CarInfoFirebaseService) {
+                                  CarInfoFirebaseService, LastRevisionService) {
     var vm = this;
+    vm.LastRevisionService = LastRevisionService;
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToCarView = goToCarView;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
-
+    vm.tireBrands = TIREBRANDS;
     vm.items = ITEMS;
 
-    vm.tireBrands = TIREBRANDS;
+    var car = {type:"Fiat", model:"500", color:"white"};
+
+    function activate(){
+      vm.LastRevisionService.fetchData();
+      console.log(vm.LastRevisionService.currentCarLastRevision);
+      if(vm.LastRevisionService.currentCarLastRevision == null){
+        vm.items.rightFrontTireSelectedOption = ITEMS[0].rightFrontTireSelectedOption;
+        vm.items.leftFrontTireSelectedOption = ITEMS[1].leftFrontTireSelectedOption;
+        vm.items.leftBackTireSelectedOption = ITEMS[2].leftBackTireSelectedOption;
+        vm.items.rightBackTireSelectedOption = ITEMS[3].rightBackTireSelectedOption;
+        vm.items.extraTireSelectedOption = ITEMS[4].extraTireSelectedOption;
+      }
+      else{
+        console.log("not null");
+        /*vm.items.rightFrontTireSelectedOption = ITEMS[0].rightFrontTireSelectedOption;
+        vm.items.leftFrontTireSelectedOption = ITEMS[1].leftFrontTireSelectedOption;
+        vm.items.leftBackTireSelectedOption = ITEMS[2].leftBackTireSelectedOption;
+        vm.items.rightBackTireSelectedOption = ITEMS[3].rightBackTireSelectedOption;
+        vm.items.extraTireSelectedOption = ITEMS[4].extraTireSelectedOption;*/
+      }
+    }
+    activate();
 
     function resetFields() {
-      vm.items = {
-        rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        rightBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
-        extraTireSelectedOption: {id: '1', name: 'Bridgestone'}
-
-      };
+     // vm.items = ITEMS;
     }
 
     function goToCarView() {
