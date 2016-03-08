@@ -5,13 +5,12 @@
     .module('budgetrentacar.tireRevision')
     .service('TireRevisionFirebaseService', TireRevisionFirebaseService);
 
-  TireRevisionFirebaseService.$inject = ['$firebaseObject',
-                                         'CarInfoFirebaseService',
+  TireRevisionFirebaseService.$inject = ['CarInfoFirebaseService',
                                          'FIREBASE_URL'];
 
-  function TireRevisionFirebaseService($firebaseObject,
-                                       CarInfoFirebaseService,
+  function TireRevisionFirebaseService(CarInfoFirebaseService,
                                        FIREBASE_URL) {
+    this.findTire = findTire;
     this.pushNewItems = pushNewItems;
     var rootRef  = new Firebase(FIREBASE_URL);
     return this;
@@ -21,5 +20,12 @@
         .child(CarInfoFirebaseService.currentRevisionId);
       reference.update(items);
     }
+
+    function findTire(tireToCompare) {
+      return function(element) {
+        return element.name == tireToCompare;
+      }
+    }
+
   }
 })();

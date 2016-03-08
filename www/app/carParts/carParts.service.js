@@ -5,24 +5,23 @@
   .module('budgetrentacar.carParts')
   .service('CarPartsService', CarPartsService);
 
-  CarPartsService.$inject = ['$firebaseObject',
-    'CarInfoFirebaseService',
-    'FIREBASE_URL'];
+  CarPartsService.$inject = ['CarInfoFirebaseService',
+                             'FIREBASE_URL'];
 
-  function CarPartsService($firebaseObject,
-                           CarInfoFirebaseService,
+  function CarPartsService(CarInfoFirebaseService,
                            FIREBASE_URL) {
+
     var rootRef  = new Firebase(FIREBASE_URL);
     this.pushNewItems = pushNewItems;
 
     return this;
 
-    function pushNewItems(items) {
+    function pushNewItems(accesory) {
       var reference = rootRef
         .child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId)
         .child('car-parts');
-      reference.update(items);
+      reference.update(accesory);
     }
   }
 })();

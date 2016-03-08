@@ -3,47 +3,87 @@
 
   angular
     .module('budgetrentacar.carView')
-    .service('CarViewService', CarViewService);
+    .factory('CarViewService', CarViewService);
 
   CarViewService.$inject = ['CarInfoFirebaseService', 'FIREBASE_URL'];
 
   function CarViewService(CarInfoFirebaseService, FIREBASE_URL) {
 
-    this.observationsArray = [];
-    this.pushObservations = pushObservations;
-    this.pushObservationIdToCurrentRevision =
-      pushObservationIdToCurrentRevision;
-    this.resetObservations = resetObservations;
+    var service = {
+      observations: [],
+      canvasComponents: [],
+      addDamageToCanvasComponents: addDamageToCanvasComponents,
+      pushObservations: pushObservations,
+      pushObservationIdToCurrentRevision: pushObservationIdToCurrentRevision,
+      resetObservations: resetObservationsAndDamages,
+      pushJsonCanvas: pushDamages,
+      pushCarViewData: pushCarViewData,
+      rootRef: new Firebase(FIREBASE_URL)
+    };
+    return service;
 
-    var rootRef = new Firebase(FIREBASE_URL);
+    function setupObservationsToBePushed() {
+      var observationsToPush = angular.copy(service.observations);
+      removeIdProperty(observationsToPush);
+      return observationsToPush;
+    }
 
-    return this;
+    function addDamageToCanvasComponents(damage) {
+      service.canvasComponents.push(damage);
+    }
+
+    function setupDamagesToBePushed() {
+      var damagesToPush = angular.copy(service.canvasComponents);
+      removeIdProperty(damagesToPush);
+      return damagesToPush;
+    }
 
     function pushObservations() {
-      var reference = rootRef.child('observations');
-      var pushingObservations = angular.copy(this.observationsArray);
-      removeCircleIdProperty(pushingObservations);
-      var pushRef = reference.push(pushingObservations);
+      var reference = service.rootRef.child('observations');
+      var pushRef = reference.push(setupObservationsToBePushed());
       pushObservationIdToCurrentRevision(pushRef.key());
     }
 
-    function removeCircleIdProperty(observations) {
-      angular.forEach(observations, function(element) {
-        delete element.circleID;
+    function removeIdProperty(damages) {
+      angular.forEach(damages, function(damage) {
+        delete damage.shapeId;
       });
     }
 
-    function resetObservations() {
-      this.observationsArray = [];
+    function resetObservationsAndDamages() {
+      service.observations = [];
+      service.canvasComponents = [];
     }
 
     function pushObservationIdToCurrentRevision(id) {
-      var reference = rootRef
+      var reference = service.rootRef
         .child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId);
       reference.update({
         observations: id
       });
+    }
+
+    function pushDamagesIdToCurrentRevision(id) {
+      var reference = service.rootRef
+        .child('revisions')
+        .child(CarInfoFirebaseService.currentRevisionId);
+      reference.update({
+        damages: id
+      });
+    }
+
+    function pushDamages(damages) {
+      var reference = service.rootRef
+                        .child('damages');
+      var pushReference = reference.push(damages);
+      pushDamagesIdToCurrentRevision(pushReference.key());
+    }
+
+    function pushCarViewData() {
+      //pushObservations();
+      pushDamages(setupDamagesToBePushed());
+      resetObservationsAndDamages();
     }
   }
 })();

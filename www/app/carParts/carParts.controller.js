@@ -5,58 +5,38 @@
     .module('budgetrentacar.carParts')
     .controller('CarPartsController', CarPartsController);
 
-  CarPartsController.$inject = ['CarPartsService', 'CarInfoFirebaseService', '$state'];
+  CarPartsController.$inject = ['CarPartsService',
+                                'CarInfoFirebaseService',
+                                '$state',
+                                'ACCESORIES',
+                                'SELECTED_ACCESORIES'];
 
-  function CarPartsController(CarPartsService, CarInfoFirebaseService, $state) {
+  function CarPartsController(CarPartsService,
+                              CarInfoFirebaseService,
+                              $state,
+                              ACCESORIES,
+                              SELECTED_ACCESORIES) {
+
     var vm = this;
     vm.CarPartsService = CarPartsService;
     vm.CarInfoFirebaseService = CarInfoFirebaseService;
     vm.goToEndOrFeedback = goToEndOrFeedback;
-    vm.items = {
-      'antenna': true,
-      'legal-documents': true,
-      'emblems': true,
-      'tools': true,
-      'emergency-kit': true,
-      'back-up-tire': true,
-      'plates': true,
-      'rack': false,
-      'carpet': true
-    };
-
-    vm.accesories = [
-      {'name': 'Antena', 'key': 'antenna'},
-      {'name': 'Documentos Legales' , 'key': 'legal-documents'},
-      {'name': 'Emblemas', 'key': 'emblems'},
-      {'name': 'Herramientas' , 'key': 'tools'},
-      {'name': 'Kit de emergencia' , 'key': 'emergency-kit'},
-      {'name': 'Llanta de repuesto', 'key': 'back-up-tire'},
-      {'name': 'Placas' , 'key': 'plates'},
-      {'name': 'Rack', 'key': 'rack'},
-      {'name': 'Alfombras' , 'key': 'carpet'}
-    ];
+    vm.accesories = ACCESORIES;
+    vm.accesory = SELECTED_ACCESORIES;
 
     function resetItems() {
-      vm.items = {
-        'antenna': true,
-        'legal-documents': true,
-        'emblems': true,
-        'tools': true,
-        'emergency-kit': true,
-        'back-up-tire': true,
-        'plates': true,
-        'rack': false,
-        'carpet': true
-      };
+      vm.accesory = SELECTED_ACCESORIES;
     }
 
     function goToEndOrFeedback() {
-      CarPartsService.pushNewItems(vm.items);
+      CarPartsService.pushNewItems(vm.accesory);
       resetItems();
-      if(vm.CarInfoFirebaseService.carInfo.currentRevisionType == "check-in"){
+      var currentRevisionType = vm.CarInfoFirebaseService
+                                    .carInfo
+                                    .currentRevisionType;
+      if (currentRevisionType == 'check-in') {
         $state.go('feedback');
-      }
-      else{  
+      } else {
         $state.go('login');
       }
     }

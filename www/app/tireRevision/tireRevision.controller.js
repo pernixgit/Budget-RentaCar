@@ -7,12 +7,14 @@
 
   TireRevisionController.$inject = ['ITEMS','TIREBRANDS','$state',
                                     'CarDeliveryInfoFirebaseService',
-                                    'CarInfoFirebaseService', 'LastRevisionService'];
+                                    'CarInfoFirebaseService', 'LastRevisionService', 'TireRevisionFirebaseService'];
 
   function TireRevisionController(ITEMS, TIREBRANDS, $state,
                                   CarDeliveryInfoFirebaseService,
-                                  CarInfoFirebaseService, LastRevisionService) {
+                                  CarInfoFirebaseService, LastRevisionService,
+                                  TireRevisionFirebaseService) {
     var vm = this;
+    vm.TireRevisionFirebaseService = TireRevisionFirebaseService;
     vm.LastRevisionService = LastRevisionService;
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToCarView = goToCarView;
@@ -20,12 +22,9 @@
     vm.tireBrands = TIREBRANDS;
     vm.items = ITEMS;
 
-    var car = {type:"Fiat", model:"500", color:"white"};
-
     function activate(){
-      vm.LastRevisionService.fetchData();
-      console.log(vm.LastRevisionService.currentCarLastRevision);
-      if(vm.LastRevisionService.currentCarLastRevision == null){
+      vm.LastRevisionService.fetchData().then(function() {
+      if(vm.LastRevisionService.currentCarLastRevision.leftFrontTire == undefined){
         vm.items.rightFrontTireSelectedOption = ITEMS[0].rightFrontTireSelectedOption;
         vm.items.leftFrontTireSelectedOption = ITEMS[1].leftFrontTireSelectedOption;
         vm.items.leftBackTireSelectedOption = ITEMS[2].leftBackTireSelectedOption;
@@ -33,19 +32,21 @@
         vm.items.extraTireSelectedOption = ITEMS[4].extraTireSelectedOption;
       }
       else{
-        console.log("not null");
-        /*vm.items.rightFrontTireSelectedOption = ITEMS[0].rightFrontTireSelectedOption;
-        vm.items.leftFrontTireSelectedOption = ITEMS[1].leftFrontTireSelectedOption;
-        vm.items.leftBackTireSelectedOption = ITEMS[2].leftBackTireSelectedOption;
-        vm.items.rightBackTireSelectedOption = ITEMS[3].rightBackTireSelectedOption;
-        vm.items.extraTireSelectedOption = ITEMS[4].extraTireSelectedOption;*/
-      }
-    }
-    activate();
-
-    function resetFields() {
-     // vm.items = ITEMS;
-    }
+        var tire;
+        tire = vm.tireBrands.filter(vm.TireRevisionFirebaseService.findTire(vm.LastRevisionService.currentCarLastRevision.rightFrontTire));
+        vm.items.rightFrontTireSelectedOption = tire[0];
+        tire = vm.tireBrands.filter(vm.TireRevisionFirebaseService.findTire(vm.LastRevisionService.currentCarLastRevision.leftBackTire));
+        vm.items.leftBackTireSelectedOption = tire[0];
+        tire = vm.tireBrands.filter(vm.TireRevisionFirebaseService.findTire(vm.LastRevisionService.currentCarLastRevision.rightBackTire));
+        vm.items.rightBackTireSelectedOption = tire[0];
+        tire = vm.tireBrands.filter(vm.TireRevisionFirebaseService.findTire(vm.LastRevisionService.currentCarLastRevision.leftFrontTire));
+        vm.items.leftFrontTireSelectedOption = tire[0];
+        tire = vm.tireBrands.filter(vm.TireRevisionFirebaseService.findTire(vm.LastRevisionService.currentCarLastRevision.extraTire));
+        vm.items.extraTireSelectedOption = tire[0];
+        }
+    });
+  }
+  activate();
 
     function goToCarView() {
       CarDeliveryInfoFirebaseService
@@ -55,7 +56,6 @@
             rightBackTire: vm.items.rightBackTireSelectedOption.name,
             leftBackTire: vm.items.leftBackTireSelectedOption.name,
             extraTire: vm.items.extraTireSelectedOption.name});
-      resetFields();
       $state.go('carView');
     }
   }

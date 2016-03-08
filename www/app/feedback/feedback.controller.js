@@ -1,4 +1,4 @@
-(function(){
+(function() {
 
   'use strict';
 
@@ -8,7 +8,7 @@
 
   FeedbackController.$inject = ['FeedbackService', '$state'];
 
-  function FeedbackController(FeedbackService, $state){
+  function FeedbackController(FeedbackService, $state) {
     var vm = this;
     vm.endRevision = endRevision;
 
@@ -21,12 +21,11 @@
       useAgainReason: null
     };
 
-    function endRevision(feedback){
+    function endRevision(feedback) {
       FeedbackService.pushFeedback(feedback);
       $state.go('login');
     }
 
-  } 
-
+  }
 })();
 
