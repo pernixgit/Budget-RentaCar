@@ -19,7 +19,7 @@
     function pushNewItems(items) {
       var reference = rootRef.child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update(items);
+      reference.update(accesory);
     }
   }
 })();

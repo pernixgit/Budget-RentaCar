@@ -1,11 +1,16 @@
-(function(){
+(function() {
   angular
     .module('budgetrentacar.services')
     .factory('LastRevisionService', LastRevisionService);
 
-  LastRevisionService.$inject = ['FIREBASE_URL', 'CarInfoFirebaseService'];
+  LastRevisionService.$inject = ['FIREBASE_URL',
+                                 'CarInfoFirebaseService',
+                                 '$q'];
 
-  function LastRevisionService(FIREBASE_URL, CarInfoFirebaseService) {
+  function LastRevisionService(FIREBASE_URL,
+                               CarInfoFirebaseService,
+                               $q) {
+
     var currentCarMVA = CarInfoFirebaseService.carInfo.MVA;
     var root = FIREBASE_URL;
 
@@ -22,38 +27,45 @@
 
     function fetchData() {
       return service._getCurrentCarLastRevision().then(function() {
-        service._getCurrentCarLastObservations();
-        service._getCurrentCarLastDamages();
+        return $q
+          .all([service._getCurrentCarLastObservations(),
+                service._getCurrentCarLastDamages()]);
       });
     }
 
     function _getCurrentCarLastRevision() {
       var ref = new Firebase(root.concat('/revisions'));
-      return ref.orderByChild('car').equalTo(currentCarMVA).limitToLast(1)
+      return ref.orderByChild('car').equalTo(currentCarMVA).limitToLast(2)
         .once('value', function(snapshot) {
           service.currentCarLastRevision = _getFirstValue(snapshot.val());
         });
     }
 
     function _getFirstValue(object) {
-      for (var key in object) break;
+      for (var key in object) {
+        break;
+      }
       return object[key];
     }
 
     function _getCurrentCarLastObservations() {
       var ref = new Firebase(root.concat('/observations'));
-      ref.child(service.currentCarLastRevision.observations)
-        .once('value', function(snapshot) {
-          service.currentCarLastObservations = snapshot;
-        });
+      if (service.currentCarLastRevision.observations) {
+        return ref.child(service.currentCarLastRevision.observations)
+          .once('value', function(snapshot) {
+            service.currentCarLastObservations = snapshot.val();
+          });
+      }
     }
 
     function _getCurrentCarLastDamages() {
       var ref = new Firebase(root.concat('/damages'));
-      ref.child(service.currentCarLastRevision.damages)
-        .once('value', function(snapshot) {
-          service.currentCarLastDamages = snapshot;
-        });
+      if (service.currentCarLastRevision.damages) {
+        return ref.child(service.currentCarLastRevision.damages)
+          .once('value', function(snapshot) {
+            service.currentCarLastDamages = snapshot.val();
+          });
+      }
     }
 
   }
