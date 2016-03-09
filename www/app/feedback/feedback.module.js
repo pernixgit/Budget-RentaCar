@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.feedback', []);
+    .module('budgetrentacar.feedback', ['pascalprecht.translate']);
 
 })();
 
