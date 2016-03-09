@@ -75,7 +75,7 @@
 
     function pushDamages(damages) {
       var reference = service.rootRef
-                        .child('damages');
+        .child('damages');
       var pushReference = reference.push(damages);
       pushDamagesIdToCurrentRevision(pushReference.key());
     }
