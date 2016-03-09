@@ -12,11 +12,11 @@
                            FIREBASE_URL) {
 
     var rootRef  = new Firebase(FIREBASE_URL);
-    this.pushNewItems = pushNewItems;
+    this.pushTires = pushTires;
 
     return this;
 
-    function pushNewItems(accesory) {
+    function pushTires(accesory) {
       var reference = rootRef
         .child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId)

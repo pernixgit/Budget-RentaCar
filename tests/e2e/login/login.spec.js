@@ -2,8 +2,8 @@ describe('Login', function() {
   var username = element(by.model('vm.username'));
   var password = element(by.model('vm.password'));
   beforeEach(function() {
-      browser.get('');  
-      browser.sleep(500); 
+    browser.get('');  
+    browser.sleep(500); 
   });
 
   it('should go to scanner page with admin credentials', function() {

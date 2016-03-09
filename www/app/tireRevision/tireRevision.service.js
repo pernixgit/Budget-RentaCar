@@ -11,19 +11,20 @@
   function TireRevisionFirebaseService(CarInfoFirebaseService,
                                        FIREBASE_URL) {
     this.findTire = findTire;
-    this.pushNewItems = pushNewItems;
+    this.pushTires = pushTires;
     var rootRef  = new Firebase(FIREBASE_URL);
     return this;
 
-    function pushNewItems(items) {
+    function pushTires(tires) {
       var reference = rootRef.child('revisions')
-        .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update(items);
+        .child(CarInfoFirebaseService.currentRevisionId)
+        .child('tires');
+        reference.update(tires);
     }
 
     function findTire(tireToCompare) {
-      return function(element) {
-        return element.name == tireToCompare;
+      return function(tire) {
+        return tire.name == tireToCompare;
       }
     }
 

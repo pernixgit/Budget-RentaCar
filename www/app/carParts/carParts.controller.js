@@ -29,7 +29,7 @@
     }
 
     function goToEndOrFeedback() {
-      CarPartsService.pushNewItems(vm.accesory);
+      CarPartsService.pushTires(vm.accesory);
       resetItems();
       var currentRevisionType = vm.CarInfoFirebaseService
                                     .carInfo
