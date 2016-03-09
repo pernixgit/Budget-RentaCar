@@ -15,7 +15,7 @@
     var vm = this;
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToTireRevision = goToTireRevision;
-    vm.currentCarTraction = '4x2';
+    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
     vm.accesory = {
       deliverySelectedOption: {id: '1', name: 'Cacique'},
       gasSelectedOption: {id: '0', name: 'Vacio'},
@@ -57,7 +57,7 @@
     }
 
     function goToTireRevision() {
-      CarDeliveryInfoFirebaseService.pushNewItems({
+      CarDeliveryInfoFirebaseService.pushTires({
         deliveryPlace: vm.accesory.deliverySelectedOption.name,
         gas: vm.accesory.gasSelectedOption.name});
       resetFields();
