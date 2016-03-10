@@ -1,7 +1,5 @@
 describe('LastRevisionService', function() {
   var LastRevisionService;
-  var $q;
-  var $scope;
 
   beforeEach(module('ui.router'));
   beforeEach(module('budgetrentacar.services'));
@@ -26,36 +24,40 @@ describe('LastRevisionService', function() {
 
     beforeEach(function() {
 
-      spyOn(LastRevisionService, '_getCurrentCarLastRevision').and.callFake(function() {
-        LastRevisionService.currentCarLastRevision = 'currentCarLastRevision';
+      spyOn(LastRevisionService, '_getLastRevision').and.callFake(function() {
+        LastRevisionService.revision = {};
         return {
-          then: function(callback) {callback();}
+          then: function(callback) {callback({revision: 'revision'});}
         };
       });
 
-      spyOn(LastRevisionService, '_getCurrentCarLastObservations').and.callFake(function() {
-        LastRevisionService.currentCarLastObservations = 'currentCarLastObservations';
+      spyOn(LastRevisionService, '_getLastRevisionDamages').and.callFake(function() {
+        LastRevisionService.revision.damages = 'damages';
       });
 
-      spyOn(LastRevisionService, '_getCurrentCarLastDamages').and.callFake(function() {
-        LastRevisionService.currentCarLastDamages = 'currentCarLastDamages';
+      spyOn(LastRevisionService, '_getLastRevisionObservations').and.callFake(function() {
+        LastRevisionService.revision.observations = 'observations';
       });
 
-      LastRevisionService.fetchData();
+      LastRevisionService.fetchRevisionData();
     });
 
     it('should fill currentCarLastRevision data', function() {
-      expect(LastRevisionService.currentCarLastRevision).toBe('currentCarLastRevision');
+      expect(LastRevisionService.revision).toEqual({
+        revision: 'revision',
+        damages: 'damages',
+        observations: 'observations'
+      });
 
     });
 
     it('should fill currentCarLastObservations data', function() {
-      expect(LastRevisionService.currentCarLastObservations).toBe('currentCarLastObservations');
+      expect(LastRevisionService.revision.observations).toBe('observations');
 
     });
 
     it('should fill currentCarLastDamages data', function() {
-      expect(LastRevisionService.currentCarLastDamages).toBe('currentCarLastDamages');
+      expect(LastRevisionService.revision.damages).toBe('damages');
 
     });
 

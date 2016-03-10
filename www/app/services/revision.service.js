@@ -44,7 +44,7 @@
     }
 
     function setUsername(username) {
-      revision.user = username;
+      revision.username = username;
     }
 
     function setCarDeliveryInfo(deliveryInfo) {

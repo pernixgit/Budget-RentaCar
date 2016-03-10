@@ -15,7 +15,7 @@ module.exports = function(config) {
       './www/app/**/*.module.js',
       './www/app/**/*.js',
       './www/app/*.js',
-      './tests/specs/**/*.spec.js',
+      './tests/specs/**/*.spec.js'
     ],
 
     exclude: ['./www/app/paper-lib'],
@@ -39,4 +39,4 @@ module.exports = function(config) {
     singleRun: true,
     concurrency: Infinity
   })
-}
+};

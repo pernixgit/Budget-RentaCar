@@ -9,30 +9,25 @@
                              '$ionicPopup',
                              'LoginFirebaseService',
                              'RevisionService',
-                             '$ionicNavBarDelegate',
-                             '$scope'];
+                             '$ionicNavBarDelegate'];
 
   function LoginController($state,
                            $ionicPopup,
                            LoginFirebaseService,
                            RevisionService,
-                           $ionicNavBarDelegate,
-                           $scope) {
+                           $ionicNavBarDelegate) {
     var vm = this;
     vm.authenticate = authenticate;
+    vm._authSuccess = _authSuccess;
+    vm._credentialsAreCorrect = _credentialsAreCorrect;
 
     activate();
 
     function activate() {
-      setObservationsModalToUnopened();
       $ionicNavBarDelegate.showBackButton(false);
     }
 
-    function setObservationsModalToUnopened() {
-      $scope.$parent.vm.opened = false;
-    }
-
-    function authSuccess() {
+    function _authSuccess() {
       $state.go('scanner');
     }
 
@@ -43,21 +38,23 @@
       });
     }
 
+    function _credentialsAreCorrect(username, userInfo, password) {
+      return username === userInfo.username &&
+        password === userInfo.password;
+    }
+
     function authenticate(username, password) {
-      var firebaseReference = LoginFirebaseService.setupFirebaseRef(username);
-      firebaseReference.on('value', function(snapshot) {
-        try {
-          if (username === snapshot.val().username &&
-            password === snapshot.val().password) {
-            authSuccess();
+
+      LoginFirebaseService.getUserInfo(username).then(
+        function(userInfo) {
+          if (_credentialsAreCorrect(username, userInfo, password)) {
+            _authSuccess();
             RevisionService.setUsername(username);
           }else {
             authError();
           }
-        }catch (err) {
-          authError();
-        }
-      });
+        });
     }
-  };
+
+  }
 })();
