@@ -5,9 +5,9 @@
     .module('budgetrentacar.carView')
     .factory('CarViewService', CarViewService);
 
-  CarViewService.$inject = ['CarInfoFirebaseService', 'FIREBASE_URL'];
+  CarViewService.$inject = ['CarInfoFirebaseService', 'FIREBASE_URL', 'RevisionService'];
 
-  function CarViewService(CarInfoFirebaseService, FIREBASE_URL) {
+  function CarViewService(CarInfoFirebaseService, FIREBASE_URL, RevisionService) {
 
     var service = {
       observations: [],
@@ -82,6 +82,7 @@
 
     function pushCarViewData() {
       //pushObservations();
+      RevisionService.setDamages(setupDamagesToBePushed());
       pushDamages(setupDamagesToBePushed());
       resetObservationsAndDamages();
     }
