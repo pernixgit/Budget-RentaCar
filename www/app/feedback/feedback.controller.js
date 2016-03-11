@@ -36,7 +36,7 @@
         FirebaseRevisionService.pushDamages(RevisionService.getDamages());
       }
       FirebaseRevisionService.pushFeedback(feedback);
-      FirebaseRevisionService.resetRevision();
+      RevisionService.resetRevision();
       $state.go('login');
     }
 

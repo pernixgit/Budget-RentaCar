@@ -8,6 +8,6 @@
   TireRevisionFirebaseService.$inject = [];
 
   function TireRevisionFirebaseService() {
-
   }
+  
 })();

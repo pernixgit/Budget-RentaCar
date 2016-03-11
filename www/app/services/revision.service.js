@@ -46,8 +46,8 @@
 
     function setCarDeliveryInfo(deliveryInfo) {
       revision.km = deliveryInfo.km;
-      revision.delivery_place = deliveryInfo.deliveryPlace;
-      revision.gas_level = deliveryInfo.gasLevel;
+      revision.delivery_place = deliveryInfo.delivery_place;
+      revision.gas_level = deliveryInfo.gas_level;
     }
 
     function setCarTires(tires) {
