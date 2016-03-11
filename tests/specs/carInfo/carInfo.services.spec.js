@@ -62,7 +62,6 @@
 
     it('has the current logged user username', function() {
       expect(CarInfoFirebaseService.newRevision.username).toBe('foo');
-
     });
 
     it('has car id', function() {
