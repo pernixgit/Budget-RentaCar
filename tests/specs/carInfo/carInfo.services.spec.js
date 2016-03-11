@@ -41,41 +41,35 @@
 
     });
 
-    describe('New revision filled', function() {
+  describe('New revision filled', function() {
 
-      beforeEach(function() {
-        CarInfoFirebaseService.newRevision = {};
-        CarInfoFirebaseService.carInfo = {
-          currentRevisionType: 'check-in',
-          $id: '54321'
-        };
+    beforeEach(function() {
+      CarInfoFirebaseService.newRevision = {};
+      CarInfoFirebaseService.carInfo = {
+        currentRevisionType: 'check-in',
+        $id: '54321'
+      };
+      CarInfoFirebaseService.fillNewRevisionData();
+    });
 
-        CarInfoFirebaseService.fillNewRevisionData();
+    it('has a type depending on fetched car type', function() {
+      expect(CarInfoFirebaseService.newRevision.type).toBe('check-out');
+    });
 
-      });
+    it('has a timestamp', function() {
+      expect(CarInfoFirebaseService.newRevision.timestamp).toBeTruthy();
+    });
 
-      it('has a type depending on fetched car type', function() {
-
-        expect(CarInfoFirebaseService.newRevision.type).toBe('check-out');
-
-      });
-
-      it('has a timestamp', function() {
-        expect(CarInfoFirebaseService.newRevision.timestamp).toBeTruthy();
-
-      });
-
-      it('has the current logged user username', function() {
-        expect(CarInfoFirebaseService.newRevision.username).toBe('foo');
-
-      });
-
-      it('has car id', function() {
-        expect(CarInfoFirebaseService.newRevision.car).toBe('54321');
-
-      });
+    it('has the current logged user username', function() {
+      expect(CarInfoFirebaseService.newRevision.username).toBe('foo');
 
     });
+
+    it('has car id', function() {
+      expect(CarInfoFirebaseService.newRevision.car).toBe('54321');
+    });
+
+  });
 
   });
 

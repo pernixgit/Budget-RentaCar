@@ -6,17 +6,22 @@
     .controller('CarDeliveryInfoController', CarDeliveryInfoController);
 
   CarDeliveryInfoController.$inject = ['$state',
-    'CarDeliveryInfoFirebaseService',
-    'CarInfoFirebaseService'];
+                                       'CarDeliveryInfoFirebaseService',
+                                       'CarInfoFirebaseService',
+                                       'RevisionService',
+                                       'LastRevisionService'];
 
   function CarDeliveryInfoController($state,
                                      CarDeliveryInfoFirebaseService,
-                                     CarInfoFirebaseService) {
+                                     CarInfoFirebaseService,
+                                     RevisionService,
+                                     LastRevisionService) {
     var vm = this;
+    vm.km = LastRevisionService.currentCarLastRevision.km;
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToTireRevision = goToTireRevision;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
-    vm.accesory = {
+    vm.deliveryOptions = {
       deliverySelectedOption: {id: '1', name: 'Cacique'},
       gasSelectedOption: {id: '0', name: 'Vacio'},
     };
@@ -50,16 +55,30 @@
     ];
 
     function resetFields() {
-      vm.accesory = {deliverySelectedOption:
-      {id: '0', name: 'Seleccione el Lugar de Entrega'},
+      vm.deliveryOptions = {
+        deliverySelectedOption: {id: '0', name: 'Seleccione el Lugar de Entrega'},
         gasSelectedOption: {id: '0', name: 'Vacio'},
-        };
+      };
+    }
+
+    function createDeliveryInfoObject(km, deliveryPlace, gasLevel) {
+      return {
+        'km' : km,
+        'deliveryPlace' : deliveryPlace,
+        'gasLevel' : gasLevel
+      }
     }
 
     function goToTireRevision() {
+      var deliveryInfo = createDeliveryInfoObject(vm.km,
+                                                  vm.deliveryOptions.deliverySelectedOption.name,
+                                                  vm.deliveryOptions.gasSelectedOption.name);
       CarDeliveryInfoFirebaseService.pushTires({
-        deliveryPlace: vm.accesory.deliverySelectedOption.name,
-        gas: vm.accesory.gasSelectedOption.name});
+        deliveryPlace: vm.deliveryOptions.deliverySelectedOption.name,
+        gas: vm.deliveryOptions.gasSelectedOption.name,
+        km: vm.km
+      });
+      RevisionService.setCarDeliveryInfo(deliveryInfo);
       resetFields();
       $state.go('tireRevision');
     }

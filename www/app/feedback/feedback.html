@@ -1,50 +1,58 @@
 <div class="bar header-bar bar-assertive">
-    <h1 class="title"> Feedback </h1>
+  <h1 class="title"> {{'FeedbackTitle' | translate}} </h1>
 </div>
-<ion-content>
-    <div class="list list-inset has-header">
-        <div class="item item-divider">
-            Overall value for money?
-        </div>
-        <ion-radio ng-model="vm.feedback.valueMoney" ng-value="'yes'">Yes</ion-radio>
-        <ion-radio ng-model="vm.feedback.valueMoney" ng-value="'no'">No</ion-radio>
-        <label class="item item-input">
-            <textarea ng-model="vm.feedback.improve" placeholder="What can we improve?"></textarea>
-        </label>
+<div class="bar bar-subheader">
+  <div class="button-bar">
+    <a ng-class="{'translate-button-active': vm.isActive('EN')}" ng-click="vm.setActive('EN')" class="button selected">EN</a>
+    <a ng-class="{'translate-button-active': vm.isActive('ES')}" ng-click="vm.setActive('ES')" class="button selected">ES</a>
+  </div>
+</div>
+
+<ion-content class="has-subheader">
+  <div class="list list-inset">
+    <div class="item item-divider">
+      {{'FeedbackQuestion1' | translate}}
     </div>
-    <div class="list list-inset has-header">
-        <div class="item item-divider">
-            How likely are you to recommend us to a friend colleague?
-        </div>
-        <div class="item range range-assertive">
-            <i class="icon ion-sad-outline budget-orange-color"></i>
-            <input type="range" name="recommendation" min="1" max="10" ng-model="vm.feedback.recommendation">
-            <i class="icon ion-happy-outline budget-orange-color"></i>
-            <div class="range-bar-value">{{vm.feedback.recommendation}}</div>
-        </div>
+    <ion-radio ng-model="vm.feedback.worthMoney" ng-value="'yes'">{{'yes' | translate}}</ion-radio>
+    <ion-radio ng-model="vm.feedback.worthMoney" ng-value="'no'">No</ion-radio>
+    <label class="item item-input">
+      <textarea ng-model="vm.feedback.improve" placeholder="Regular Placeholder" translate translate-attr-placeholder="FeedBackPlaceHolder1" translate-value-browser="{{app.browser}}"></textarea>
+    </label>
+  </div>
+  <div class="list list-inset">
+    <div class="item item-divider">
+      {{'FeedbackQuestion2' | translate}}
     </div>
-    <div class="list list-inset has-header">
-        <div class="item item-divider">
-            In general how would you rate our costumer service?
-        </div>
-        <div class="item range range-assertive">
-            <i class="icon ion-sad-outline budget-orange-color"></i>
-            <input class="orange-color" type="range" name="recommendation" min="1" max="10" ng-model="vm.feedback.rate">
-            <i class="icon ion-happy-outline budget-orange-color"></i>
-            <div class="range-bar-value">{{vm.feedback.rate}}</div>
-        </div>
+    <div class="item range range-assertive">
+      <i class="icon ion-sad-outline budget-orange-color"></i>
+      <input type="range" name="recommendation" min="1" max="10" ng-model="vm.feedback.recommendation">
+      <i class="icon ion-happy-outline budget-orange-color"></i>
+      <div class="range-bar-value">{{vm.feedback.recommendation}}</div>
     </div>
-    <div class="list list-inset has-header">
-        <div class="item item-divider">
-            Would you use our service again?
-        </div>
-        <ion-radio ng-model="vm.feedback.again" ng-value="'yes'">Yes</ion-radio>
-        <ion-radio ng-model="vm.feedback.again" ng-value="'no'">No</ion-radio>
-        <label class="item item-input">
-            <textarea ng-model="vm.feedback.againReason" placeholder="Why?"></textarea>
-        </label>
-        <button class="button button-full budget-orange-button" ng-click="vm.endRevision(vm.feedback)">
-            Submit Feedback
-        </button>
+  </div>
+  <div class="list list-inset">
+    <div class="item item-divider">
+      {{'FeedbackQuestion3' | translate}}
     </div>
+    <div class="item range range-assertive">
+      <i class="icon ion-sad-outline budget-orange-color"></i>
+      <input class="orange-color" type="range" name="recommendation" min="1" max="10" ng-model="vm.feedback.rate">
+      <i class="icon ion-happy-outline budget-orange-color"></i>
+      <div class="range-bar-value">{{vm.feedback.rate}}</div>
+    </div>
+  </div>
+  <div class="list list-inset">
+    <div class="item item-divider">
+      {{'FeedbackQuestion4' | translate}}
+    </div>
+    <ion-radio ng-model="vm.feedback.useAgain" ng-value="'yes'">{{'yes' | translate}}</ion-radio>
+    <ion-radio ng-model="vm.feedback.useAgain" ng-value="'no'">No</ion-radio>
+    <label class="item item-input">
+      <textarea ng-model="vm.feedback.useAgainReason" placeholder="Regular Placeholder" translate translate-attr-placeholder="FeedBackPlaceHolder2" translate-value-browser="{{app.browser}}"></textarea>
+    </label>
+    <button class="button button-full budget-orange-button" ng-click="vm.endRevision(vm.feedback)">
+      {{'FeedbackButtonSubmmit' | translate}}
+    </button>
+  </div>
+
 </ion-content>

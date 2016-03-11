@@ -13,7 +13,8 @@
         url: '/carDeliveryInfo',
         templateUrl: 'app/carDeliveryInfo/carDeliveryInfo.html',
         controller: 'CarDeliveryInfoController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        cache: false
       });
   }
 })();
