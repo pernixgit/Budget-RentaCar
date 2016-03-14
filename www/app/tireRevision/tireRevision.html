@@ -4,19 +4,19 @@
 <ion-content class="content has-header">
   <div class="list list-inset tireBrands">
     <div class="row">
-      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.rightFrontTireSelectedOption">
+      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.deliveryOptions.rightFrontTireSelectedOption">
       </select>
       <div class="col-10"></div>
-      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.leftFrontTireSelectedOption">
+      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.deliveryOptions.leftFrontTireSelectedOption">
       </select>
     </div>
     <div ng-class="{'imgTire4x4': vm.currentCarTraction == '4x4','imgTire4x2': vm.currentCarTraction == '4x2'}">
     </div>
     <div class="row padding-bottom">
-      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.leftBackTireSelectedOption">
+      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.deliveryOptions.leftBackTireSelectedOption">
       </select>
       <div class="col-10"></div>
-      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.items.rightBackTireSelectedOption">
+      <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.deliveryOptions.rightBackTireSelectedOption">
       </select>
     </div>
   </div>

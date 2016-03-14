@@ -5,11 +5,11 @@
     .module('budgetrentacar.carParts')
     .controller('CarPartsController', CarPartsController);
 
-  CarPartsController.$inject = ['CarPartsService',
-                                'CarInfoFirebaseService',
-                                '$state',
-                                'ACCESORIES',
-                                'SELECTED_ACCESORIES'];
+    CarPartsController.$inject = ['CarPartsService',
+                                  'CarInfoFirebaseService',
+                                  '$state',
+                                  'ACCESORIES',
+                                  'SELECTED_ACCESORIES'];
 
   function CarPartsController(CarPartsService,
                               CarInfoFirebaseService,
@@ -32,11 +32,13 @@
       CarPartsService.pushTires(vm.accesory);
       resetItems();
       var currentRevisionType = vm.CarInfoFirebaseService
-                                    .carInfo
-                                    .currentRevisionType;
-      if (currentRevisionType == 'check-in') {
+        .carInfo
+        .currentRevisionType;
+      if (currentRevisionType == 'check-out') {
+        resetItems();
         $state.go('feedback');
       } else {
+        resetItems();
         $state.go('login');
       }
     }

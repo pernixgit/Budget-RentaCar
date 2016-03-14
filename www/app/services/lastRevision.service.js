@@ -11,7 +11,6 @@
                                CarInfoFirebaseService,
                                $q) {
 
-    var currentCarMVA = CarInfoFirebaseService.carInfo.MVA;
     var root = FIREBASE_URL;
 
     var service =  {
@@ -34,6 +33,7 @@
     }
 
     function _getCurrentCarLastRevision() {
+      var currentCarMVA = CarInfoFirebaseService.carInfo.MVA;
       var ref = new Firebase(root.concat('/revisions'));
       return ref.orderByChild('car').equalTo(currentCarMVA).limitToLast(2)
         .once('value', function(snapshot) {

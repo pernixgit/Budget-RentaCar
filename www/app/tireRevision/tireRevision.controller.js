@@ -16,7 +16,7 @@
     vm.goToCarView = goToCarView;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
 
-    vm.accesory = {
+    vm.deliveryOptions = {
       rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
       leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
       leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
@@ -38,7 +38,7 @@
     ];
 
     function resetFields() {
-      vm.accesory = {
+      vm.deliveryOptions = {
         rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
         leftFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
         leftBackTireSelectedOption: {id: '1', name: 'Bridgestone'},
@@ -49,10 +49,10 @@
     function goToCarView() {
       TireRevisionFirebaseService
         .pushTires(
-          { rightFrontTire: vm.accesory.rightFrontTireSelectedOption.name,
-            leftFrontTire: vm.accesory.leftFrontTireSelectedOption.name,
-            rightBackTire: vm.accesory.rightBackTireSelectedOption.name,
-            leftBackTire: vm.accesory.leftBackTireSelectedOption.name
+          { rightFrontTire: vm.deliveryOptions.rightFrontTireSelectedOption.name,
+            leftFrontTire: vm.deliveryOptions.leftFrontTireSelectedOption.name,
+            rightBackTire: vm.deliveryOptions.rightBackTireSelectedOption.name,
+            leftBackTire: vm.deliveryOptions.leftBackTireSelectedOption.name
           });
       resetFields();
       $state.go('carView');
