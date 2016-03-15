@@ -5,18 +5,20 @@
     .module('budgetrentacar.carParts')
     .controller('CarPartsController', CarPartsController);
 
-    CarPartsController.$inject = ['CarPartsService',
-                                  'CarInfoFirebaseService',
-                                  '$state',
-                                  'ACCESORIES',
-                                  'SELECTED_ACCESORIES',
-                                  'RevisionService'];
+  CarPartsController.$inject = ['CarPartsService',
+                                'CarInfoFirebaseService',
+                                '$state',
+                                'ACCESORIES',
+                                'SELECTED_ACCESORIES',
+                                'FirebaseRevisionService',
+                                'RevisionService'];
 
   function CarPartsController(CarPartsService,
                               CarInfoFirebaseService,
                               $state,
                               ACCESORIES,
                               SELECTED_ACCESORIES,
+                              FirebaseRevisionService,
                               RevisionService) {
 
     var vm = this;
@@ -33,8 +35,19 @@
     function goToEndOrFeedback() {
       RevisionService.setCarAccesories(vm.accesory);
       resetItems();
-      (RevisionService.getRevision().type == 'check-out') ?
-        $state.go('feedback') : $state.go('login');
+      (RevisionService.getRevision().type == 'check-in') ?
+        $state.go('feedback') : pushAndEndProcess();
     }
+
+    function pushAndEndProcess() {
+      RevisionService.setTimestamp();
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision());
+      if (RevisionService.getDamages()) {
+        FirebaseRevisionService.pushDamages(RevisionService.getDamages());
+      }
+      FirebaseRevisionService.resetRevision();
+      $state.go('login');
+    }
+
   }
 })();

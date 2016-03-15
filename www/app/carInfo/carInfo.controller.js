@@ -5,9 +5,15 @@
   .module('budgetrentacar.carInfo')
   .controller('CarInfoController', CarInfoController);
 
-  CarInfoController.$inject = ['CarInfoFirebaseService', '$state', 'RevisionService', 'LastRevisionService'];
+  CarInfoController.$inject = ['CarInfoFirebaseService',
+                               '$state',
+                               'RevisionService',
+                               'LastRevisionService'];
 
-  function CarInfoController(CarInfoFirebaseService, $state, RevisionService, LastRevisionService) {
+  function CarInfoController(CarInfoFirebaseService,
+                             $state,
+                             RevisionService,
+                             LastRevisionService) {
     var vm = this;
     vm.goToCarView = goToCarView;
     vm.RevisionService = RevisionService;
@@ -28,10 +34,10 @@
       $state.go('carDeliveryInfo');
     }
 
-
     function activate() {
       setNewRevisionType();
-      CarInfoFirebaseService.carInfo.model ? vm.isLoaded = true : vm.isLoaded = false;
+      CarInfoFirebaseService.carInfo.model ?
+      vm.isLoaded = true : vm.isLoaded = false;
       setTimeout(function() {
         if (!vm.isLoaded) {
           $state.go('scanner-error');

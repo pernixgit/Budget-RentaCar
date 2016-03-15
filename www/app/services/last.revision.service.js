@@ -13,22 +13,21 @@
                                $firebaseObject,
                                $q) {
 
-
     var service =  {
       rootRef: new Firebase(FIREBASE_URL),
-      fetchRevisionData : fetchRevisionData,
-      _getLastRevision : _getLastRevision,
-      _getLastRevisionDamages : _getLastRevisionDamages,
-      _getLastRevisionObservations : _getLastRevisionObservations,
-      _getLastRevisionRef : _getLastRevisionRef,
+      fetchRevisionData: fetchRevisionData,
+      _getLastRevision: _getLastRevision,
+      _getLastRevisionDamages: _getLastRevisionDamages,
+      _getLastRevisionObservations: _getLastRevisionObservations,
+      _getLastRevisionRef: _getLastRevisionRef,
       revision: null
     };
     return service;
 
     function fetchRevisionData() {
-      if(CarInfoFirebaseService.carInfo.MVA) {
+      if (CarInfoFirebaseService.carInfo.MVA) {
         return service._getLastRevision()
-          .then(function (data) {
+          .then(function(data) {
             service.revision = data;
             return $q.all([service._getLastRevisionObservations(),
               service._getLastRevisionDamages()]);
@@ -43,28 +42,27 @@
         .child('last_revision_ref');
       var firebaseObjectRef = $firebaseObject(reference);
       return firebaseObjectRef.$loaded()
-        .then(function () {
+        .then(function() {
           return firebaseObjectRef.$value;
-        })
+        });
     }
 
     function _getLastRevision() {
       return service._getLastRevisionRef()
-        .then(function(last_revision_ref){
+        .then(function(last_revision_ref) {
           var reference = service.rootRef
             .child('revisions')
             .child(last_revision_ref);
           var object = $firebaseObject(reference);
-          return object.$loaded().then(function(){
+          return object.$loaded().then(function() {
             return object;
-
           });
-      });
+        });
     }
 
     function _getLastRevisionDamages() {
       var damagesRef = service.revision.damages_ref;
-      if(damagesRef) {
+      if (damagesRef) {
         var reference = service.rootRef
           .child('damages')
           .child(service.revision.damages_ref);
@@ -74,7 +72,7 @@
 
     function _getLastRevisionObservations() {
       var observationsRef = service.revision.observations_ref;
-      if(observationsRef) {
+      if (observationsRef) {
         var reference = service.rootRef
           .child('observations')
           .child(service.revision.observations_ref);

@@ -15,10 +15,12 @@
         templateUrl: 'app/carInfo/carInfo.html',
         controller: 'CarInfoController',
         controllerAs: 'vm',
-        resolve:{
-          'CarInfoService': function(CarInfoFirebaseService, LastRevisionService){
-            return CarInfoFirebaseService.fetchCarInfo().then(function(){
-              return LastRevisionService.fetchRevisionData()
+        resolve: {
+          'CarInfoService': function(CarInfoFirebaseService,
+                                     LastRevisionService) {
+            return CarInfoFirebaseService.fetchCarInfo().
+            then(function() {
+              return LastRevisionService.fetchRevisionData();
             });
           }
         },
