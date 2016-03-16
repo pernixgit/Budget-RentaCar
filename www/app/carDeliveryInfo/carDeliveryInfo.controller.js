@@ -17,7 +17,7 @@
                                      RevisionService,
                                      LastRevisionService) {
     var vm = this;
-    vm.km = LastRevisionService.currentCarLastRevision.km;
+    vm.km = getPreviousKm(LastRevisionService.currentCarLastRevision);
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToTireRevision = goToTireRevision;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
@@ -64,20 +64,19 @@
     function createDeliveryInfoObject(km, deliveryPlace, gasLevel) {
       return {
         'km' : km,
-        'deliveryPlace' : deliveryPlace,
-        'gasLevel' : gasLevel
+        'delivery_place' : deliveryPlace,
+        'gas_level' : gasLevel
       }
+    }
+
+    function getPreviousKm(lastRevision) {
+      return (lastRevision) ? lastRevision.km : 0;
     }
 
     function goToTireRevision() {
       var deliveryInfo = createDeliveryInfoObject(vm.km,
                                                   vm.deliveryOptions.deliverySelectedOption.name,
                                                   vm.deliveryOptions.gasSelectedOption.name);
-      CarDeliveryInfoFirebaseService.pushTires({
-        deliveryPlace: vm.deliveryOptions.deliverySelectedOption.name,
-        gas: vm.deliveryOptions.gasSelectedOption.name,
-        km: vm.km
-      });
       RevisionService.setCarDeliveryInfo(deliveryInfo);
       resetFields();
       $state.go('tireRevision');

@@ -7,6 +7,8 @@
 
   function RevisionService(){
     var revision = {};
+    var observationsList = {};
+    var damagesList = {};
 
     var service = {
       setUsername : setUsername,
@@ -17,15 +19,16 @@
       setCarTires : setCarTires,
       setDamages : setDamages,
       setObservations : setObservations,
-      setCarAccesories : setCarAccesories,
+      setCarAccesories : setCarParts,
       setFeedback : setFeedback,
       getRevision : getRevision,
+      getDamages : getDamages,
       resetRevision : resetRevision
     };
     return service;
 
     function setCarMVA(MVA) {
-      revision.carMVA = MVA;
+      revision.vehicle_ref = MVA;
     }
 
     function setNewType(lastRevisionType) {
@@ -37,13 +40,11 @@
     }
 
     function setUsername(username) {
-      revision.username = username;
+      revision.user = username;
     }
 
     function setCarDeliveryInfo(deliveryInfo) {
-      revision.km = deliveryInfo.km;
-      revision.deliveryPlace = deliveryInfo.deliveryPlace;
-      revision.gasLevel = deliveryInfo.gasLevel;
+      revision.delivery_info = deliveryInfo;
     }
 
     function setCarTires(tires) {
@@ -51,15 +52,15 @@
     }
 
     function setDamages(damages) {
-      revision.damages = damages;
+      damagesList = damages;
     }
 
     function setObservations(observations){
-      revision.observations = observations;
+      observationsList = observations;
     }
 
-    function setCarAccesories(accesories) {
-      revision.carAccesories = accesories;
+    function setCarParts(carParts) {
+      revision.car_parts = carParts;
     }
 
     function setFeedback(feedback) {
@@ -68,6 +69,10 @@
 
     function getRevision() {
       return revision;
+    }
+
+    function getDamages() {
+      return damagesList;
     }
 
     function resetRevision(){
