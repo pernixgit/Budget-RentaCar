@@ -30,7 +30,6 @@
             password === snapshot.val().password) {
             authSuccess();
             RevisionService.setUsername(username);
-            //LoginFirebaseService.username = username;
           }else {
             authError();
           }

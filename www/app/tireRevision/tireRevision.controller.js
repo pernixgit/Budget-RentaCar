@@ -6,15 +6,15 @@
   .controller('TireRevisionController', TireRevisionController);
 
   TireRevisionController.$inject = ['$state',
-                                    'TireRevisionFirebaseService',
-                                    'CarInfoFirebaseService'];
+                                    'CarInfoFirebaseService',
+                                    'RevisionService'];
 
   function TireRevisionController($state,
-                                  TireRevisionFirebaseService,
-                                  CarInfoFirebaseService) {
+                                  CarInfoFirebaseService,
+                                  RevisionService) {
     var vm = this;
     vm.goToCarView = goToCarView;
-    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
+    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
 
     vm.deliveryOptions = {
       rightFrontTireSelectedOption: {id: '1', name: 'Bridgestone'},
@@ -47,13 +47,12 @@
     }
 
     function goToCarView() {
-      TireRevisionFirebaseService
-        .pushTires(
-          { rightFrontTire: vm.deliveryOptions.rightFrontTireSelectedOption.name,
-            leftFrontTire: vm.deliveryOptions.leftFrontTireSelectedOption.name,
-            rightBackTire: vm.deliveryOptions.rightBackTireSelectedOption.name,
-            leftBackTire: vm.deliveryOptions.leftBackTireSelectedOption.name
-          });
+      RevisionService.setCarTires({
+        right_front: vm.deliveryOptions.rightFrontTireSelectedOption.name,
+        left_front: vm.deliveryOptions.leftFrontTireSelectedOption.name,
+        right_rear: vm.deliveryOptions.rightBackTireSelectedOption.name,
+        left_rear: vm.deliveryOptions.leftBackTireSelectedOption.name
+      });
       resetFields();
       $state.go('carView');
     }

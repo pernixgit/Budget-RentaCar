@@ -17,7 +17,7 @@
     var vm = $scope;
     vm.goToExteriorParts = goToExteriorParts;
     vm.CarViewService = CarViewService;
-    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
+    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
 
     activate();
 
@@ -26,9 +26,8 @@
     }
 
     function goToExteriorParts() {
-      CarViewService.pushCarViewData();
+      CarViewService.setCanvasComponents();
       $state.go('carParts');
     }
-
   }
 })();
