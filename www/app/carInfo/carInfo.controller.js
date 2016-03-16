@@ -5,9 +5,9 @@
   .module('budgetrentacar.carInfo')
   .controller('CarInfoController', CarInfoController);
 
-  CarInfoController.$inject = ['CarInfoFirebaseService', '$state', 'RevisionService', 'LastRevisionService'];
+  CarInfoController.$inject = ['CarInfoFirebaseService', '$state', 'RevisionService', 'LastRevisionService','$scope'];
 
-  function CarInfoController(CarInfoFirebaseService, $state, RevisionService, LastRevisionService) {
+  function CarInfoController(CarInfoFirebaseService, $state, RevisionService, LastRevisionService, $scope) {
     var vm = this;
     vm.goToCarView = goToCarView;
     vm.RevisionService = RevisionService;
@@ -40,4 +40,3 @@
     }
   }
 })();
-

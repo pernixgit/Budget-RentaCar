@@ -36,6 +36,11 @@
       {id: '9', name: 'Toyo'},
       {id: '10', name: 'Otros'}
     ];
+    activate();
+
+    function activate() {
+        console.log(RevisionService.getRevision().delivery_info);
+    }
 
     function resetFields() {
       vm.deliveryOptions = {
