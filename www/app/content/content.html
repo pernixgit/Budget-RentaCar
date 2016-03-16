@@ -1,0 +1,12 @@
+<div class="list offset">
+  <div class="card round">
+    <label> Parte </label>
+    <select class="item-energized damage-select" ng-options="option.name for option in parts track by option.id" ng-model="currentDamage.part">
+    </select>
+  </div>
+  <div class="card round">
+    <label> Daño </label>
+    <select class="item-energized damage-select" ng-options="option.name for option in damageOptions track by option.id" ng-model="currentDamage.damageType">
+    </select>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.car-info-wrapper{
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.spinner svg{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.car-info-spinner{
+  stroke: #ED5505 !important;
+  fill: #ED5505 !important;
+}
+
+#subheader{
+	font-weight: bold;
+}

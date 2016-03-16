@@ -1,0 +1,10 @@
+.range-bar-value{
+  position: absolute;
+  right: 50%;
+  top: 60%; 
+}
+
+.translate-button-active{
+  background-color: #1C2D5D !important;
+  color: white !important;
+}

@@ -1,0 +1,103 @@
+.tire-revision-wrapper{
+  overflow-y: auto; 
+}
+
+.select-tire-brand{
+  border-radius: 0.5em;
+  width: 80%;
+  margin: 0 auto;
+  display: table;
+  font-size: 1em;
+  color: white;
+  font-weight: bold;
+  border: 0.2em solid #ffffff;
+  background-color: #ED5505;
+}
+
+.tireBrands{
+  text-align: center;
+  margin: 0 auto;
+  color: black;
+  height: 70%;
+}
+
+.imgTire4x4{
+  background: url('../assets/images/4x4car.png')  no-repeat center;
+  background-size: 100%;
+  height: 70%;
+}
+
+.imgTire4x2{
+  background: url('../assets/images/4x2car.png')  no-repeat center;
+  background-size: 100%;
+  height: 70%;
+}
+
+.button-revision-tire{
+  width: 80%;
+  border-radius: 0.5em;
+  height: 3em;
+  margin: 0 auto !important;
+  display: table;
+}
+
+@media only screen 
+and (max-height:420px) {
+  .imgTire4x4{
+    background-size: 60%;
+  }
+
+  .imgTire4x2{
+    background-size: 60%;
+  }
+
+  .tireBrands{
+    height: 95%;
+  }
+}
+
+@media only screen 
+and (min-width:700px) and (min-height: 600px){
+  .imgTire4x4{
+    background-size: 80%;
+  }
+
+  .imgTire4x2{
+    background-size: 80%;
+  }
+}
+
+
+@media only screen 
+and (min-width:800px) and (min-height: 500px){
+  .imgTire4x4{
+    background-size: 60%;
+  }
+
+  .imgTire4x2{
+    background-size: 60%;
+  }
+}
+
+@media only screen 
+and (min-width:960px) and (min-height: 600px){
+  .imgTire4x4{
+    background-size: 65%;
+  }
+
+  .imgTire4x2{
+    background-size: 65%;
+  }
+}
+
+
+@media only screen 
+and (min-width:1024px){
+  .imgTire4x4{
+    background-size: 80%;
+  }
+
+  .imgTire4x2{
+    background-size: 80%;
+  }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Budget Rent a Car</title>
+
+    <link href="scripts/ionic/css/ionic.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/login.css" rel="stylesheet">
+    <link href="styles/carView.css" rel="stylesheet">
+    <link href="styles/carInfo.css" rel="stylesheet">
+    <link href="styles/tireRevision.css" rel="stylesheet">
+    <link href="styles/content.css" rel="stylesheet">
+    <link href="styles/feedback.css" rel="stylesheet">
+    <link href="styles/content.css" rel="stylesheet">
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <!-- ionic/angularjs js -->
+    <script src="scripts/ionic/js/ionic.bundle.js"></script>
+    <script src="scripts/ionic/js/ng-cordova.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- Firebase -->
+    <script src="lib/firebase/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/app.run.js"></script>
+    <script src="app/app.constants.js"></script>
+
+    <!-- login module -->
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.controller.js"></script>
+    <script src="app/login/login.service.js"></script>
+
+
+    <!-- carView module -->
+    <script src="app/carView/carView.module.js"></script>
+    <script src="app/carView/carView.controller.js"></script>
+    <script src="app/carView/carView.routes.js"></script>
+    <script src="app/carView/carView.service.js"></script>
+    <script src="app/carView/carView.constants.js"></script>
+
+    <!-- canvas module -->
+    <script src="app/carView/canvas/canvas.controller.js"></script>
+
+    <!--content module -->
+    <script src="app/content/content.module.js"></script>
+    <script src="app/content/content.controller.js"></script>
+    <script src="app/content/content.routes.js"></script>
+
+    <!-- Firebase -->
+    <script src="lib/firebase/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+
+    <!-- Services -->
+    <script src="app/services/services.module.js"></script>
+    <script src="app/services/last.revision.service.js"></script>
+    <script src="app/services/revision.service.js"></script>
+
+    <!-- carInfo module -->
+    <script src="app/carInfo/carInfo.module.js"></script>
+    <script src="app/carInfo/carInfo.controller.js"></script>
+    <script src="app/carInfo/carInfo.routes.js"></script>
+    <script src="app/carInfo/carInfo.service.js"></script>
+
+    <!-- scanner module -->
+    <script src="app/scanner/scanner.module.js"></script>
+    <script src="app/scanner/scanner.controller.js"></script>
+    <script src="app/scanner/scanner.routes.js"></script>
+    <script src="app/scanner/scanner.service.js"></script>
+
+    <!-- carParts module -->
+    <script src="app/carParts/carParts.module.js"></script>
+    <script src="app/carParts/carParts.controller.js"></script>
+    <script src="app/carParts/carParts.routes.js"></script>
+    <script src="app/carParts/carParts.service.js"></script>
+    <script src="app/carParts/carParts.constants.js"></script>
+
+    <!-- carDeliveryInfo module -->
+    <script src="app/carDeliveryInfo/carDeliveryInfo.module.js"></script>
+    <script src="app/carDeliveryInfo/carDeliveryInfo.controller.js"></script>
+    <script src="app/carDeliveryInfo/carDeliveryInfo.routes.js"></script>
+    <script src="app/carDeliveryInfo/carDeliveryInfo.service.js"></script>
+    <script src="app/carDeliveryInfo/carDeliveryInfo.constants.js"></script>
+
+    <!-- tireRevision module -->
+    <script src="app/tireRevision/tireRevision.module.js"></script>
+    <script src="app/tireRevision/tireRevision.controller.js"></script>
+    <script src="app/tireRevision/tireRevision.routes.js"></script>
+    <script src="app/tireRevision/tireRevision.service.js"></script>
+
+    <!-- feedback module -->
+    <script src="app/feedback/feedback.module.js"></script>
+    <script src="app/feedback/feedback.controller.js"></script>
+    <script src="app/feedback/feedback.routes.js"></script>
+    <script src="app/feedback/feedback.service.js"></script>
+
+    <!--Paper Lib -->
+    <script src="lib/paper-lib/dist/paper-full.js"></script>
+
+    <!-- Translate Lib -->
+    <script src="lib/angular-translate/angular-translate.js"></script>
+
+    <!-- scanner-error module -->
+    <script src="app/scanner-error/scanner.error.module.js"></script>
+    <script src="app/scanner-error/scanner.error.routes.js"></script>
+    <script src="app/scanner-error/scanner.error.controller.js"></script>
+</head>
+<body ng-app="budgetrentacar">
+    <ion-nav-view></ion-nav-view>
+</body>
+</html>
