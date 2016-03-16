@@ -23,10 +23,14 @@
       useAgainReason: null
     };
 
+    activate();
+
+    function activate(){
+      console.log(RevisionService.getRevision());
+    }
+
     function endRevision(feedback) {
       RevisionService.setFeedback(feedback);
-      console.log(RevisionService.getRevision().feedback);
-      FeedbackService.pushFeedback(feedback);
       $state.go('login');
     }
 

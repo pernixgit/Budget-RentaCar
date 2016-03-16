@@ -12,16 +12,17 @@
                            FIREBASE_URL) {
 
     var rootRef  = new Firebase(FIREBASE_URL);
-    this.pushTires = pushTires;
+    this.pushCarParts = pushCarParts;
 
     return this;
 
-    function pushTires(accesory) {
+    function pushCarParts(accesory) {
       var reference = rootRef
         .child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId)
-        .child('car-parts');
+        .child('car_parts_presence');
       reference.update(accesory);
     }
+
   }
 })();

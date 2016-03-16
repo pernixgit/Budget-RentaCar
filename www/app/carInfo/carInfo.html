@@ -2,9 +2,8 @@
   <div class="bar header-bar bar-assertive">
     <h1 class="title">Información del vehiculo</h1>
   </div>
-  <div class="bar bar-subheader">
-    <h2 class="title" ng-if="vm.CarInfoFirebaseService.carInfo.currentRevisionType == 'check-out'" id="subheader">Checkout</h2>
-    <h2 class="title" ng-if="vm.CarInfoFirebaseService.carInfo.currentRevisionType == 'check-in'" id="subheader">Checkin</h2>
+  <div class="bar bar-subheader" id="subheader">
+    <h2 class="title">{{vm.RevisionService.getRevision().type}}</h2>
   </div>
   <ion-content class="has-header has-subheader padding">
       <a class="item item-icon-left" href="#">
@@ -32,7 +31,7 @@
         <i class="icon ion-android-car"></i>
         Placa
         <span class="item-note">
-          {{vm.CarInfoFirebaseService.carInfo.plate}}
+          {{vm.CarInfoFirebaseService.carInfo.license_plate}}
         </span>
       </a>
     <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
