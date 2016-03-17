@@ -25,13 +25,14 @@
                                      GAS_LEVEL_SELECTED,
                                      DELIVERY_PLACES) {
     var vm = this;
-    vm.km = getPreviousKm(LastRevisionService.currentCarLastRevision);
+    vm.km = getPreviousKm(LastRevisionService.revision);
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToTireRevision = goToTireRevision;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
     vm.gasLevels = GAS_LEVELS;
-    vm.deliveryPlaceSelected = DELIVERY_PLACE_SELECTED;
-    vm.gasLevelSelected = GAS_LEVEL_SELECTED;
+    vm.deliveryInfo = {};
+    vm.deliveryInfo.deliveryPlaceSelected = DELIVERY_PLACE_SELECTED;
+    vm.deliveryInfo.gasLevelSelected = GAS_LEVEL_SELECTED;
     vm.deliveryPlaces = DELIVERY_PLACES;
 
     function resetFields() {
