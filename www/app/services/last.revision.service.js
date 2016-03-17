@@ -26,12 +26,14 @@
     return service;
 
     function fetchRevisionData() {
-      return service._getLastRevision()
-        .then(function(data){
-          service.revision = data;
-          return $q.all([service._getLastRevisionObservations(),
-            service._getLastRevisionDamages()]);
-      });
+      if(CarInfoFirebaseService.carInfo.MVA) {
+        return service._getLastRevision()
+          .then(function (data) {
+            service.revision = data;
+            return $q.all([service._getLastRevisionObservations(),
+              service._getLastRevisionDamages()]);
+          });
+      }
     }
 
     function _getLastRevisionRef() {
