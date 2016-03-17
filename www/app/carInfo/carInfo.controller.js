@@ -16,7 +16,7 @@
     activate();
 
     function setNewRevisionType() {
-      if (LastRevisionService.revision.revision_type) {
+      if (LastRevisionService.revision) {
         RevisionService.setNewType(LastRevisionService.revision.type);
       } else {
         RevisionService.setNewType('check-in');
