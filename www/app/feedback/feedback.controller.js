@@ -6,14 +6,12 @@
     .module('budgetrentacar.feedback')
     .controller('Feedback', FeedbackController);
 
-  FeedbackController.$inject = ['FeedbackService',
-                                '$state',
+  FeedbackController.$inject = ['$state',
                                 '$translate',
                                 'RevisionService',
                                 'FirebaseRevisionService'];
 
-  function FeedbackController(FeedbackService,
-                              $state,
+  function FeedbackController($state,
                               $translate,
                               RevisionService,
                               FirebaseRevisionService) {
