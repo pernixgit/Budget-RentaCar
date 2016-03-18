@@ -5,9 +5,15 @@
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$state', '$ionicPopup','LoginFirebaseService', 'RevisionService'];
+  LoginController.$inject = ['$state',
+                             '$ionicPopup',
+                             'LoginFirebaseService',
+                             'RevisionService'];
 
-  function LoginController($state, $ionicPopup, LoginFirebaseService, RevisionService) {
+  function LoginController($state,
+                           $ionicPopup,
+                           LoginFirebaseService,
+                           RevisionService) {
     var vm = this;
     vm.authenticate = authenticate;
 
@@ -30,7 +36,6 @@
             password === snapshot.val().password) {
             authSuccess();
             RevisionService.setUsername(username);
-            //LoginFirebaseService.username = username;
           }else {
             authError();
           }

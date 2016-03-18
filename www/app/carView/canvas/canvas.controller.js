@@ -175,7 +175,7 @@
 
     function importCanvasJson() {
       var layer = new Layer();
-      LastRevisionService.fetchData()
+      LastRevisionService.fetchRevisionData()
         .then(function() {
           var damages = LastRevisionService.currentCarLastDamages;
 
@@ -213,8 +213,8 @@
       return {
         shapeId: shapeId,
         part: part,
-        damageType: damageType,
-        json: json
+        damage_type: damageType,
+        json_canvas: json
       };
     }
 

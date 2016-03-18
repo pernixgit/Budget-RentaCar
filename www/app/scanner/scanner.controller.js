@@ -18,6 +18,7 @@
           },
           function(error) {
             alert('Error, no se pudo leer el código');
+            $state.go('scanner-error');
           });
   };
 })();

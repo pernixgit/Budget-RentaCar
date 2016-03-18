@@ -3,27 +3,22 @@
 
   angular
     .module('budgetrentacar.carInfo')
-    .service('CarInfoFirebaseService', FirebaseService);
+    .service('CarInfoFirebaseService', CarInfoFirebaseService);
 
-  FirebaseService.$inject = ['FIREBASE_URL',
-                             '$firebaseObject',
-                             'LoginFirebaseService',
-                             'ScannerService'];
+  CarInfoFirebaseService.$inject = ['FIREBASE_URL',
+                                    '$firebaseObject',
+                                    'ScannerService'];
 
-  function FirebaseService(FIREBASE_URL,
-                           $firebaseObject,
-                           LoginFirebaseService,
-                           ScannerService) {
+  function CarInfoFirebaseService(FIREBASE_URL,
+                                  $firebaseObject,
+                                  ScannerService) {
 
     var service = {
       rootRef: new Firebase(FIREBASE_URL),
       fetchCarInfo: fetchCarInfo,
-      fillNewRevisionData: fillNewRevisionData,
-      pushNewRevision: pushNewRevision,
       carInfo: null,
       currentCarId: ScannerService.getCode(),
       currentRevisionId: null,
-      newRevision: {}
     };
     return service;
 
@@ -33,55 +28,6 @@
         .child(ScannerService.getCode());
       service.carInfo = $firebaseObject(reference);
       return service.carInfo.$loaded();
-    }
-
-    function fillNewRevisionData() {
-      setNewRevisionCarId();
-      setNewRevisionUsername();
-      setNewRevisionTimestamp();
-      setNewRevisionType();
-    }
-
-    function setNewRevisionCarId() {
-      service.newRevision.car = service.carInfo.$id;
-    }
-
-    function setNewRevisionType() {
-      if (service.carInfo.currentRevisionType == 'check-in') {
-        service.newRevision.type = 'check-out';
-      }else {
-        service.newRevision.type = 'check-in';
-      }
-    }
-
-    function updateCarCurrentRevisionType() {
-      var reference = service.rootRef
-        .child('vehicles')
-        .child(service.currentCarId);
-      if (service.carInfo.currentRevisionType == 'check-in') {
-        reference.update({currentRevisionType: 'check-out'});
-      }else {
-        reference.update({currentRevisionType: 'check-in'});
-      }
-    }
-
-    function setNewRevisionTimestamp() {
-      service.newRevision.timestamp = Date.now();
-    }
-
-    function setNewRevisionUsername() {
-      service.newRevision.username = LoginFirebaseService.username;
-    }
-
-    function pushNewRevision() {
-      var reference = service.rootRef.child('revisions');
-      var pushRef = reference.push(service.newRevision);
-      saveCreatedRevisionId(pushRef.key());
-      updateCarCurrentRevisionType();
-    }
-
-    function saveCreatedRevisionId(id) {
-      service.currentRevisionId = id;
     }
   }
 

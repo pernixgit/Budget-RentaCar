@@ -5,32 +5,39 @@
   .module('budgetrentacar.carInfo')
   .controller('CarInfoController', CarInfoController);
 
-  CarInfoController.$inject = ['CarInfoFirebaseService', '$state', 'RevisionService', 'LastRevisionService'];
+  CarInfoController.$inject = ['CarInfoFirebaseService',
+                               '$state',
+                               'RevisionService',
+                               'LastRevisionService'];
 
-  function CarInfoController(CarInfoFirebaseService, $state, RevisionService, LastRevisionService) {
+  function CarInfoController(CarInfoFirebaseService,
+                             $state,
+                             RevisionService,
+                             LastRevisionService) {
     var vm = this;
     vm.goToCarView = goToCarView;
+    vm.RevisionService = RevisionService;
     vm.CarInfoFirebaseService = CarInfoFirebaseService;
 
     activate();
 
-    CarInfoFirebaseService.fetchCarInfo().then(function() {
-      LastRevisionService.fetchData().then(function() {
-        CarInfoFirebaseService.carInfo.model ? vm.isLoaded = true : vm.isLoaded = false;
-        CarInfoFirebaseService.fillNewRevisionData();
-      });
-    });
+    function setNewRevisionType() {
+      if (LastRevisionService.revision) {
+        RevisionService.setNewType(LastRevisionService.revision.type);
+      } else {
+        RevisionService.setNewType('check-in');
+      }
+    }
 
     function goToCarView() {
-      CarInfoFirebaseService.pushNewRevision();
       RevisionService.setCarMVA(CarInfoFirebaseService.carInfo.MVA);
-      RevisionService.setNewType(LastRevisionService.currentCarLastRevision.revisionType);
-      console.log(RevisionService.getRevision());
       $state.go('carDeliveryInfo');
     }
 
-
     function activate() {
+      setNewRevisionType();
+      CarInfoFirebaseService.carInfo.model ?
+      vm.isLoaded = true : vm.isLoaded = false;
       setTimeout(function() {
         if (!vm.isLoaded) {
           $state.go('scanner-error');
@@ -39,4 +46,3 @@
     }
   }
 })();
-

@@ -5,17 +5,21 @@
     .module('budgetrentacar.carParts')
     .controller('CarPartsController', CarPartsController);
 
-    CarPartsController.$inject = ['CarPartsService',
-                                  'CarInfoFirebaseService',
-                                  '$state',
-                                  'ACCESORIES',
-                                  'SELECTED_ACCESORIES'];
+  CarPartsController.$inject = ['CarPartsService',
+                                'CarInfoFirebaseService',
+                                '$state',
+                                'ACCESORIES',
+                                'SELECTED_ACCESORIES',
+                                'FirebaseRevisionService',
+                                'RevisionService'];
 
   function CarPartsController(CarPartsService,
                               CarInfoFirebaseService,
                               $state,
                               ACCESORIES,
-                              SELECTED_ACCESORIES) {
+                              SELECTED_ACCESORIES,
+                              FirebaseRevisionService,
+                              RevisionService) {
 
     var vm = this;
     vm.CarPartsService = CarPartsService;
@@ -29,18 +33,21 @@
     }
 
     function goToEndOrFeedback() {
-      CarPartsService.pushTires(vm.accesory);
+      RevisionService.setCarAccesories(vm.accesory);
       resetItems();
-      var currentRevisionType = vm.CarInfoFirebaseService
-        .carInfo
-        .currentRevisionType;
-      if (currentRevisionType == 'check-out') {
-        resetItems();
-        $state.go('feedback');
-      } else {
-        resetItems();
-        $state.go('login');
-      }
+      (RevisionService.getRevision().type == 'check-in') ?
+        $state.go('feedback') : pushAndEndProcess();
     }
+
+    function pushAndEndProcess() {
+      RevisionService.setTimestamp();
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision());
+      if (RevisionService.getDamages()) {
+        FirebaseRevisionService.pushDamages(RevisionService.getDamages());
+      }
+      FirebaseRevisionService.resetRevision();
+      $state.go('login');
+    }
+
   }
 })();

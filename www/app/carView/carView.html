@@ -11,7 +11,7 @@
     <ion-scroll zooming="false" direction="y">
       <ion-list show-delete=true>
         <ion-item ng-repeat="item in CarViewService.canvasComponents" id="item.id" class="item-remove-animate">
-          <p>{{item.part}} - {{item.damageType}}</p>
+          <p>{{item.part}} - {{item.damage_type}}</p>
           <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"/>
         </ion-item>
       </ion-list>
