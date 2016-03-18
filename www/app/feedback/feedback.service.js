@@ -5,18 +5,9 @@
     .module('budgetrentacar.feedback')
     .service('FeedbackService', FeedbackService);
 
-  FeedbackService.$inject = ['CarInfoFirebaseService', 'FIREBASE_URL'];
+  FeedbackService.$inject = [];
 
-  function FeedbackService(CarInfoFirebaseService, FIREBASE_URL) {
+  function FeedbackService() {
 
-    this.pushFeedback = pushFeedback;
-    var rootRef  = new Firebase(FIREBASE_URL);
-
-    function pushFeedback(feedback) {
-      var reference = rootRef
-                        .child('feedback')
-                        .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update(feedback);
-    }
   }
 })();

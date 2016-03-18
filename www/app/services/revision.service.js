@@ -5,25 +5,25 @@
 
   RevisionService.$inject = [];
 
-  function RevisionService(){
+  function RevisionService() {
     var revision = {};
     var observationsList = {};
     var damagesList = {};
 
     var service = {
-      setUsername : setUsername,
-      setCarMVA : setCarMVA,
-      setNewType : setNewType,
-      setTimestamp : setTimestamp,
-      setCarDeliveryInfo : setCarDeliveryInfo,
-      setCarTires : setCarTires,
-      setDamages : setDamages,
-      setObservations : setObservations,
-      setCarAccesories : setCarParts,
-      setFeedback : setFeedback,
-      getRevision : getRevision,
-      getDamages : getDamages,
-      resetRevision : resetRevision
+      setUsername: setUsername,
+      setCarMVA: setCarMVA,
+      setNewType: setNewType,
+      setTimestamp: setTimestamp,
+      setCarDeliveryInfo: setCarDeliveryInfo,
+      setCarTires: setCarTires,
+      setDamages: setDamages,
+      setObservations: setObservations,
+      setCarAccesories: setCarParts,
+      setFeedback: setFeedback,
+      getRevision: getRevision,
+      getDamages: getDamages,
+      resetRevision: resetRevision,
     };
     return service;
 
@@ -32,7 +32,8 @@
     }
 
     function setNewType(lastRevisionType) {
-      (lastRevisionType == 'check-in') ? revision.type = 'check-out' : revision.type = 'check-in';
+      (lastRevisionType == 'check-in') ?
+      revision.type = 'check-out' : revision.type = 'check-in';
     }
 
     function setTimestamp() {
@@ -44,7 +45,9 @@
     }
 
     function setCarDeliveryInfo(deliveryInfo) {
-      revision.delivery_info = deliveryInfo;
+      revision.km = deliveryInfo.km;
+      revision.delivery_place = deliveryInfo.deliveryPlace;
+      revision.gas_level = deliveryInfo.gasLevel;
     }
 
     function setCarTires(tires) {
@@ -55,12 +58,12 @@
       damagesList = damages;
     }
 
-    function setObservations(observations){
+    function setObservations(observations) {
       observationsList = observations;
     }
 
     function setCarParts(carParts) {
-      revision.car_parts = carParts;
+      revision.car_parts_present = carParts;
     }
 
     function setFeedback(feedback) {
@@ -75,10 +78,11 @@
       return damagesList;
     }
 
-    function resetRevision(){
+    function resetRevision() {
       revision = {};
+      damagesList = {};
+      observationsList = {};
     }
 
   }
-
 })();

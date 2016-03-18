@@ -5,9 +5,13 @@
     .module('budgetrentacar.carView')
     .factory('CarViewService', CarViewService);
 
-  CarViewService.$inject = ['CarInfoFirebaseService', 'FIREBASE_URL', 'RevisionService'];
+  CarViewService.$inject = ['CarInfoFirebaseService',
+                            'FIREBASE_URL',
+                            'RevisionService'];
 
-  function CarViewService(CarInfoFirebaseService, FIREBASE_URL, RevisionService) {
+  function CarViewService(CarInfoFirebaseService,
+                          FIREBASE_URL,
+                          RevisionService) {
 
     var service = {
       observations: [],
@@ -17,7 +21,6 @@
       pushObservations: pushObservations,
       pushObservationIdToCurrentRevision: pushObservationIdToCurrentRevision,
       resetObservations: resetObservationsAndDamages,
-      pushJsonCanvas: pushDamages,
       pushCarViewData: pushCarViewData,
       rootRef: new Firebase(FIREBASE_URL)
     };
@@ -65,31 +68,14 @@
       });
     }
 
-    function pushDamagesIdToCurrentRevision(id) {
-      var reference = service.rootRef
-        .child('revisions')
-        .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update({
-        damages_ref: id
-      });
-    }
-
-    function pushDamages(damages) {
-      var reference = service.rootRef
-        .child('damages');
-      var pushReference = reference.push(damages);
-      pushDamagesIdToCurrentRevision(pushReference.key());
-    }
-
     function setCanvasComponents() {
       RevisionService.setDamages(setupDamagesToBePushed());
     }
 
     function pushCarViewData() {
-      //pushObservations();
-      if(service.canvasComponents.length > 0) {
+      if (service.canvasComponents.length > 0) {
         RevisionService.setDamages(setupDamagesToBePushed());
-        pushDamages(setupDamagesToBePushed());
+        FirebaseRevisionService.pushDamages(setupDamagesToBePushed());
         resetObservationsAndDamages();
       }
     }

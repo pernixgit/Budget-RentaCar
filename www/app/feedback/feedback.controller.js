@@ -6,9 +6,17 @@
     .module('budgetrentacar.feedback')
     .controller('Feedback', FeedbackController);
 
-  FeedbackController.$inject = ['FeedbackService', '$state', '$translate', 'RevisionService'];
+  FeedbackController.$inject = ['FeedbackService',
+                                '$state',
+                                '$translate',
+                                'RevisionService',
+                                'FirebaseRevisionService'];
 
-  function FeedbackController(FeedbackService, $state, $translate, RevisionService) {
+  function FeedbackController(FeedbackService,
+                              $state,
+                              $translate,
+                              RevisionService,
+                              FirebaseRevisionService) {
     var vm = this;
     vm.endRevision = endRevision;
     vm.active = 'ES';
@@ -23,14 +31,14 @@
       useAgainReason: null
     };
 
-    activate();
-
-    function activate(){
-      console.log(RevisionService.getRevision());
-    }
-
     function endRevision(feedback) {
-      RevisionService.setFeedback(feedback);
+      RevisionService.setTimestamp();
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision());
+      if (RevisionService.getDamages()) {
+        FirebaseRevisionService.pushDamages(RevisionService.getDamages());
+      }
+      FirebaseRevisionService.pushFeedback(feedback);
+      FirebaseRevisionService.resetRevision();
       $state.go('login');
     }
 

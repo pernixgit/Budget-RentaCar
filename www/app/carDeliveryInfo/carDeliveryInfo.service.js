@@ -14,10 +14,10 @@
     var rootRef  = new Firebase(FIREBASE_URL);
     return this;
 
-    function pushCarDeliveryInfo(items) {
+    function pushCarDeliveryInfo(deliveryInfo) {
       var reference = rootRef.child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update(items);
+      reference.update(deliveryInfo);
     }
   }
 })();

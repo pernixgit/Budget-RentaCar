@@ -38,16 +38,16 @@
     function resetFields() {
       vm.deliveryInfo = {
         deliveryPlaceSelected: DELIVERY_PLACE_SELECTED,
-        gasLevelSelected: GAS_LEVEL_SELECTED,
+        gasLevelSelected: GAS_LEVEL_SELECTED
       };
     }
 
     function createDeliveryInfoObject(km, deliveryPlace, gasLevel) {
       return {
-        'km' : km,
-        'delivery_place' : deliveryPlace,
-        'gas_level' : gasLevel
-      }
+        'km': km,
+        'delivery_place': deliveryPlace,
+        'gas_level': gasLevel
+      };
     }
 
     function getPreviousKm(lastRevision) {
@@ -56,8 +56,10 @@
 
     function goToTireRevision() {
       var deliveryInfo = createDeliveryInfoObject(vm.km,
-                                                  vm.deliveryInfo.deliveryPlaceSelected.name,
-                                                  vm.deliveryInfo.gasLevelSelected.name);
+                                                  vm.deliveryInfo.
+                                                    deliveryPlaceSelected.name,
+                                                  vm.deliveryInfo.
+                                                    gasLevelSelected.name);
       RevisionService.setCarDeliveryInfo(deliveryInfo);
       resetFields();
       $state.go('tireRevision');

@@ -8,7 +8,7 @@
       {'name': 'Emblemas', 'key': 'emblems'},
       {'name': 'Herramientas' , 'key': 'tools'},
       {'name': 'Kit de emergencia' , 'key': 'emergency_kit'},
-      {'name': 'Llanta de repuesto', 'key': 'back_up_tire'},
+      {'name': 'Llanta de repuesto', 'key': 'spare_tire'},
       {'name': 'Placas' , 'key': 'plates'},
       {'name': 'Rack', 'key': 'rack'},
       {'name': 'Alfombras' , 'key': 'carpet'}
@@ -19,7 +19,7 @@
       'emblems': true,
       'tools': true,
       'emergency_kit': true,
-      'back_up_tire': true,
+      'spare_tire': true,
       'plates': true,
       'rack': false,
       'carpet': true
