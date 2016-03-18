@@ -11,5 +11,8 @@ describe('Car View page', function() {
 
   });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b6ddcd36f750ac4ce459467b6fdba158f093611f
 });

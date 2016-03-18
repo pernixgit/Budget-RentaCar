@@ -2,8 +2,13 @@ describe('Login', function() {
   var username = element(by.model('vm.username'));
   var password = element(by.model('vm.password'));
   beforeEach(function() {
+<<<<<<< HEAD
     browser.get('');  
     browser.sleep(500); 
+=======
+      browser.get(''); 
+      browser.sleep(500);
+>>>>>>> b6ddcd36f750ac4ce459467b6fdba158f093611f
   });
 
   it('should go to scanner page with admin credentials', function() {
@@ -11,7 +16,11 @@ describe('Login', function() {
     password.sendKeys('admin');
     expect(element(by.css('.budget-orange-button.button.button-block.button-assertive')).isPresent()).toBe(true);
     element(by.css('.budget-orange-button.button.button-block.button-assertive')).click();
+<<<<<<< HEAD
     browser.sleep(900); 
+=======
+    browser.sleep(900);
+>>>>>>> b6ddcd36f750ac4ce459467b6fdba158f093611f
     expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'scanner');
     browser.sleep(1000);
   });
@@ -21,6 +30,7 @@ describe('Login', function() {
     password.sendKeys('abcdefasdasd');
     expect(element(by.css('.budget-orange-button.button.button-block.button-assertive')).isPresent()).toBe(true);
     element(by.css('.budget-orange-button.button.button-block.button-assertive')).click();
+<<<<<<< HEAD
     browser.sleep(500);  
     expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
     browser.sleep(500); 
@@ -28,4 +38,12 @@ describe('Login', function() {
   });
 
 });
+=======
+    browser.sleep(500);
+    expect(browser.getCurrentUrl()).toEqual(browser.baseUrl);
+    browser.sleep(500);
 
+  });
+>>>>>>> b6ddcd36f750ac4ce459467b6fdba158f093611f
+
+});

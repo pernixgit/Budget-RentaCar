@@ -13,6 +13,7 @@
       observations: [],
       canvasComponents: [],
       addDamageToCanvasComponents: addDamageToCanvasComponents,
+      setCanvasComponents: setCanvasComponents,
       pushObservations: pushObservations,
       pushObservationIdToCurrentRevision: pushObservationIdToCurrentRevision,
       resetObservations: resetObservationsAndDamages,
@@ -69,7 +70,7 @@
         .child('revisions')
         .child(CarInfoFirebaseService.currentRevisionId);
       reference.update({
-        damages: id
+        damages_ref: id
       });
     }
 
@@ -80,11 +81,17 @@
       pushDamagesIdToCurrentRevision(pushReference.key());
     }
 
+    function setCanvasComponents() {
+      RevisionService.setDamages(setupDamagesToBePushed());
+    }
+
     function pushCarViewData() {
       //pushObservations();
-      RevisionService.setDamages(setupDamagesToBePushed());
-      pushDamages(setupDamagesToBePushed());
-      resetObservationsAndDamages();
+      if(service.canvasComponents.length > 0) {
+        RevisionService.setDamages(setupDamagesToBePushed());
+        pushDamages(setupDamagesToBePushed());
+        resetObservationsAndDamages();
+      }
     }
   }
 })();

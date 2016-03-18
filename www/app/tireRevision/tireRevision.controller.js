@@ -5,36 +5,50 @@
   .module('budgetrentacar.tireRevision')
   .controller('TireRevisionController', TireRevisionController);
 
-  TireRevisionController.$inject = ['ITEMS','TIREBRANDS','$state', '$scope',
-                                    'CarInfoFirebaseService', 'LastRevisionService',
-                                    'TireRevisionFirebaseService'];
+  TireRevisionController.$inject = ['SELECTED_TIRES',
+                                    'TIRE_BRANDS',
+                                    '$state',
+                                    'CarDeliveryInfoFirebaseService',
+                                    'CarInfoFirebaseService',
+                                    'LastRevisionService',
+                                    'RevisionService'];
 
-  function TireRevisionController(ITEMS, TIREBRANDS, $state, $scope,
-                                  CarInfoFirebaseService, LastRevisionService,
-                                  TireRevisionFirebaseService) {
+  function TireRevisionController(SELECTED_TIRES,
+                                  TIRE_BRANDS,
+                                  $state,
+                                  CarDeliveryInfoFirebaseService,
+                                  CarInfoFirebaseService,
+                                  LastRevisionService,
+                                  RevisionService) {
     var vm = this;
-    vm.TireRevisionFirebaseService = TireRevisionFirebaseService;
     vm.LastRevisionService = LastRevisionService;
+    vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToCarView = goToCarView;
-    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
-    vm.tireBrands = TIREBRANDS;
-    vm.items = ITEMS;
-    setDefaultTires = setDefaultTires;
-    setTireBrand = setTireBrand;
-    setPreviousTires = setPreviousTires;
+    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
+    vm.tireBrands = TIRE_BRANDS;
+    vm.selectedTires = SELECTED_TIRES;
 
     function activate() {
-      vm.LastRevisionService.fetchData().then(function() {
-        if (vm.LastRevisionService.currentCarLastRevision.tires == null) {
-          setDefaultTires();
-        }
-        else {
-          setPreviousTires();
-        }
-      });
+      var revision = vm.LastRevisionService.revision;
+      if(revision) {
+        vm.selectedTires.rightFrontTireSelectedOption = compareTires(revision.tires.right_front);
+        vm.selectedTires.leftFrontTireSelectedOption = compareTires(revision.tires.left_front);
+        vm.selectedTires.leftBackTireSelectedOption = compareTires(revision.tires.left_rear);
+        vm.selectedTires.rightBackTireSelectedOption = compareTires(revision.tires.right_rear);
+        vm.selectedTires.extraTireSelectedOption = compareTires(revision.tires.spare);
+      }else{
+        setDefaultTires();
+      }
     }
     activate();
 
+    function compareTires(tireName) {
+      for(var position = 0; position < vm.tireBrands.length; position++) {
+        if (tireName === vm.tireBrands[position].name){
+          return vm.tireBrands[position];
+        }
+      }
+    }
 
     function setDefaultTires() {
       vm.items.rightFrontTireSelectedOption = ITEMS[0].rightFrontTireSelectedOption;
@@ -60,14 +74,13 @@
     }
  
     function goToCarView() {
-      TireRevisionFirebaseService
-        .pushTires(
-          {rightFrontTire: vm.items.rightFrontTireSelectedOption.name,
-          leftFrontTire: vm.items.leftFrontTireSelectedOption.name,
-          rightBackTire: vm.items.rightBackTireSelectedOption.name,
-          leftBackTire: vm.items.leftBackTireSelectedOption.name,
-          extraTire: vm.items.extraTireSelectedOption.name
-          });
+      RevisionService.setCarTires({
+        right_front: vm.selectedTires.rightFrontTireSelectedOption,
+        left_front: vm.selectedTires.leftFrontTireSelectedOption,
+        right_rear: vm.selectedTires.rightBackTireSelectedOption,
+        left_rear: vm.selectedTires.leftBackTireSelectedOption,
+        spare: vm.selectedTires.extraTireSelectedOption
+      });
       $state.go('carView');
     }
   }

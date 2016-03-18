@@ -9,7 +9,7 @@
         <div class="input-label ion-home">
           Entrega
         </div>
-        <select class="item-energized" ng-options="option.name for option in vm.availableOptions track by option.id" ng-model="vm.deliveryOptions.deliverySelectedOption">
+        <select class="item-energized" ng-options="option.name for option in vm.deliveryPlaces track by option.id" ng-model="vm.deliveryPlaceSelected">
         </select>
       </label>
       <label class="item item-input">
@@ -20,7 +20,7 @@
         <div class="input-label">
           Gasolina
         </div>
-        <select ng-options="option.name for option in vm.gasAvailableOptions track by option.id" ng-model="vm.deliveryOptions.gasSelectedOption">
+        <select ng-options="option.name for option in vm.gasLevels track by option.id" ng-model="vm.gasLevelSelected">
         </select>
       </label>
       <button class="budget-orange-button button button-block button-assertive" ng-click="vm.goToTireRevision()"> Pasar a Revisión del Llantas </button>

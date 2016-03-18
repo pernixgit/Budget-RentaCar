@@ -9,13 +9,15 @@
                                   'CarInfoFirebaseService',
                                   '$state',
                                   'ACCESORIES',
-                                  'SELECTED_ACCESORIES'];
+                                  'SELECTED_ACCESORIES',
+                                  'RevisionService'];
 
   function CarPartsController(CarPartsService,
                               CarInfoFirebaseService,
                               $state,
                               ACCESORIES,
-                              SELECTED_ACCESORIES) {
+                              SELECTED_ACCESORIES,
+                              RevisionService) {
 
     var vm = this;
     vm.CarPartsService = CarPartsService;
@@ -29,18 +31,10 @@
     }
 
     function goToEndOrFeedback() {
-      CarPartsService.pushTires(vm.accesory);
+      RevisionService.setCarAccesories(vm.accesory);
       resetItems();
-      var currentRevisionType = vm.CarInfoFirebaseService
-        .carInfo
-        .currentRevisionType;
-      if (currentRevisionType == 'check-out') {
-        resetItems();
-        $state.go('feedback');
-      } else {
-        resetItems();
-        $state.go('login');
-      }
+      (RevisionService.getRevision().type == 'check-out') ?
+        $state.go('feedback') : $state.go('login');
     }
   }
 })();

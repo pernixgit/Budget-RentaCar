@@ -2,7 +2,11 @@ describe('Tire Revision page', function() {
 
   it('should go to tireRevision page', function() {
     browser.get(browser.baseUrl + 'tireRevision');
+<<<<<<< HEAD
     expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + 'tireRevision');
+=======
+    expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/tireRevision");
+>>>>>>> b6ddcd36f750ac4ce459467b6fdba158f093611f
   });
 
 
