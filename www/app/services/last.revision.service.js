@@ -6,11 +6,13 @@
   LastRevisionService.$inject = ['FIREBASE_URL',
                                  'CarInfoFirebaseService',
                                  '$firebaseObject',
+                                 '$firebaseArray',
                                  '$q'];
 
   function LastRevisionService(FIREBASE_URL,
                                CarInfoFirebaseService,
                                $firebaseObject,
+                               $firebaseArray,
                                $q) {
 
     var service =  {
@@ -28,9 +30,11 @@
       if (CarInfoFirebaseService.carInfo.MVA) {
         return service._getLastRevision()
           .then(function(data) {
-            service.revision = data;
-            return $q.all([service._getLastRevisionObservations(),
-              service._getLastRevisionDamages()]);
+            if(data){
+              service.revision = data;
+              return $q.all([service._getLastRevisionDamages(),
+                service._getLastRevisionObservations()]);
+            }
           });
       }
     }
@@ -40,23 +44,25 @@
         .child('vehicles')
         .child(CarInfoFirebaseService.carInfo.MVA)
         .child('last_revision_ref');
-      var firebaseObjectRef = $firebaseObject(reference);
-      return firebaseObjectRef.$loaded()
-        .then(function() {
-          return firebaseObjectRef.$value;
-        });
+      var lastRevisionRef = $firebaseObject(reference);
+        return lastRevisionRef.$loaded()
+          .then(function () {
+            return lastRevisionRef.$value;
+          });
     }
 
     function _getLastRevision() {
       return service._getLastRevisionRef()
         .then(function(last_revision_ref) {
-          var reference = service.rootRef
-            .child('revisions')
-            .child(last_revision_ref);
-          var object = $firebaseObject(reference);
-          return object.$loaded().then(function() {
-            return object;
-          });
+          if(last_revision_ref) {
+            var reference = service.rootRef
+              .child('revisions')
+              .child(last_revision_ref);
+            var lastRevision = $firebaseObject(reference);
+            return lastRevision.$loaded().then(function () {
+              return lastRevision;
+            });
+          }
         });
     }
 
@@ -66,7 +72,10 @@
         var reference = service.rootRef
           .child('damages')
           .child(service.revision.damages_ref);
-        service.revision.damages = $firebaseObject(reference).$loaded();
+        var lastRevisionDamages = $firebaseArray(reference);
+        return lastRevisionDamages.$loaded().then(function () {
+          service.revision.damages = lastRevisionDamages;
+        });
       }
     }
 
@@ -76,8 +85,10 @@
         var reference = service.rootRef
           .child('observations')
           .child(service.revision.observations_ref);
-        service.revision.observations = $firebaseObject(reference).$loaded();
-      }
+        var lastRevisionObservations = $firebaseArray(reference);
+        return lastRevisionObservations.$loaded().then(function () {
+          service.revision.observations = lastRevisionObservations;
+        });      }
     }
   }
 
