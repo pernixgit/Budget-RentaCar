@@ -15,12 +15,12 @@
 
     var service = {
       observations: [],
-      canvasComponents: [],
+      damages: [],
       addDamageToCanvasComponents: addDamageToCanvasComponents,
       setCanvasComponents: setCanvasComponents,
       pushObservations: pushObservations,
       pushObservationIdToCurrentRevision: pushObservationIdToCurrentRevision,
-      resetObservations: resetObservationsAndDamages,
+      resetObservationsAndDamages: resetObservationsAndDamages,
       pushCarViewData: pushCarViewData,
       rootRef: new Firebase(FIREBASE_URL)
     };
@@ -33,11 +33,12 @@
     }
 
     function addDamageToCanvasComponents(damage) {
-      service.canvasComponents.push(damage);
+      service.damages.push(damage);
+      console.log(service.damages);
     }
 
     function setupDamagesToBePushed() {
-      var damagesToPush = angular.copy(service.canvasComponents);
+      var damagesToPush = angular.copy(service.damages);
       removeIdProperty(damagesToPush);
       return damagesToPush;
     }
@@ -56,7 +57,7 @@
 
     function resetObservationsAndDamages() {
       service.observations = [];
-      service.canvasComponents = [];
+      service.damages = [];
     }
 
     function pushObservationIdToCurrentRevision(id) {
@@ -73,7 +74,7 @@
     }
 
     function pushCarViewData() {
-      if (service.canvasComponents.length > 0) {
+      if (service.damages.length > 0) {
         RevisionService.setDamages(setupDamagesToBePushed());
         FirebaseRevisionService.pushDamages(setupDamagesToBePushed());
         resetObservationsAndDamages();

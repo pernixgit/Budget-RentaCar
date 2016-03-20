@@ -20,7 +20,6 @@
       pushDamages: pushDamages,
       pushFeedback: pushFeedback
     };
-    var actualRevision;
 
     return service;
 
