@@ -86,10 +86,10 @@
 
     vm.onItemDelete = function(observation) {
       var observationIndex = CarViewService
-        .canvasComponents
+        .damages
         .indexOf(observation);
       deleteShape(observation.shapeId);
-      CarViewService.canvasComponents.splice(observationIndex, 1);
+      CarViewService.damages.splice(observationIndex, 1);
     };
 
     function drawShape(event) {
@@ -177,22 +177,21 @@
       var layer = new Layer();
       LastRevisionService.fetchRevisionData()
         .then(function() {
-          var damages = LastRevisionService.currentCarLastDamages;
+          var lastRevision = LastRevisionService.revision;
 
-          if (damages) {
-            for (var position = 0; position < damages.length; position++) {
-              project._activeLayer.importJSON(damages[position].json);
+          if (lastRevision) {
+            for (var position = 0; position < lastRevision.damages.length; position++) {
+              project._activeLayer.importJSON(lastRevision.damages[position].json_canvas);
 
               var canvasItem = createCanvasItemObject(
                 project._activeLayer.children[position].id,
-                damages[position].part,
-                damages[position].damageType,
-                damages[position].json);
+                lastRevision.damages[position].part,
+                lastRevision.damages[position].damage_type,
+                lastRevision.damages[position].json_canvas);
 
               CarViewService.addDamageToCanvasComponents(canvasItem);
             }
             paper.view.update();
-            vm.$apply();
           }
         });
     }

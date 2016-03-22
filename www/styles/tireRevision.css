@@ -41,6 +41,33 @@
   display: table;
 }
 
+.topSelectBoxes{
+  margin-bottom: 1%;
+}
+
+.leftSelectBox{
+  margin-right: 2%;
+}
+
+.rightSelectBox{
+  margin-left: 2%;
+}
+
+.bottomSelectBoxes{
+  margin-top: 1%;
+}
+
+.extraSelect{
+  width:58%;
+  padding: 5px;
+}
+
+.spareTireText{
+  text-align: center;
+  font-weight: bolder;
+  color: #1C2D5D;
+}
+
 @media only screen 
 and (max-height:420px) {
   .imgTire4x4{

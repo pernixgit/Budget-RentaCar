@@ -27,6 +27,7 @@
 
     function goToExteriorParts() {
       CarViewService.setCanvasComponents();
+      CarViewService.resetObservationsAndDamages();
       $state.go('carParts');
     }
   }
