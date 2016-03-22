@@ -1,0 +1,24 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Observaciones</h1>
+    <button class="button button-clear button-assertive" ng-click="vm.hideObservationsModal()">Cerrar</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <label class="item item-input">
+      <span class="input-label">Observación</span>
+      <input type="text" ng-model="vm.observation.value">
+    </label>
+    <button class="button button-full budget-orange-button" ng-click="vm.addObservation(vm.observation)">
+      Añadir observación
+    </button>
+    <ion-scroll direction="y" class="observation-list">
+    <ion-list>
+        <ion-item class="item-button-right" ng-repeat="observation in vm.RevisionService.getObservations() track by $index">
+        {{observation.value}}
+        <button class="button button-clear button-assertive icon ion-ios-minus-outline" ng-click="vm.removeObservation(observation)" ng-hide="!observation.isNew && vm.RevisionService.getRevision().type == 'check-in'">
+        </button>
+      </ion-item>
+    </ion-list>
+    </ion-scroll>
+  </ion-content>
+</ion-modal-view>

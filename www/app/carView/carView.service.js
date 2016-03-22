@@ -34,7 +34,6 @@
 
     function addDamageToCanvasComponents(damage) {
       service.damages.push(damage);
-      console.log(service.damages);
     }
 
     function setupDamagesToBePushed() {

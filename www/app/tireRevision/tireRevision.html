@@ -1,21 +1,23 @@
-<div class="bar header-bar bar-assertive">
-  <h1 class="title">Revisión de llantas</h1>
-</div>
-<ion-content class="content has-header">
-  <div class="list list-inset tireBrands">
-    <div class="row topSelectBoxes">
-      <select class="select-tire-brand col leftSelectBox" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightFrontTireSelectedOption">
-      </select>
-      <select class="select-tire-brand col rightSelectBox" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightBackTireSelectedOption">
-      </select>
-    </div>
-    <div ng-class="{'imgTire4x4': vm.currentCarTraction == '4x4','imgTire4x2': vm.currentCarTraction == '4x2'}">
-    </div>
-    <div class="row padding-bottom bottomSelectBoxes">
-      <select class="select-tire-brand col leftSelectBox" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.leftFrontTireSelectedOption">
-      </select>
-      <select class="select-tire-brand col rightSelectBox" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.leftBackTireSelectedOption">
-      </select>
+
+<ion-view view-title="Revisión de llantas">
+  <ion-content class="content has-header">
+    <div class="list list-inset tireBrands">
+      <div class="row">
+        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightFrontTireSelectedOption">
+        </select>
+        <div class="col-10"></div>
+        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.leftFrontTireSelectedOption">
+        </select>
+      </div>
+      <div ng-class="{'imgTire4x4': vm.currentCarTraction == '4x4','imgTire4x2': vm.currentCarTraction == '4x2'}">
+      </div>
+      <div class="row padding-bottom">
+        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.leftBackTireSelectedOption">
+        </select>
+        <div class="col-10"></div>
+        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightBackTireSelectedOption">
+        </select>
+      </div>
     </div>
   </div>
   <div>
@@ -27,4 +29,4 @@
   <button class="budget-orange-button button button-block button-assertive padding-top" ng-click="vm.goToCarView()"> Pasar a Revisión del Vehículo </button>
   </div>
 </ion-content>
-
+</ion-view>

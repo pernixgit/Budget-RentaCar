@@ -1,22 +1,21 @@
-<div class="bar header-bar bar-assertive">
-  <h1 class="title">Revisión de llantas</h1>
-</div>
-<ion-content class="has-header list-inset"  ng-controller="CanvasController">
-  <div class="canvas-wrapper">
-    <div class="image-container">
-      <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" ng-class="{'canvas4x4': currentCarTraction == '4x4','canvas4x2': currentCarTraction == '4x2'}"></canvas>
+<ion-view view-title="Revisión de daños">
+  <ion-content class="has-header list-inset"  ng-controller="CanvasController">
+    <div class="canvas-wrapper">
+      <div class="image-container">
+        <canvas id="canvas" ng-mousedown="downEvent($event)" resize="true" ng-class="{'canvas4x4': currentCarTraction == '4x4','canvas4x2': currentCarTraction == '4x2'}"></canvas>
+      </div>
     </div>
-  </div>
-  <div class="observations-wrapper">
-    <ion-scroll zooming="false" direction="y">
-      <ion-list show-delete=true>
-        <ion-item ng-repeat="item in CarViewService.damages" id="item.id" class="item-remove-animate">
-          <p>{{item.part}} - {{item.damage_type}}</p>
-          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"/>
-        </ion-item>
-      </ion-list>
-    </ion-scroll>
-  </div>
-  <button class="budget-orange-button button button-block button-assertive has-header" ng-click="showDialog(false)">Agregar Observación Interna</button>
-  <button class="budget-blue-button button button-block button-assertive has-header" type="submit" ng-click="goToExteriorParts()"> Continuar </button>
-</ion-content>
+    <div class="observations-wrapper">
+      <ion-scroll zooming="false" direction="y">
+        <ion-list show-delete=true>
+          <ion-item ng-repeat="item in CarViewService.damages" id="item.id" class="item-remove-animate">
+            <p>{{item.part}} - {{item.damage_type}}</p>
+            <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"/>
+            </ion-delete-button>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+    </div>
+    <button class="budget-orange-button button button-block button-assertive has-header" type="submit" ng-click="goToExteriorParts()"> Continuar </button>
+  </ion-content>
+</ion-view>

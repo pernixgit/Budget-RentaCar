@@ -20,6 +20,7 @@
       currentCarId: ScannerService.getCode(),
       currentRevisionId: null,
     };
+
     return service;
 
     function fetchCarInfo() {
@@ -29,6 +30,7 @@
       service.carInfo = $firebaseObject(reference);
       return service.carInfo.$loaded();
     }
+
   }
 
 })();

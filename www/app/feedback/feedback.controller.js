@@ -35,6 +35,10 @@
       if (RevisionService.getDamages()) {
         FirebaseRevisionService.pushDamages(RevisionService.getDamages());
       }
+      if (RevisionService.getObservations()) {
+        FirebaseRevisionService.pushObservations(
+          RevisionService.getObservations());
+      }
       FirebaseRevisionService.pushFeedback(feedback);
       RevisionService.resetRevision();
       $state.go('login');

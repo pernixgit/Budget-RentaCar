@@ -7,7 +7,7 @@
 
   function RevisionService() {
     var revision = {};
-    var observationsList = {};
+    var observationsList = [];
     var damagesList = {};
 
     var service = {
@@ -18,11 +18,14 @@
       setCarDeliveryInfo: setCarDeliveryInfo,
       setCarTires: setCarTires,
       setDamages: setDamages,
+      addObservation: addObservation,
       setObservations: setObservations,
+      removeObservation: removeObservation,
       setCarAccesories: setCarParts,
       setFeedback: setFeedback,
       getRevision: getRevision,
       getDamages: getDamages,
+      getObservations: getObservations,
       resetRevision: resetRevision,
     };
     return service;
@@ -58,8 +61,17 @@
       damagesList = damages;
     }
 
+    function addObservation(observation) {
+      observationsList.push(observation);
+    }
+
     function setObservations(observations) {
-      observationsList = observations;
+      observationsList = (observations);
+    }
+
+    function removeObservation(observation) {
+      var observationIndex = observationsList.indexOf(observation);
+      observationsList.splice(observationIndex, 1);
     }
 
     function setCarParts(carParts) {
@@ -76,6 +88,10 @@
 
     function getDamages() {
       return damagesList;
+    }
+
+    function getObservations() {
+      return observationsList;
     }
 
     function resetRevision() {
