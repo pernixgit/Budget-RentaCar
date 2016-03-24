@@ -30,7 +30,7 @@
       if (CarInfoFirebaseService.carInfo.MVA) {
         return service._getLastRevision()
           .then(function(data) {
-            if(data){
+            if (data) {
               service.revision = data;
               return $q.all([service._getLastRevisionDamages(),
                 service._getLastRevisionObservations()]);
@@ -45,23 +45,25 @@
         .child(CarInfoFirebaseService.carInfo.MVA)
         .child('last_revision_ref');
       var lastRevisionRef = $firebaseObject(reference);
-        return lastRevisionRef.$loaded()
-          .then(function () {
-            return lastRevisionRef.$value;
-          });
+      return lastRevisionRef.$loaded()
+        .then(function() {
+          return lastRevisionRef.$value;
+        });
     }
 
     function _getLastRevision() {
       return service._getLastRevisionRef()
         .then(function(last_revision_ref) {
-          if(last_revision_ref) {
+          if (last_revision_ref) {
             var reference = service.rootRef
               .child('revisions')
               .child(last_revision_ref);
             var lastRevision = $firebaseObject(reference);
-            return lastRevision.$loaded().then(function () {
-              return lastRevision;
-            });
+            return lastRevision.$loaded()
+              .then(
+                function() {
+                return lastRevision;
+              });
           }
         });
     }
@@ -73,7 +75,8 @@
           .child('damages')
           .child(service.revision.damages_ref);
         var lastRevisionDamages = $firebaseArray(reference);
-        return lastRevisionDamages.$loaded().then(function () {
+        return lastRevisionDamages.$loaded()
+          .then(function() {
           service.revision.damages = lastRevisionDamages;
         });
       }
@@ -86,9 +89,15 @@
           .child('observations')
           .child(service.revision.observations_ref);
         var lastRevisionObservations = $firebaseArray(reference);
-        return lastRevisionObservations.$loaded().then(function () {
-          service.revision.observations = lastRevisionObservations;
-        });      }
+        return lastRevisionObservations.$loaded()
+          .then(function() {
+            lastRevisionObservations = lastRevisionObservations || [];
+            service.revision.observations = lastRevisionObservations.map(
+              function(observation) {
+                return {value: observation.$value, isNew: false};
+              });
+          });
+      }
     }
   }
 

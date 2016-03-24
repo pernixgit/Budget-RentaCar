@@ -18,6 +18,7 @@
       rootRef: new Firebase(FIREBASE_URL),
       pushNewRevision: pushNewRevision,
       pushDamages: pushDamages,
+      pushObservations: pushObservations,
       pushFeedback: pushFeedback
     };
 
@@ -38,7 +39,7 @@
     function updateVehicleCurrentRevisionRef() {
       var reference = service.rootRef
         .child('vehicles')
-        .child(CarInfoFirebaseService.currentCarId);
+        .child(CarInfoFirebaseService.carInfo.MVA);
       reference.update({
         last_revision_ref: service.currentRevisionId
       });
@@ -53,11 +54,36 @@
       });
     }
 
+    function pushObservationsIdToCurrentRevision(id) {
+      var reference = service.rootRef
+        .child('revisions')
+        .child(service.currentRevisionId);
+      reference.update({
+        observations_ref: id
+      });
+    }
+
     function pushDamages(damages) {
       var reference = service.rootRef
         .child('damages');
       var pushReference = reference.push(damages);
       pushDamagesIdToCurrentRevision(pushReference.key());
+    }
+
+    function extractValuesFromObservations(observations) {
+      var result = observations.map(
+        function(observation) {
+          return observation.value;
+        });
+      return result;
+    }
+
+    function pushObservations(observations) {
+      var reference = service.rootRef
+        .child('observations');
+      var observationsValues = extractValuesFromObservations(observations);
+      var pushReference = reference.push(observationsValues);
+      pushObservationsIdToCurrentRevision(pushReference.key());
     }
 
     function pushFeedbackIdToCurrentRevision(id) {

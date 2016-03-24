@@ -16,6 +16,7 @@
       'budgetrentacar.carInfo',
       'budgetrentacar.scanner',
       'budgetrentacar.services',
+      'budgetrentacar.observations',
       'budgetrentacar.scanner.error',
       'ngCordova',
       'budgetrentacar.carParts',

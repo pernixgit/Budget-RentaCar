@@ -8,14 +8,29 @@
   LoginController.$inject = ['$state',
                              '$ionicPopup',
                              'LoginFirebaseService',
-                             'RevisionService'];
+                             'RevisionService',
+                             '$ionicNavBarDelegate',
+                             '$scope'];
 
   function LoginController($state,
                            $ionicPopup,
                            LoginFirebaseService,
-                           RevisionService) {
+                           RevisionService,
+                           $ionicNavBarDelegate,
+                           $scope) {
     var vm = this;
     vm.authenticate = authenticate;
+
+    activate();
+
+    function activate() {
+      setObservationsModalToUnopened();
+      $ionicNavBarDelegate.showBackButton(false);
+    }
+
+    function setObservationsModalToUnopened() {
+      $scope.$parent.vm.opened = false;
+    }
 
     function authSuccess() {
       $state.go('scanner');

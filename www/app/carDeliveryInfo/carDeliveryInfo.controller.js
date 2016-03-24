@@ -13,7 +13,8 @@
                                        'GAS_LEVELS',
                                        'DELIVERY_PLACE_SELECTED',
                                        'GAS_LEVEL_SELECTED',
-                                       'DELIVERY_PLACES'];
+                                       'DELIVERY_PLACES',
+                                       '$ionicNavBarDelegate'];
 
   function CarDeliveryInfoController($state,
                                      CarDeliveryInfoFirebaseService,
@@ -23,7 +24,8 @@
                                      GAS_LEVELS,
                                      DELIVERY_PLACE_SELECTED,
                                      GAS_LEVEL_SELECTED,
-                                     DELIVERY_PLACES) {
+                                     DELIVERY_PLACES,
+                                     $ionicNavBarDelegate) {
     var vm = this;
     vm.km = getPreviousKm(LastRevisionService.revision);
     vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
@@ -34,6 +36,8 @@
     vm.deliveryInfo.deliveryPlaceSelected = DELIVERY_PLACE_SELECTED;
     vm.deliveryInfo.gasLevelSelected = GAS_LEVEL_SELECTED;
     vm.deliveryPlaces = DELIVERY_PLACES;
+
+    $ionicNavBarDelegate.showBackButton(true);
 
     function resetFields() {
       vm.deliveryInfo = {

@@ -8,12 +8,14 @@
   CarInfoController.$inject = ['CarInfoFirebaseService',
                                '$state',
                                'RevisionService',
-                               'LastRevisionService'];
+                               'LastRevisionService',
+                               '$ionicNavBarDelegate'];
 
   function CarInfoController(CarInfoFirebaseService,
                              $state,
                              RevisionService,
-                             LastRevisionService) {
+                             LastRevisionService,
+                             $ionicNavBarDelegate) {
     var vm = this;
     vm.goToCarView = goToCarView;
     vm.RevisionService = RevisionService;
@@ -35,6 +37,7 @@
     }
 
     function activate() {
+      $ionicNavBarDelegate.showBackButton(false);
       setNewRevisionType();
       CarInfoFirebaseService.carInfo.model ?
       vm.isLoaded = true : vm.isLoaded = false;
