@@ -11,8 +11,8 @@
     FeedbackTitle: 'Feedback',
     FeedbackQuestion1: 'Overall value for money?',
     FeedbackQuestion2: 'How likely are you to recommend us ' +
-                       'to a friend colleague?',
-    FeedbackQuestion3: 'In general how would you rate our costomer service?',
+                       'to a friend or colleague?',
+    FeedbackQuestion3: 'In general how would you rate our customer service?',
     FeedbackQuestion4: 'Would you use our service again?',
     FeedbackButtonSubmmit: 'Submit Feedback',
     FeedBackPlaceHolder1: 'What can we improve?',
