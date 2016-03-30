@@ -72,19 +72,23 @@
     }
 
     function extractValuesFromObservations(observations) {
-      var result = observations.map(
-        function(observation) {
-          return observation.value;
-        });
-      return result;
+      if (observations.length > 0){
+        var result = observations.map(
+          function(observation) {
+            return observation.value;
+          });
+        return result;
+      }
     }
 
     function pushObservations(observations) {
       var reference = service.rootRef
         .child('observations');
       var observationsValues = extractValuesFromObservations(observations);
-      var pushReference = reference.push(observationsValues);
-      pushObservationsIdToCurrentRevision(pushReference.key());
+      if (observationsValues){
+        var pushReference = reference.push(observationsValues);
+        pushObservationsIdToCurrentRevision(pushReference.key());
+      }
     }
 
     function changeDamagesColorToYellow(damages) {
@@ -113,3 +117,4 @@
 
   }
 })();
+

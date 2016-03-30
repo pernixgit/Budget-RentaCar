@@ -59,9 +59,11 @@
 
     function showObservationsModal() {
       if (!vm.opened) {
-        RevisionService.setObservations(
-          LastRevisionService.revision.observations);
-        vm.opened = true;
+        if (LastRevisionService.revision.observations){
+          RevisionService.setObservations(
+            LastRevisionService.revision.observations);
+          vm.opened = true;
+        }
       }
       $scope.modal.show();
     }
@@ -82,3 +84,4 @@
   }
 
 })();
+
