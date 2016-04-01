@@ -3,6 +3,7 @@
   float: right;
   height: 60%;
   background: rgba(26, 47, 89, 0.25);
+  overflow-y: scroll;
 }
 
 .item {

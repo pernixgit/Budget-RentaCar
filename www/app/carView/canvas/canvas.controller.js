@@ -199,6 +199,7 @@
       }else {
         LastRevisionService.fetchRevisionData()
           .then(function () {
+            console.log('at last revision service');
             if (LastRevisionService.revision && LastRevisionService.revision.damages) {
               addDamagesToCanvas(LastRevisionService.revision.damages);
             }

@@ -40,6 +40,7 @@
 
     function resetDamages() {
       service.damages = [];
+      service.damagesLoaded = false;
     }
 
     function setCanvasComponents() {

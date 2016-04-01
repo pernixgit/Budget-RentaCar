@@ -22,7 +22,7 @@
     activate();
 
     function activate() {
-      //screen.lockOrientation('portrait');
+      screen.lockOrientation('portrait');
     }
 
     function goToExteriorParts() {
