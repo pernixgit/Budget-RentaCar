@@ -26,7 +26,7 @@
       getRevision: getRevision,
       getDamages: getDamages,
       getObservations: getObservations,
-      resetRevision: resetRevision,
+      resetRevision: resetRevision
     };
     return service;
 
@@ -97,7 +97,7 @@
     function resetRevision() {
       revision = {};
       damagesList = {};
-      observationsList = {};
+      observationsList = [];
     }
 
   }

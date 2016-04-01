@@ -6,12 +6,12 @@
     .service('FirebaseRevisionService', FirebaseRevisionService);
 
   FirebaseRevisionService.$inject = ['CarInfoFirebaseService',
-                                     'FIREBASE_URL'
-                                     ];
+                                     'FIREBASE_URL',
+                                     'CarViewService'];
 
   function FirebaseRevisionService(CarInfoFirebaseService,
-                                   FIREBASE_URL
-                                   ) {
+                                   FIREBASE_URL,
+                                   CarViewService) {
 
     var service = {
       currentRevisionId: null,
@@ -69,26 +69,14 @@
         .child('damages');
       var pushReference = reference.push(damages);
       pushDamagesIdToCurrentRevision(pushReference.key());
-    }
-
-    function extractValuesFromObservations(observations) {
-      if (observations.length > 0){
-        var result = observations.map(
-          function(observation) {
-            return observation.value;
-          });
-        return result;
-      }
+      CarViewService.resetDamages();
     }
 
     function pushObservations(observations) {
       var reference = service.rootRef
         .child('observations');
-      var observationsValues = extractValuesFromObservations(observations);
-      if (observationsValues){
-        var pushReference = reference.push(observationsValues);
-        pushObservationsIdToCurrentRevision(pushReference.key());
-      }
+      var pushReference = reference.push(observations);
+      pushObservationsIdToCurrentRevision(pushReference.key());
     }
 
     function changeDamagesColorToYellow(damages) {
@@ -117,4 +105,3 @@
 
   }
 })();
-

@@ -92,12 +92,19 @@
         return lastRevisionObservations.$loaded()
           .then(function() {
             lastRevisionObservations = lastRevisionObservations || [];
+            setObservationsIsNewToFalse(lastRevisionObservations);
             service.revision.observations = lastRevisionObservations.map(
-              function(observation) {
-                return {value: observation.$value, isNew: false};
+              function(observationItem) {
+                return {observation: observationItem.observation, is_new: false};
               });
           });
       }
+    }
+
+    function setObservationsIsNewToFalse(observations) {
+      angular.forEach(observations, function(observation) {
+        observation.is_new = false;
+      });
     }
   }
 
