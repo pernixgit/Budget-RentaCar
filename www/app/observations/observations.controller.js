@@ -22,7 +22,7 @@
     vm.hideObservationsModal = hideObservationsModal;
     vm.addObservation = addObservation;
     vm.removeObservation = RevisionService.removeObservation;
-    vm.observation = {value: null, isNew: true};
+    vm.observationItem = {observation: null, is_new: true};
     vm.shouldShowObservationsButton = shouldShowObservationsButton;
     vm.$state = $state;
 
@@ -58,11 +58,13 @@
     }
 
     function showObservationsModal() {
+      var lastRevision = LastRevisionService.revision;
       if (!vm.opened) {
-        if (LastRevisionService.revision.observations){
-          RevisionService.setObservations(
-            LastRevisionService.revision.observations);
-          vm.opened = true;
+        if (lastRevision) {
+          if (lastRevision.observations) {
+            RevisionService.setObservations(lastRevision.observations);
+            vm.opened = true;
+          }
         }
       }
       $scope.modal.show();
@@ -73,12 +75,14 @@
     }
 
     function addObservation(observation) {
-      RevisionService.addObservation(observation);
-      vm.observation = emptyObservation();
+      if (observation.observation != null) {
+        RevisionService.addObservation(observation);
+        vm.observationItem = emptyObservation();
+      }
     }
 
     function emptyObservation() {
-      return angular.copy({value: null, isNew: true});
+      return angular.copy({observation: null, is_new: true});
     }
 
   }

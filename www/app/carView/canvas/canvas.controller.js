@@ -173,27 +173,37 @@
       return new Point(fixedX, fixedY);
     }
 
+    function addDamagesToCanvas(damagesList) {
+      for (var position = 0; position < damagesList.length; position++) {
+        project._activeLayer.importJSON(damagesList[position].json_canvas);
+
+        var canvasItem = createCanvasItemObject(
+          project._activeLayer.children[position].id,
+          damagesList[position].part,
+          damagesList[position].damage_type,
+          damagesList[position].json_canvas,
+          false);
+
+        CarViewService.addDamageToCanvasComponents(canvasItem);
+        CarViewService.damagesLoaded = true;
+      }
+      paper.view.update();
+    }
+
     function importCanvasJson() {
       var layer = new Layer();
-      LastRevisionService.fetchRevisionData()
-        .then(function() {
-          var lastRevision = LastRevisionService.revision;
-
-          if (lastRevision) {
-            for (var position = 0; position < lastRevision.damages.length; position++) {
-              project._activeLayer.importJSON(lastRevision.damages[position].json_canvas);
-
-              var canvasItem = createCanvasItemObject(
-                project._activeLayer.children[position].id,
-                lastRevision.damages[position].part,
-                lastRevision.damages[position].damage_type,
-                lastRevision.damages[position].json_canvas);
-
-              CarViewService.addDamageToCanvasComponents(canvasItem);
+      if (CarViewService.damagesLoaded) {
+        var previousDamages = CarViewService.damages;
+        CarViewService.resetDamages();
+        addDamagesToCanvas(previousDamages);
+      }else {
+        LastRevisionService.fetchRevisionData()
+          .then(function () {
+            if (LastRevisionService.revision && LastRevisionService.revision.damages) {
+              addDamagesToCanvas(LastRevisionService.revision.damages);
             }
-            paper.view.update();
-          }
-        });
+          });
+      }
     }
 
     function appendDamage() {
@@ -201,19 +211,21 @@
         shape.id,
         vm.currentDamage.part.name,
         vm.currentDamage.damageType.name,
-        shape.exportJSON({asString: true})
+        shape.exportJSON({asString: true}),
+        true
       );
       CarViewService.addDamageToCanvasComponents(canvasItem);
       resetCurrentObservation();
       shape = null;
     }
 
-    function createCanvasItemObject(shapeId, part, damageType, json) {
+    function createCanvasItemObject(shapeId, part, damageType, json, isNew) {
       return {
         shapeId: shapeId,
         part: part,
         damage_type: damageType,
-        json_canvas: json
+        json_canvas: json,
+        is_new: isNew
       };
     }
 

@@ -5,32 +5,22 @@
     .module('budgetrentacar.carView')
     .factory('CarViewService', CarViewService);
 
-  CarViewService.$inject = ['CarInfoFirebaseService',
-                            'FIREBASE_URL',
+  CarViewService.$inject = ['FIREBASE_URL',
                             'RevisionService'];
 
-  function CarViewService(CarInfoFirebaseService,
-                          FIREBASE_URL,
+  function CarViewService(FIREBASE_URL,
                           RevisionService) {
 
     var service = {
-      observations: [],
       damages: [],
       addDamageToCanvasComponents: addDamageToCanvasComponents,
       setCanvasComponents: setCanvasComponents,
-      pushObservations: pushObservations,
-      pushObservationIdToCurrentRevision: pushObservationIdToCurrentRevision,
-      resetObservationsAndDamages: resetObservationsAndDamages,
-      pushCarViewData: pushCarViewData,
-      rootRef: new Firebase(FIREBASE_URL)
+      resetDamages: resetDamages,
+      pushCarViewData: setDamagesToService,
+      rootRef: new Firebase(FIREBASE_URL),
+      damagesLoaded: false
     };
     return service;
-
-    function setupObservationsToBePushed() {
-      var observationsToPush = angular.copy(service.observations);
-      removeIdProperty(observationsToPush);
-      return observationsToPush;
-    }
 
     function addDamageToCanvasComponents(damage) {
       service.damages.push(damage);
@@ -42,41 +32,25 @@
       return damagesToPush;
     }
 
-    function pushObservations() {
-      var reference = service.rootRef.child('observations');
-      var pushRef = reference.push(setupObservationsToBePushed());
-      pushObservationIdToCurrentRevision(pushRef.key());
-    }
-
     function removeIdProperty(damages) {
       angular.forEach(damages, function(damage) {
         delete damage.shapeId;
       });
     }
 
-    function resetObservationsAndDamages() {
-      service.observations = [];
+    function resetDamages() {
       service.damages = [];
-    }
-
-    function pushObservationIdToCurrentRevision(id) {
-      var reference = service.rootRef
-        .child('revisions')
-        .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update({
-        observations: id
-      });
     }
 
     function setCanvasComponents() {
       RevisionService.setDamages(setupDamagesToBePushed());
     }
 
-    function pushCarViewData() {
+    function setDamagesToService() {
       if (service.damages.length > 0) {
         RevisionService.setDamages(setupDamagesToBePushed());
         FirebaseRevisionService.pushDamages(setupDamagesToBePushed());
-        resetObservationsAndDamages();
+        resetDamages();
       }
     }
   }

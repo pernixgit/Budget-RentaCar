@@ -44,6 +44,7 @@
         deliveryPlaceSelected: DELIVERY_PLACE_SELECTED,
         gasLevelSelected: GAS_LEVEL_SELECTED
       };
+      vm.km = 0;
     }
 
     function createDeliveryInfoObject(km, deliveryPlace, gasLevel) {

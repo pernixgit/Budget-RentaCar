@@ -6,16 +6,16 @@
   <ion-content class="padding">
     <label class="item item-input">
       <span class="input-label">Observación</span>
-      <input type="text" ng-model="vm.observation.value">
+      <input type="text" ng-model="vm.observationItem.observation">
     </label>
-    <button class="button button-full budget-orange-button" ng-click="vm.addObservation(vm.observation)">
+    <button class="button button-full budget-orange-button" ng-click="vm.addObservation(vm.observationItem)">
       Añadir observación
     </button>
     <ion-scroll direction="y" class="observation-list">
     <ion-list>
-        <ion-item class="item-button-right" ng-repeat="observation in vm.RevisionService.getObservations() track by $index">
-        {{observation.value}}
-        <button class="button button-clear button-assertive icon ion-ios-minus-outline" ng-click="vm.removeObservation(observation)" ng-hide="!observation.isNew && vm.RevisionService.getRevision().type == 'check-in'">
+        <ion-item class="item-button-right" ng-repeat="observationItem in vm.RevisionService.getObservations() track by $index" ng-hide="observationItem.observation == null">
+        {{observationItem.observation}}
+        <button class="button button-clear button-assertive icon ion-ios-minus-outline" ng-click="vm.removeObservation(observationItem)" ng-hide="!observationItem.is_new && vm.RevisionService.getRevision().type == 'check-in'">
         </button>
       </ion-item>
     </ion-list>
