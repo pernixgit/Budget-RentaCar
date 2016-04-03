@@ -12,7 +12,10 @@
                               'DAMAGE_TYPE_SELECTED',
                               'PARTS',
                               'SELECTED_PART',
-                              'LastRevisionService'];
+                              'VEHICLE_4X2_URL',
+                              'VEHICLE_4X4_URL',
+                              'LastRevisionService',
+                              'CarInfoFirebaseService'];
 
   function CanvasController($scope,
                             CarViewService,
@@ -21,15 +24,20 @@
                             DAMAGE_TYPE_SELECTED,
                             PARTS,
                             SELECTED_PART,
-                            LastRevisionService) {
+                            VEHICLE_4X2_URL,
+                            VEHICLE_4X4_URL,
+                            LastRevisionService,
+                            CarInfoFirebaseService) {
 
     var vm = $scope;
-    var shape;
+    var shape = null;
+    var layer = null;
     vm.currentDamage = {};
     vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
     vm.currentDamage.part = SELECTED_PART;
     vm.damageOptions = DAMAGE_OPTIONS;
     vm.parts = PARTS;
+    vm.percentages = {};
     vm.LastRevisionService = LastRevisionService;
 
     activate();
@@ -93,23 +101,27 @@
     };
 
     function drawShape(event) {
-      switch (vm.currentDamage.damageType.name) {
-        case 'Golpe':
-          drawDamage(event);
-          break;
-        case 'Rayon':
-          drawScratch(event);
-          break;
-        case 'Camanance':
-          drawDent(event);
-          break;
-        case 'Raspon':
-          drawBigScratch(event);
-          break;
-        default:
-          break;
+      var currentDamage = vm.currentDamage.damageType.name;
+
+      if (currentDamage === 'Golpe') {
+        drawDamage(event);
+      } else if (currentDamage === 'Rayon') {
+        drawScratch(event);
+      } else if (currentDamage === 'Camanance') {
+        drawDent(event);
+      } else {
+        drawBigScratch(event);
       }
+
       paper.view.update();
+      setXandYPercentages(event.point);
+    }
+
+    function setXandYPercentages(point) {
+      vm.percentages = {
+        x_percentage: (point.x / paper.view.size.width),
+        y_percentage: (point.y / paper.view.size.height)
+      };
     }
 
     function drawDamage(event) {
@@ -179,14 +191,18 @@
 
     function addDamagesToCanvas(damagesList) {
       for (var position = 0; position < damagesList.length; position++) {
-        project._activeLayer.importJSON(damagesList[position].json_canvas);
+        var component = project._activeLayer.importJSON(damagesList[position].json_canvas);
+        component.position.x = (parseFloat(damagesList[position].relative_cords.x_percentage) * (paper.view.size.width));
+        component.position.y = (parseFloat(damagesList[position].relative_cords.y_percentage) * (paper.view.size.height));
 
         var canvasItem = createCanvasItemObject(
           project._activeLayer.children[position].id,
           damagesList[position].part,
           damagesList[position].damage_type,
           damagesList[position].json_canvas,
-          false);
+          false,
+          damagesList[position].relative_cords
+        );
 
         CarViewService.addDamageToCanvasComponents(canvasItem);
         CarViewService.damagesLoaded = true;
@@ -194,8 +210,33 @@
       paper.view.update();
     }
 
+    function scaleImage(raster) {
+      var heightScale = (paper.view.size.height / raster.height);
+      var widthScale = (paper.view.size.width / raster.width);
+      raster.scale(widthScale, heightScale);
+    }
+
+    function setVehicleBackground() {
+      var raster = null;
+      if (CarInfoFirebaseService.carInfo.traction_type === '4x4') {
+        raster = new paper.Raster({
+          source: VEHICLE_4X4_URL,
+          position: paper.view.center
+        });
+      } else {
+        raster = new paper.Raster({
+          source: VEHICLE_4X2_URL,
+          position: paper.view.center
+        });
+      }
+      raster.onLoad = function() {
+        scaleImage(raster);
+      };
+    }
+
     function importCanvasJson() {
-      var layer = new Layer();
+      setVehicleBackground();
+      layer = new Layer();
       if (CarViewService.damagesLoaded) {
         var previousDamages = CarViewService.damages;
         CarViewService.resetDamages();
@@ -216,24 +257,26 @@
         vm.currentDamage.part.name,
         vm.currentDamage.damageType.name,
         shape.exportJSON({asString: true}),
-        true
+        true,
+        vm.percentages
       );
       CarViewService.addDamageToCanvasComponents(canvasItem);
-      resetCurrentObservation();
+      resetCurrentDamage();
       shape = null;
     }
 
-    function createCanvasItemObject(shapeId, part, damageType, json, isNew) {
+    function createCanvasItemObject(shapeId, part, damageType, json, isNew, relativeCords) {
       return {
         shapeId: shapeId,
         part: part,
         damage_type: damageType,
         json_canvas: json,
-        is_new: isNew
+        is_new: isNew,
+        relative_cords: relativeCords
       };
     }
 
-    function resetCurrentObservation() {
+    function resetCurrentDamage() {
       vm.currentDamage = {};
       vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
       vm.currentDamage.part = SELECTED_PART;

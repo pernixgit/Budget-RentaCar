@@ -27,6 +27,7 @@
       getRevision: getRevision,
       getDamages: getDamages,
       getObservations: getObservations,
+      setCanvasImage: setCanvasImage,
       resetRevision: resetRevision
     };
     return service;
@@ -97,6 +98,10 @@
 
     function getObservations() {
       return observationsList;
+    }
+
+    function setCanvasImage(canvasImage) {
+      revision.canvas_image = canvasImage;
     }
 
     function resetRevision() {
