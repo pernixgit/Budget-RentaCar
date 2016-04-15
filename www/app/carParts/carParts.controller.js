@@ -40,18 +40,7 @@
     }
 
     function pushAndEndProcess() {
-      RevisionService.setTimestamp();
-      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision());
-      if (RevisionService.getDamages()) {
-        FirebaseRevisionService.pushDamages(RevisionService.getDamages());
-      }
-      if (RevisionService.getObservations()) {
-        if (RevisionService.getObservations().length > 0) {
-          FirebaseRevisionService.pushObservations(
-            RevisionService.getObservations());
-        }
-      }
-      RevisionService.resetRevision();
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), false);
       $state.go('login');
     }
 

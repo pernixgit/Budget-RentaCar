@@ -198,8 +198,7 @@
         addDamagesToCanvas(previousDamages);
       }else {
         LastRevisionService.fetchRevisionData()
-          .then(function () {
-            console.log('at last revision service');
+          .then(function() {
             if (LastRevisionService.revision && LastRevisionService.revision.damages) {
               addDamagesToCanvas(LastRevisionService.revision.damages);
             }
