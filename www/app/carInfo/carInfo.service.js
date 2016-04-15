@@ -18,7 +18,7 @@
       fetchCarInfo: fetchCarInfo,
       carInfo: null,
       currentCarId: ScannerService.getCode(),
-      currentRevisionId: null,
+      currentRevisionId: null
     };
 
     return service;
