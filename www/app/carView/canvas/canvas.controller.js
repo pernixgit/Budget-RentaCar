@@ -122,8 +122,9 @@
         center: event.point,
         position: event.point,
         strokeColor: '#ED5505',
-        strokeWidth: 10
+        strokeWidth: 5
       });
+      shape.scale(0.5, 0.5);
     }
 
     function drawScratch(event) {
@@ -134,8 +135,9 @@
         center: event.point,
         position: event.point,
         strokeColor: '#ED5505',
-        strokeWidth: 10
+        strokeWidth: 5
       });
+      shape.scale(0.5, 0.5);
     }
 
     function drawDent(event) {
@@ -147,8 +149,9 @@
         center: event.point,
         position: event.point,
         strokeColor: '#ED5505',
-        strokeWidth: 10
+        strokeWidth: 5
       });
+      shape.scale(0.5, 0.5);
     }
 
     function drawBigScratch(event) {
@@ -163,8 +166,9 @@
         center: event.point,
         position: event.point,
         strokeColor: '#ED5505',
-        strokeWidth: 10
+        strokeWidth: 5
       });
+      shape.scale(0.5, 0.5);
     }
 
     function getPoint(event) {
