@@ -23,6 +23,7 @@
       removeObservation: removeObservation,
       setCarAccesories: setCarParts,
       setFeedback: setFeedback,
+      getFeedback: getFeedback,
       getRevision: getRevision,
       getDamages: getDamages,
       getObservations: getObservations,
@@ -80,6 +81,10 @@
 
     function setFeedback(feedback) {
       revision.feedback = feedback;
+    }
+
+    function getFeedback() {
+      return revision.feedback;
     }
 
     function getRevision() {

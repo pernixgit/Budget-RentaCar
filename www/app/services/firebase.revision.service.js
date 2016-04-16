@@ -7,11 +7,15 @@
 
   FirebaseRevisionService.$inject = ['CarInfoFirebaseService',
                                      'FIREBASE_URL',
-                                     'CarViewService'];
+                                     'CarViewService',
+                                     'RevisionService',
+                                     'ObservationsService'];
 
   function FirebaseRevisionService(CarInfoFirebaseService,
                                    FIREBASE_URL,
-                                   CarViewService) {
+                                   CarViewService,
+                                   RevisionService,
+                                   ObservationsService) {
 
     var service = {
       currentRevisionId: null,
@@ -24,10 +28,31 @@
 
     return service;
 
-    function pushNewRevision(newRevision) {
-      var reference = service.rootRef
+    function pushRevision(newRevision) {
+      var revisionRootReference = service.rootRef
         .child('revisions');
-      var pushRef = reference.push(newRevision);
+      var pushRef = revisionRootReference.push(newRevision);
+      service.currentRevisionId = pushRef.key();
+      return pushRef;
+    }
+
+    function pushRevisionItems(isCheckIn) {
+      if (RevisionService.getDamages()) {
+        pushDamages(RevisionService.getDamages());
+      }
+      if (RevisionService.getObservations()) {
+        pushObservations(RevisionService.getObservations());
+      }
+      if (isCheckIn) {
+        pushFeedback(RevisionService.getFeedback());
+      }
+    }
+
+    function pushNewRevision(newRevision, isCheckIn) {
+      RevisionService.setTimestamp();
+      ObservationsService.setObservationsToService();
+      var pushRef = pushRevision(newRevision);
+      pushRevisionItems(isCheckIn);
       saveCreatedRevisionId(pushRef.key());
     }
 
@@ -65,18 +90,26 @@
 
     function pushDamages(damages) {
       damages = changeDamagesColorToYellow(damages);
-      var reference = service.rootRef
+      var damagesRootReference = service.rootRef
         .child('damages');
-      var pushReference = reference.push(damages);
-      pushDamagesIdToCurrentRevision(pushReference.key());
+      var damagesKey = damagesRootReference.push().key();
+      var damagesRef = damagesRootReference.child(damagesKey);
+      angular.forEach(damages, function(damage) {
+        damagesRef.push(damage);
+      });
+      pushDamagesIdToCurrentRevision(damagesKey);
       CarViewService.resetDamages();
     }
 
     function pushObservations(observations) {
-      var reference = service.rootRef
+      var observationsRootReference = service.rootRef
         .child('observations');
-      var pushReference = reference.push(observations);
-      pushObservationsIdToCurrentRevision(pushReference.key());
+      var observationsKey = observationsRootReference.push().key();
+      var observationsRef = observationsRootReference.child(observationsKey);
+      angular.forEach(observations, function(observation) {
+        observationsRef.push(observation);
+      });
+      pushObservationsIdToCurrentRevision(observationsKey);
     }
 
     function changeDamagesColorToYellow(damages) {

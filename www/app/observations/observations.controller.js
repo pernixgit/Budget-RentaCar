@@ -2,26 +2,26 @@
   'use strict';
 
   angular
-    .module('budgetrentacar')
+    .module('budgetrentacar.observations')
     .controller('ObservationsController', ObservationsController);
 
   ObservationsController.$inject = ['$ionicModal',
                                     '$scope',
-                                    'RevisionService',
                                     '$state',
-                                    'LastRevisionService'];
+                                    'LastRevisionService',
+                                    'ObservationsService'];
 
   function ObservationsController($ionicModal,
                                   $scope,
-                                  RevisionService,
                                   $state,
-                                  LastRevisionService) {
+                                  LastRevisionService,
+                                  ObservationsService) {
     var vm = this;
-    vm.RevisionService = RevisionService;
+    vm.ObservationsService = ObservationsService;
     vm.showObservationsModal = showObservationsModal;
     vm.hideObservationsModal = hideObservationsModal;
     vm.addObservation = addObservation;
-    vm.removeObservation = RevisionService.removeObservation;
+    vm.removeObservation = ObservationsService.removeObservation;
     vm.observationItem = {observation: null, is_new: true};
     vm.shouldShowObservationsButton = shouldShowObservationsButton;
     vm.opened = false;
@@ -63,7 +63,9 @@
       if (!vm.opened) {
         if (lastRevision) {
           if (lastRevision.observations) {
-            RevisionService.setObservations(lastRevision.observations);
+            angular.forEach(lastRevision.observations, function(observation) {
+              ObservationsService.addObservation(observation);
+            });
             vm.opened = true;
           }
         }
@@ -77,7 +79,7 @@
 
     function addObservation(observation) {
       if (observation.observation != null) {
-        RevisionService.addObservation(observation);
+        ObservationsService.addObservation(observation);
         vm.observationItem = emptyObservation();
       }
     }
