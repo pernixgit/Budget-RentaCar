@@ -9,15 +9,18 @@
                                     '$scope',
                                     '$state',
                                     'LastRevisionService',
-                                    'ObservationsService'];
+                                    'ObservationsService',
+                                    'RevisionService'];
 
   function ObservationsController($ionicModal,
                                   $scope,
                                   $state,
                                   LastRevisionService,
-                                  ObservationsService) {
+                                  ObservationsService,
+                                  RevisionService) {
     var vm = this;
     vm.ObservationsService = ObservationsService;
+    vm.RevisionService = RevisionService;
     vm.showObservationsModal = showObservationsModal;
     vm.hideObservationsModal = hideObservationsModal;
     vm.addObservation = addObservation;
