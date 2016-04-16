@@ -32,53 +32,53 @@ describe('RevisionService', function() {
 
   it('Should set carMVA to revisionObject carMVA', function() {
     RevisionService.setCarMVA('12345');
-    expect(RevisionService.getRevision().carMVA).toBe('12345');
+    expect(RevisionService.getRevision().vehicle_ref).toBe('12345');
   });
 
   it('Should set the carDeliveryInfo to revision object', function () {
     var deliveryInfo = {
       'km' : 5000,
-      'deliveryPlace' : 'Aeropuerto Juan Santamaria',
-      'gasLevel' : 'Vacio'
+      'delivery_place' : 'Aeropuerto Juan Santamaria',
+      'gas_level' : 'Vacio'
     };
     RevisionService.setCarDeliveryInfo(deliveryInfo);
     expect(RevisionService.getRevision().km).toBe(5000);
-    expect(RevisionService.getRevision().deliveryPlace).toBe('Aeropuerto Juan Santamaria');
-    expect(RevisionService.getRevision().gasLevel).toBe('Vacio');
+    expect(RevisionService.getRevision().delivery_place).toBe('Aeropuerto Juan Santamaria');
+    expect(RevisionService.getRevision().gas_level).toBe('Vacio');
   });
 
   it('Should set the tires to revision object', function() {
     var tires = {
-      'rightFrontTire' : 'Kumho',
-      'leftFrontTire' : 'Michellin',
-      'rightBackTire' : 'Maxxis',
-      'leftBackTire' : 'Yokohama'
+      'right_front' : 'Kumho',
+      'left_front' : 'Michellin',
+      'right_back' : 'Maxxis',
+      'left_back' : 'Yokohama'
     };
 
     RevisionService.setCarTires(tires);
-    expect(RevisionService.getRevision().tires.leftBackTire).toBe('Yokohama');
-    expect(RevisionService.getRevision().tires.leftFrontTire).toBe('Michellin');
-    expect(RevisionService.getRevision().tires.rightFrontTire).toBe('Kumho');
-    expect(RevisionService.getRevision().tires.rightBackTire).toBe('Maxxis');
+    expect(RevisionService.getRevision().tires.left_back).toBe('Yokohama');
+    expect(RevisionService.getRevision().tires.left_front).toBe('Michellin');
+    expect(RevisionService.getRevision().tires.right_front).toBe('Kumho');
+    expect(RevisionService.getRevision().tires.right_back).toBe('Maxxis');
 
   });
 
   it('Should set the damages to revision object', function () {
     var damages = [
-      {'json' : '[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...',
+      {'json_canvas' : '[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...',
        'part': 'Puerta Izquierda Frontal',
-       'damageType'  : 'rayon'},
-      {'json' : '[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...',
+       'damage_type'  : 'rayon'},
+      {'json_canvas' : '[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...',
         'part': 'Bumper Delantero',
-        'damageType'  : 'raspado'}
+        'damage_type'  : 'raspado'}
     ];
     RevisionService.setDamages(damages);
-    expect(RevisionService.getRevision().damages[0].part).toBe('Puerta Izquierda Frontal');
-    expect(RevisionService.getRevision().damages[1].part).toBe('Bumper Delantero');
-    expect(RevisionService.getRevision().damages[0].damageType).toBe('rayon');
-    expect(RevisionService.getRevision().damages[1].damageType).toBe('raspado');
-    expect(RevisionService.getRevision().damages[0].json).toBe('[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...');
-    expect(RevisionService.getRevision().damages[1].json).toBe('[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...');
+    expect(RevisionService.getDamages()[0].part).toBe('Puerta Izquierda Frontal');
+    expect(RevisionService.getDamages()[1].part).toBe('Bumper Delantero');
+    expect(RevisionService.getDamages()[0].damage_type).toBe('rayon');
+    expect(RevisionService.getDamages()[1].damage_type).toBe('raspado');
+    expect(RevisionService.getDamages()[0].json_canvas).toBe('[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...');
+    expect(RevisionService.getDamages()[1].json_canvas).toBe('[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...');
   });
 
   it('Should set the observations to revision object', function () {
@@ -88,10 +88,10 @@ describe('RevisionService', function() {
     ];
 
     RevisionService.setObservations(observations);
-    expect(RevisionService.getRevision().observations[0].part).toBe('Asiento de piloto');
-    expect(RevisionService.getRevision().observations[0].observation).toBe('Manchado');
-    expect(RevisionService.getRevision().observations[1].part).toBe('Rejilla del dash');
-    expect(RevisionService.getRevision().observations[1].observation).toBe('Quebrada');
+    expect(RevisionService.getObservations()[0].part).toBe('Asiento de piloto');
+    expect(RevisionService.getObservations()[0].observation).toBe('Manchado');
+    expect(RevisionService.getObservations()[1].part).toBe('Rejilla del dash');
+    expect(RevisionService.getObservations()[1].observation).toBe('Quebrada');
   });
 
   it('Should set the car accesories to revision object', function() {
@@ -101,21 +101,19 @@ describe('RevisionService', function() {
       'emblems': true,
       'tools': true,
       'emergency-kit': true,
-      'back-up-tire': true,
       'plates': true,
       'rack': false,
       'carpet': true
     };
 
     RevisionService.setCarAccesories(carAccesories);
-    expect(RevisionService.getRevision().carAccesories.antenna).toBe(true);
-    expect(RevisionService.getRevision().carAccesories['legal-documents']).toBe(true);
-    expect(RevisionService.getRevision().carAccesories.emblems).toBe(true);
-    expect(RevisionService.getRevision().carAccesories.tools).toBe(true);
-    expect(RevisionService.getRevision().carAccesories['emergency-kit']).toBe(true);
-    expect(RevisionService.getRevision().carAccesories['back-up-tire']).toBe(true);
-    expect(RevisionService.getRevision().carAccesories.rack).toBe(false);
-    expect(RevisionService.getRevision().carAccesories.carpet).toBe(true);
+    expect(RevisionService.getRevision().car_parts_present.antenna).toBe(true);
+    expect(RevisionService.getRevision().car_parts_present['legal-documents']).toBe(true);
+    expect(RevisionService.getRevision().car_parts_present.emblems).toBe(true);
+    expect(RevisionService.getRevision().car_parts_present.tools).toBe(true);
+    expect(RevisionService.getRevision().car_parts_present['emergency-kit']).toBe(true);
+    expect(RevisionService.getRevision().car_parts_present.rack).toBe(false);
+    expect(RevisionService.getRevision().car_parts_present.carpet).toBe(true);
 
   });
 
@@ -138,10 +136,32 @@ describe('RevisionService', function() {
     expect(RevisionService.getRevision().feedback.worthMoney).toBe('yes');
   });
 
-  it('Should reset the revision object', function() {
+  it('Should add new observation', function() {
+    RevisionService.addObservation({});
+    expect(RevisionService.getObservations()).toEqual([{}]);
+  });
+
+  it('Should add and delete an observation', function() {
+    RevisionService.addObservation({observation: 'observation'});
+    RevisionService.removeObservation({observation: 'observation'});
+    expect(RevisionService.getObservations()).toEqual([]);
+  });
+
+  it('Should reset the revision, observations and damages objects', function() {
+    RevisionService.addObservation({observation: 'observation'});
     RevisionService.setUsername('Luis');
-    RevisionService.setNewType('check-out');
+    var damages = [
+      {'json_canvas' : '[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...',
+        'part': 'Puerta Izquierda Frontal',
+        'damage_type'  : 'rayon'},
+      {'json_canvas' : '[\"Group\",{\"applyMatrix\":true,\"children\":[[\"Path\",...',
+        'part': 'Bumper Delantero',
+        'damage_type'  : 'raspado'}
+    ];
+    RevisionService.setDamages(damages);
     RevisionService.resetRevision();
-    expect(RevisionService.getRevision()).toEqual({ });
+    expect(RevisionService.getObservations()).toEqual([]);
+    expect(RevisionService.getRevision()).toEqual({});
+    expect(RevisionService.getDamages()).toEqual({});
   });
 });

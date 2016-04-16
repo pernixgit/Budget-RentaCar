@@ -24,6 +24,7 @@
     vm.removeObservation = RevisionService.removeObservation;
     vm.observationItem = {observation: null, is_new: true};
     vm.shouldShowObservationsButton = shouldShowObservationsButton;
+    vm.opened = false;
     vm.$state = $state;
 
     activate();
