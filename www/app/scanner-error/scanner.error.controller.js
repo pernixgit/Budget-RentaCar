@@ -13,6 +13,6 @@
 
     function redirectToScanner() {
       $state.go('scanner');
-    };
+    }
   }
 })();

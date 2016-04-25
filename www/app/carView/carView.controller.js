@@ -8,15 +8,18 @@
   CarViewController.$inject = ['$scope',
                                '$state',
                                'CarViewService',
-                               'CarInfoFirebaseService'];
+                               'CarInfoFirebaseService',
+                               'RevisionService'];
 
   function CarViewController($scope,
                              $state,
                              CarViewService,
-                             CarInfoFirebaseService) {
+                             CarInfoFirebaseService,
+                             RevisionService) {
     var vm = $scope;
     vm.goToExteriorParts = goToExteriorParts;
     vm.CarViewService = CarViewService;
+    vm.isEditable = (RevisionService.getRevision().type == 'check-out');
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
 
     activate();

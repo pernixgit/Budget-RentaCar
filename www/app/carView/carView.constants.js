@@ -35,5 +35,7 @@ angular
       {'id': '20', 'name': 'Faro Izquierdo Trasero'},
       {'id': '21', 'name': 'Techo'},
       {'id': '22', 'name': 'Otros'}
-    ]);
+    ])
+  .constant({'VEHICLE_4X2_URL': 'assets/images/canvasCar4x2.png'})
+  .constant({'VEHICLE_4X4_URL': 'assets/images/canvasCar4x4.png'});
 })();
