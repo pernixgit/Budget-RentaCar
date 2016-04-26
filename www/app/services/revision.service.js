@@ -28,6 +28,7 @@
       getDamages: getDamages,
       getObservations: getObservations,
       setCanvasImage: setCanvasImage,
+      setLicensePlate: setLicensePlate,
       resetRevision: resetRevision
     };
     return service;
@@ -102,6 +103,10 @@
 
     function setCanvasImage(canvasImage) {
       revision.canvas_image = canvasImage;
+    }
+
+    function setLicensePlate(licensePlate){
+      revision.license_plate = licensePlate;
     }
 
     function resetRevision() {

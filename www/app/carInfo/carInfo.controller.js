@@ -32,6 +32,7 @@
     }
 
     function goToCarView() {
+      RevisionService.setLicensePlate(CarInfoFirebaseService.carInfo.license_plate);
       RevisionService.setCarMVA(CarInfoFirebaseService.carInfo.MVA);
       $state.go('carDeliveryInfo');
     }
