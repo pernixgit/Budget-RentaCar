@@ -10,7 +10,7 @@
   </div>
 
   <ion-content class="has-subheader">
-    <form name="myForm" novalidate="">
+    <form name="myForm" novalidate="" class="feedback-form">
       <div class="list list-inset">
         <div class="item item-divider">
           {{'FeedbackQuestion1' | translate}}*
@@ -52,12 +52,13 @@
         <label class="item item-input">
           <textarea ng-model="vm.feedback.useAgainReason" placeholder="Regular Placeholder" translate translate-attr-placeholder="FeedBackPlaceHolder2" translate-value-browser="{{app.browser}}"></textarea>
         </label>
-        <button class="button button-full budget-orange-button" ng-click="vm.endRevision(vm.feedback)" ng-disabled="myForm.$invalid" >
-          {{'FeedbackButtonSubmmit' | translate}}
-        </button>
       </div>
-
     </form>
+    <div class="tabs button-container padding">
+      <button class="budget-orange-button button button-block button-assertive" ng-click="vm.endRevision(vm.feedback)" ng-disabled="myForm.$invalid" >
+        {{'FeedbackButtonSubmmit' | translate}}
+      </button>
+    </div>
   </ion-content>
 </ion-view>
 
