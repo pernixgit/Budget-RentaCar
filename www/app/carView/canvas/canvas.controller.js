@@ -213,6 +213,7 @@
     function scaleImage(raster) {
       var heightScale = (paper.view.size.height / raster.height);
       var widthScale = (paper.view.size.width / raster.width);
+
       raster.scale(widthScale, heightScale);
     }
 

@@ -8,3 +8,8 @@
   background-color: #1C2D5D !important;
   color: white !important;
 }
+
+.feedback-form{
+  height: 88%;
+  overflow-y: scroll;
+}

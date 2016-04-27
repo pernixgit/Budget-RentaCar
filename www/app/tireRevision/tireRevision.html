@@ -1,7 +1,6 @@
-
 <ion-view view-title="Revisión de llantas">
-  <ion-content class="content has-header">
-    <div class="list list-inset tireBrands">
+  <ion-content class="has-header has-subheader padding">
+    <div class="tireBrands">
       <div class="row">
         <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightFrontTireSelectedOption">
         </select>
@@ -19,14 +18,13 @@
         </select>
       </div>
     </div>
-  </div>
-  <div>
-  <p class="spareTireText">Llanta de repuesto</p>
-  <select class="extraSelect select-tire-brand " ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.extraTireSelectedOption"> 
-  </select>
-  </div>
-  <div class="list-inset">
-  <button class="budget-orange-button button button-block button-assertive padding-top" ng-click="vm.goToCarView()"> Pasar a Revisión del Vehículo </button>
-  </div>
-</ion-content>
+    <div>
+      <p class="spareTireText">Llanta de repuesto</p>
+      <select class="extraSelect select-tire-brand " ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.extraTireSelectedOption">
+      </select>
+    </div>
+    <div class="tabs button-container">
+      <button class="budget-orange-button button button-block button-assertive" ng-click="vm.goToCarView()"> Continuar </button>
+    </div>
+  </ion-content>
 </ion-view>

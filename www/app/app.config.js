@@ -5,7 +5,7 @@
     .module('budgetrentacar')
     .config(config);
 
-  config.$inject = ['$translateProvider'];
+  config.$inject = ['$translateProvider', '$ionicConfigProvider'];
 
   var translationsEN = {
     FeedbackTitle: 'Feedback',
@@ -31,14 +31,15 @@
     FeedbackButtonSubmmit: 'Enviar Feedback',
     FeedBackPlaceHolder1: '\u00BFQué podemos mejorar?',
     FeedBackPlaceHolder2: '\u00BFPor qué?',
-    yes: 'Si',
+    yes: 'Si'
   };
 
   /* @ngInject */
-  function config($translateProvider) {
+  function config($translateProvider, $ionicConfigProvider) {
     $translateProvider.useSanitizeValueStrategy(null);
     $translateProvider.translations('EN', translationsEN);
     $translateProvider.translations('ES', translationsES);
     $translateProvider.preferredLanguage('ES');
+    $ionicConfigProvider.backButton.previousTitleText(false).text('');
   }
 })();

@@ -35,3 +35,16 @@
   display: table;
   color: white;
 }
+
+.button-container{
+  height: 5em !important;
+  background-color: white !important;
+}
+
+.tab-container{
+  width: 100%;
+}
+
+.content-wrapper{
+  margin: 10px 10px !important
+}
