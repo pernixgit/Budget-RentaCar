@@ -28,7 +28,7 @@
     }
 
     function _authSuccess() {
-      $state.go('scanner');
+      $state.go('scannerMenu');
     }
 
     function authError() {

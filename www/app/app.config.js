@@ -17,7 +17,7 @@
     FeedbackButtonSubmmit: 'Submit Feedback',
     FeedBackPlaceHolder1: 'What can we improve?',
     FeedBackPlaceHolder2: 'Why?',
-    yes: 'Yes',
+    yes: 'Yes'
   };
 
   var translationsES = {

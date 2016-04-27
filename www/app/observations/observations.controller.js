@@ -46,7 +46,7 @@
     }
 
     function shouldShowObservationsButton() {
-      return !(isLoginView() || isScannerErrorView() || isCarInfoView());
+      return !(isLoginView() || isScannerErrorView() || isCarInfoView() || isScannerMenuView());
     }
 
     function isLoginView() {
@@ -59,6 +59,10 @@
 
     function isScannerErrorView() {
       return vm.$state.current.name === 'scanner-error';
+    }
+
+    function isScannerMenuView() {
+      return vm.$state.current.name === 'scannerMenu';
     }
 
     function showObservationsModal() {
