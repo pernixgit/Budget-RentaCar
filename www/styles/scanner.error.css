@@ -1,57 +1,15 @@
 .scanner-error-body {
   background: #1A2F59;
-  height: 100%;
-  width: 100%;
-  display: table;
-}
-
-.error-message-wrapper {
   text-align: center;
+  height: 100%;
+  padding-top: 20% !important;
+  width: 100%;
+}
+
+.showMVAPopUp-button{
+  background-color: #F78B00 !important;
+}
+
+.scanner-error-text{
   color: white;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.error-message {
-  margin-top: 5%;
-  font-size: 1.5em;
-}
-
-.error-title {
-  font-size: 5em;
-}
-
-.button.button-positive {
-  width: 80%;
-  margin-top: 40%;
-  font-size: 1.5em;
-  background-color: #FF5907;
-}
-
-@media only screen
-and (max-width: 400px) {
-  .error-title {
-      font-size: 3em !important;
-  }
-}
-
-@media only screen
-and (max-width: 200px) {
-  .error-title {
-    font-size: 2em !important;
-  }
-}
-
-@media only screen
-and (max-width: 1440px) {
-  .error-title {
-      font-size: 4em;
-  }
-}
-
-@media only screen
-and (min-width: 600px) {
-  .button.button-positive {
-      margin-top: 18%;
-  }
 }

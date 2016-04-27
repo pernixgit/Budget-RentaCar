@@ -37,9 +37,9 @@
       </div>
     </ion-content>
   </div>
-  <div ng-if="!vm.isLoaded">
-    <ion-content>
-      <ion-spinner class="car-info-spinner" icon="ripple"></ion-spinner>
-    </ion-content>
-  </div>
+</ion-view>
+<ion-view ng-if="!vm.isLoaded" hide-nav-bar="true">
+  <ion-content>
+    <ion-spinner class="car-info-spinner" icon="ripple"></ion-spinner>
+  </ion-content>
 </ion-view>

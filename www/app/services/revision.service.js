@@ -9,7 +9,7 @@
     var revision = {};
     var observationsList = [];
     var damagesList = {};
-
+    var feedback = {};
     var service = {
       setUsername: setUsername,
       setCarMVA: setCarMVA,
@@ -81,12 +81,12 @@
       revision.car_parts_present = carParts;
     }
 
-    function setFeedback(feedback) {
-      revision.feedback = feedback;
+    function setFeedback(userFeedback) {
+      feedback = userFeedback;
     }
 
     function getFeedback() {
-      return revision.feedback;
+      return feedback;
     }
 
     function getRevision() {

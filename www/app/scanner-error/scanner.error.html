@@ -1,9 +1,8 @@
-<ion-view view-title="">
-  <link href="styles/scanner.error.css" rel="stylesheet">
-  <div class="scanner-error-body">
-    <div class="error-message-wrapper">
-      <p class="error-title">¡Lo sentimos!</p>
-      <p class="error-message">no se ha podido leer correctamente <br> el código</p>
-      <button class="button button-positive" ng-click="vm.redirectToScanner()"> Intentarlo de nuevo </button>
+<ion-view hide-nav-bar="true">
+  <div class="scanner-error-body padding">
+    <h1 class="scanner-error-text">¡Lo sentimos!</h1>
+    <h3 class="scanner-error-text">no se ha podido leer correctamente el código</h3>
+    <button class="button button-block button-positive budget-orange-button" ng-click="vm.redirectToScanner()"> Intentarlo de nuevo </button>
+    <input-mva></input-mva>
   </div>
-</div>
+</ion-view>
