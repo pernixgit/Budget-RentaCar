@@ -24,8 +24,12 @@
     activate();
 
     function setNewRevisionType() {
-      if (LastRevisionService.revision) {
-        RevisionService.setNewType(LastRevisionService.revision.type);
+      var lastRevision = LastRevisionService.revision;
+      if (lastRevision) {
+        RevisionService.setNewType(lastRevision.type);
+          if (lastRevision.contract_number) {
+            RevisionService.setContractNumber(lastRevision.contract_number);
+          }
       } else {
         RevisionService.setNewType('check-in');
       }

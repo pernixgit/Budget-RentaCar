@@ -29,6 +29,8 @@
       getObservations: getObservations,
       setCanvasImage: setCanvasImage,
       setLicensePlate: setLicensePlate,
+      setContractNumber: setContractNumber,
+      getContractNumber: getContractNumber,
       resetRevision: resetRevision
     };
     return service;
@@ -107,6 +109,14 @@
 
     function setLicensePlate(licensePlate){
       revision.license_plate = licensePlate;
+    }
+
+    function setContractNumber(contractNumber) {
+      revision.contract_number = contractNumber;
+    }
+
+    function getContractNumber() {
+      return revision.contract_number;
     }
 
     function resetRevision() {
