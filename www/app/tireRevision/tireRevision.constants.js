@@ -21,7 +21,8 @@ angular
       {id: '7', name: 'Goodyear'},
       {id: '8', name: 'Michelin'},
       {id: '9', name: 'Toyo'},
-      {id: '10', name: 'Otros'},
+      {id: '10', name: 'Maxxis'},
+      {id: '11', name: 'Otros'}
     ]);
 })();
 
