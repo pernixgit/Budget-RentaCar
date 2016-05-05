@@ -5,17 +5,7 @@
     .module('budgetrentacar.carView')
     .controller('CanvasController', CanvasController);
 
-  CanvasController.$inject = ['$scope',
-                              'CarViewService',
-                              '$ionicPopup',
-                              'DAMAGE_OPTIONS',
-                              'DAMAGE_TYPE_SELECTED',
-                              'PARTS',
-                              'SELECTED_PART',
-                              'VEHICLE_4X2_URL',
-                              'VEHICLE_4X4_URL',
-                              'LastRevisionService',
-                              'CarInfoFirebaseService'];
+  /* @ngInject */
 
   function CanvasController($scope,
                             CarViewService,
@@ -238,7 +228,7 @@
     function importCanvasJson() {
       setVehicleBackground();
       layer = new Layer();
-      if (CarViewService.damagesLoaded) {
+      if (CarViewService.damagesLoaded || CarViewService.damages.length > 0) {
         var previousDamages = CarViewService.damages;
         CarViewService.resetDamages();
         addDamagesToCanvas(previousDamages);

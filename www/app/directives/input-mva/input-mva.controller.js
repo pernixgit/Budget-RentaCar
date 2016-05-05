@@ -5,7 +5,7 @@
     .module('budgetrentacar')
     .controller('InputMVAController', InputMVAController);
 
-  InputMVAController.$inject = ['$state', '$ionicPopup', '$scope', 'ScannerService'];
+  /* @ngInject */
 
   function InputMVAController($state, $ionicPopup, $scope, ScannerService) {
     var vm = this;

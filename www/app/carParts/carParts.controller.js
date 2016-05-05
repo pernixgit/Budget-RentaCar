@@ -5,13 +5,7 @@
     .module('budgetrentacar.carParts')
     .controller('CarPartsController', CarPartsController);
 
-  CarPartsController.$inject = ['CarPartsService',
-                                'CarInfoFirebaseService',
-                                '$state',
-                                'ACCESORIES',
-                                'SELECTED_ACCESORIES',
-                                'FirebaseRevisionService',
-                                'RevisionService'];
+  /* @ngInject */
 
   function CarPartsController(CarPartsService,
                               CarInfoFirebaseService,

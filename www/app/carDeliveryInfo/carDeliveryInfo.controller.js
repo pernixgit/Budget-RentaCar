@@ -5,16 +5,7 @@
     .module('budgetrentacar.carDeliveryInfo')
     .controller('CarDeliveryInfoController', CarDeliveryInfoController);
 
-  CarDeliveryInfoController.$inject = ['$state',
-                                       'CarDeliveryInfoFirebaseService',
-                                       'CarInfoFirebaseService',
-                                       'RevisionService',
-                                       'LastRevisionService',
-                                       'GAS_LEVELS',
-                                       'DELIVERY_PLACE_SELECTED',
-                                       'GAS_LEVEL_SELECTED',
-                                       'DELIVERY_PLACES',
-                                       '$ionicNavBarDelegate'];
+  /* @ngInject */
 
   function CarDeliveryInfoController($state,
                                      CarDeliveryInfoFirebaseService,

@@ -5,11 +5,7 @@
     .module('budgetrentacar.login')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$state',
-                             '$ionicPopup',
-                             'LoginFirebaseService',
-                             'RevisionService',
-                             '$ionicNavBarDelegate'];
+  /* @ngInject */
 
   function LoginController($state,
                            $ionicPopup,

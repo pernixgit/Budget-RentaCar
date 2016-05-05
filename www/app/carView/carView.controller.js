@@ -5,11 +5,7 @@
     .module('budgetrentacar.carView')
     .controller('CarViewController', CarViewController);
 
-  CarViewController.$inject = ['$scope',
-                               '$state',
-                               'CarViewService',
-                               'CarInfoFirebaseService',
-                               'RevisionService'];
+  /* @ngInject */
 
   function CarViewController($scope,
                              $state,

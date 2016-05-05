@@ -5,7 +5,7 @@
   .module('budgetrentacar.scanner.error')
   .controller('ScannerErrorController', ScannerErrorController);
 
-  ScannerErrorController.$inject = ['$state'];
+  /* @ngInject */
 
   function ScannerErrorController($state) {
     var vm = this;

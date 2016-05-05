@@ -5,12 +5,7 @@
   .module('budgetrentacar.tireRevision')
   .controller('TireRevisionController', TireRevisionController);
 
-  TireRevisionController.$inject = ['SELECTED_TIRES',
-                                    'TIRE_BRANDS',
-                                    '$state',
-                                    'CarInfoFirebaseService',
-                                    'LastRevisionService',
-                                    'RevisionService'];
+  /* @ngInject */
 
   function TireRevisionController(SELECTED_TIRES,
                                   TIRE_BRANDS,
