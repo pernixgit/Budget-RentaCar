@@ -6,10 +6,7 @@
     .module('budgetrentacar.feedback')
     .controller('Feedback', FeedbackController);
 
-  FeedbackController.$inject = ['$state',
-                                '$translate',
-                                'RevisionService',
-                                'FirebaseRevisionService'];
+  /* @ngInject */
 
   function FeedbackController($state,
                               $translate,

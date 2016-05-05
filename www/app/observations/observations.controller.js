@@ -5,12 +5,7 @@
     .module('budgetrentacar.observations')
     .controller('ObservationsController', ObservationsController);
 
-  ObservationsController.$inject = ['$ionicModal',
-                                    '$scope',
-                                    '$state',
-                                    'LastRevisionService',
-                                    'ObservationsService',
-                                    'RevisionService'];
+  /* @ngInject */
 
   function ObservationsController($ionicModal,
                                   $scope,

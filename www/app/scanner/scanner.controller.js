@@ -5,9 +5,7 @@
   .module('budgetrentacar.scanner')
   .controller('ScannerController', ScannerController);
 
-  ScannerController.$inject = ['$state',
-                               '$cordovaBarcodeScanner',
-                               'ScannerService'];
+  /* @ngInject */
 
   function ScannerController($state, $cordovaBarcodeScanner, ScannerService) {
     console.log('at scanner');
