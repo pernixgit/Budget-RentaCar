@@ -19,13 +19,19 @@
 
     activate();
 
+    function setContractNumber(lastRevision) {
+      if (lastRevision.contract_number) {
+        RevisionService.setContractNumber(lastRevision.contract_number);
+      }
+    }
+
     function setNewRevisionType() {
       var lastRevision = LastRevisionService.revision;
       if (lastRevision) {
         RevisionService.setNewType(lastRevision.type);
-          if (lastRevision.contract_number) {
-            RevisionService.setContractNumber(lastRevision.contract_number);
-          }
+        if (angular.equals(RevisionService.getRevision().type, 'check-in')){
+          setContractNumber(lastRevision);
+        }
       } else {
         RevisionService.setNewType('check-in');
       }

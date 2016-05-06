@@ -29,6 +29,7 @@
     function endRevision(feedback) {
       RevisionService.setFeedback(feedback);
       FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), true);
+      RevisionService.resetRevision();
       $state.go('login');
     }
 
