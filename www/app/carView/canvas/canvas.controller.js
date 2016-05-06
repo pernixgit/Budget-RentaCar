@@ -184,16 +184,27 @@
         var component = project._activeLayer.importJSON(damagesList[position].json_canvas);
         component.position.x = (parseFloat(damagesList[position].relative_cords.x_percentage) * (paper.view.size.width));
         component.position.y = (parseFloat(damagesList[position].relative_cords.y_percentage) * (paper.view.size.height));
-
-        var canvasItem = createCanvasItemObject(
-          project._activeLayer.children[position].id,
-          damagesList[position].part,
-          damagesList[position].damage_type,
-          damagesList[position].json_canvas,
-          false,
-          damagesList[position].relative_cords
-        );
-
+        var canvasItem = null;
+        var damage = damagesList[position];
+        if (CarViewService.damagesLoaded && damage.is_new) {
+          canvasItem = createCanvasItemObject(
+            project._activeLayer.children[position].id,
+            damage.part,
+            damage.damage_type,
+            damage.json_canvas,
+            true,
+            damage.relative_cords
+          );
+        } else {
+          canvasItem = createCanvasItemObject(
+            project._activeLayer.children[position].id,
+            damage.part,
+            damage.damage_type,
+            damage.json_canvas,
+            false,
+            damage.relative_cords
+          );
+        }
         CarViewService.addDamageToCanvasComponents(canvasItem);
         CarViewService.damagesLoaded = true;
       }
@@ -236,10 +247,19 @@
         LastRevisionService.fetchRevisionData()
           .then(function() {
             if (LastRevisionService.revision && LastRevisionService.revision.damages) {
-              addDamagesToCanvas(LastRevisionService.revision.damages);
+              var damages = changeDamagesColorToYellow();
+              addDamagesToCanvas(damages);
             }
           });
       }
+    }
+
+    function changeDamagesColorToYellow(damages) {
+      var yellowColor = '[1, 0.99, 0]';
+      return damages.map(function(damage) {
+        damage.json_canvas = damage.json_canvas.replace(/\[0.92941,0.33333,0.01961\]/g, yellowColor);
+        return damage;
+      });
     }
 
     function appendDamage() {

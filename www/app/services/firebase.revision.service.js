@@ -89,7 +89,6 @@
     }
 
     function pushDamages(damages) {
-      damages = changeDamagesColorToYellow(damages);
       var damagesRootReference = service.rootRef
         .child('damages');
       var damagesKey = damagesRootReference.push().key();
@@ -110,14 +109,6 @@
         observationsRef.push(observation);
       });
       pushObservationsIdToCurrentRevision(observationsKey);
-    }
-
-    function changeDamagesColorToYellow(damages) {
-      var yellowColor = '[1, 0.99, 0]';
-      return damages.map(function(damage) {
-        damage.json_canvas = damage.json_canvas.replace(/\[0.92941,0.33333,0.01961\]/g, yellowColor);
-        return damage;
-      });
     }
 
     function pushFeedbackIdToCurrentRevision(id) {
