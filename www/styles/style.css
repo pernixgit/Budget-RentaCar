@@ -39,6 +39,7 @@
 .button-container{
   height: 5em !important;
   background-color: white !important;
+  position: relative;
 }
 
 .tab-container{

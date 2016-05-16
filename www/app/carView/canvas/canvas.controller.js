@@ -180,12 +180,15 @@
     }
 
     function addDamagesToCanvas(damagesList) {
+      console.log(CarViewService.damagesLoaded);
       for (var position = 0; position < damagesList.length; position++) {
         var component = project._activeLayer.importJSON(damagesList[position].json_canvas);
-        component.position.x = (parseFloat(damagesList[position].relative_cords.x_percentage) * (paper.view.size.width));
-        component.position.y = (parseFloat(damagesList[position].relative_cords.y_percentage) * (paper.view.size.height));
-        var canvasItem = null;
         var damage = damagesList[position];
+
+        component.position.x = (parseFloat(damage.relative_cords.x_percentage) * (paper.view.size.width));
+        component.position.y = (parseFloat(damage.relative_cords.y_percentage) * (paper.view.size.height));
+        var canvasItem = null;
+        console.log(CarViewService.damagesLoaded);
         if (CarViewService.damagesLoaded && damage.is_new) {
           canvasItem = createCanvasItemObject(
             project._activeLayer.children[position].id,
@@ -206,9 +209,9 @@
           );
         }
         CarViewService.addDamageToCanvasComponents(canvasItem);
-        CarViewService.damagesLoaded = true;
       }
       paper.view.update();
+      CarViewService.damagesLoaded = true;
     }
 
     function scaleImage(raster) {
@@ -247,7 +250,7 @@
         LastRevisionService.fetchRevisionData()
           .then(function() {
             if (LastRevisionService.revision && LastRevisionService.revision.damages) {
-              var damages = changeDamagesColorToYellow();
+              var damages = changeDamagesColorToYellow(LastRevisionService.revision.damages);
               addDamagesToCanvas(damages);
             }
           });
