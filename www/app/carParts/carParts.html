@@ -1,13 +1,13 @@
 <ion-view view-title="Partes del auto">
-  <ion-content class="has-header list-inset content-wrapper">
-    <div>
+  <ion-content class="has-header list-inset content-wrapper-carParts">
+    <div class="carParts-container">
       <div class="checkbox-item" ng-repeat="accesory in vm.accesories">
         <ion-checkbox ng-model="vm.accesory[accesory.key]"  name="group" id="{{accesory.id}}">
           <label class="checkbox-label" for="{{accesory.id}}">{{accesory.name}}</label>
         </ion-checkbox>
       </div>
     </div>
-    <div class="tabs button-container">
+    <div class="tabs button-container button-container-carParts">
       <button class="budget-orange-button button button-block button-assertive" ng-click="vm.goToEndOrFeedback()">Continuar</button>
     </div>
   </ion-content>
