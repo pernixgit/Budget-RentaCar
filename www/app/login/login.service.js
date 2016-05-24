@@ -5,7 +5,7 @@
     .module('budgetrentacar.login')
     .service('LoginFirebaseService', LoginFirebaseService);
 
-  LoginFirebaseService.$inject = ['FIREBASE_URL', '$firebaseObject'];
+  /* @ngInject */
 
   function LoginFirebaseService(FIREBASE_URL, $firebaseObject) {
     var service = {

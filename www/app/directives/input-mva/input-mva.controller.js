@@ -18,9 +18,8 @@
         title: 'Ingrese el MVA del vehículo',
         scope: $scope,
         buttons: [
-          { text: 'Cancelar' },
-          {
-            text: '<b>Aceptar</b>',
+          {text: 'Cancelar'},
+          {text: '<b>Aceptar</b>',
             type: 'button-positive',
             onTap: function(e) {
               if (!$scope.data.mvaNumber) {

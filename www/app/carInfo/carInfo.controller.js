@@ -29,7 +29,7 @@
       var lastRevision = LastRevisionService.revision;
       if (lastRevision) {
         RevisionService.setNewType(lastRevision.type);
-        if (angular.equals(RevisionService.getRevision().type, 'check-in')){
+        if (angular.equals(RevisionService.getRevision().type, 'check-in')) {
           setContractNumber(lastRevision);
         }
       } else {
@@ -46,8 +46,7 @@
     function activate() {
       $ionicNavBarDelegate.showBackButton(false);
       setNewRevisionType();
-      CarInfoFirebaseService.carInfo.model ?
-      vm.isLoaded = true : vm.isLoaded = false;
+      vm.isLoaded = (CarInfoFirebaseService.carInfo.model) ? true : false;
       setTimeout(function() {
         if (!vm.isLoaded) {
           $state.go('scanner-error');

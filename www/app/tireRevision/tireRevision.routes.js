@@ -17,10 +17,11 @@
         cache: false,
         resolve: {
           'CarInfoService': function(CarInfoFirebaseService, LastRevisionService) {
-            return CarInfoFirebaseService.fetchCarInfo().then(
-              function() {
-                return LastRevisionService.fetchRevisionData();
-              });
+            return CarInfoFirebaseService.fetchCarInfo()
+              .then(
+                function() {
+                  return LastRevisionService.fetchRevisionData();
+                });
           }
         }
       });

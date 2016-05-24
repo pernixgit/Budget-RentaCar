@@ -3,7 +3,7 @@
     .module('budgetrentacar.services')
     .factory('RevisionService', RevisionService);
 
-  RevisionService.$inject = [];
+  /* @ngInject */
 
   function RevisionService() {
     var revision = {};
@@ -107,7 +107,7 @@
       revision.canvas_image = canvasImage;
     }
 
-    function setLicensePlate(licensePlate){
+    function setLicensePlate(licensePlate) {
       revision.license_plate = licensePlate;
     }
 

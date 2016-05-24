@@ -41,8 +41,8 @@
 
     function authenticate(username, password) {
 
-      LoginFirebaseService.getUserInfo(username).then(
-        function(userInfo) {
+      LoginFirebaseService.getUserInfo(username)
+        .then(function(userInfo) {
           if (_credentialsAreCorrect(username, userInfo, password)) {
             _authSuccess();
             RevisionService.setUsername(username);

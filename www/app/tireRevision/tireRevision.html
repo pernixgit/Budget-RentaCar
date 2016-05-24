@@ -2,25 +2,25 @@
   <ion-content class="has-header has-subheader padding">
     <div class="tireBrands">
       <div class="row">
-        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightFrontTireSelectedOption">
+        <select class="select-tire-brand col" ng-options="tire for tire in vm.tireBrands" ng-model="vm.selectedTires.rightFrontTireSelectedOption">
         </select>
         <div class="col-10"></div>
-        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.leftFrontTireSelectedOption">
+        <select class="select-tire-brand col" ng-options="tire for tire in vm.tireBrands" ng-model="vm.selectedTires.leftFrontTireSelectedOption">
         </select>
       </div>
       <div ng-class="{'imgTire4x4': vm.currentCarTraction == '4x4','imgTire4x2': vm.currentCarTraction == '4x2'}">
       </div>
       <div class="row padding-bottom">
-        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.leftBackTireSelectedOption">
+        <select class="select-tire-brand col" ng-options="tire for tire in vm.tireBrands" ng-model="vm.selectedTires.leftBackTireSelectedOption">
         </select>
         <div class="col-10"></div>
-        <select class="select-tire-brand col" ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.rightBackTireSelectedOption">
+        <select class="select-tire-brand col" ng-options="tire for tire in vm.tireBrands" ng-model="vm.selectedTires.rightBackTireSelectedOption">
         </select>
       </div>
     </div>
     <div>
       <p class="spareTireText">Llanta de repuesto</p>
-      <select class="extraSelect select-tire-brand " ng-options="option.name for option in vm.tireBrands track by option.id" ng-model="vm.selectedTires.extraTireSelectedOption">
+      <select class="extraSelect select-tire-brand " ng-options="tire for tire in vm.tireBrands" ng-model="vm.selectedTires.extraTireSelectedOption">
       </select>
     </div>
     <div class="tabs button-container">

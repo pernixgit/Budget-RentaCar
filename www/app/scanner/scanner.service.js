@@ -8,6 +8,7 @@
   ScannerService.$inject = [];
 
   function ScannerService() {
+
     var service = {
       code: '',
       setCode: setCode,

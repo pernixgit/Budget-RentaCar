@@ -180,34 +180,23 @@
     }
 
     function addDamagesToCanvas(damagesList) {
-      console.log(CarViewService.damagesLoaded);
       for (var position = 0; position < damagesList.length; position++) {
-        var component = project._activeLayer.importJSON(damagesList[position].json_canvas);
         var damage = damagesList[position];
+        var component = project._activeLayer.importJSON(damage.json_canvas);
+        var isDamageNew = (CarViewService.damagesLoaded && damage.is_new) ? true : false;
 
         component.position.x = (parseFloat(damage.relative_cords.x_percentage) * (paper.view.size.width));
         component.position.y = (parseFloat(damage.relative_cords.y_percentage) * (paper.view.size.height));
         var canvasItem = null;
-        console.log(CarViewService.damagesLoaded);
-        if (CarViewService.damagesLoaded && damage.is_new) {
-          canvasItem = createCanvasItemObject(
-            project._activeLayer.children[position].id,
-            damage.part,
-            damage.damage_type,
-            damage.json_canvas,
-            true,
-            damage.relative_cords
-          );
-        } else {
-          canvasItem = createCanvasItemObject(
-            project._activeLayer.children[position].id,
-            damage.part,
-            damage.damage_type,
-            damage.json_canvas,
-            false,
-            damage.relative_cords
-          );
-        }
+
+        canvasItem = createCanvasItemObject(
+          project._activeLayer.children[position].id,
+          damage.part,
+          damage.damage_type,
+          damage.json_canvas,
+          isDamageNew,
+          damage.relative_cords
+        );
         CarViewService.addDamageToCanvasComponents(canvasItem);
       }
       paper.view.update();
@@ -223,17 +212,14 @@
 
     function setVehicleBackground() {
       var raster = null;
-      if (CarInfoFirebaseService.carInfo.traction_type === '4x4') {
-        raster = new paper.Raster({
-          source: VEHICLE_4X4_URL,
-          position: paper.view.center
-        });
-      } else {
-        raster = new paper.Raster({
-          source: VEHICLE_4X2_URL,
-          position: paper.view.center
-        });
-      }
+      var tractionType = CarInfoFirebaseService.carInfo.traction_type;
+      var vehicleURL = (tractionType === '4x4') ? VEHICLE_4X4_URL : VEHICLE_4X2_URL;
+
+      raster = new paper.Raster({
+        source: vehicleURL,
+        position: paper.view.center
+      });
+
       raster.onLoad = function() {
         scaleImage(raster);
       };

@@ -5,7 +5,7 @@
     .module('budgetrentacar.observations')
     .factory('ObservationsService', ObservationsService);
 
-  ObservationsService.$inject = ['RevisionService'];
+  /* @ngInject */
 
   function ObservationsService(RevisionService) {
 
