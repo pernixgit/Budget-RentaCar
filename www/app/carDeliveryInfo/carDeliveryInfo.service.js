@@ -3,21 +3,35 @@
 
   angular
     .module('budgetrentacar.carDeliveryInfo')
-    .service('CarDeliveryInfoFirebaseService', CarDeliveryInfoFirebaseService);
+    .service('CarDeliveryInfoService', CarDeliveryInfoService);
 
-  CarDeliveryInfoFirebaseService.$inject = ['CarInfoFirebaseService',
-                                            'FIREBASE_URL'];
+  /* @ngInject */
 
-  function CarDeliveryInfoFirebaseService(CarInfoFirebaseService,
-                                          FIREBASE_URL) {
-    this.pushCarDeliveryInfo = pushCarDeliveryInfo;
-    var rootRef  = new Firebase(FIREBASE_URL);
-    return this;
+  function CarDeliveryInfoService(FIREBASE_URL, $q, $firebaseArray) {
 
-    function pushCarDeliveryInfo(deliveryInfo) {
-      var reference = rootRef.child('revisions')
-        .child(CarInfoFirebaseService.currentRevisionId);
-      reference.update(deliveryInfo);
+    var service = {
+      rootRef: new Firebase(FIREBASE_URL),
+      initDeliveryPlaces: initDeliveryPlaces,
+      deliveryPlaces: {}
+    };
+
+    return service;
+
+    function getDeliveryPlaces() {
+      var reference = service.rootRef
+        .child('delivery_places');
+      var deliveryPlaces = $firebaseArray(reference);
+      return deliveryPlaces.$loaded();
+    }
+
+    function initDeliveryPlaces() {
+      var deferred = $q.defer();
+      getDeliveryPlaces()
+        .then(function(deliveryPlaces) {
+          service.deliveryPlaces = deliveryPlaces;
+          deferred.resolve();
+        });
+      return deferred.promise;
     }
   }
 })();

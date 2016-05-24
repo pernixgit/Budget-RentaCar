@@ -15,29 +15,16 @@
                                   RevisionService) {
 
     var vm = this;
-    vm.LastRevisionService = LastRevisionService;
     vm.goToCarView = goToCarView;
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
     vm.tireBrands = TIRE_BRANDS;
     vm.selectedTires = SELECTED_TIRES;
 
     function activate() {
-      if (vm.LastRevisionService.revision) {
-        setPreviousTires();
-      }else {
-        setDefaultTires();
-      }
+      (LastRevisionService.revision) ? setPreviousTires() : setDefaultTires();
     }
 
     activate();
-
-    function compareTires(tireName) {
-      for (var position = 0; position < vm.tireBrands.length; position++) {
-        if (tireName === vm.tireBrands[position].name) {
-          return vm.tireBrands[position];
-        }
-      }
-    }
 
     function setDefaultTires() {
       vm.selectedTires.rightFrontTireSelectedOption = SELECTED_TIRES[0].rightFrontTireSelectedOption;
@@ -48,20 +35,20 @@
     }
 
     function setPreviousTires() {
-      vm.selectedTires.rightFrontTireSelectedOption = compareTires(vm.LastRevisionService.revision.tires.right_front);
-      vm.selectedTires.leftFrontTireSelectedOption = compareTires(vm.LastRevisionService.revision.tires.left_front);
-      vm.selectedTires.leftBackTireSelectedOption = compareTires(vm.LastRevisionService.revision.tires.left_rear);
-      vm.selectedTires.rightBackTireSelectedOption = compareTires(vm.LastRevisionService.revision.tires.right_rear);
-      vm.selectedTires.extraTireSelectedOption = compareTires(vm.LastRevisionService.revision.tires.spare);
+      vm.selectedTires.rightFrontTireSelectedOption = LastRevisionService.revision.tires.right_front;
+      vm.selectedTires.leftFrontTireSelectedOption = LastRevisionService.revision.tires.left_front;
+      vm.selectedTires.leftBackTireSelectedOption = LastRevisionService.revision.tires.left_rear;
+      vm.selectedTires.rightBackTireSelectedOption = LastRevisionService.revision.tires.right_rear;
+      vm.selectedTires.extraTireSelectedOption = LastRevisionService.revision.tires.spare;
     }
 
     function goToCarView() {
       RevisionService.setCarTires({
-        right_front: vm.selectedTires.rightFrontTireSelectedOption.name,
-        left_front: vm.selectedTires.leftFrontTireSelectedOption.name,
-        right_rear: vm.selectedTires.rightBackTireSelectedOption.name,
-        left_rear: vm.selectedTires.leftBackTireSelectedOption.name,
-        spare: vm.selectedTires.extraTireSelectedOption.name
+        right_front: vm.selectedTires.rightFrontTireSelectedOption,
+        left_front: vm.selectedTires.leftFrontTireSelectedOption,
+        right_rear: vm.selectedTires.rightBackTireSelectedOption,
+        left_rear: vm.selectedTires.leftBackTireSelectedOption,
+        spare: vm.selectedTires.extraTireSelectedOption
       });
       $state.go('carView');
     }

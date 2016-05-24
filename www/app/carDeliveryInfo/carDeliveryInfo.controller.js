@@ -8,31 +8,33 @@
   /* @ngInject */
 
   function CarDeliveryInfoController($state,
-                                     CarDeliveryInfoFirebaseService,
-                                     CarInfoFirebaseService,
+                                     CarDeliveryInfoService,
                                      RevisionService,
                                      LastRevisionService,
                                      GAS_LEVELS,
-                                     DELIVERY_PLACE_SELECTED,
                                      GAS_LEVEL_SELECTED,
-                                     DELIVERY_PLACES,
                                      $ionicNavBarDelegate) {
     var vm = this;
     vm.km = getPreviousKm(LastRevisionService.revision);
-    vm.CarDeliveryInfoFirebaseService = CarDeliveryInfoFirebaseService;
     vm.goToTireRevision = goToTireRevision;
-    vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction;
     vm.gasLevels = GAS_LEVELS;
+    vm.deliveryPlaces = {};
     vm.deliveryInfo = {};
-    vm.deliveryInfo.deliveryPlaceSelected = DELIVERY_PLACE_SELECTED;
     vm.deliveryInfo.gasLevelSelected = GAS_LEVEL_SELECTED;
-    vm.deliveryPlaces = DELIVERY_PLACES;
 
-    $ionicNavBarDelegate.showBackButton(true);
+    activate();
 
+    function activate() {
+      $ionicNavBarDelegate.showBackButton(true);
+      CarDeliveryInfoService.initDeliveryPlaces()
+        .then(function() {
+          vm.deliveryPlaces = CarDeliveryInfoService.deliveryPlaces;
+          vm.deliveryInfo.deliveryPlaceSelected = CarDeliveryInfoService.deliveryPlaces[0];
+        });
+    }
     function resetFields() {
       vm.deliveryInfo = {
-        deliveryPlaceSelected: DELIVERY_PLACE_SELECTED,
+        deliveryPlaceSelected: CarDeliveryInfoService.deliveryPlaces[0],
         gasLevelSelected: GAS_LEVEL_SELECTED
       };
       vm.km = 0;

@@ -12,6 +12,7 @@
                              CarViewService,
                              CarInfoFirebaseService,
                              RevisionService) {
+
     var vm = $scope;
     vm.goToExteriorParts = goToExteriorParts;
     vm.CarViewService = CarViewService;

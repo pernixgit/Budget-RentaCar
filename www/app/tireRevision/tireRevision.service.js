@@ -5,7 +5,7 @@
     .module('budgetrentacar.tireRevision')
     .service('TireRevisionFirebaseService', TireRevisionFirebaseService);
 
-  TireRevisionFirebaseService.$inject = [];
+  /* @ngInject */
 
   function TireRevisionFirebaseService() {
   }

@@ -16,12 +16,11 @@
         controller: 'CarInfoController',
         controllerAs: 'vm',
         resolve: {
-          'CarInfoService': function(CarInfoFirebaseService,
-                                     LastRevisionService) {
-            return CarInfoFirebaseService.fetchCarInfo().
-            then(function() {
-              return LastRevisionService.fetchRevisionData();
-            });
+          'CarInfoService': function(CarInfoFirebaseService, LastRevisionService) {
+            return CarInfoFirebaseService.fetchCarInfo()
+              .then(function() {
+                return LastRevisionService.fetchRevisionData();
+              });
           }
         },
         cache: false

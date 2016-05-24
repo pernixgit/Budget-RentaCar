@@ -39,7 +39,7 @@
     }
 
     function isActive(type) {
-      return type === vm.active;
+      return (type === vm.active);
     }
   }
 })();

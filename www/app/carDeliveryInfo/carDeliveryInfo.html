@@ -5,7 +5,7 @@
         <div class="input-label ion-home">
           Entrega
         </div>
-        <select class="item-energized" ng-options="option.name for option in vm.deliveryPlaces track by option.id" ng-model="vm.deliveryInfo.deliveryPlaceSelected">
+        <select class="item-energized" ng-options="deliveryPlace.name for deliveryPlace in vm.deliveryPlaces" ng-model="vm.deliveryInfo.deliveryPlaceSelected">
         </select>
       </label>
       <label class="item item-input">

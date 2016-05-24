@@ -16,7 +16,7 @@
     var service = {
       rootRef: new Firebase(FIREBASE_URL),
       fetchCarInfo: fetchCarInfo,
-      carInfo: null,
+      carInfo: {},
       currentCarId: ScannerService.getCode(),
       currentRevisionId: null
     };

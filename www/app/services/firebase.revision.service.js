@@ -5,11 +5,7 @@
     .module('budgetrentacar.services')
     .service('FirebaseRevisionService', FirebaseRevisionService);
 
-  FirebaseRevisionService.$inject = ['CarInfoFirebaseService',
-                                     'FIREBASE_URL',
-                                     'CarViewService',
-                                     'RevisionService',
-                                     'ObservationsService'];
+  /* @ngInject */
 
   function FirebaseRevisionService(CarInfoFirebaseService,
                                    FIREBASE_URL,

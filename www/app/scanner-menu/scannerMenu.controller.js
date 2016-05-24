@@ -8,11 +8,13 @@
   /* @ngInject */
 
   function ScannerMenuController($state) {
+
     var vm = this;
     vm.goToScanner = goToScanner;
 
     function goToScanner() {
       $state.go('scanner');
     }
+
   }
 })();

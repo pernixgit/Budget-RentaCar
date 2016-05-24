@@ -11,19 +11,17 @@
                                   $scope,
                                   $state,
                                   LastRevisionService,
-                                  ObservationsService,
-                                  RevisionService) {
+                                  ObservationsService) {
+
     var vm = this;
-    vm.ObservationsService = ObservationsService;
-    vm.RevisionService = RevisionService;
     vm.showObservationsModal = showObservationsModal;
     vm.hideObservationsModal = hideObservationsModal;
     vm.addObservation = addObservation;
+    vm.ObservationsService = ObservationsService;
     vm.removeObservation = ObservationsService.removeObservation;
     vm.observationItem = {observation: null, is_new: true};
     vm.shouldShowObservationsButton = shouldShowObservationsButton;
     vm.opened = false;
-    vm.$state = $state;
 
     activate();
 
@@ -45,32 +43,28 @@
     }
 
     function isLoginView() {
-      return vm.$state.current.name === 'login';
+      return ($state.current.name === 'login');
     }
 
     function isCarInfoView() {
-      return vm.$state.current.name === 'carInfo';
+      return ($state.current.name === 'carInfo');
     }
 
     function isScannerErrorView() {
-      return vm.$state.current.name === 'scanner-error';
+      return ($state.current.name === 'scanner-error');
     }
 
     function isScannerMenuView() {
-      return vm.$state.current.name === 'scannerMenu';
+      return ($state.current.name === 'scannerMenu');
     }
 
     function showObservationsModal() {
       var lastRevision = LastRevisionService.revision;
-      if (!vm.opened) {
-        if (lastRevision) {
-          if (lastRevision.observations) {
-            angular.forEach(lastRevision.observations, function(observation) {
-              ObservationsService.addObservation(observation);
-            });
-            vm.opened = true;
-          }
-        }
+      if (!vm.opened && lastRevision && lastRevision.observations) {
+        angular.forEach(lastRevision.observations, function(observation) {
+          ObservationsService.addObservation(observation);
+        });
+        vm.opened = true;
       }
       $scope.modal.show();
     }
@@ -80,7 +74,7 @@
     }
 
     function addObservation(observation) {
-      if (observation.observation != null) {
+      if (observation.observation) {
         ObservationsService.addObservation(observation);
         vm.observationItem = emptyObservation();
       }

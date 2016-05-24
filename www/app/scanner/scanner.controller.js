@@ -8,11 +8,11 @@
   /* @ngInject */
 
   function ScannerController($state, $cordovaBarcodeScanner, ScannerService) {
-    console.log('at scanner');
+
     $cordovaBarcodeScanner.scan()
       .then(
-        function(codeData) {
-          ScannerService.setCode(codeData.text);
+        function(code) {
+          ScannerService.setCode(code.text);
           $state.go('carInfo');
         },
         function(error) {
