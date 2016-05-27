@@ -183,8 +183,7 @@
       for (var position = 0; position < damagesList.length; position++) {
         var damage = damagesList[position];
         var component = project._activeLayer.importJSON(damage.json_canvas);
-        var isDamageNew = (CarViewService.damagesLoaded && damage.is_new) ? true : false;
-
+        var isDamageNew = (CarViewService.damagesLoaded || damage.is_new) ? true : false;
         component.position.x = (parseFloat(damage.relative_cords.x_percentage) * (paper.view.size.width));
         component.position.y = (parseFloat(damage.relative_cords.y_percentage) * (paper.view.size.height));
         var canvasItem = null;

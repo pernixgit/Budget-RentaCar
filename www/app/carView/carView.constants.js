@@ -33,6 +33,12 @@ angular
       {'id': '18', 'name': 'Faro Izquierdo Delantero'},
       {'id': '19', 'name': 'Faro Derecho Trasero'},
       {'id': '20', 'name': 'Faro Izquierdo Trasero'},
+      {'id': '21', 'name': 'Guardabarros delantero'},
+      {'id': '21', 'name': 'Guardabarros trasero'},
+      {'id': '21', 'name': 'Compuerta Trasera'},
+      {'id': '21', 'name': 'Estribo'},
+      {'id': '21', 'name': 'Tapa de motor'},
+      {'id': '21', 'name': 'Cajuela'},
       {'id': '21', 'name': 'Techo'},
       {'id': '22', 'name': 'Otros'}
     ])
