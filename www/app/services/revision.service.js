@@ -79,8 +79,10 @@
       observationsList.splice(observationIndex, 1);
     }
 
-    function setCarParts(carParts) {
+    function setCarParts(carParts, countedCarParts) {
       revision.car_parts_present = carParts;
+      revision.car_parts_present.emblems = countedCarParts.emblems;
+      revision.car_parts_present.plates = countedCarParts.plates;
     }
 
     function setFeedback(userFeedback) {
