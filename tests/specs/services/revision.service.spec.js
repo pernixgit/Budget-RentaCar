@@ -94,7 +94,7 @@ describe('RevisionService', function() {
     expect(RevisionService.getObservations()[1].observation).toBe('Quebrada');
   });
 
-  it('Should set the car accesories to revision object', function() {
+  it('Should set the car parts to revision object', function() {
     var carAccesories = {
       'antenna': true,
       'legal-documents': true,
