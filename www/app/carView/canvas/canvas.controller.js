@@ -22,6 +22,7 @@
     var vm = $scope;
     var shape = null;
     var layer = null;
+    var scale = 0.3;
     vm.currentDamage = {};
     vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
     vm.currentDamage.part = SELECTED_PART;
@@ -29,6 +30,7 @@
     vm.parts = PARTS;
     vm.percentages = {};
     vm.LastRevisionService = LastRevisionService;
+
 
     activate();
 
@@ -126,7 +128,7 @@
         strokeColor: '#ED5505',
         strokeWidth: 5
       });
-      shape.scale(0.5, 0.5);
+      shape.scale(scale, scale);
     }
 
     function drawScratch(event) {
@@ -139,7 +141,7 @@
         strokeColor: '#ED5505',
         strokeWidth: 5
       });
-      shape.scale(0.5, 0.5);
+      shape.scale(scale, scale);
     }
 
     function drawDent(event) {
@@ -153,7 +155,7 @@
         strokeColor: '#ED5505',
         strokeWidth: 5
       });
-      shape.scale(0.5, 0.5);
+      shape.scale(scale, scale);
     }
 
     function drawBigScratch(event) {
@@ -170,7 +172,7 @@
         strokeColor: '#ED5505',
         strokeWidth: 5
       });
-      shape.scale(0.5, 0.5);
+      shape.scale(scale, scale);
     }
 
     function getPoint(event) {
@@ -243,7 +245,7 @@
     }
 
     function changeDamagesColorToYellow(damages) {
-      var yellowColor = '[1, 0.99, 0]';
+      var yellowColor = '[1, 1, 0.5]';
       return damages.map(function(damage) {
         damage.json_canvas = damage.json_canvas.replace(/\[0.92941,0.33333,0.01961\]/g, yellowColor);
         return damage;
