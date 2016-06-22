@@ -9,10 +9,10 @@
 
   var translationsEN = {
     FeedbackTitle: 'Feedback',
-    FeedbackQuestion1: 'Overall value for money?',
+    FeedbackQuestion1: 'Do you feel that you got a valuable service for the money you paid?',
     FeedbackQuestion2: 'How likely are you to recommend us ' +
                        'to a friend or colleague?',
-    FeedbackQuestion3: 'In general how would you rate our customer service?',
+    FeedbackQuestion3: 'In general, how would you rate our customer service?',
     FeedbackQuestion4: 'Would you use our service again?',
     FeedbackButtonSubmmit: 'Submit Feedback',
     FeedBackPlaceHolder1: 'What can we improve?',
@@ -22,7 +22,7 @@
 
   var translationsES = {
     FeedbackTitle: 'Retroalimentación',
-    FeedbackQuestion1: '\u00BFSatisfecho con el precio?',
+    FeedbackQuestion1: '\u00BFSiente que el servicio que recibió está acorde con lo que pagó?',
     FeedbackQuestion2: '\u00BFQué probabilidades hay de que nos ' +
                        'recomiendes a un amigo o colega?',
     FeedbackQuestion3: '\u00BFEn general, cómo calificaría ' +

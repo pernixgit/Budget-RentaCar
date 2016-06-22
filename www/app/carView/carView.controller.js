@@ -18,7 +18,6 @@
     vm.CarViewService = CarViewService;
     vm.isEditable = (RevisionService.getRevision().type == 'check-out');
     vm.currentCarTraction = CarInfoFirebaseService.carInfo.traction_type;
-
     activate();
 
     function activate() {
