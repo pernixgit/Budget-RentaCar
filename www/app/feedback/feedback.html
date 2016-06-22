@@ -15,8 +15,8 @@
         <div class="item item-divider">
           {{'FeedbackQuestion1' | translate}}
         </div>
-        <ion-radio ng-model="vm.feedback.worthMoney" ng-value="'yes'" name="isWorthMoney" required>{{'yes' | translate}}</ion-radio>
-        <ion-radio ng-model="vm.feedback.worthMoney" ng-value="'no'" name="isWorthMoney" required>No</ion-radio>
+        <ion-radio ng-model="vm.feedback.worthMoney" ng-value="true" name="isWorthMoney" required>{{'yes' | translate}}</ion-radio>
+        <ion-radio ng-model="vm.feedback.worthMoney" ng-value="false" name="isWorthMoney" required>No</ion-radio>
         <label class="item item-input">
           <textarea ng-model="vm.feedback.improve" placeholder="Regular Placeholder" translate translate-attr-placeholder="FeedBackPlaceHolder1" translate-value-browser="{{app.browser}}"></textarea>
         </label>
@@ -47,8 +47,8 @@
         <div class="item item-divider">
           {{'FeedbackQuestion4' | translate}}
         </div>
-        <ion-radio ng-model="vm.feedback.useAgain" ng-value="'yes'" name="willUseAgain" required>{{'yes' | translate}}</ion-radio>
-        <ion-radio ng-model="vm.feedback.useAgain" ng-value="'no'" name="willUseAgain" required>No</ion-radio>
+        <ion-radio ng-model="vm.feedback.useAgain" ng-value="true" name="willUseAgain" required>{{'yes' | translate}}</ion-radio>
+        <ion-radio ng-model="vm.feedback.useAgain" ng-value="false" name="willUseAgain" required>No</ion-radio>
         <label class="item item-input">
           <textarea ng-model="vm.feedback.useAgainReason" placeholder="Regular Placeholder" translate translate-attr-placeholder="FeedBackPlaceHolder2" translate-value-browser="{{app.browser}}"></textarea>
         </label>
