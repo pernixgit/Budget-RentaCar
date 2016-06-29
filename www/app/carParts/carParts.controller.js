@@ -43,7 +43,7 @@
     }
 
     function pushAndEndProcess() {
-      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), false);
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), false, Date.now());
       RevisionService.resetRevision();
       $state.go('login');
     }

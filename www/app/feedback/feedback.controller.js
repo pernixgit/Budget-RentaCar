@@ -27,8 +27,10 @@
     };
 
     function endRevision(feedback) {
+      var timestamp = Date.now();
+      feedback.timestamp = timestamp;
       RevisionService.setFeedback(feedback);
-      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), true);
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), true, timestamp);
       RevisionService.resetRevision();
       $state.go('login');
     }

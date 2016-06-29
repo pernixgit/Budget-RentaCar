@@ -44,8 +44,8 @@
       }
     }
 
-    function pushNewRevision(newRevision, isCheckIn) {
-      RevisionService.setTimestamp();
+    function pushNewRevision(newRevision, isCheckIn, timestamp) {
+      RevisionService.setTimestamp(timestamp);
       ObservationsService.setObservationsToService();
       var pushRef = pushRevision(newRevision);
       pushRevisionItems(isCheckIn);
@@ -116,11 +116,20 @@
       });
     }
 
+    function pushCurrentRevisionIdToFeedback(id) {
+      var reference = service.rootRef
+        .child('feedback')
+        .child(id);
+      reference.update({
+        revision_ref: service.currentRevisionId
+      });
+
     function pushFeedback(feedback) {
       var reference = service.rootRef
         .child('feedback');
       var pushReference = reference.push(feedback);
       pushFeedbackIdToCurrentRevision(pushReference.key());
+      pushCurrentRevisionIdToFeedback(pushReference.key());
     }
 
   }

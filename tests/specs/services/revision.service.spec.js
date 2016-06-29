@@ -25,7 +25,7 @@ describe('RevisionService', function() {
   });
 
   it('Should set the timestamp to revision object', function() {
-    RevisionService.setTimestamp();
+    RevisionService.setTimestamp(Date.now());
     expect(typeof(RevisionService.getRevision().timestamp)).toBe('number');
   });
 
