@@ -44,8 +44,8 @@
       revision.type = 'check-out' : revision.type = 'check-in';
     }
 
-    function setTimestamp() {
-      revision.timestamp = Date.now();
+    function setTimestamp(timestamp) {
+      revision.timestamp = timestamp;
     }
 
     function setUsername(username) {

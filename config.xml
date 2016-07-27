@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.budgetrentacar551085" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.pernix.budgetrentacar" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Budget</name>
   <description>
         Budget-Rent a Car App
@@ -7,7 +7,7 @@
   <author email="info@pernix-solutions.com" href="http://pernix-solutions.com/">
         Pernix-Solutions
     </author>
-  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="*" />
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>

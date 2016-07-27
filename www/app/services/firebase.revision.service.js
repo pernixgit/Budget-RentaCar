@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -44,8 +44,8 @@
       }
     }
 
-    function pushNewRevision(newRevision, isCheckIn) {
-      RevisionService.setTimestamp();
+    function pushNewRevision(newRevision, isCheckIn, timestamp) {
+      RevisionService.setTimestamp(timestamp);
       ObservationsService.setObservationsToService();
       var pushRef = pushRevision(newRevision);
       pushRevisionItems(isCheckIn);
@@ -89,7 +89,7 @@
         .child('damages');
       var damagesKey = damagesRootReference.push().key();
       var damagesRef = damagesRootReference.child(damagesKey);
-      angular.forEach(damages, function(damage) {
+      angular.forEach(damages, function (damage) {
         damagesRef.push(damage);
       });
       pushDamagesIdToCurrentRevision(damagesKey);
@@ -101,7 +101,7 @@
         .child('observations');
       var observationsKey = observationsRootReference.push().key();
       var observationsRef = observationsRootReference.child(observationsKey);
-      angular.forEach(observations, function(observation) {
+      angular.forEach(observations, function (observation) {
         observationsRef.push(observation);
       });
       pushObservationsIdToCurrentRevision(observationsKey);
@@ -116,11 +116,21 @@
       });
     }
 
+    function pushCurrentRevisionIdToFeedback(id) {
+      var reference = service.rootRef
+        .child('feedback')
+        .child(id);
+      reference.update({
+        revision_ref: service.currentRevisionId
+      });
+    }
+
     function pushFeedback(feedback) {
       var reference = service.rootRef
         .child('feedback');
       var pushReference = reference.push(feedback);
       pushFeedbackIdToCurrentRevision(pushReference.key());
+      pushCurrentRevisionIdToFeedback(pushReference.key());
     }
 
   }

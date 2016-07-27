@@ -12,7 +12,6 @@
                               COUNTED_ACCESORIES,
                               SELECTED_ACCESORIES,
                               SELECTED_COUNTED_ACCESORIES,
-                              FirebaseRevisionService,
                               RevisionService) {
 
     var vm = this;
@@ -43,7 +42,7 @@
     }
 
     function pushAndEndProcess() {
-      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), false);
+      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), false, Date.now());
       RevisionService.resetRevision();
       $state.go('login');
     }
