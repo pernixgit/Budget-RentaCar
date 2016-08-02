@@ -12,7 +12,8 @@
                               COUNTED_ACCESORIES,
                               SELECTED_ACCESORIES,
                               SELECTED_COUNTED_ACCESORIES,
-                              RevisionService) {
+                              RevisionService,
+                              FirebaseRevisionService) {
 
     var vm = this;
     vm.goToEndOrFeedback = goToEndOrFeedback;

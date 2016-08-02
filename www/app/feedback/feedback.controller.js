@@ -19,11 +19,11 @@
     vm.isActive = isActive;
     vm.feedback = {
       worthMoney: null,
-      improve: null,
+      improve: '',
       recommendation: 0,
       rate: 0,
       useAgain: null,
-      useAgainReason: null
+      useAgainReason: ''
     };
 
     function endRevision(feedback) {
