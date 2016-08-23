@@ -9,6 +9,7 @@ angular
       {'id': '2', 'name': 'Camanance'},
       {'id': '3', 'name': 'Raspon'}
     ])
+    .constant('COLOR_CANVAS': '#ED5505')
     .constant('DAMAGE_TYPE_SELECTED', {'id': '0', 'name': 'Golpe'})
     .constant('SELECTED_PART', {'id': '0', 'name': 'Bumper Delantero'})
     .constant('PARTS', [
