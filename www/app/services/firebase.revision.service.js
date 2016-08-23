@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -89,7 +89,7 @@
         .child('damages');
       var damagesKey = damagesRootReference.push().key();
       var damagesRef = damagesRootReference.child(damagesKey);
-      angular.forEach(damages, function (damage) {
+      angular.forEach(damages, function(damage) {
         damagesRef.push(damage);
       });
       pushDamagesIdToCurrentRevision(damagesKey);
@@ -101,7 +101,7 @@
         .child('observations');
       var observationsKey = observationsRootReference.push().key();
       var observationsRef = observationsRootReference.child(observationsKey);
-      angular.forEach(observations, function (observation) {
+      angular.forEach(observations, function(observation) {
         observationsRef.push(observation);
       });
       pushObservationsIdToCurrentRevision(observationsKey);

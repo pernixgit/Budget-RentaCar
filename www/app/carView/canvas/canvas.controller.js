@@ -31,7 +31,6 @@
     vm.percentages = {};
     vm.LastRevisionService = LastRevisionService;
 
-
     activate();
 
     function activate() {
