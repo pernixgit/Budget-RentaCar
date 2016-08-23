@@ -13,7 +13,7 @@
       .state('scanner-error', {
         url: '/scanner-error',
         templateUrl: 'app/scanner-error/scanner.error.html',
-        controller: 'ScannerErrorController',
+        controller: 'ScannerErrorCtrl',
         controllerAs: 'vm',
         cache: false
       });

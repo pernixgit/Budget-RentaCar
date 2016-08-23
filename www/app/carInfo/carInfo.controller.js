@@ -3,15 +3,15 @@
 
   angular
   .module('budgetrentacar.carInfo')
-  .controller('CarInfoController', CarInfoController);
+  .controller('CarInfoCtrl', CarInfoCtrl);
 
   /* @ngInject */
 
-  function CarInfoController(CarInfoFirebaseService,
-                             $state,
-                             RevisionService,
-                             LastRevisionService,
-                             $ionicNavBarDelegate) {
+  function CarInfoCtrl(CarInfoFirebaseService,
+                       $state,
+                       RevisionService,
+                       LastRevisionService,
+                       $ionicNavBarDelegate) {
     var vm = this;
     vm.goToCarView = goToCarView;
     vm.RevisionService = RevisionService;

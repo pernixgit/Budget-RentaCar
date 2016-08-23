@@ -13,7 +13,7 @@
       .state('scanner', {
         url: '/scanner',
         templateUrl: 'app/scanner/scanner.html',
-        controller: 'ScannerController',
+        controller: 'ScannerCtrl',
         controllerAs: 'vm',
         cache: false
       });

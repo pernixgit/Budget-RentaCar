@@ -3,15 +3,15 @@
 
   angular
     .module('budgetrentacar.observations')
-    .controller('ObservationsController', ObservationsController);
+    .controller('ObservationsCtrl', ObservationsCtrl);
 
   /* @ngInject */
 
-  function ObservationsController($ionicModal,
-                                  $scope,
-                                  $state,
-                                  LastRevisionService,
-                                  ObservationsService) {
+  function ObservationsCtrl($ionicModal,
+                            $scope,
+                            $state,
+                            LastRevisionService,
+                            ObservationsService) {
 
     var vm = this;
     vm.showObservationsModal = showObservationsModal;

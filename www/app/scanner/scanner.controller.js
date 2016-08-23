@@ -3,11 +3,11 @@
 
   angular
   .module('budgetrentacar.scanner')
-  .controller('ScannerController', ScannerController);
+  .controller('ScannerCtrl', ScannerCtrl);
 
   /* @ngInject */
 
-  function ScannerController($state, $cordovaBarcodeScanner, ScannerService) {
+  function ScannerCtrl($state, $cordovaBarcodeScanner, ScannerService) {
 
     $cordovaBarcodeScanner.scan()
       .then(

@@ -13,7 +13,7 @@
       .state('carInfo', {
         url: '/carInfo',
         templateUrl: 'app/carInfo/carInfo.html',
-        controller: 'CarInfoController',
+        controller: 'CarInfoCtrl',
         controllerAs: 'vm',
         resolve: {
           'CarInfoService': function(CarInfoFirebaseService, LastRevisionService) {

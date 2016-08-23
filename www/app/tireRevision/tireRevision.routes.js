@@ -12,7 +12,7 @@
       .state('tireRevision', {
         url: '/tireRevision',
         templateUrl: 'app/tireRevision/tireRevision.html',
-        controller: 'TireRevisionController',
+        controller: 'TireRevisionCtrl',
         controllerAs: 'vm',
         cache: false,
         resolve: {

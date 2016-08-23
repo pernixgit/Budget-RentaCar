@@ -4,14 +4,14 @@
 
   angular
     .module('budgetrentacar.feedback')
-    .controller('Feedback', FeedbackController);
+    .controller('FeedbackCtrl', FeedbackCtrl);
 
   /* @ngInject */
 
-  function FeedbackController($state,
-                              $translate,
-                              RevisionService,
-                              FirebaseRevisionService) {
+  function FeedbackCtrl($state,
+                        $translate,
+                        RevisionService,
+                        FirebaseRevisionService) {
     var vm = this;
     vm.endRevision = endRevision;
     vm.active = 'ES';

@@ -3,17 +3,17 @@
 
   angular
     .module('budgetrentacar.carParts')
-    .controller('CarPartsController', CarPartsController);
+    .controller('CarPartsCtrl', CarPartsCtrl);
 
   /* @ngInject */
 
-  function CarPartsController($state,
-                              ACCESORIES,
-                              COUNTED_ACCESORIES,
-                              SELECTED_ACCESORIES,
-                              SELECTED_COUNTED_ACCESORIES,
-                              RevisionService,
-                              FirebaseRevisionService) {
+  function CarPartsCtrl($state,
+                        ACCESORIES,
+                        COUNTED_ACCESORIES,
+                        SELECTED_ACCESORIES,
+                        SELECTED_COUNTED_ACCESORIES,
+                        RevisionService,
+                        FirebaseRevisionService) {
 
     var vm = this;
     vm.goToEndOrFeedback = goToEndOrFeedback;

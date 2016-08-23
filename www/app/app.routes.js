@@ -8,7 +8,7 @@
         .state('login', {
           url: '/',
           templateUrl: 'app/login/login.html',
-          controller: 'LoginController',
+          controller: 'LoginCtrl',
           controllerAs: 'vm',
           cache: false
         });

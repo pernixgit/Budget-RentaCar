@@ -3,16 +3,16 @@
 
   angular
   .module('budgetrentacar.tireRevision')
-  .controller('TireRevisionController', TireRevisionController);
+  .controller('TireRevisionCtrl', TireRevisionCtrl);
 
   /* @ngInject */
 
-  function TireRevisionController(SELECTED_TIRES,
-                                  TIRE_BRANDS,
-                                  $state,
-                                  CarInfoFirebaseService,
-                                  LastRevisionService,
-                                  RevisionService) {
+  function TireRevisionCtrl(SELECTED_TIRES,
+                            TIRE_BRANDS,
+                            $state,
+                            CarInfoFirebaseService,
+                            LastRevisionService,
+                            RevisionService) {
 
     var vm = this;
     vm.goToCarView = goToCarView;

@@ -3,21 +3,21 @@
 
   angular
     .module('budgetrentacar.carView')
-    .controller('CanvasController', CanvasController);
+    .controller('CanvasCtrl', CanvasCtrl);
 
   /* @ngInject */
 
-  function CanvasController($scope,
-                            CarViewService,
-                            $ionicPopup,
-                            DAMAGE_OPTIONS,
-                            DAMAGE_TYPE_SELECTED,
-                            PARTS,
-                            SELECTED_PART,
-                            VEHICLE_4X2_URL,
-                            VEHICLE_4X4_URL,
-                            LastRevisionService,
-                            CarInfoFirebaseService) {
+  function CanvasCtrl($scope,
+                      CarViewService,
+                      $ionicPopup,
+                      DAMAGE_OPTIONS,
+                      DAMAGE_TYPE_SELECTED,
+                      PARTS,
+                      SELECTED_PART,
+                      VEHICLE_4X2_URL,
+                      VEHICLE_4X4_URL,
+                      LastRevisionService,
+                      CarInfoFirebaseService) {
 
     var vm = $scope;
     var shape = null;

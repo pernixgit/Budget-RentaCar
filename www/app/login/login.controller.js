@@ -3,15 +3,15 @@
 
   angular
     .module('budgetrentacar.login')
-    .controller('LoginController', LoginController);
+    .controller('LoginCtrl', LoginCtrl);
 
   /* @ngInject */
 
-  function LoginController($state,
-                           $ionicPopup,
-                           LoginFirebaseService,
-                           RevisionService,
-                           $ionicNavBarDelegate) {
+  function LoginCtrl($state,
+                     $ionicPopup,
+                     LoginFirebaseService,
+                     RevisionService,
+                     $ionicNavBarDelegate) {
     var vm = this;
     vm.authenticate = authenticate;
     vm._authSuccess = _authSuccess;

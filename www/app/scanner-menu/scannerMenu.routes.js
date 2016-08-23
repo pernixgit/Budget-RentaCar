@@ -13,7 +13,7 @@
       .state('scannerMenu', {
         url: '/scannerMenu',
         templateUrl: 'app/scanner-menu/scannerMenu.html',
-        controller: 'ScannerMenuController',
+        controller: 'ScannerMenuCtrl',
         controllerAs: 'vm',
         cache: false
       });

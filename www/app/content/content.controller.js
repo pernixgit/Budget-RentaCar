@@ -3,9 +3,9 @@
 
   angular
     .module('budgetrentacar.content')
-    .controller('ContentController', ContentController);
+    .controller('ContentCtrl', ContentCtrl);
 
-  function ContentController() {
+  function ContentCtrl() {
     var vm = this;
 
   }
