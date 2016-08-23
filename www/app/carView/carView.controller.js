@@ -3,15 +3,15 @@
 
   angular
     .module('budgetrentacar.carView')
-    .controller('CarViewController', CarViewController);
+    .controller('CarViewCtrl', CarViewCtrl);
 
   /* @ngInject */
 
-  function CarViewController($scope,
-                             $state,
-                             CarViewService,
-                             CarInfoFirebaseService,
-                             RevisionService) {
+  function CarViewCtrl($scope,
+                       $state,
+                       CarViewService,
+                       CarInfoFirebaseService,
+                       RevisionService) {
 
     var vm = $scope;
     vm.goToExteriorParts = goToExteriorParts;

@@ -13,7 +13,7 @@
       .state('content', {
         url: '/content',
         templateUrl: 'app/content/content.html',
-        controller: 'ContentController',
+        controller: 'ContentCtrl',
         controllerAs: 'vm',
         cache: false
       });

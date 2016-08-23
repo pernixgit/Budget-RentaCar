@@ -3,11 +3,11 @@
 
   angular
   .module('budgetrentacar.scanner.error')
-  .controller('ScannerErrorController', ScannerErrorController);
+  .controller('ScannerErrorCtrl', ScannerErrorCtrl);
 
   /* @ngInject */
 
-  function ScannerErrorController($state) {
+  function ScannerErrorCtrl($state) {
     var vm = this;
     vm.redirectToScanner = redirectToScanner;
 

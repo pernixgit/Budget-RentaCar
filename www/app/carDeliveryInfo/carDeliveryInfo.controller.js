@@ -3,17 +3,17 @@
 
   angular
     .module('budgetrentacar.carDeliveryInfo')
-    .controller('CarDeliveryInfoController', CarDeliveryInfoController);
+    .controller('CarDeliveryInfoCtrl', CarDeliveryInfoCtrl);
 
   /* @ngInject */
 
-  function CarDeliveryInfoController($state,
-                                     CarDeliveryInfoService,
-                                     RevisionService,
-                                     LastRevisionService,
-                                     GAS_LEVELS,
-                                     GAS_LEVEL_SELECTED,
-                                     $ionicNavBarDelegate) {
+  function CarDeliveryInfoCtrl($state,
+                               CarDeliveryInfoService,
+                               RevisionService,
+                               LastRevisionService,
+                               GAS_LEVELS,
+                               GAS_LEVEL_SELECTED,
+                               $ionicNavBarDelegate) {
     var vm = this;
     vm.km = getPreviousKm(LastRevisionService.revision);
     vm.goToTireRevision = goToTireRevision;

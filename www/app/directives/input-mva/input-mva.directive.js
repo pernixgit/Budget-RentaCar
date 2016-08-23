@@ -8,7 +8,7 @@
     var directive = {
       restrict: 'E',
       templateUrl: 'app/directives/input-mva/input-mva.html',
-      controller: 'InputMVAController as vm',
+      controller: 'InputMVACtrl as vm',
       scope: true
     };
 

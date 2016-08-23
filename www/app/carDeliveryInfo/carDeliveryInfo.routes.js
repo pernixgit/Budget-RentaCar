@@ -12,7 +12,7 @@
       .state('carDeliveryInfo', {
         url: '/carDeliveryInfo',
         templateUrl: 'app/carDeliveryInfo/carDeliveryInfo.html',
-        controller: 'CarDeliveryInfoController',
+        controller: 'CarDeliveryInfoCtrl',
         controllerAs: 'vm',
         cache: false
       });

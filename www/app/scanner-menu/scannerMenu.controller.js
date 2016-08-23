@@ -3,11 +3,11 @@
 
   angular
     .module('budgetrentacar.scan-menu')
-    .controller('ScannerMenuController', ScannerMenuController);
+    .controller('ScannerMenuCtrl', ScannerMenuCtrl);
 
   /* @ngInject */
 
-  function ScannerMenuController($state) {
+  function ScannerMenuCtrl($state) {
 
     var vm = this;
     vm.goToScanner = goToScanner;

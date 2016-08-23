@@ -126,6 +126,5 @@
       damagesList = {};
       observationsList = [];
     }
-
   }
 })();

@@ -3,11 +3,11 @@
 
   angular
     .module('budgetrentacar')
-    .controller('InputMVAController', InputMVAController);
+    .controller('InputMVACtrl', InputMVACtrl);
 
   /* @ngInject */
 
-  function InputMVAController($state, $ionicPopup, $scope, ScannerService) {
+  function InputMVACtrl($state, $ionicPopup, $scope, ScannerService) {
     var vm = this;
     vm.showMVAInputPopUp = showMVAInputPopUp;
 
