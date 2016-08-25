@@ -30,7 +30,6 @@ module.exports = function(config) {
       dir : 'coverage/',
     },
 
-
     reporters: ['progress', 'coverage'],
     port: 9876,
     colors: true,

@@ -1,13 +1,23 @@
 describe ('CarInfoFirebaseService', function(){
 
-  var RevisionService;
+  var CarInfoFirebaseService;
 
   beforeEach(module('budgetrentacar.services'));
-  beforeEach(inject(function(_CarInfoFirebaseService_) {
+  beforeEach(module('firebase'));
+
+  beforeEach(function () {
+    module(function ($provide) {
+      $provide.value('FIREBASE_URL', 'https://budget-cr.firebaseio.com');
+      $provide.value('$firebaseObject', {});
+      
+    });
+  });
+
+  beforeEach(inject(function(_CarInfoFirebaseService_,FIREBASE_URL) {
     CarInfoFirebaseService = _CarInfoFirebaseService_;
   }));
 
-  it('Should set the username to carInfo object', function() {
-
+  it('Should be define', function() {
+    expect(CarInfoFirebaseService).toBeDefined();
   });
 });
