@@ -16,6 +16,7 @@
                       SELECTED_PART,
                       VEHICLE_4X2_URL,
                       VEHICLE_4X4_URL,
+                      COLOR_CANVAS,
                       LastRevisionService,
                       CarInfoFirebaseService) {
 
@@ -24,11 +25,11 @@
     var layer = null;
     var scale = 0.3;
     vm.currentDamage = {};
+    vm.percentages = {};
     vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
     vm.currentDamage.part = SELECTED_PART;
     vm.damageOptions = DAMAGE_OPTIONS;
     vm.parts = PARTS;
-    vm.percentages = {};
     vm.LastRevisionService = LastRevisionService;
 
     activate();
@@ -63,23 +64,23 @@
         cssClass: 'popup',
         scope: vm ,
         buttons: [{
-          text: '<i class="icon ion-close-round"></i>' ,
+          text: '<i class="icon ion-close-round"></i>',
           type: 'buttonpopCanc',
           onTap: function(e) {
             if (e && fromCanvas) {
             }
           }
         },
-          {
-            text: '<i class="icon ion-checkmark-round"></i>',
-            type: 'buttonpopOK',
-            onTap: function(e) {
-              if (e) {
-                drawShape(event);
-                appendDamage();
-              }
+        {
+          text: '<i class="icon ion-checkmark-round"></i>',
+          type: 'buttonpopOK',
+          onTap: function(e) {
+            if (e) {
+              drawShape(event);
+              appendDamage();
             }
-          }]
+          }
+        }]
       });
     };
 
@@ -92,7 +93,9 @@
     };
 
     function drawShape(event) {
-      var currentDamage = vm.currentDamage.damageType.name;
+      var currentDamage = vm.currentDamage
+        .damageType
+        .name;
 
       if (currentDamage === 'Golpe') {
         drawDamage(event);
@@ -108,13 +111,6 @@
       setXandYPercentages(event.point);
     }
 
-    function setXandYPercentages(point) {
-      vm.percentages = {
-        x_percentage: (point.x / paper.view.size.width),
-        y_percentage: (point.y / paper.view.size.height)
-      };
-    }
-
     function drawDamage(event) {
       event.point = getPoint(event);
       var line1 = new Path.Line([20, 20], [80, 80]);
@@ -124,7 +120,7 @@
         children: [line1, line2],
         center: event.point,
         position: event.point,
-        strokeColor: '#ED5505',
+        strokeColor: COLOR_CANVAS,
         strokeWidth: 5
       });
       shape.scale(scale, scale);
@@ -137,7 +133,7 @@
         to: [80, 50],
         center: event.point,
         position: event.point,
-        strokeColor: '#ED5505',
+        strokeColor: COLOR_CANVAS,
         strokeWidth: 5
       });
       shape.scale(scale, scale);
@@ -148,10 +144,10 @@
       shape = new Path.Ellipse({
         point: [20, 20],
         size: [80, 30],
-        fillColor: '#ED5505',
+        fillColor: COLOR_CANVAS,
         center: event.point,
         position: event.point,
-        strokeColor: '#ED5505',
+        strokeColor: COLOR_CANVAS,
         strokeWidth: 5
       });
       shape.scale(scale, scale);
@@ -168,16 +164,10 @@
         children: [line1, line2, line3, line4],
         center: event.point,
         position: event.point,
-        strokeColor: '#ED5505',
+        strokeColor: COLOR_CANVAS,
         strokeWidth: 5
       });
       shape.scale(scale, scale);
-    }
-
-    function getPoint(event) {
-      var fixedX = event.x - 10;
-      var fixedY = event.y - 65;
-      return new Point(fixedX, fixedY);
     }
 
     function addDamagesToCanvas(damagesList) {
@@ -208,21 +198,6 @@
       var widthScale = (paper.view.size.width / raster.width);
 
       raster.scale(widthScale, heightScale);
-    }
-
-    function setVehicleBackground() {
-      var raster = null;
-      var tractionType = CarInfoFirebaseService.carInfo.traction_type;
-      var vehicleURL = (tractionType === '4x4') ? VEHICLE_4X4_URL : VEHICLE_4X2_URL;
-
-      raster = new paper.Raster({
-        source: vehicleURL,
-        position: paper.view.center
-      });
-
-      raster.onLoad = function() {
-        scaleImage(raster);
-      };
     }
 
     function importCanvasJson() {
@@ -280,6 +255,34 @@
       vm.currentDamage = {};
       vm.currentDamage.damageType = DAMAGE_TYPE_SELECTED;
       vm.currentDamage.part = SELECTED_PART;
+    }
+
+    function getPoint(event) {
+      var fixedX = event.x - 10;
+      var fixedY = event.y - 65;
+      return new Point(fixedX, fixedY);
+    }
+
+    function setXandYPercentages(point) {
+      vm.percentages = {
+        x_percentage: (point.x / paper.view.size.width),
+        y_percentage: (point.y / paper.view.size.height)
+      };
+    }
+
+    function setVehicleBackground() {
+      var raster = null;
+      var tractionType = CarInfoFirebaseService.carInfo.traction_type;
+      var vehicleURL = (tractionType === '4x4') ? VEHICLE_4X4_URL : VEHICLE_4X2_URL;
+
+      raster = new paper.Raster({
+        ource: vehicleURL,
+        position: paper.view.center
+      });
+
+      raster.onLoad = function() {
+        scaleImage(raster);
+      };
     }
   }
 })();
