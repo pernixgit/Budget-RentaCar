@@ -44,7 +44,7 @@
     }
 
     function activate() {
-      $ionicNavBarDelegate.showBackButton(false);
+      $ionicNavBarDelegate.showBackButton(true);
       setNewRevisionType();
       vm.isLoaded = (CarInfoFirebaseService.carInfo.model) ? true : false;
       setTimeout(function() {

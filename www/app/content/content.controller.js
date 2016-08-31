@@ -7,6 +7,5 @@
 
   function ContentCtrl() {
     var vm = this;
-
   }
 })();

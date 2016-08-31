@@ -20,6 +20,7 @@
     activate();
 
     function activate() {
+      LoginFirebaseService.verifyAccess();
       $ionicNavBarDelegate.showBackButton(false);
     }
 
@@ -36,21 +37,23 @@
 
     function _credentialsAreCorrect(username, userInfo, password) {
       return username === userInfo.username &&
-        password === userInfo.password;
+      password === userInfo.password;
     }
 
-    function authenticate(username, password) {
-
-      LoginFirebaseService.getUserInfo(username)
-        .then(function(userInfo) {
-          if (_credentialsAreCorrect(username, userInfo, password)) {
-            _authSuccess();
-            RevisionService.setUsername(username);
-          }else {
-            authError();
-          }
-        });
+    function handleUserCredentials(user){
+      if(user.hasOwnProperty('username') && angular.equals(user.password, vm.password)) {
+        LoginFirebaseService.setAuthUser(vm.username);
+        _authSuccess();
+      } else {
+        authError();
+      }
     }
 
+    function authenticate(username){
+        LoginFirebaseService.logIn(username)
+          .then(handleUserCredentials)
+          .catch(authError)
+    }
   }
+
 })();
