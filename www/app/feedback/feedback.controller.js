@@ -18,12 +18,12 @@
     vm.setActive = setActive;
     vm.isActive = isActive;
     vm.feedback = {
-      worthMoney: null,
+      worth_money: null,
       improve: '',
       recommendation: 0,
       rate: 0,
-      useAgain: null,
-      useAgainReason: ''
+      use_again: null,
+      use_again_reason: ''
     };
 
     function endRevision(feedback) {
