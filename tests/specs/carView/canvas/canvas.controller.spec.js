@@ -2,7 +2,6 @@ describe('Canvas Controller', function() {
   var controller, $scope, CarViewService, $ionicPopup, LastRevisionService, CarInfoFirebaseService;
 
   beforeEach(module('ui.router'));
-  beforeEach()
   beforeEach(module('budgetrentacar.carView'));
   beforeEach(function () {
     module(function ($provide) {
