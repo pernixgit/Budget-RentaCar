@@ -19,7 +19,6 @@
                       COLOR_CANVAS,
                       LastRevisionService,
                       CarInfoFirebaseService) {
-
     var vm = $scope;
     var shape = null;
     var layer = null;

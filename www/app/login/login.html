@@ -2,7 +2,7 @@
   <ion-content>
     <div class="content has-header padding login-content">
       <img src="assets/images/budget_logo.png" class="budget-logo"/>
-      <form>
+      <form name="loginForm">
         <div class="list list-inset login-wrapper">
           <label class="item item-input">
             <i class="icon ion-person placeholder-icon"></i>
@@ -14,7 +14,7 @@
           </label>
           <br/>
             <p align="center">
-              <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="vm.authenticate(vm.username, vm.password)"> Login </button>
+              <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="vm.authenticate(vm.username)" ng-disabled="loginForm.$invalid"> Login </button>
             </p>
         </div>
       </form>

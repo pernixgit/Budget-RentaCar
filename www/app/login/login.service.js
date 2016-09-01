@@ -7,22 +7,50 @@
 
   /* @ngInject */
 
-  function LoginFirebaseService(FIREBASE_URL, $firebaseObject) {
+  function LoginFirebaseService(FIREBASE_URL,
+                                $firebaseObject,
+                                SessionService,
+                                $rootScope,
+                                $location,
+                                $state) {
     var service = {
-      getUserInfo: getUserInfo,
-      root: FIREBASE_URL,
-      userInfo: null
+      isLoggedIn: isLoggedIn,
+      logIn: logIn,
+      logOut: logOut,
+      verifyAccess: verifyAccess,
+      setAuthUser: setAuthUser
     };
 
     return service;
 
-    function getUserInfo(username) {
-      var reference = new Firebase(service.root)
-        .child('users')
-        .child(username);
-      service.userInfo = $firebaseObject(reference);
-      return service.userInfo.$loaded();
+    function logIn(username) {
+      var reference = new Firebase(FIREBASE_URL);
+      return $firebaseObject(reference.child('users').child(username)).$loaded();
     }
 
+    function isLoggedIn() {
+      var authData = SessionService.getAuthData();
+      var sessionDefined = typeof authData !== 'undefined';
+      var authDataDefined = authData !== null;
+      return sessionDefined && authDataDefined;
+    }
+
+    function logOut() {
+      SessionService.destroy();
+      $state.go('login');
+    }
+
+    function verifyAccess(){
+      if(isLoggedIn()){
+        $state.go('scannerMenu');
+      } else{
+        $state.go('login');
+      }
+    }
+
+    function setAuthUser(username){
+      SessionService.setAuthData(username);
+    }
   }
+    
 })();
