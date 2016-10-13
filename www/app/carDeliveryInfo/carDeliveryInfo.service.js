@@ -9,8 +9,8 @@
 
   function CarDeliveryInfoService(FIREBASE_URL, $q, $firebaseArray) {
 
+    var rootRef = firebase.database().ref();
     var service = {
-      rootRef: new Firebase(FIREBASE_URL),
       initDeliveryPlaces: initDeliveryPlaces,
       deliveryPlaces: {}
     };
@@ -18,7 +18,7 @@
     return service;
 
     function getDeliveryPlaces() {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('delivery_places');
       var deliveryPlaces = $firebaseArray(reference);
       return deliveryPlaces.$loaded();

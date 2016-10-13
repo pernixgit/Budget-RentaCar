@@ -5,11 +5,9 @@
     .module('budgetrentacar.carView')
     .factory('CarViewService', CarViewService);
 
-  CarViewService.$inject = ['FIREBASE_URL',
-                            'RevisionService'];
+  CarViewService.$inject = ['RevisionService'];
 
-  function CarViewService(FIREBASE_URL,
-                          RevisionService) {
+  function CarViewService(RevisionService) {
 
     var service = {
       damages: [],
@@ -17,7 +15,6 @@
       setCanvasComponents: setCanvasComponents,
       resetDamages: resetDamages,
       pushCarViewData: setDamagesToService,
-      rootRef: new Firebase(FIREBASE_URL),
       damagesLoaded: false
     };
     return service;

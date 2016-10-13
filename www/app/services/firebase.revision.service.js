@@ -13,9 +13,9 @@
                                    RevisionService,
                                    ObservationsService) {
 
+    var rootRef = firebase.database().ref();
     var service = {
       currentRevisionId: null,
-      rootRef: new Firebase(FIREBASE_URL),
       pushNewRevision: pushNewRevision,
       pushDamages: pushDamages,
       pushObservations: pushObservations,
@@ -25,10 +25,10 @@
     return service;
 
     function pushRevision(newRevision) {
-      var revisionRootReference = service.rootRef
+      var revisionRootReference = rootRef
         .child('revisions');
       var pushRef = revisionRootReference.push(newRevision);
-      service.currentRevisionId = pushRef.key();
+      service.currentRevisionId = pushRef.key;
       return pushRef;
     }
 
@@ -49,7 +49,7 @@
       ObservationsService.setObservationsToService();
       var pushRef = pushRevision(newRevision);
       pushRevisionItems(isCheckIn);
-      saveCreatedRevisionId(pushRef.key());
+      saveCreatedRevisionId(pushRef.key);
     }
 
     function saveCreatedRevisionId(id) {
@@ -58,7 +58,7 @@
     }
 
     function updateVehicleCurrentRevisionRef() {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('vehicles')
         .child(CarInfoFirebaseService.carInfo.MVA);
       reference.update({
@@ -67,7 +67,7 @@
     }
 
     function pushDamagesIdToCurrentRevision(id) {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('revisions')
         .child(service.currentRevisionId);
       reference.update({
@@ -76,7 +76,7 @@
     }
 
     function pushObservationsIdToCurrentRevision(id) {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('revisions')
         .child(service.currentRevisionId);
       reference.update({
@@ -85,9 +85,9 @@
     }
 
     function pushDamages(damages) {
-      var damagesRootReference = service.rootRef
+      var damagesRootReference = rootRef
         .child('damages');
-      var damagesKey = damagesRootReference.push().key();
+      var damagesKey = damagesRootReference.push().key;
       var damagesRef = damagesRootReference.child(damagesKey);
       angular.forEach(damages, function(damage) {
         damagesRef.push(damage);
@@ -97,9 +97,9 @@
     }
 
     function pushObservations(observations) {
-      var observationsRootReference = service.rootRef
+      var observationsRootReference = rootRef
         .child('observations');
-      var observationsKey = observationsRootReference.push().key();
+      var observationsKey = observationsRootReference.push().key;
       var observationsRef = observationsRootReference.child(observationsKey);
       angular.forEach(observations, function(observation) {
         observationsRef.push(observation);
@@ -108,7 +108,7 @@
     }
 
     function pushFeedbackIdToCurrentRevision(id) {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('revisions')
         .child(service.currentRevisionId);
       reference.update({
@@ -117,7 +117,7 @@
     }
 
     function pushCurrentRevisionIdToFeedback(id) {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('feedback')
         .child(id);
       reference.update({
@@ -126,7 +126,7 @@
     }
 
     function pushFeedback(feedback) {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('feedback');
       var pushReference = reference.push(feedback);
       pushFeedbackIdToCurrentRevision(pushReference.key());

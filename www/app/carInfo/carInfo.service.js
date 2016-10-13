@@ -13,8 +13,8 @@
                                   $firebaseObject,
                                   ScannerService) {
 
+    var rootRef = firebase.database().ref();
     var service = {
-      rootRef: new Firebase(FIREBASE_URL),
       fetchCarInfo: fetchCarInfo,
       carInfo: {},
       currentCarId: ScannerService.getCode(),
@@ -24,7 +24,7 @@
     return service;
 
     function fetchCarInfo() {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('vehicles')
         .child(ScannerService.getCode());
       service.carInfo = $firebaseObject(reference);

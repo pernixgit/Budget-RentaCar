@@ -15,8 +15,8 @@
                                $firebaseArray,
                                $q) {
 
+    var rootRef = firebase.database().ref();
     var service =  {
-      rootRef: new Firebase(FIREBASE_URL),
       fetchRevisionData: fetchRevisionData,
       _getLastRevision: _getLastRevision,
       _getLastRevisionDamages: _getLastRevisionDamages,
@@ -40,7 +40,7 @@
     }
 
     function _getLastRevisionRef() {
-      var reference = service.rootRef
+      var reference = rootRef
         .child('vehicles')
         .child(CarInfoFirebaseService.carInfo.MVA)
         .child('last_revision_ref');
@@ -55,7 +55,7 @@
       return service._getLastRevisionRef()
         .then(function(last_revision_ref) {
           if (last_revision_ref) {
-            var reference = service.rootRef
+            var reference = rootRef
               .child('revisions')
               .child(last_revision_ref);
             var lastRevision = $firebaseObject(reference);
@@ -71,7 +71,7 @@
     function _getLastRevisionDamages() {
       var damagesRef = service.revision.damages_ref;
       if (damagesRef) {
-        var reference = service.rootRef
+        var reference = rootRef
           .child('damages')
           .child(service.revision.damages_ref);
         var lastRevisionDamages = $firebaseArray(reference);
@@ -85,7 +85,7 @@
     function _getLastRevisionObservations() {
       var observationsRef = service.revision.observations_ref;
       if (observationsRef) {
-        var reference = service.rootRef
+        var reference = rootRef
           .child('observations')
           .child(service.revision.observations_ref);
         var lastRevisionObservations = $firebaseArray(reference);

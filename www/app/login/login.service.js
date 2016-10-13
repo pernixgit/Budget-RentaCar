@@ -13,6 +13,8 @@
                                 $rootScope,
                                 $location,
                                 $state) {
+
+    var rootRef = firebase.database().ref();
     var service = {
       isLoggedIn: isLoggedIn,
       logIn: logIn,
@@ -24,8 +26,7 @@
     return service;
 
     function logIn(username) {
-      var reference = new Firebase(FIREBASE_URL);
-      return $firebaseObject(reference.child('users').child(username)).$loaded();
+      return $firebaseObject(rootRef.child('users').child(username)).$loaded();
     }
 
     function isLoggedIn() {
