@@ -43,6 +43,7 @@
     function handleUserCredentials(user){
       if(user.hasOwnProperty('username') && angular.equals(user.password, vm.password)) {
         LoginFirebaseService.setAuthUser(vm.username);
+        RevisionService.setUsername(LoginFirebaseService.getAuthUser());
         _authSuccess();
       } else {
         authError();
