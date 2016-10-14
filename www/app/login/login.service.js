@@ -9,6 +9,7 @@
 
   function LoginFirebaseService(FIREBASE_URL,
                                 $firebaseObject,
+                                RevisionService,
                                 SessionService,
                                 $rootScope,
                                 $location,
@@ -18,7 +19,8 @@
       logIn: logIn,
       logOut: logOut,
       verifyAccess: verifyAccess,
-      setAuthUser: setAuthUser
+      setAuthUser: setAuthUser,
+      getAuthUser: getAuthUser
     };
 
     return service;
@@ -42,6 +44,7 @@
 
     function verifyAccess(){
       if(isLoggedIn()){
+        RevisionService.setUsername(SessionService.getAuthData());
         $state.go('scannerMenu');
       } else{
         $state.go('login');
@@ -51,6 +54,11 @@
     function setAuthUser(username){
       SessionService.setAuthData(username);
     }
+
+    function getAuthUser(){
+      return SessionService.getAuthData();
+    }
+
   }
     
 })();
