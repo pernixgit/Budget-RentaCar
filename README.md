@@ -9,6 +9,13 @@ $ npm install
 $ bower install
 ``` 
 
+Copy needed libs from node modules:
+
+``` sh
+$ cp node_modules/@ionic/cloud/dist/bundle/ionic.cloud.min.js www/lib
+$ cp node_modules/bluebird/js/browser/bluebird.min.js www/lib
+```
+
 ###Runing on Android device
 In order to run the application on an Android device:
 
