@@ -9,7 +9,7 @@
 
   var translationsEN = {
     FeedbackTitle: 'Feedback',
-    FeedbackQuestion1: 'Do you feel that you got a valuable service for the money you paid?',
+    FeedbackQuestion1: 'Do you feel that you get a valuable service for the money you paid?',
     FeedbackQuestion2: 'How likely are you to recommend us ' +
                        'to a friend or colleague?',
     FeedbackQuestion3: 'In general, how would you rate our customer service?',
