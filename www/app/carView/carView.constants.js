@@ -35,13 +35,13 @@ angular
       {'id': '19', 'name': 'Faro Derecho Trasero'},
       {'id': '20', 'name': 'Faro Izquierdo Trasero'},
       {'id': '21', 'name': 'Guardabarros delantero'},
-      {'id': '21', 'name': 'Guardabarros trasero'},
-      {'id': '21', 'name': 'Compuerta Trasera'},
-      {'id': '21', 'name': 'Estribo'},
-      {'id': '21', 'name': 'Tapa de motor'},
-      {'id': '21', 'name': 'Cajuela'},
-      {'id': '21', 'name': 'Techo'},
-      {'id': '22', 'name': 'Otros'}
+      {'id': '22', 'name': 'Guardabarros trasero'},
+      {'id': '23', 'name': 'Compuerta Trasera'},
+      {'id': '24', 'name': 'Estribo'},
+      {'id': '25', 'name': 'Tapa de motor'},
+      {'id': '26', 'name': 'Cajuela'},
+      {'id': '27', 'name': 'Techo'},
+      {'id': '28', 'name': 'Otros'}
     ])
   .constant({'VEHICLE_4X2_URL': 'assets/images/canvasCar4x2.png'})
   .constant({'VEHICLE_4X4_URL': 'assets/images/canvasCar4x4.png'});
