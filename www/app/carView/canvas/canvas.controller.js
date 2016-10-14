@@ -275,7 +275,7 @@
       var vehicleURL = (tractionType === '4x4') ? VEHICLE_4X4_URL : VEHICLE_4X2_URL;
 
       raster = new paper.Raster({
-        ource: vehicleURL,
+        source: vehicleURL,
         position: paper.view.center
       });
 
