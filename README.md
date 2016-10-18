@@ -53,6 +53,18 @@ ionic serve
 webdriver-manager start  
 protractor protractor.conf.js
 ```
+## Deploy to Play Store
+```
+NOTE: 
+passphrase: budget
+password: Pernix123.
+```
+
+1. Run `cordova build --release android` this will generete the unsigned apk.
+2. Download the keystore: https://drive.google.com/drive/u/1/folders/0B8xWjtkc3FbmYnNSWk5wMkc0RUE
+3. Move the apk (`project/platforms/android/build/outputs/apk/android-release-unsigned.apk`) and the keystore to the same folder.
+4. Run `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk budget`
+5. Then run `zipalign -v 4 android-release-unsigned.apk budget.apk`
 
 ## Styleguide
 
