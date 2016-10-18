@@ -6,6 +6,8 @@
       'ionic',
       'ui.router',
       'firebase',
+      'ngCordova',
+      'ionic.cloud',
       'budgetrentacar.login',
       'budgetrentacar.services',
       'budgetrentacar.scan-menu',
@@ -18,7 +20,6 @@
       'budgetrentacar.services',
       'budgetrentacar.observations',
       'budgetrentacar.scanner.error',
-      'ngCordova',
       'budgetrentacar.carParts',
       'budgetrentacar.feedback',
       'pascalprecht.translate'

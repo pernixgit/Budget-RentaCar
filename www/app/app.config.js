@@ -5,8 +5,6 @@
     .module('budgetrentacar')
     .config(config);
 
-  config.$inject = ['$translateProvider', '$ionicConfigProvider'];
-
   var translationsEN = {
     FeedbackTitle: 'Feedback',
     FeedbackQuestion1: 'Do you feel that you got a valuable service for the money you paid?',
@@ -36,6 +34,12 @@
 
   /* @ngInject */
   function config($translateProvider, $ionicConfigProvider) {
+
+    $ionicCloudProvider.init({
+      "core": {
+        "app_id": "be75c74a"
+      }
+    });
     $translateProvider.useSanitizeValueStrategy(null);
     $translateProvider.translations('EN', translationsEN);
     $translateProvider.translations('ES', translationsES);
