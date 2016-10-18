@@ -53,11 +53,20 @@ ionic serve
 webdriver-manager start  
 protractor protractor.conf.js
 ```
-## Deploy to Play Store
+
+## Ionic deploy
+In order to deploy to Ionic run the following command:
+
+```sh
+$ ionic upload --note "Upload message" --deploy channel
 ```
-NOTE: 
-passphrase: budget
-password: Pernix123.
+**NOTE**: The channel will be the enviroment (dev, staging, production)
+
+## Deploy to Play Store
+**NOTE** 
+```sh
+alias: budget
+passphrase: Pernix123.
 ```
 
 1. Run `cordova build --release android` this will generete the unsigned apk.
