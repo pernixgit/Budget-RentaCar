@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.scan-menu', []);
+    .module('budgetrentacar.scan-menu', ['budgetrentacar.services']);
 })();

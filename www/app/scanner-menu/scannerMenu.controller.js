@@ -8,8 +8,9 @@
   /* @ngInject */
 
   function ScannerMenuCtrl($state,
+                           $ionicNavBarDelegate,
                            LoginFirebaseService,
-                           $ionicNavBarDelegate) {
+                           updateManagerService) {
 
     var vm = this;
     vm.goToScanner = goToScanner;
@@ -19,6 +20,7 @@
 
     function activate(){
       $ionicNavBarDelegate.showBackButton(false);
+      updateManagerService.downloadUpdates();
     }
 
     function goToScanner() {
