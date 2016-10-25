@@ -17,7 +17,7 @@
       rootRef: new Firebase(FIREBASE_URL),
       fetchCarInfo: fetchCarInfo,
       carInfo: {},
-      currentCarId: ScannerService.getCode(),
+      currentCarId: ScannerService.code,
       currentRevisionId: null
     };
 
@@ -26,7 +26,7 @@
     function fetchCarInfo() {
       var reference = service.rootRef
         .child('vehicles')
-        .child(ScannerService.getCode());
+        .child(currentCarId);
       service.carInfo = $firebaseObject(reference);
       return service.carInfo.$loaded();
     }

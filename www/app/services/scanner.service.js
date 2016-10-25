@@ -2,17 +2,19 @@
   'use strict';
 
   angular
-  .module('budgetrentacar.scanner')
-  .controller('ScannerCtrl', ScannerCtrl);
+    .module('budgetrentacar.services')
+    .service('ScannerService', ScannerService);
 
   /* @ngInject */
-  function ScannerCtrl($state, $cordovaBarcodeScanner, ScannerService) {
+  function ScannerService($cordovaBarcodeScanner,
+                          $state) {
 
-    activate();
+    var service = {
+      code: '',
+      scanCode: scanCode
+    };
 
-    function activate() {
-      scanCode();
-    }
+    return service;
 
     function scanCode() {
       $cordovaBarcodeScanner.scan()
@@ -21,7 +23,7 @@
     }
 
     function handleScanSuccess(code) {
-      ScannerService.setCode(code.text);
+      service.code = code.text.toString();
       $state.go('carInfo');
     }
 
@@ -29,6 +31,5 @@
       alert('Error, no se pudo leer el código');
       $state.go('scanner-error');
     }
-
   }
 })();

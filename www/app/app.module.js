@@ -16,7 +16,6 @@
       'budgetrentacar.carDeliveryInfo',
       'budgetrentacar.tireRevision',
       'budgetrentacar.carInfo',
-      'budgetrentacar.scanner',
       'budgetrentacar.services',
       'budgetrentacar.observations',
       'budgetrentacar.scanner.error',

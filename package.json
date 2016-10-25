@@ -1,49 +1,60 @@
 {
-  "name": "budget-rentacar",
+  "name": "budget-cr",
   "version": "1.1.1",
-  "description": "budget-rentacar: An Ionic project",
+  "description": "Budget Costa Rica: An Ionic project",
   "dependencies": {
     "@ionic/cloud": "^0.11.0",
     "bluebird": "^3.4.6",
     "gulp": "3.9.1",
     "gulp-concat": "^2.6.0",
+    "gulp-inject": "^4.1.0",
     "gulp-minify-css": "^0.3.13",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-coverage": "^0.5.5",
-    "karma-jasmine": "^0.3.8",
-    "protractor": "^3.3.0",
-    "qunitjs": "^1.23.1"
+    "gulp-sass": "^2.3.2"
   },
   "devDependencies": {
     "bower": "1.3.3",
     "gulp-jscs": "3.0.2",
     "gulp-util": "2.2.14",
-    "install": "0.4.1",
-    "karma": "^0.13.20",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-coverage": "^0.5.3",
-    "karma-ie-launcher": "^0.2.0",
-    "karma-jasmine": "^0.3.7",
-    "karma-phantomjs-launcher": "^0.2.3",
-    "karma-qunit": "^0.1.9",
-    "protractor": "^3.0.0",
+    "jasmine-core": "2.4.1",
+    "karma": "0.13.22",
+    "karma-cli": "1.0.0",
+    "karma-coverage": "1.0.0",
+    "karma-jasmine": "1.0.2",
+    "karma-phantomjs-launcher": "1.0.0",
+    "phantomjs": "2.1.7",
+    "phantomjs-prebuilt": "2.1.7",
+    "protractor": "3.3.0",
     "qunitjs": "^1.20.0",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "cordova-plugin-device",
-    "cordova-plugin-console",
+    "cordova-plugin-screen-orientation",
     "cordova-plugin-whitelist",
-    "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
+    "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard",
-    "ionic-plugin-deploy"
+    "ionic-plugin-deploy",
+    {
+      "locator": "https://github.com/jrontend/phonegap-plugin-barcodescanner",
+      "id": "phonegap-plugin-barcodescanner"
+    },
+    "cordova-plugin-compat"
   ],
   "cordovaPlatforms": [
     "ios",
-    "android"
+    "android",
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    },
+    {
+      "platform": "browser",
+      "version": "",
+      "locator": "browser"
+    }
   ]
 }
