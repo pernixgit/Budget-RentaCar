@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var inject = require('gulp-inject');
 var sh = require('shelljs');
 var Server = require('karma').Server;
 var jscs = require('gulp-jscs');
@@ -62,4 +63,17 @@ gulp.task('validate', function(){
   return gulp.src('www/app/**/*.js')
     .pipe(jscs())
     .pipe(jscs.reporter());
+});
+
+gulp.task('build-index', function() {
+  var target = gulp.src('./www/index.html');
+  var sources = gulp.src(['./www/app/app.module.js',
+                          './www/app/core/core.module.js',
+                          './www/app/**/*.module.js',
+                          './www/app/**/*.js',
+                          './www/styles/*.css'], {read: false});
+
+  return target.pipe(inject(sources, {relative: true}))
+      .pipe(gulp.dest('./www'));
+
 });
