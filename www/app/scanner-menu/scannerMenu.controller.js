@@ -10,7 +10,8 @@
   function ScannerMenuCtrl($state,
                            $ionicNavBarDelegate,
                            LoginFirebaseService,
-                           updateManagerService) {
+                           updateManagerService,
+                           ScannerService) {
 
     var vm = this;
     vm.goToScanner = goToScanner;
@@ -24,7 +25,7 @@
     }
 
     function goToScanner() {
-      $state.go('scanner');
+      ScannerService.scanCode();
     }
 
     function goToLogin(){
