@@ -2,12 +2,14 @@
   'use strict';
 
   angular
-    .module('budgetrentacar')
+    .module('app')
     .controller('InputMVACtrl', InputMVACtrl);
 
   /* @ngInject */
-
-  function InputMVACtrl($state, $ionicPopup, $scope, ScannerService) {
+  function InputMVACtrl($state, 
+                        $ionicPopup,
+                        $scope, 
+                        scannerService) {
     var vm = this;
     vm.showMVAInputPopUp = showMVAInputPopUp;
 
@@ -25,8 +27,8 @@
               if (!$scope.data.mvaNumber) {
                 e.preventDefault();
               } else {
-                ScannerService.setCode($scope.data.mvaNumber);
-                $state.go('carInfo');
+                scannerService.scanCode = $scope.data.mvaNumber;
+                $state.go('car-info');
               }
             }
           }

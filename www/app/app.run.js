@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar')
+    .module('app')
     .run(run);
 
   /* @ngInject */

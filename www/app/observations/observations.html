@@ -13,7 +13,7 @@
     </button>
     <ion-scroll direction="y" class="observation-list">
     <ion-list>
-        <ion-item class="item-button-right" ng-repeat="observationItem in vm.ObservationsService.getObservations() track by $index" ng-hide="!observationItem.observation">
+        <ion-item class="item-button-right" ng-repeat="observationItem in vm.observationsService.getObservations() track by $index" ng-hide="!observationItem.observation">
         {{observationItem.observation}}
         <button class="button button-clear button-assertive icon ion-ios-minus-outline" ng-click="vm.removeObservation(observationItem)" ng-hide="!observationItem.is_new && vm.RevisionService.getRevision().type == 'check-in'">
         </button>

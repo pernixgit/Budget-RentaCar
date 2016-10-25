@@ -1,15 +1,16 @@
 (function() {
   angular
-    .module('budgetrentacar.services')
-    .factory('RevisionService', RevisionService);
+    .module('app.services')
+    .factory('revisionService', revisionService);
 
   /* @ngInject */
-
-  function RevisionService() {
+  function revisionService() {
+    
     var revision = {};
     var observationsList = [];
     var damagesList = {};
     var feedback = {};
+
     var service = {
       setUsername: setUsername,
       setCarMVA: setCarMVA,
@@ -33,6 +34,7 @@
       getContractNumber: getContractNumber,
       resetRevision: resetRevision
     };
+
     return service;
 
     function setCarMVA(MVA) {

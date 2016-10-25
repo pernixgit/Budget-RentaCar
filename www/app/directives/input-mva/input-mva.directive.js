@@ -1,10 +1,10 @@
 (function() {
 
   angular
-    .module('budgetrentacar')
-    .directive('inputMva', inputMvaDirective);
+    .module('app')
+    .directive('budgetMvaInput', budgetMvaInput);
 
-  function inputMvaDirective() {
+  function budgetMvaInput() {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/directives/input-mva/input-mva.html',

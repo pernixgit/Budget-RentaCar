@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.services')
-    .service('ScannerService', ScannerService);
+    .module('app.services')
+    .service('scannerService', scannerService);
 
   /* @ngInject */
-  function ScannerService($cordovaBarcodeScanner,
+  function scannerService($cordovaBarcodeScanner,
                           $state) {
 
     var service = {
@@ -24,7 +24,7 @@
 
     function handleScanSuccess(code) {
       service.code = code.text.toString();
-      $state.go('carInfo');
+      $state.go('car-info');
     }
 
     function handleScanError() {

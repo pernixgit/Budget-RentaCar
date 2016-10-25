@@ -2,16 +2,16 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.login')
+    .module('app.login')
     .controller('LoginCtrl', LoginCtrl);
 
   /* @ngInject */
-
   function LoginCtrl($state,
                      $ionicPopup,
-                     LoginFirebaseService,
-                     RevisionService,
-                     $ionicNavBarDelegate) {
+                     $ionicNavBarDelegate,
+                     loginService,
+                     revisionService) {
+    
     var vm = this;
     vm.authenticate = authenticate;
     vm._authSuccess = _authSuccess;
@@ -20,12 +20,12 @@
     activate();
 
     function activate() {
-      LoginFirebaseService.verifyAccess();
+      loginService.verifyAccess();
       $ionicNavBarDelegate.showBackButton(false);
     }
 
     function _authSuccess() {
-      $state.go('scannerMenu');
+      $state.go('scanner-menu');
     }
 
     function authError() {
@@ -42,8 +42,8 @@
 
     function handleUserCredentials(user){
       if(user.hasOwnProperty('username') && angular.equals(user.password, vm.password)) {
-        LoginFirebaseService.setAuthUser(vm.username);
-        RevisionService.setUsername(LoginFirebaseService.getAuthUser());
+        loginService.setAuthUser(vm.username);
+        revisionService.setUsername(loginService.getAuthUser());
         _authSuccess();
       } else {
         authError();
@@ -51,7 +51,7 @@
     }
 
     function authenticate(username){
-        LoginFirebaseService.logIn(username)
+        loginService.logIn(username)
           .then(handleUserCredentials)
           .catch(authError)
     }

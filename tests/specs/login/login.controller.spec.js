@@ -2,7 +2,7 @@ describe('Login Controller', function() {
   var controller, $ionicPopup, $state, LoginFirebaseService, RevisionService, $scope, $ionicNavBarDelegate;
 
   beforeEach(module('ui.router'));
-  beforeEach(module('budgetrentacar.login'));
+  beforeEach(module('app.login'));
   beforeEach(inject(function($controller, $rootScope, $q){
 
     $scope = $rootScope.$new();

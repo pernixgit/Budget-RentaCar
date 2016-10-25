@@ -3,11 +3,10 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.feedback')
+    .module('app.feedback')
     .controller('FeedbackCtrl', FeedbackCtrl);
 
   /* @ngInject */
-
   function FeedbackCtrl($state,
                         $translate,
                         RevisionService,

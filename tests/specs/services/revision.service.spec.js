@@ -2,7 +2,7 @@ describe('RevisionService', function() {
 
   var RevisionService;
 
-  beforeEach(module('budgetrentacar.services'));
+  beforeEach(module('app.services'));
   beforeEach(inject(function (_RevisionService_) {
     RevisionService = _RevisionService_;
   }));

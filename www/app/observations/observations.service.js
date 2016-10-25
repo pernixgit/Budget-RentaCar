@@ -2,12 +2,11 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.observations')
-    .factory('ObservationsService', ObservationsService);
+    .module('app.observations')
+    .factory('observationsService', observationsService);
 
   /* @ngInject */
-
-  function ObservationsService(RevisionService) {
+  function observationsService(revisionService) {
 
     var service = {
       observations: [],
@@ -38,7 +37,7 @@
 
     function setObservationsToService() {
       if (service.observations.length > 0) {
-        RevisionService.setObservations(service.observations);
+        revisionService.setObservations(service.observations);
         resetObservations();
       }
     }

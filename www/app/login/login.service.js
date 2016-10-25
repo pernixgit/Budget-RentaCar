@@ -2,18 +2,17 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.login')
-    .service('LoginFirebaseService', LoginFirebaseService);
+    .module('app.login')
+    .service('loginService', loginService);
 
   /* @ngInject */
-
-  function LoginFirebaseService(FIREBASE_URL,
-                                $firebaseObject,
-                                RevisionService,
-                                SessionService,
-                                $rootScope,
-                                $location,
-                                $state) {
+  function loginService(FIREBASE_URL,
+                        revisionService,
+                        sessionService,
+                        $firebaseObject,
+                        $rootScope,
+                        $location,
+                        $state) {
     var service = {
       isLoggedIn: isLoggedIn,
       logIn: logIn,
@@ -31,32 +30,32 @@
     }
 
     function isLoggedIn() {
-      var authData = SessionService.getAuthData();
+      var authData = sessionService.getAuthData();
       var sessionDefined = typeof authData !== 'undefined';
       var authDataDefined = authData !== null;
       return sessionDefined && authDataDefined;
     }
 
     function logOut() {
-      SessionService.destroy();
+      sessionService.destroy();
       $state.go('login');
     }
 
-    function verifyAccess(){
+    function verifyAccess() {
       if(isLoggedIn()){
-        RevisionService.setUsername(SessionService.getAuthData());
-        $state.go('scannerMenu');
+        revisionService.setUsername(sessionService.getAuthData());
+        $state.go('scanner-menu');
       } else{
         $state.go('login');
       }
     }
 
-    function setAuthUser(username){
-      SessionService.setAuthData(username);
+    function setAuthUser(username) {
+      sessionService.setAuthData(username);
     }
 
-    function getAuthUser(){
-      return SessionService.getAuthData();
+    function getAuthUser() {
+      return sessionService.getAuthData();
     }
 
   }
