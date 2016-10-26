@@ -13,16 +13,7 @@
         templateUrl: 'app/tire-revision/tire-revision.html',
         controller: 'TireRevisionCtrl',
         controllerAs: 'vm',
-        cache: false,
-        resolve: {
-          'carInfoService': function(carInfoFirebaseService, lastRevisionService) {
-            return carInfoFirebaseService.fetchCarInfo()
-              .then(
-                function() {
-                  return lastRevisionService.fetchRevisionData();
-                });
-          }
-        }
+        cache: false
       });
   }
 })();

@@ -14,6 +14,7 @@
 
     var service =  {
       rootRef: new Firebase(FIREBASE_URL),
+      revision: {},
       fetchData: fetchData
     };
     
@@ -46,8 +47,8 @@
     }
 
     function getDamagesAndObservations(lastRevision) {
-      revisionService.revision = lastRevision;
-      console.log(lastRevision);
+      revisionService.setRevision(lastRevision);
+      service.revision = lastRevision;
       var promises = [getDamages(lastRevision.damages_ref), getObservations(lastRevision.observations_ref) ];
       return $q.all(promises)
         .then(handleGetDamagesAndObservationsSuccess)
@@ -55,8 +56,8 @@
     }
 
     function handleGetDamagesAndObservationsSuccess(resolvedPromises) {
-      revisionService.damages = resolvedPromises[0];
-      revisionService.observations = resolvedPromises[1];
+      revisionService.setDamages(resolvedPromises[0]);
+      revisionService.setObservations(resolvedPromises[1]);
     }
 
     function handleGetDamagesAndObservationsError(error) {

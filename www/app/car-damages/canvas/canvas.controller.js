@@ -17,7 +17,9 @@
                       COLOR_CANVAS,
                       carDamagesService,
                       lastRevisionService,
-                      carInfoService) {
+                      carInfoService,
+                      revisionService) {
+
     var vm = $scope;
     var shape = null;
     var layer = null;
@@ -202,17 +204,14 @@
       setVehicleBackground();
       layer = new Layer();
       if (carDamagesService.damagesLoaded || carDamagesService.damages.length > 0) {
-        var previousDamages = carDamagesService.damages;
+        var previousDamages = carDamagesService.getDamages();
         carDamagesService.resetDamages();
         addDamagesToCanvas(previousDamages);
-      }else {
-        lastRevisionService.fetchRevisionData()
-          .then(function() {
-            if (lastRevisionService.revision && lastRevisionService.revision.damages) {
-              var damages = changeDamagesColorToYellow(lastRevisionService.revision.damages);
-              addDamagesToCanvas(damages);
-            }
-          });
+      } else {
+        if (revisionService.getDamages()) {
+          var damages = changeDamagesColorToYellow(revisionService.getDamages());
+          addDamagesToCanvas(damages);
+        }
       }
     }
 
@@ -220,6 +219,7 @@
       var yellowColor = '[1, 1, 0.5]';
       return damages.map(function(damage) {
         damage.json_canvas = damage.json_canvas.replace(/\[0.92941,0.33333,0.01961\]/g, yellowColor);
+        damage.is_new = false;
         return damage;
       });
     }

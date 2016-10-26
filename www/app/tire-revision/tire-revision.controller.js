@@ -9,18 +9,18 @@
   function TireRevisionCtrl(SELECTED_TIRES,
                             TIRE_BRANDS,
                             $state,
-                            carInfoFirebaseService,
-                            lastrevisionService,
+                            carInfoService,
+                            lastRevisionService,
                             revisionService) {
 
     var vm = this;
     vm.goToCarView = goToCarView;
-    vm.currentCarTraction = carInfoFirebaseService.carInfo.traction_type;
+    vm.currentCarTraction = carInfoService.carInfo.traction_type;
     vm.tireBrands = TIRE_BRANDS;
     vm.selectedTires = SELECTED_TIRES;
 
     function activate() {
-      (lastrevisionService.revision) ? setPreviousTires() : setDefaultTires();
+      (lastRevisionService.revision && lastRevisionService.revision.tires) ? setPreviousTires() : setDefaultTires();
     }
 
     activate();
@@ -34,11 +34,11 @@
     }
 
     function setPreviousTires() {
-      vm.selectedTires.rightFrontTireSelectedOption = lastrevisionService.revision.tires.right_front;
-      vm.selectedTires.leftFrontTireSelectedOption = lastrevisionService.revision.tires.left_front;
-      vm.selectedTires.leftBackTireSelectedOption = lastrevisionService.revision.tires.left_rear;
-      vm.selectedTires.rightBackTireSelectedOption = lastrevisionService.revision.tires.right_rear;
-      vm.selectedTires.extraTireSelectedOption = lastrevisionService.revision.tires.spare;
+      vm.selectedTires.rightFrontTireSelectedOption = lastRevisionService.revision.tires.right_front;
+      vm.selectedTires.leftFrontTireSelectedOption = lastRevisionService.revision.tires.left_front;
+      vm.selectedTires.leftBackTireSelectedOption = lastRevisionService.revision.tires.left_rear;
+      vm.selectedTires.rightBackTireSelectedOption = lastRevisionService.revision.tires.right_rear;
+      vm.selectedTires.extraTireSelectedOption = lastRevisionService.revision.tires.spare;
     }
 
     function goToCarView() {

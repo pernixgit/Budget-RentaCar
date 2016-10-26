@@ -6,11 +6,12 @@
     .service('firebaseRevisionService', firebaseRevisionService);
 
   /* @ngInject */
-  function firebaseRevisionService(CarInfoFirebaseService,
+  function firebaseRevisionService(carInfoService,
+                                   carDamagesService,
+                                   revisionService,
+                                   observationsService,
                                    FIREBASE_URL,
-                                   CarViewService,
-                                   RevisionService,
-                                   ObservationsService) {
+                                   UNUSED_PROPERTIES) {
 
     var service = {
       currentRevisionId: null,
@@ -32,23 +33,31 @@
     }
 
     function pushRevisionItems(isCheckIn) {
-      if (RevisionService.getDamages()) {
-        pushDamages(RevisionService.getDamages());
+      if (revisionService.getDamages()) {
+        pushDamages(revisionService.getDamages());
       }
-      if (RevisionService.getObservations()) {
-        pushObservations(RevisionService.getObservations());
+      if (revisionService.getObservations()) {
+        pushObservations(revisionService.getObservations());
       }
       if (isCheckIn) {
-        pushFeedback(RevisionService.getFeedback());
+        pushFeedback(revisionService.getFeedback());
       }
     }
 
     function pushNewRevision(newRevision, isCheckIn, timestamp) {
-      RevisionService.setTimestamp(timestamp);
-      ObservationsService.setObservationsToService();
-      var pushRef = pushRevision(newRevision);
+      revisionService.setTimestamp(timestamp);
+      observationsService.setObservationsToService();
+      var cleanRevision = cleanUpRevisionObject(newRevision);
+      var pushRef = pushRevision(cleanRevision);
       pushRevisionItems(isCheckIn);
       saveCreatedRevisionId(pushRef.key());
+    }
+
+    function cleanUpRevisionObject(revision) {
+      angular.forEach(UNUSED_PROPERTIES, function(property) {
+        delete revision[property];
+      });
+      return revision;
     }
 
     function saveCreatedRevisionId(id) {
@@ -59,7 +68,7 @@
     function updateVehicleCurrentRevisionRef() {
       var reference = service.rootRef
         .child('vehicles')
-        .child(CarInfoFirebaseService.carInfo.MVA);
+        .child(carInfoService.carInfo.MVA);
       reference.update({
         last_revision_ref: service.currentRevisionId
       });
@@ -92,7 +101,7 @@
         damagesRef.push(damage);
       });
       pushDamagesIdToCurrentRevision(damagesKey);
-      CarViewService.resetDamages();
+      carDamagesService.resetDamages();
     }
 
     function pushObservations(observations) {

@@ -13,15 +13,21 @@
       damages: [],
       addDamageToCanvasComponents: addDamageToCanvasComponents,
       setCanvasComponents: setCanvasComponents,
+      getDamages: getDamages,
       resetDamages: resetDamages,
       pushCarViewData: setDamagesToService,
       rootRef: new Firebase(FIREBASE_URL),
       damagesLoaded: false
     };
+
     return service;
 
     function addDamageToCanvasComponents(damage) {
       service.damages.push(damage);
+    }
+
+    function getDamages() {
+      return service.damages;
     }
 
     function setupDamagesToBePushed() {
@@ -42,13 +48,12 @@
     }
 
     function setCanvasComponents() {
-      RevisionService.setDamages(setupDamagesToBePushed());
+      revisionService.setDamages(setupDamagesToBePushed());
     }
 
     function setDamagesToService() {
       if (service.damages.length > 0) {
-        RevisionService.setDamages(setupDamagesToBePushed());
-        FirebaseRevisionService.pushDamages(setupDamagesToBePushed());
+        revisionService.setDamages(setupDamagesToBePushed);
         resetDamages();
       }
     }

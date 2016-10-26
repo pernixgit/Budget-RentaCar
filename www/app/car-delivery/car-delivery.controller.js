@@ -9,8 +9,8 @@
   function CarDeliveryCtrl($state,
                            $ionicNavBarDelegate,
                            carDeliveryService,
-                           RevisionService,
-                           LastRevisionService,
+                           revisionService,
+                           lastRevisionService,
                            GAS_LEVELS,
                            GAS_LEVEL_SELECTED) {
 
@@ -30,7 +30,7 @@
     }
 
     function setDefaultValues() {
-      vm.km = getPreviousKm(LastRevisionService.revision);
+      vm.km = getPreviousKm(lastRevisionService.revision);
       vm.gasLevels = GAS_LEVELS;
       vm.deliveryPlaces = {};
       vm.deliveryInfo = {};
@@ -61,7 +61,7 @@
       var deliveryInfo = createDeliveryInfoObject(vm.km,
                                                   vm.deliveryInfo.deliveryPlaceSelected.name,
                                                   vm.deliveryInfo.gasLevelSelected.name);
-      RevisionService.setCarDeliveryInfo(deliveryInfo);
+      revisionService.setCarDeliveryInfo(deliveryInfo);
       resetFields();
       $state.go('tire-revision');
     }

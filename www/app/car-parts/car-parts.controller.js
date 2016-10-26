@@ -11,8 +11,8 @@
                         COUNTED_ACCESORIES,
                         SELECTED_ACCESORIES,
                         SELECTED_COUNTED_ACCESORIES,
-                        RevisionService,
-                        FirebaseRevisionService) {
+                        revisionService,
+                        firebaseRevisionService) {
 
     var vm = this;
     vm.goToEndOrFeedback = goToEndOrFeedback;
@@ -35,15 +35,15 @@
     }
 
     function goToEndOrFeedback() {
-      RevisionService.setCarAccesories(vm.accesory, vm.countedAccesory);
+      revisionService.setCarAccesories(vm.accesory, vm.countedAccesory);
       resetItems();
-      (RevisionService.getRevision().type == 'check-in') ?
+      (revisionService.getRevision().type == 'check-in') ?
         $state.go('feedback') : pushAndEndProcess();
     }
 
     function pushAndEndProcess() {
-      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), false, Date.now());
-      RevisionService.resetRevision();
+      firebaseRevisionService.pushNewRevision(revisionService.getRevision(), false, Date.now());
+      revisionService.resetRevision();
       $state.go('login');
     }
 

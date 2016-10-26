@@ -12,6 +12,7 @@
     var feedback = {};
 
     var service = {
+      setRevision: setRevision,
       setUsername: setUsername,
       setCarMVA: setCarMVA,
       setNewType: setNewType,
@@ -36,6 +37,10 @@
     };
 
     return service;
+
+    function setRevision(lastRevision) {
+      revision = angular.extend(revision, lastRevision);
+    }
 
     function setCarMVA(MVA) {
       revision.vehicle_ref = MVA;

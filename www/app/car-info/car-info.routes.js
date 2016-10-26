@@ -15,14 +15,18 @@
         controllerAs: 'vm',
         cache: false,
         resolve: {
-          'carInfoStatus': function(carInfoService, lastRevisionService) {
+          'carInfoStatus': function(carInfoService, lastRevisionService, $state, $log) {
             return carInfoService.fetchCarInfo()
               .then(function(carInfo) {
-                carInfoService.carInfo = carInfo;
+                if(carInfo.model) {
+                  carInfoService.carInfo = carInfo;
+                } else {
+                  $state.go('scanner-error');
+                }
               })
-              .then(lastRevisionService.fetchData);
+              .then(function() { if(carInfoService.carInfo.MVA) { lastRevisionService.fetchData(); } });
           }
-        },
+        }
       });
   }
 })();
