@@ -2,11 +2,12 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.services')
+    .module('app.services')
     .factory('updateManagerService', updateManagerService);
 
   function updateManagerService($ionicDeploy,
                                 $ionicLoading) {
+    
     var service = {
       downloadUpdates: downloadUpdates
     }

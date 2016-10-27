@@ -1,6 +1,6 @@
 (function() {
   'use strict';
   angular
-    .module('budgetrentacar')
+    .module('app')
     .constant('FIREBASE_URL', 'https://budget-cr.firebaseio.com');
 })();

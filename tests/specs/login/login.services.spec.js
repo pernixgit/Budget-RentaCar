@@ -2,7 +2,7 @@ describe('Login Service', function() {
 
   var LoginFirebaseService, $scope;
 
-  beforeEach(module('budgetrentacar.login'));
+  beforeEach(module('app.login'));
   beforeEach(module('firebase'));
 
   beforeEach(function () {

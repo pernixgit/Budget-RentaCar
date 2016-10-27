@@ -3,7 +3,7 @@ describe('Canvas Controller', function() {
 
   beforeEach(module('ui.router'));
   beforeEach()
-  beforeEach(module('budgetrentacar.carView'));
+  beforeEach(module('app.carView'));
   beforeEach(function () {
     module(function ($provide) {
       $provide.value('DAMAGE_OPTIONS', {});

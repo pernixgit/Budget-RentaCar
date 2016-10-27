@@ -1,4 +1,4 @@
 (function() {
   angular
-    .module('budgetrentacar.services',[]);
+    .module('app.services',[]);
 })();

@@ -2,10 +2,8 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.feedback')
+    .module('app.feedback')
     .config(config);
-
-  config.$inject = ['$stateProvider'];
 
   /* @ngInject */
   function config($stateProvider) {

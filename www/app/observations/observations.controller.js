@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.observations')
+    .module('app.observations')
     .controller('ObservationsCtrl', ObservationsCtrl);
 
   /* @ngInject */
@@ -10,17 +10,17 @@
   function ObservationsCtrl($ionicModal,
                             $scope,
                             $state,
-                            LastRevisionService,
-                            ObservationsService) {
+                            lastRevisionService,
+                            observationsService) {
 
     var vm = this;
     vm.showObservationsModal = showObservationsModal;
     vm.hideObservationsModal = hideObservationsModal;
     vm.addObservation = addObservation;
-    vm.ObservationsService = ObservationsService;
-    vm.removeObservation = ObservationsService.removeObservation;
-    vm.observationItem = {observation: null, is_new: true};
+    vm.observationsService = observationsService;
     vm.shouldShowObservationsButton = shouldShowObservationsButton;
+    vm.removeObservation = observationsService.removeObservation;
+    vm.observationItem = {observation: null, is_new: true};
     vm.opened = false;
 
     activate();
@@ -47,7 +47,7 @@
     }
 
     function isCarInfoView() {
-      return ($state.current.name === 'carInfo');
+      return ($state.current.name === 'car-info');
     }
 
     function isScannerErrorView() {
@@ -55,14 +55,14 @@
     }
 
     function isScannerMenuView() {
-      return ($state.current.name === 'scannerMenu');
+      return ($state.current.name === 'scanner-menu');
     }
 
     function showObservationsModal() {
-      var lastRevision = LastRevisionService.revision;
+      var lastRevision = lastRevisionService.revision;
       if (!vm.opened && lastRevision && lastRevision.observations) {
         angular.forEach(lastRevision.observations, function(observation) {
-          ObservationsService.addObservation(observation);
+          observationsService.addObservation(observation);
         });
         vm.opened = true;
       }
@@ -75,7 +75,7 @@
 
     function addObservation(observation) {
       if (observation.observation) {
-        ObservationsService.addObservation(observation);
+        observationsService.addObservation(observation);
         vm.observationItem = emptyObservation();
       }
     }

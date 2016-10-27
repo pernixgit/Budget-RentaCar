@@ -2,7 +2,7 @@ describe('LastRevisionService', function() {
   var LastRevisionService;
 
   beforeEach(module('ui.router'));
-  beforeEach(module('budgetrentacar.services'));
+  beforeEach(module('app.services'));
   beforeEach(module('firebase'));
 
   beforeEach(function() {

@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.content', []);
+    .module('app.content', []);
 })();

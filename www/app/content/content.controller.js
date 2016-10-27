@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.content')
+    .module('app.content')
     .controller('ContentCtrl', ContentCtrl);
 
   function ContentCtrl() {

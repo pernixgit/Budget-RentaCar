@@ -2,11 +2,13 @@
   'use strict';
 
   angular
-    .module('budgetrentacar')
+    .module('app')
     .config(config);
 
   /* @ngInject */
-  function config($translateProvider, $ionicCloudProvider, $ionicConfigProvider) {
+  function config($translateProvider, 
+                  $ionicCloudProvider, 
+                  $ionicConfigProvider) {
 
     var translationsEN = {
       FeedbackTitle: 'Feedback',

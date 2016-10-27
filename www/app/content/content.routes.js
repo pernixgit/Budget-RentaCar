@@ -2,10 +2,8 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.content')
+    .module('app.content')
     .config(config);
-
-  config.$inject = ['$stateProvider'];
 
   /* @ngInject */
   function config($stateProvider) {

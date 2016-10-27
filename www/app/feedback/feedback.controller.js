@@ -3,15 +3,14 @@
   'use strict';
 
   angular
-    .module('budgetrentacar.feedback')
+    .module('app.feedback')
     .controller('FeedbackCtrl', FeedbackCtrl);
 
   /* @ngInject */
-
   function FeedbackCtrl($state,
                         $translate,
-                        RevisionService,
-                        FirebaseRevisionService) {
+                        revisionService,
+                        firebaseRevisionService) {
     var vm = this;
     vm.endRevision = endRevision;
     vm.active = 'ES';
@@ -29,9 +28,9 @@
     function endRevision(feedback) {
       var timestamp = Date.now();
       feedback.timestamp = timestamp;
-      RevisionService.setFeedback(feedback);
-      FirebaseRevisionService.pushNewRevision(RevisionService.getRevision(), true, timestamp);
-      RevisionService.resetRevision();
+      revisionService.setFeedback(feedback);
+      firebaseRevisionService.pushNewRevision(revisionService.getRevision(), true, timestamp);
+      revisionService.resetRevision();
       $state.go('login');
     }
 
