@@ -24,7 +24,6 @@
                   $state.go('scanner-error');
                 }
               })
-              .then(function() { if(carInfoService.carInfo.MVA) { lastRevisionService.fetchData(); } });
           }
         }
       });

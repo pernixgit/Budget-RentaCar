@@ -28,7 +28,7 @@
                 e.preventDefault();
               } else {
                 scannerService.scanCode = $scope.data.mvaNumber;
-                $state.go('car-info');
+                $state.go('car-info', {}, {reload: true});
               }
             }
           }

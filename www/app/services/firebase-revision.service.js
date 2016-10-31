@@ -10,6 +10,7 @@
                                    carDamagesService,
                                    revisionService,
                                    observationsService,
+                                   lastRevisionService,
                                    FIREBASE_URL,
                                    UNUSED_PROPERTIES) {
 
@@ -51,6 +52,8 @@
       var pushRef = pushRevision(cleanRevision);
       pushRevisionItems(isCheckIn);
       saveCreatedRevisionId(pushRef.key());
+      revisionService.resetRevision();
+      lastRevisionService.reset();
     }
 
     function cleanUpRevisionObject(revision) {
@@ -113,6 +116,10 @@
         observationsRef.push(observation);
       });
       pushObservationsIdToCurrentRevision(observationsKey);
+    }
+
+    function cleanUpPropertiesObservation(observation) {
+      
     }
 
     function pushFeedbackIdToCurrentRevision(id) {

@@ -8,43 +8,39 @@
   /* @ngInject */
   function CarInfoCtrl($state,
                        $ionicNavBarDelegate,
+                       $scope,
                        revisionService,
                        carInfoService,
                        lastRevisionService) {
 
     var vm = this;
+    vm.isLoaded = false;
+
     vm.goToCarView = goToCarView;
-    vm.revisionService = revisionService;
     vm.carInfoService = carInfoService;
+    vm.getRevisionType = revisionService.getType;
 
     activate();
 
     function activate() {
       $ionicNavBarDelegate.showBackButton(true);
-      setNewRevisionType();
-      vm.isLoaded = (carInfoService.carInfo.model) ? true : false;
       setTimeout(function() {
         if (!vm.isLoaded) {
           $state.go('scanner-error');
         }
       }, 7000);
-    }
-
-    function setContractNumber(lastRevision) {
-      if (lastRevision.contract_number) {
-        revisionService.setContractNumber(lastRevision.contract_number);
+      if(carInfoService.carInfo.MVA) {
+        lastRevisionService.fetchData()
+          .then(revisionService.setNewType)
+          .then(setContractNumber)
+          .then(function() { vm.isLoaded = true; })
+          .catch(function() { $state.go('scanner-error') });
       }
     }
 
-    function setNewRevisionType() {
-      var lastRevision = lastRevisionService.revision;
-      if (lastRevision) {
-        revisionService.setNewType(lastRevision.type);
-        if (angular.equals(revisionService.getRevision().type, 'check-in')) {
-          setContractNumber(lastRevision);
-        }
-      } else {
-        revisionService.setNewType('check-in');
+    function setContractNumber() {
+      if (revisionService.getType() == 'check-in') {
+        revisionService.setContractNumber(' ');
       }
     }
 

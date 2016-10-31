@@ -12,10 +12,12 @@
                                $q,
                                $log) {
 
+    var fetchDataDeferred = $q.defer();
     var service =  {
       rootRef: new Firebase(FIREBASE_URL),
       revision: {},
-      fetchData: fetchData
+      fetchData: fetchData,
+      reset: resetPromise
     };
     
     return service;
@@ -25,6 +27,12 @@
         .then(getLastRevision)
         .then(getDamagesAndObservations)
         .catch(handleGetRevisionError)
+
+      return fetchDataDeferred.promise;
+    }
+
+    function resetPromise() {
+      fetchDataDeferred = $q.defer();
     }
 
     function getRevisionReference() {
@@ -58,10 +66,12 @@
     function handleGetDamagesAndObservationsSuccess(resolvedPromises) {
       revisionService.setDamages(resolvedPromises[0]);
       revisionService.setObservations(resolvedPromises[1]);
+      fetchDataDeferred.resolve(service.revision);
     }
 
     function handleGetDamagesAndObservationsError(error) {
       $log.error(error);
+      fetchDataDeferred.reject();
     }
 
     function getDamages(damagesRef) {
@@ -81,6 +91,7 @@
     }
 
     function handleGetRevisionError(error) {
+      fetchDataDeferred.reject();
       $log.error(error);
     }
 

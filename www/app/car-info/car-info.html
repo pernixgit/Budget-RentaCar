@@ -1,7 +1,7 @@
-<ion-view view-title="Información del vehículo">
+<ion-view view-title="Información del vehículo" cache-view="false">
   <div ng-if="vm.isLoaded">
     <div class="bar bar-subheader" id="subheader">
-      <h2 class="title">{{vm.revisionService.getRevision().type}}</h2>
+      <h2 class="title"> {{ vm.getRevisionType() }} </h2>
     </div>
     <ion-content class="has-header has-subheader padding">
       <a class="item item-icon-left" href="#">

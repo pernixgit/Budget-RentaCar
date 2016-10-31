@@ -4,7 +4,7 @@
     .factory('revisionService', revisionService);
 
   /* @ngInject */
-  function revisionService() {
+  function revisionService($rootScope) {
     
     var revision = {};
     var observationsList = [];
@@ -16,6 +16,7 @@
       setUsername: setUsername,
       setCarMVA: setCarMVA,
       setNewType: setNewType,
+      getType: getType,
       setTimestamp: setTimestamp,
       setCarDeliveryInfo: setCarDeliveryInfo,
       setCarTires: setCarTires,
@@ -46,9 +47,12 @@
       revision.vehicle_ref = MVA;
     }
 
-    function setNewType(lastRevisionType) {
-      (lastRevisionType == 'check-in') ?
-      revision.type = 'check-out' : revision.type = 'check-in';
+    function setNewType(lastRevision) {
+      revision.type = (lastRevision.type == 'check-in') ? 'check-out' : 'check-in';
+    }
+
+    function getType() {
+      return revision.type;
     }
 
     function setTimestamp(timestamp) {
@@ -78,7 +82,16 @@
     }
 
     function setObservations(observations) {
-      observationsList = (observations);
+      observationsList = (removeUnsedProperties(observations));
+    }
+
+    function removeUnsedProperties(observations) {
+      angular.forEach(observations, function(observation) {
+        observation.is_new = false;
+        delete observation.$id;
+        delete observation.$priority;
+      });
+      return observations;
     }
 
     function removeObservation(observation) {
