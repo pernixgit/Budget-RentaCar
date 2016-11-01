@@ -46,7 +46,7 @@
     }
 
     function getLastRevision(revisionRef) {
-      if(!revisionRef.$value) { return Promise.reject(); }
+      if(!revisionRef.$value) { return fetchDataDeferred.reject('newRevision'); }
       var reference = service.rootRef
         .child('revisions')
         .child(revisionRef.$value);
@@ -55,12 +55,28 @@
     }
 
     function getDamagesAndObservations(lastRevision) {
-      revisionService.setRevision(lastRevision);
-      service.revision = lastRevision;
-      var promises = [getDamages(lastRevision.damages_ref), getObservations(lastRevision.observations_ref) ];
+      var promises = [];
+
+      if(lastRevision) {
+        revisionService.setRevision(lastRevision);
+        service.revision = lastRevision;
+        promises = initPromisesArray(lastRevision);
+      }
       return $q.all(promises)
         .then(handleGetDamagesAndObservationsSuccess)
         .catch(handleGetDamagesAndObservationsError)
+    }
+
+    function initPromisesArray(lastRevision) {
+      var promises = [];
+
+      if(!typeof(lastRevision.damages_ref) == 'undefined') {
+        promises.push(getDamages(lastRevision.damages_ref));
+      }
+      if(!typeof(lastRevision.observations_ref) == 'undefined') {
+        promises.push(getObservations(lastRevision.observations_ref));
+      }
+      return promises;
     }
 
     function handleGetDamagesAndObservationsSuccess(resolvedPromises) {

@@ -9,6 +9,7 @@
   function CarInfoCtrl($state,
                        $ionicNavBarDelegate,
                        $scope,
+                       $q,
                        revisionService,
                        carInfoService,
                        lastRevisionService) {
@@ -31,11 +32,27 @@
       }, 7000);
       if(carInfoService.carInfo.MVA) {
         lastRevisionService.fetchData()
-          .then(revisionService.setNewType)
-          .then(setContractNumber)
-          .then(function() { vm.isLoaded = true; })
-          .catch(function() { $state.go('scanner-error') });
+          .then(initRevision)
+          .catch(handleFetchDataError);
       }
+    }
+
+    function handleFetchDataError(error) {
+      if(error == 'newRevision') {
+        initRevision();
+      } else {
+        $state.go('scanner-error');
+      }
+    }
+
+    function initRevision() {
+      revisionService.setNewType(); 
+      setContractNumber(); 
+      setLoadedToTrue();
+    }
+
+    function setLoadedToTrue() {
+      vm.isLoaded = true; 
     }
 
     function setContractNumber() {

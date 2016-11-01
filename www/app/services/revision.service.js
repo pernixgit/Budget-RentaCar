@@ -47,8 +47,12 @@
       revision.vehicle_ref = MVA;
     }
 
-    function setNewType(lastRevision) {
-      revision.type = (lastRevision.type == 'check-in') ? 'check-out' : 'check-in';
+    function setNewType() {
+      if(revision.type) {
+        revision.type = (revision.type == 'check-in') ? 'check-out' : 'check-in';
+      }else {
+        revision.type = 'check-out';
+      }
     }
 
     function getType() {
