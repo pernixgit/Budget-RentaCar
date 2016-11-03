@@ -24,6 +24,7 @@
     activate();
 
     function activate() {
+      $ionicNavBarDelegate.showBar(true);
       $ionicNavBarDelegate.showBackButton(true);
       setTimeout(function() {
         if (!vm.isLoaded) {
