@@ -118,10 +118,6 @@
       pushObservationsIdToCurrentRevision(observationsKey);
     }
 
-    function cleanUpPropertiesObservation(observation) {
-      
-    }
-
     function pushFeedbackIdToCurrentRevision(id) {
       var reference = service.rootRef
         .child('revisions')

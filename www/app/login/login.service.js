@@ -42,7 +42,7 @@
     }
 
     function verifyAccess() {
-      if(isLoggedIn()){
+      if(isLoggedIn()) {
         revisionService.setUsername(sessionService.getAuthData());
         $state.go('scanner-menu');
       } else{

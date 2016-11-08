@@ -70,10 +70,10 @@
     function initPromisesArray(lastRevision) {
       var promises = [];
 
-      if(!typeof(lastRevision.damages_ref) == 'undefined') {
+      if(!(typeof(lastRevision.damages_ref) == 'undefined')) {
         promises.push(getDamages(lastRevision.damages_ref));
       }
-      if(!typeof(lastRevision.observations_ref) == 'undefined') {
+      if(!(typeof(lastRevision.observations_ref) == 'undefined')) {
         promises.push(getObservations(lastRevision.observations_ref));
       }
       return promises;

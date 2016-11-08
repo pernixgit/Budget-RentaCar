@@ -24,7 +24,7 @@
 
     function handleScanSuccess(code) {
       service.code = code.text.toString();
-      $state.go('car-info', {}, {reload: true});
+      $state.go('car-info');
     }
 
     function handleScanError() {

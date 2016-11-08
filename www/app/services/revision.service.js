@@ -4,7 +4,8 @@
     .factory('revisionService', revisionService);
 
   /* @ngInject */
-  function revisionService($rootScope) {
+  function revisionService($rootScope,
+                           sessionService) {
     
     var revision = {};
     var observationsList = [];
@@ -43,6 +44,16 @@
       revision = angular.extend(revision, lastRevision);
     }
 
+    function removeContractNumber() {
+      if(revision.type == 'check-out' && revision.contract_number) {
+        delete revision.contract_number;
+      }
+    }
+
+    function setCurrentUser() {
+      setUsername(sessionService.getAuthData());
+    }
+
     function setCarMVA(MVA) {
       revision.vehicle_ref = MVA;
     }
@@ -50,9 +61,11 @@
     function setNewType() {
       if(revision.type) {
         revision.type = (revision.type == 'check-in') ? 'check-out' : 'check-in';
-      }else {
+      } else {
         revision.type = 'check-out';
       }
+      setCurrentUser();
+      removeContractNumber();
     }
 
     function getType() {

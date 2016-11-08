@@ -22,7 +22,7 @@
     function fetchCarInfo() {
       var reference = service.rootRef
         .child('vehicles')
-        .child(scannerService.scanCode);
+        .child(scannerService.code);
       var carInfoRef = $firebaseObject(reference);
       return carInfoRef.$loaded();
     }

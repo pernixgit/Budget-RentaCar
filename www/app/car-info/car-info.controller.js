@@ -57,7 +57,7 @@
     }
 
     function setContractNumber() {
-      if (revisionService.getType() == 'check-in') {
+      if (revisionService.getType() == 'check-out') {
         revisionService.setContractNumber(' ');
       }
     }
