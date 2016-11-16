@@ -5,7 +5,8 @@
 
   /* @ngInject */
   function revisionService($rootScope,
-                           sessionService) {
+                           sessionService,
+                           canvasService) {
     
     var revision = {};
     var observationsList = [];
@@ -35,10 +36,15 @@
       setLicensePlate: setLicensePlate,
       setContractNumber: setContractNumber,
       getContractNumber: getContractNumber,
-      resetRevision: resetRevision
+      resetRevision: resetRevision,
+      changeToOldDamages: changeToOldDamages
     };
 
     return service;
+
+    function changeToOldDamages() {
+      canvasService.changeDamagesColorToYellow(damagesList);
+    }
 
     function setRevision(lastRevision) {
       revision = angular.extend(revision, lastRevision);

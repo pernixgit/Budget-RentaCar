@@ -18,7 +18,8 @@
                       carDamagesService,
                       lastRevisionService,
                       carInfoService,
-                      revisionService) {
+                      revisionService,
+                      canvasService) {
 
     var vm = $scope;
     var shape = null;
@@ -209,19 +210,10 @@
         addDamagesToCanvas(previousDamages);
       } else {
         if (revisionService.getDamages()) {
-          var damages = changeDamagesColorToYellow(revisionService.getDamages());
+          var damages = canvasService.changeDamagesColorToYellow(revisionService.getDamages());
           addDamagesToCanvas(damages);
         }
       }
-    }
-
-    function changeDamagesColorToYellow(damages) {
-      var yellowColor = '[1, 1, 0.5]';
-      return damages.map(function(damage) {
-        damage.json_canvas = damage.json_canvas.replace(/\[0.92941,0.33333,0.01961\]/g, yellowColor);
-        damage.is_new = false;
-        return damage;
-      });
     }
 
     function appendDamage() {

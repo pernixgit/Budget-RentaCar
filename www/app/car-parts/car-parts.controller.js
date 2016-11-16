@@ -42,6 +42,7 @@
     }
 
     function pushAndEndProcess() {
+      revisionService.changeToOldDamages();
       firebaseRevisionService.pushNewRevision(revisionService.getRevision(), false, Date.now());
       revisionService.resetRevision();
       $state.go('login');
