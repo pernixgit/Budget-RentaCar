@@ -15,7 +15,7 @@
                         firebaseRevisionService) {
 
     var vm = this;
-    vm.goToEndOrFeedback = goToEndOrFeedback;
+    vm.uploadCarParts = uploadCarParts;
 
     activate();
 
@@ -34,18 +34,19 @@
       vm.accesory = SELECTED_ACCESORIES;
     }
 
-    function goToEndOrFeedback() {
+    function uploadCarParts() {
       revisionService.setCarAccesories(vm.accesory, vm.countedAccesory);
+      pushAndEndProcess();
       resetItems();
-      (revisionService.getRevision().type == 'check-in') ?
-        $state.go('feedback') : pushAndEndProcess();
     }
 
     function pushAndEndProcess() {
-      revisionService.changeToOldDamages();
-      firebaseRevisionService.pushNewRevision(revisionService.getRevision(), false, Date.now());
+      if(revisionService.getType() == 'check-out') {
+        revisionService.changeToOldDamages();
+      }
+      firebaseRevisionService.pushNewRevision(revisionService.getRevision(), Date.now());
       revisionService.resetRevision();
-      $state.go('login');
+      $state.go('scanner-menu');
     }
 
   }

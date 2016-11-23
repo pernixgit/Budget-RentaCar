@@ -4,8 +4,7 @@
     .factory('revisionService', revisionService);
 
   /* @ngInject */
-  function revisionService($rootScope,
-                           sessionService,
+  function revisionService(sessionService,
                            canvasService) {
     
     var revision = {};

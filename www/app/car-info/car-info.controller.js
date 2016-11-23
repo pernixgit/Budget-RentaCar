@@ -9,7 +9,7 @@
   function CarInfoCtrl($state,
                        $ionicNavBarDelegate,
                        $scope,
-                       $q,
+                       $timeout,
                        revisionService,
                        carInfoService,
                        lastRevisionService) {
@@ -20,22 +20,41 @@
     vm.goToCarView = goToCarView;
     vm.carInfoService = carInfoService;
     vm.getRevisionType = revisionService.getType;
+    vm.goBack = goBack;
 
     activate();
 
     function activate() {
-      $ionicNavBarDelegate.showBar(true);
-      $ionicNavBarDelegate.showBackButton(true);
-      setTimeout(function() {
-        if (!vm.isLoaded) {
-          $state.go('scanner-error');
-        }
-      }, 7000);
+      $ionicNavBarDelegate.showBackButton(false);
+      startTimeOut();
       if(carInfoService.carInfo.MVA) {
         lastRevisionService.fetchData()
           .then(initRevision)
           .catch(handleFetchDataError);
       }
+
+    }
+
+    function goBack() {
+      $state.go('scanner-menu');
+    }
+
+
+    function startRevision() {
+      startTimeOut();
+      if(carInfoService.carInfo.MVA) {
+        lastRevisionService.fetchData()
+          .then(initRevision)
+          .catch(handleFetchDataError);
+      }
+    }
+
+    function startTimeOut() {
+      $timeout(function() {
+        if (!vm.isLoaded) {
+          $state.go('scanner-error');
+        }
+      }, 7000);
     }
 
     function handleFetchDataError(error) {

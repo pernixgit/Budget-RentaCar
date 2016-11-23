@@ -16,6 +16,5 @@
       'app.observations',
       'app.scanner-error',
       'app.car-parts',
-      'app.feedback',
     ]);
 })();

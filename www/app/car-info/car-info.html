@@ -1,4 +1,4 @@
-<ion-view view-title="Información del vehículo" >
+<ion-view view-title="Información del vehículo">
   <div ng-if="vm.isLoaded">
     <div class="bar bar-subheader" id="subheader">
       <h2 class="title"> {{ vm.getRevisionType() }} </h2>
@@ -32,8 +32,13 @@
           {{vm.carInfoService.carInfo.key}}
         </span>
       </a>
-      <div class="tabs button-container">
-        <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="!vm.goToCarView()"> Continuar </button>
+      <div class="tabs button-container row">
+        <div class="col">
+          <button class="budget-blue-button button button-block button-assertive" type="submit" ng-click="vm.goBack()"> Volver </button>
+        </div>
+        <div class="col">
+          <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="vm.goToCarView()"> Continuar </button>
+        </div>
       </div>
     </ion-content>
   </div>

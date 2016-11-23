@@ -1,23 +1,23 @@
-.background-car{
+.background-car {
   background-color: #E9A042;
   height: 100%;
   overflow-y: auto
 }
 
-.header-bar{
+.header-bar {
   background-color: #ED5505 !important;
 }
 
-.budget-orange-color{
+.budget-orange-color {
   color: #ED5505;
 }
 
-.budget-orange-button{
+.budget-orange-button {
   background-color: #ED5505 !important;
   color: white !important;
 }
 
-.budget-blue-button{
+.budget-blue-button {
   background-color: #1C2D5D !important;
 }
 
@@ -36,16 +36,24 @@
   color: white;
 }
 
-.button-container{
+.button-container {
   height: 5em !important;
   background-color: white !important;
   position: relative;
 }
 
-.tab-container{
+.tab-container {
   width: 100%;
 }
 
-.content-wrapper{
+.content-wrapper {
   margin: 10px 10px !important
+}
+
+.margin-left {
+  margin-left: 5px;
+}
+
+.margin-right {
+  margin-right: 5px;
 }
