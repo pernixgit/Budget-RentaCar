@@ -19,8 +19,7 @@
       rootRef: new Firebase(FIREBASE_URL),
       pushNewRevision: pushNewRevision,
       pushDamages: pushDamages,
-      pushObservations: pushObservations,
-      pushFeedback: pushFeedback
+      pushObservations: pushObservations
     };
 
     return service;
@@ -40,17 +39,14 @@
       if (revisionService.getObservations()) {
         pushObservations(revisionService.getObservations());
       }
-      if (isCheckIn) {
-        pushFeedback(revisionService.getFeedback());
-      }
     }
 
-    function pushNewRevision(newRevision, isCheckIn, timestamp) {
+    function pushNewRevision(newRevision, timestamp) {
       revisionService.setTimestamp(timestamp);
       observationsService.setObservationsToService();
       var cleanRevision = cleanUpRevisionObject(newRevision);
       var pushRef = pushRevision(cleanRevision);
-      pushRevisionItems(isCheckIn);
+      pushRevisionItems();
       saveCreatedRevisionId(pushRef.key());
       revisionService.resetRevision();
       lastRevisionService.reset();

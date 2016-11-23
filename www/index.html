@@ -57,9 +57,8 @@
     <script src="app/car-info/car-info.module.js"></script>
     <script src="app/car-parts/car-parts.module.js"></script>
     <script src="app/content/content.module.js"></script>
-    <script src="app/login/login.module.js"></script>
-    <script src="app/feedback/feedback.module.js"></script>
     <script src="app/observations/observations.module.js"></script>
+    <script src="app/login/login.module.js"></script>
     <script src="app/scanner-error/scanner-error.module.js"></script>
     <script src="app/scanner-menu/scanner-menu.module.js"></script>
     <script src="app/services/services.module.js"></script>
@@ -85,12 +84,11 @@
     <script src="app/content/content.controller.js"></script>
     <script src="app/content/content.routes.js"></script>
     <script src="app/core/core.constants.js"></script>
-    <script src="app/login/login.controller.js"></script>
-    <script src="app/login/login.service.js"></script>
-    <script src="app/feedback/feedback.controller.js"></script>
-    <script src="app/feedback/feedback.routes.js"></script>
     <script src="app/observations/observations.controller.js"></script>
     <script src="app/observations/observations.service.js"></script>
+    <script src="app/login/login.controller.js"></script>
+    <script src="app/login/login.routes.js"></script>
+    <script src="app/login/login.service.js"></script>
     <script src="app/scanner-error/scanner-error.controller.js"></script>
     <script src="app/scanner-error/scanner-error.routes.js"></script>
     <script src="app/scanner-menu/scanner-menu.controller.js"></script>
@@ -112,16 +110,14 @@
   </head>
 
   <body ng-app="app">
-    <div ng-controller="ObservationsCtrl as vm">
       <ion-nav-bar class="bar header-bar bar-assertive">
-          <ion-nav-back-button>
-          </ion-nav-back-button>
-        <ion-nav-buttons side="right">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right" ng-controller="ObservationsCtrl as vm">
           <button class="button button-small button-clear icon ion-compose" ng-click="vm.showObservationsModal()" ng-if="vm.shouldShowObservationsButton()">
           </button>
         </ion-nav-buttons>
       </ion-nav-bar>
       <ion-nav-view></ion-nav-view>
-    </div>
   </body>
 </html>

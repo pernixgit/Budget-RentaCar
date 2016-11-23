@@ -16,7 +16,7 @@
     function showMVAInputPopUp() {
       $scope.data = {};
       $ionicPopup.show({
-        template: '<input type="text" ng-model="data.mvaNumber">',
+        template: '<input type="text" class="text-center" ng-model="data.mvaNumber">',
         title: 'Ingrese el MVA del vehículo',
         scope: $scope,
         buttons: [

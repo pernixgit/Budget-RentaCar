@@ -8,7 +8,9 @@
   /* @ngInject */
 
   function ScannerMenuCtrl($ionicNavBarDelegate,
+                           $scope,
                            loginService,
+                           revisionService,
                            updateManagerService,
                            scannerService) {
 
@@ -16,18 +18,25 @@
     vm.goToScanner = goToScanner;
     vm.goToLogin = goToLogin;
 
+    $scope.$on('$ionicView.beforeEnter', initRevisionSession);
+
     activate();
 
-    function activate(){
+    function activate() {
       $ionicNavBarDelegate.showBackButton(false);
       updateManagerService.downloadUpdates();
+    }
+
+    function initRevisionSession() {
+      loginService.verifyAccess();
+      revisionService.resetRevision();
     }
 
     function goToScanner() {
       scannerService.scanCode();
     }
 
-    function goToLogin(){
+    function goToLogin() {
       loginService.logOut();
     }
 

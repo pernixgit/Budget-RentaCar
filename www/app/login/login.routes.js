@@ -2,19 +2,18 @@
   'use strict';
 
   angular
-    .module('app.feedback')
+    .module('app.login')
     .config(config);
 
   /* @ngInject */
   function config($stateProvider) {
     $stateProvider
-      .state('feedback', {
-        url: '/feedback',
-        templateUrl: 'app/feedback/feedback.html',
-        controller: 'FeedbackCtrl',
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginCtrl',
         controllerAs: 'vm',
         cache: false
       });
   }
-
 })();

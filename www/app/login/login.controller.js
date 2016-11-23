@@ -20,7 +20,6 @@
     activate();
 
     function activate() {
-      loginService.verifyAccess();
       $ionicNavBarDelegate.showBackButton(false);
     }
 
