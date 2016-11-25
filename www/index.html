@@ -110,10 +110,10 @@
   </head>
 
   <body ng-app="app">
-      <ion-nav-bar class="bar header-bar bar-assertive">
+      <ion-nav-bar class="bar header-bar bar-assertive" ng-controller="ObservationsCtrl as vm">
         <ion-nav-back-button>
         </ion-nav-back-button>
-        <ion-nav-buttons side="right" ng-controller="ObservationsCtrl as vm">
+        <ion-nav-buttons side="right">
           <button class="button button-small button-clear icon ion-compose" ng-click="vm.showObservationsModal()" ng-if="vm.shouldShowObservationsButton()">
           </button>
         </ion-nav-buttons>
