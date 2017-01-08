@@ -19,7 +19,7 @@
       fetchData: fetchData,
       reset: resetPromise
     };
-    
+
     return service;
 
     function fetchData() {
@@ -40,7 +40,7 @@
         .child('vehicles')
         .child(carInfoService.carInfo.MVA)
         .child('last_revision_ref');
-      
+
       var lastRevisionRef = $firebaseObject(reference);
       return lastRevisionRef.$loaded();
     }
@@ -82,6 +82,7 @@
     function handleGetDamagesAndObservationsSuccess(resolvedPromises) {
       revisionService.setDamages(resolvedPromises[0]);
       revisionService.setObservations(resolvedPromises[1]);
+      service.revision.observations = revisionService.getObservations();
       fetchDataDeferred.resolve(service.revision);
     }
 

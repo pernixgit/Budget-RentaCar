@@ -7,7 +7,7 @@
   function revisionService($rootScope,
                            sessionService,
                            canvasService) {
-    
+
     var revision = {};
     var observationsList = [];
     var damagesList = {};
