@@ -32,14 +32,12 @@
     }
 
     function resetObservations() {
-      service.damages = [];
+      service.observations = [];
     }
 
     function setObservationsToService() {
-      if (service.observations.length > 0) {
-        revisionService.setObservations(service.observations);
-        resetObservations();
-      }
+      revisionService.setObservations(service.observations);
+      resetObservations();
     }
   }
 })();

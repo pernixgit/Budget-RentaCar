@@ -6,7 +6,7 @@
   /* @ngInject */
   function revisionService(sessionService,
                            canvasService) {
-    
+
     var revision = {};
     var observationsList = [];
     var damagesList = {};

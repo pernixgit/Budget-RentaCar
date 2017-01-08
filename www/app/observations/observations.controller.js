@@ -10,6 +10,7 @@
   function ObservationsCtrl($ionicModal,
                             $scope,
                             $state,
+                            revisionService,
                             lastRevisionService,
                             observationsService) {
 

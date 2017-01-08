@@ -9,7 +9,9 @@
       {'name': 'Kit de emergencia' , 'key': 'emergency_kit'},
       {'name': 'Rack', 'key': 'rack'},
       {'name': 'Alfombras' , 'key': 'carpet'},
-      {'name': 'Copas', 'key': 'hubcaps'}
+      {'name': 'Copas', 'key': 'hubcaps'},
+      {'name': 'Tapa de Motor', 'key': 'hood'},
+      {'name': 'Cajuela', 'key': 'trunk'}
     ])
     .constant('COUNTED_ACCESORIES', [
       {'name': 'Emblemas', 'key': 'emblems'},
@@ -24,7 +26,9 @@
       'plates': true,
       'rack': false,
       'carpet': true,
-      'hubcaps': true
+      'hubcaps': true,
+      'hood': true,
+      'trunk': true
     })
     .constant('SELECTED_COUNTED_ACCESORIES', {
       emblems: '2',
