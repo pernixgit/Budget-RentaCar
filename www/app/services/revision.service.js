@@ -24,6 +24,7 @@
       setDamages: setDamages,
       addObservation: addObservation,
       setObservations: setObservations,
+      setOldObservations: setOldObservations,
       removeObservation: removeObservation,
       setCarAccesories: setCarParts,
       setFeedback: setFeedback,
@@ -107,9 +108,19 @@
       observationsList = (removeUnsedProperties(observations));
     }
 
-    function removeUnsedProperties(observations) {
+    function setOldObservations(observations) {
+      observationsList = setObservationsPropertyToOld(observations);
+    }
+
+    function setObservationsPropertyToOld(observations) {
       angular.forEach(observations, function(observation) {
         observation.is_new = false;
+      });
+      return observations;
+    }
+
+    function removeUnsedProperties(observations) {
+      angular.forEach(observations, function(observation) {
         delete observation.$id;
         delete observation.$priority;
       });

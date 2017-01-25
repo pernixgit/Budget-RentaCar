@@ -81,7 +81,7 @@
 
     function handleGetDamagesAndObservationsSuccess(resolvedPromises) {
       revisionService.setDamages(resolvedPromises[0]);
-      revisionService.setObservations(resolvedPromises[1]);
+      revisionService.setOldObservations(resolvedPromises[1]);
       service.revision.observations = revisionService.getObservations();
       fetchDataDeferred.resolve(service.revision);
     }
