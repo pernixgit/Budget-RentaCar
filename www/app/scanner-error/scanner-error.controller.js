@@ -7,7 +7,9 @@
 
   /* @ngInject */
   function ScannerErrorCtrl($state,
-                            $ionicNavBarDelegate) {
+                            $ionicNavBarDelegate,
+                            scannerService) {
+
     var vm = this;
     vm.redirectToScanner = redirectToScanner;
 
@@ -18,7 +20,7 @@
     }
 
     function redirectToScanner() {
-      $state.go('scanner');
+      scannerService.scanCode();
     }
 
   }

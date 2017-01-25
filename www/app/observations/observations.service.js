@@ -39,5 +39,6 @@
       revisionService.setObservations(service.observations);
       resetObservations();
     }
+
   }
 })();
