@@ -1,7 +1,7 @@
-<ion-view view-title="">
+<ion-view id="login">
   <ion-content>
     <div class="content has-header padding login-content">
-      <img src="assets/images/budget_logo.png" class="budget-logo"/>
+      <img src="assets/images/centriz-logo.png" class="budget-logo"/>
       <form name="loginForm">
         <div class="list list-inset login-wrapper">
           <label class="item item-input">
@@ -13,9 +13,9 @@
             <input type="password" placeholder="Contraseña" ng-model="vm.password" required/>
           </label>
           <br/>
-            <p align="center">
-              <button class="budget-orange-button button button-block button-assertive" type="submit" ng-click="vm.authenticate(vm.username)" ng-disabled="loginForm.$invalid"> Login </button>
-            </p>
+          <div align="center">
+            <button class="button button-block button-positive" type="submit" ng-click="vm.authenticate(vm.username)" ng-disabled="loginForm.$invalid"> Login </button>
+          </div>
         </div>
       </form>
     </div>

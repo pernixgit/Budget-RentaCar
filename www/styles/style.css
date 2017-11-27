@@ -4,17 +4,8 @@
   overflow-y: auto
 }
 
-.header-bar {
-  background-color: #ED5505 !important;
-}
-
-.budget-orange-color {
-  color: #ED5505;
-}
-
-.budget-orange-button {
-  background-color: #ED5505 !important;
-  color: white !important;
+.button-mva-input {
+  border: solid 1px grey !important;
 }
 
 .budget-blue-button {
