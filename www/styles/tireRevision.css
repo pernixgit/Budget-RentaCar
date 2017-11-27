@@ -1,5 +1,5 @@
 .tire-revision-wrapper{
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .select-tire-brand{
@@ -11,7 +11,7 @@
   color: white;
   font-weight: bold;
   border: 0.2em solid #ffffff;
-  background-color: #ED5505;
+  background-color: #0c60ee;
 }
 
 .tireBrands{
@@ -68,7 +68,7 @@
   color: #1C2D5D;
 }
 
-@media only screen 
+@media only screen
 and (max-height:420px) {
   .imgTire4x4{
     background-size: 60%;
@@ -83,7 +83,7 @@ and (max-height:420px) {
   }
 }
 
-@media only screen 
+@media only screen
 and (min-width:700px) and (min-height: 600px){
   .imgTire4x4{
     background-size: 80%;
@@ -95,7 +95,7 @@ and (min-width:700px) and (min-height: 600px){
 }
 
 
-@media only screen 
+@media only screen
 and (min-width:800px) and (min-height: 500px){
   .imgTire4x4{
     background-size: 60%;
@@ -106,7 +106,7 @@ and (min-width:800px) and (min-height: 500px){
   }
 }
 
-@media only screen 
+@media only screen
 and (min-width:960px) and (min-height: 600px){
   .imgTire4x4{
     background-size: 65%;
@@ -118,7 +118,7 @@ and (min-width:960px) and (min-height: 600px){
 }
 
 
-@media only screen 
+@media only screen
 and (min-width:1024px){
   .imgTire4x4{
     background-size: 80%;

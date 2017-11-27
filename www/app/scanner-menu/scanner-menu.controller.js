@@ -24,7 +24,7 @@
 
     function activate() {
       $ionicNavBarDelegate.showBackButton(false);
-      updateManagerService.downloadUpdates();
+      //updateManagerService.downloadUpdates();
     }
 
     function initRevisionSession() {

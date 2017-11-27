@@ -1,15 +1,9 @@
 .scanner-error-body {
-  background: #1A2F59;
+  background: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
-  padding-top: 20% !important;
-  width: 100%;
 }
 
-.showMVAPopUp-button{
-  background-color: #F78B00 !important;
-}
-
-.scanner-error-text{
-  color: white;
-}

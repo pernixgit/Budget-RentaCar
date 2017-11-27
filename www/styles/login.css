@@ -1,6 +1,10 @@
-.budget-logo{
-  height: 4em;
-  width: 20em;
+#login {
+  display: flex;
+  justify-content: center;
+}
+
+.budget-logo {
+  width: 60%;
   margin: 0 auto;
   display: table;
   margin-top: 5%;
