@@ -15,7 +15,7 @@
     return service;
 
     function changeDamagesColorToYellow(damages) {
-      var yellowColor = '[1, 1, 0.5]';
+      var yellowColor = '[0.4]';
       return damages.map(function(damage) {
         damage.json_canvas = damage.json_canvas.replace(/\[0.92941,0.33333,0.01961\]/g, yellowColor);
         damage.is_new = false;
